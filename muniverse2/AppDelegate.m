@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "Line.h"
+#import "Stop.h"
 
 @implementation AppDelegate
 
@@ -17,8 +19,32 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{    
+{
+    [self checkDemoData];
+    
     return YES;
+}
+
+- (void)checkDemoData
+{
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Line"];
+    
+    NSError *err;
+    NSArray *lines = [self.managedObjectContext executeFetchRequest:req error:&err];
+    
+}
+
+- (void)addDemoData
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    Line *theJ = [NSEntityDescription insertNewObjectForEntityForName:@"Line" inManagedObjectContext:moc];
+    theJ.name = @"J-Church";
+    
+    NSError *err;
+    if (![moc save:&err]) {
+        NSLog(@"Whoops, error saving demo data: %@",[err localizedDescription]);
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -87,7 +113,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"testytest" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"CoreMuni" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
