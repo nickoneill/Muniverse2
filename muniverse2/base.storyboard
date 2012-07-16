@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2541" systemVersion="12A256" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1875"/>
     </dependencies>
     <scenes>
         <!--Table View Controller - Favorites-->
         <scene sceneID="awT-Sf-Hr2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AV9-ur-v0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Wlu-aR-MCt" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tvf-0Z-0ii">
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
@@ -30,13 +29,13 @@
                         <barButtonItem key="backBarButtonItem" title="Favorites" id="Uib-3s-lmW"/>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AV9-ur-v0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1254" y="-265"/>
         </scene>
         <!--Navigation Controller - Favorites-->
         <scene sceneID="2qC-aD-bjf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qts-k0-a15" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="wbp-LQ-185" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="Tab_Favorites.png" id="vSC-o5-8ae"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e1c-6E-M26">
@@ -46,6 +45,7 @@
                         <segue destination="Wlu-aR-MCt" kind="relationship" relationship="rootViewController" id="xBQ-Gy-D6J"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qts-k0-a15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="720" y="-266"/>
         </scene>
@@ -75,7 +75,6 @@
         <!--Table View Controller - History-->
         <scene sceneID="BTD-Mm-WfK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cVa-cV-KZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="f9H-Ne-Nfm" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oW1-3w-wPQ">
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
@@ -97,13 +96,13 @@
                         <barButtonItem key="backBarButtonItem" title="History" id="rhf-GB-1gb"/>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cVa-cV-KZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1254" y="1751"/>
         </scene>
         <!--Table View Controller - Metro Subway-->
         <scene sceneID="RBp-h1-tlZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XZA-nF-3t4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="E87-fg-9eB" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AVJ-Ib-V4J">
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
@@ -123,18 +122,22 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RMt-Pz-XyV" id="ze0-oN-ICv"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Metro Subway" id="5o2-XS-Q92">
                         <barButtonItem key="backBarButtonItem" title="Subway" id="mvE-Nu-lBf"/>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XZA-nF-3t4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="RMt-Pz-XyV" customClass="SubwayData"/>
             </objects>
             <point key="canvasLocation" x="1254" y="1111"/>
         </scene>
         <!--View Controller - Station Name-->
         <scene sceneID="Uue-sL-K6q">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EgZ-go-hZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Rke-KB-bwA" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jda-ZA-S2b">
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
@@ -217,13 +220,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Station Name" id="L4l-mw-JRa"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EgZ-go-hZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1657" y="1111"/>
         </scene>
         <!--Navigation Controller - Subway-->
         <scene sceneID="6KL-Q6-FVH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zsw-dV-Gx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Gmf-kX-lMJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Subway" image="Tab_Subway.png" id="rqD-j8-xYi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iFH-Gz-yee">
@@ -233,13 +236,13 @@
                         <segue destination="E87-fg-9eB" kind="relationship" relationship="rootViewController" id="tgW-z7-BqZ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zsw-dV-Gx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="720" y="1111"/>
         </scene>
         <!--Table View Controller - All Lines-->
         <scene sceneID="oqy-wr-Oep">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dW5-kk-4s8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Gz0-iW-Q9w" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kD2-WL-SyI">
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
@@ -274,13 +277,13 @@
                         <segue destination="OtN-Td-ykR" kind="push" identifier="LinesToDirection" id="Rbp-oz-O6N"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dW5-kk-4s8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1246" y="459"/>
         </scene>
         <!--Table View Controller - Direction-->
         <scene sceneID="rhJ-8a-tur">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Gn-eF-SQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="OtN-Td-ykR" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9SH-Pm-aNa">
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
@@ -309,13 +312,13 @@
                         <segue destination="3eD-qN-NqS" kind="push" identifier="DirectionsToStops" id="oOG-DJ-y6e"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Gn-eF-SQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1666" y="461"/>
         </scene>
         <!--Table View Controller - Stops-->
         <scene sceneID="NjZ-KJ-okE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZj-Gw-AOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="3eD-qN-NqS" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nHi-a7-jX0">
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
@@ -341,13 +344,13 @@
                         <barButtonItem key="backBarButtonItem" title="Stops" id="HrL-4G-EFM"/>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZj-Gw-AOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2082" y="459"/>
         </scene>
         <!--Navigation Controller - All Lines-->
         <scene sceneID="RHI-Op-cza">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LH8-LY-umT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="MNS-he-PXW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="All Lines" image="Tab_Lines.png" id="871-cc-br0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="llZ-oE-nIg">
@@ -361,13 +364,13 @@
                         <segue destination="Gz0-iW-Q9w" kind="relationship" relationship="rootViewController" id="ynz-1Q-DCm"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LH8-LY-umT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="720" y="453"/>
         </scene>
         <!--Navigation Controller - History-->
         <scene sceneID="lRL-MG-Q2T">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bgb-TG-F81" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="MnV-c5-xWw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="History" image="Tab_History.png" id="4fN-dR-Cdr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="77h-5H-YJe">
@@ -377,6 +380,7 @@
                         <segue destination="f9H-Ne-Nfm" kind="relationship" relationship="rootViewController" id="gtE-Ks-DpF"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bgb-TG-F81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="720" y="1751"/>
         </scene>
@@ -387,6 +391,11 @@
         <image name="Tab_Lines.png" width="30" height="30"/>
         <image name="Tab_Subway.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="SubwayData" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubwayData.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

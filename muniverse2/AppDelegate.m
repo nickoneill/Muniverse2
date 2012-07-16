@@ -9,10 +9,11 @@
 #import "AppDelegate.h"
 #import "Line.h"
 #import "Stop.h"
+#import "SubwayData.h"
 
 @implementation AppDelegate
 
-@synthesize window;
+@synthesize window,subway;
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -25,6 +26,14 @@
     } else {
         [self addDemoData];
     }
+    
+//    self.subway = [[SubwayData alloc] init];
+////    self.subway.managedobjectcontext = self.managedObjectContext;
+//    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+//    
+//    NSError *err;
+//    self.subway.stops = [self.managedObjectContext executeFetchRequest:req error:&err];
+    
     
     return YES;
 }

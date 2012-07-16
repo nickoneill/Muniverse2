@@ -510,6 +510,7 @@
 		D0FA288D15B4B54A00ECE53D /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA288C15B4B54A00ECE53D /* Stop.m */; };
 		D0FA289015B4B54B00ECE53D /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA288F15B4B54B00ECE53D /* Line.m */; };
 		D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */; };
+		D0FA28E515B4C92600ECE53D /* SubwayData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA28E415B4C92600ECE53D /* SubwayData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1030,6 +1031,8 @@
 		D0FA288E15B4B54B00ECE53D /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
 		D0FA288F15B4B54B00ECE53D /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D0FA28E315B4C92600ECE53D /* SubwayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubwayData.h; sourceTree = "<group>"; };
+		D0FA28E415B4C92600ECE53D /* SubwayData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubwayData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1613,6 +1616,8 @@
 				435BA1B515AC60BB00D26FA1 /* Image Files */,
 				D0FA287A15B4A9D300ECE53D /* DataManager.h */,
 				D0FA287B15B4A9D300ECE53D /* DataManager.m */,
+				D0FA28E315B4C92600ECE53D /* SubwayData.h */,
+				D0FA28E415B4C92600ECE53D /* SubwayData.m */,
 			);
 			path = muniverse2;
 			sourceTree = "<group>";
@@ -2257,6 +2262,7 @@
 				D0FA287C15B4A9D300ECE53D /* DataManager.m in Sources */,
 				D0FA288D15B4B54A00ECE53D /* Stop.m in Sources */,
 				D0FA289015B4B54B00ECE53D /* Line.m in Sources */,
+				D0FA28E515B4C92600ECE53D /* SubwayData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
