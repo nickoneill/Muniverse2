@@ -49,7 +49,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSMainNibFile</key>
+	<key>UIMainStoryboardFile</key>
 	<string>base</string>
 </dict>
 </plist>
