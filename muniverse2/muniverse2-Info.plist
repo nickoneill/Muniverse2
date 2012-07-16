@@ -49,5 +49,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSMainNibFile</key>
+	<string>base</string>
 </dict>
 </plist>
