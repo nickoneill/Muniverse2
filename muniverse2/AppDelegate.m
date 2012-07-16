@@ -20,13 +20,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self checkDemoData];
+    if ([self coreDataHasEntriesForEntityName:@"Stop"]) {
+        [self checkDemoData];
+    } else {
+        [self addDemoData];
+    }
     
     return YES;
 }
 
 - (void)checkDemoData
 {
+    
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Line"];
     
     NSError *err;
@@ -36,15 +41,39 @@
 
 - (void)addDemoData
 {
+    
     NSManagedObjectContext *moc = [self managedObjectContext];
     
-    Line *theJ = [NSEntityDescription insertNewObjectForEntityForName:@"Line" inManagedObjectContext:moc];
-    theJ.name = @"J-Church";
+//    Line *theJ = [NSEntityDescription insertNewObjectForEntityForName:@"Line" inManagedObjectContext:moc];
+//    theJ.name = @"J-Church";
+    
+    NSArray *stops = [NSArray arrayWithObjects:@"West Portal",@"Forest Hill",@"Castro",@"Church",@"Van Ness",@"Civic Center",@"Powell",@"Montgomery",@"Embarcadero ARR",@"Embarcadero & Folsom",@"Embarcadero & Brannan",@"2nd & King/Ballpark",@"4th & King/Ballpark", nil];
+    
+    for (NSString *stopname in stops) {
+        Stop *stop = [NSEntityDescription insertNewObjectForEntityForName:@"Stop" inManagedObjectContext:moc];
+        [stop setValue:[NSNumber numberWithBool:YES] forKey:@"subway"];
+        [stop setValue:stopname forKey:@"name"];
+    }
     
     NSError *err;
     if (![moc save:&err]) {
         NSLog(@"Whoops, error saving demo data: %@",[err localizedDescription]);
     }
+}
+
+- (BOOL)coreDataHasEntriesForEntityName:(NSString *)entityName {
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:req error:&error];
+    if (!results) {
+        NSLog(@"Fetch error: %@", error);
+        abort();
+    }
+    if ([results count] == 0) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
