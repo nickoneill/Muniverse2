@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1800" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1480" systemVersion="12A256" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Bookmark" syncable="YES">
         <relationship name="line" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Line" syncable="YES"/>
         <relationship name="stop" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Stop" syncable="YES"/>
     </entity>
-    <entity name="Line" syncable="YES"/>
-    <entity name="Stop" syncable="YES">
+    <entity name="Line" representedClassName="Line" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Stop" representedClassName="Stop" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Line" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Bookmark" positionX="160" positionY="192" width="128" height="75"/>
-        <element name="Line" positionX="160" positionY="192" width="128" height="45"/>
-        <element name="Stop" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="Bookmark" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Line" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Stop" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

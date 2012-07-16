@@ -504,6 +504,10 @@
 		D03165D315AB76AE009DF347 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03165D115AB76AE009DF347 /* InfoPlist.strings */; };
 		D03165D615AB76AE009DF347 /* muniverse2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D03165D515AB76AE009DF347 /* muniverse2Tests.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
+		D0FA287C15B4A9D300ECE53D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA287B15B4A9D300ECE53D /* DataManager.m */; };
+		D0FA288D15B4B54A00ECE53D /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA288C15B4B54A00ECE53D /* Stop.m */; };
+		D0FA289015B4B54B00ECE53D /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA288F15B4B54B00ECE53D /* Line.m */; };
+		D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1015,6 +1019,13 @@
 		D03165D415AB76AE009DF347 /* muniverse2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = muniverse2Tests.h; sourceTree = "<group>"; };
 		D03165D515AB76AE009DF347 /* muniverse2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muniverse2Tests.m; sourceTree = "<group>"; };
 		D0B7C00715B0B17F00DBDE20 /* CoreMuni.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMuni.xcdatamodel; sourceTree = "<group>"; };
+		D0FA287A15B4A9D300ECE53D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		D0FA287B15B4A9D300ECE53D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		D0FA288B15B4B54A00ECE53D /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
+		D0FA288C15B4B54A00ECE53D /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
+		D0FA288E15B4B54B00ECE53D /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		D0FA288F15B4B54B00ECE53D /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1022,6 +1033,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */,
 				D03165B115AB76AE009DF347 /* UIKit.framework in Frameworks */,
 				D03165B315AB76AE009DF347 /* Foundation.framework in Frameworks */,
 				D03165B515AB76AE009DF347 /* CoreGraphics.framework in Frameworks */,
@@ -1574,6 +1586,7 @@
 		D03165AF15AB76AE009DF347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */,
 				D03165B015AB76AE009DF347 /* UIKit.framework */,
 				D03165B215AB76AE009DF347 /* Foundation.framework */,
 				D03165B415AB76AE009DF347 /* CoreGraphics.framework */,
@@ -1585,12 +1598,15 @@
 		D03165B615AB76AE009DF347 /* muniverse2 */ = {
 			isa = PBXGroup;
 			children = (
+				D0FA288A15B4B52F00ECE53D /* Managed Objects */,
 				D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */,
 				D014A27E15AE1D1600FF5952 /* base.storyboard */,
 				D03165BF15AB76AE009DF347 /* AppDelegate.h */,
 				D03165C015AB76AE009DF347 /* AppDelegate.m */,
 				D03165B715AB76AE009DF347 /* Supporting Files */,
 				435BA1B515AC60BB00D26FA1 /* Image Files */,
+				D0FA287A15B4A9D300ECE53D /* DataManager.h */,
+				D0FA287B15B4A9D300ECE53D /* DataManager.m */,
 			);
 			path = muniverse2;
 			sourceTree = "<group>";
@@ -1623,6 +1639,17 @@
 				D03165D115AB76AE009DF347 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0FA288A15B4B52F00ECE53D /* Managed Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D0FA288E15B4B54B00ECE53D /* Line.h */,
+				D0FA288F15B4B54B00ECE53D /* Line.m */,
+				D0FA288B15B4B54A00ECE53D /* Stop.h */,
+				D0FA288C15B4B54A00ECE53D /* Stop.m */,
+			);
+			name = "Managed Objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2219,6 +2246,9 @@
 				D03165BD15AB76AE009DF347 /* main.m in Sources */,
 				D03165C115AB76AE009DF347 /* AppDelegate.m in Sources */,
 				D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */,
+				D0FA287C15B4A9D300ECE53D /* DataManager.m in Sources */,
+				D0FA288D15B4B54A00ECE53D /* Stop.m in Sources */,
+				D0FA289015B4B54B00ECE53D /* Line.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
