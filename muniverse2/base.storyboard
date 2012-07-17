@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2541" systemVersion="12A256" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2809" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1875"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1884"/>
     </dependencies>
     <scenes>
         <!--Table View Controller - Favorites-->
@@ -100,16 +100,16 @@
             </objects>
             <point key="canvasLocation" x="1254" y="1751"/>
         </scene>
-        <!--Table View Controller - Metro Subway-->
+        <!--Subway Table View Controller - Metro Subway-->
         <scene sceneID="RBp-h1-tlZ">
             <objects>
-                <tableViewController id="E87-fg-9eB" sceneMemberID="viewController">
+                <tableViewController id="E87-fg-9eB" customClass="SubwayTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AVJ-Ib-V4J">
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1EO-jJ-3Zn">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="1EO-jJ-3Zn">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -122,16 +122,12 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="RMt-Pz-XyV" id="ze0-oN-ICv"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Metro Subway" id="5o2-XS-Q92">
                         <barButtonItem key="backBarButtonItem" title="Subway" id="mvE-Nu-lBf"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZA-nF-3t4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="RMt-Pz-XyV" customClass="SubwayData"/>
             </objects>
             <point key="canvasLocation" x="1254" y="1111"/>
         </scene>
@@ -392,8 +388,8 @@
         <image name="Tab_Subway.png" width="30" height="30"/>
     </resources>
     <classes>
-        <class className="SubwayData" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubwayData.h"/>
+        <class className="SubwayTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubwayTableViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

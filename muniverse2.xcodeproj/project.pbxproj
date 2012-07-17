@@ -505,12 +505,13 @@
 		D03165CB15AB76AE009DF347 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03165B215AB76AE009DF347 /* Foundation.framework */; };
 		D03165D315AB76AE009DF347 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03165D115AB76AE009DF347 /* InfoPlist.strings */; };
 		D03165D615AB76AE009DF347 /* muniverse2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D03165D515AB76AE009DF347 /* muniverse2Tests.m */; };
+		D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8B515B4E8320032236A /* SubwayTableViewController.m */; };
+		D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8BB15B4E9F10032236A /* StationViewController.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
 		D0FA287C15B4A9D300ECE53D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA287B15B4A9D300ECE53D /* DataManager.m */; };
 		D0FA288D15B4B54A00ECE53D /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA288C15B4B54A00ECE53D /* Stop.m */; };
 		D0FA289015B4B54B00ECE53D /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA288F15B4B54B00ECE53D /* Line.m */; };
 		D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */; };
-		D0FA28E515B4C92600ECE53D /* SubwayData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA28E415B4C92600ECE53D /* SubwayData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1023,6 +1024,10 @@
 		D03165D215AB76AE009DF347 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D03165D415AB76AE009DF347 /* muniverse2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = muniverse2Tests.h; sourceTree = "<group>"; };
 		D03165D515AB76AE009DF347 /* muniverse2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muniverse2Tests.m; sourceTree = "<group>"; };
+		D092B8B415B4E8320032236A /* SubwayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubwayTableViewController.h; path = ../SubwayTableViewController.h; sourceTree = "<group>"; };
+		D092B8B515B4E8320032236A /* SubwayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubwayTableViewController.m; path = ../SubwayTableViewController.m; sourceTree = "<group>"; };
+		D092B8BA15B4E9F10032236A /* StationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationViewController.h; sourceTree = "<group>"; };
+		D092B8BB15B4E9F10032236A /* StationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationViewController.m; sourceTree = "<group>"; };
 		D0B7C00715B0B17F00DBDE20 /* CoreMuni.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMuni.xcdatamodel; sourceTree = "<group>"; };
 		D0FA287A15B4A9D300ECE53D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		D0FA287B15B4A9D300ECE53D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
@@ -1031,8 +1036,6 @@
 		D0FA288E15B4B54B00ECE53D /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
 		D0FA288F15B4B54B00ECE53D /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		D0FA28E315B4C92600ECE53D /* SubwayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubwayData.h; sourceTree = "<group>"; };
-		D0FA28E415B4C92600ECE53D /* SubwayData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubwayData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1607,6 +1610,7 @@
 		D03165B615AB76AE009DF347 /* muniverse2 */ = {
 			isa = PBXGroup;
 			children = (
+				D092B8B815B4E83F0032236A /* View Controllers */,
 				D0FA288A15B4B52F00ECE53D /* Managed Objects */,
 				D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */,
 				D014A27E15AE1D1600FF5952 /* base.storyboard */,
@@ -1616,8 +1620,6 @@
 				435BA1B515AC60BB00D26FA1 /* Image Files */,
 				D0FA287A15B4A9D300ECE53D /* DataManager.h */,
 				D0FA287B15B4A9D300ECE53D /* DataManager.m */,
-				D0FA28E315B4C92600ECE53D /* SubwayData.h */,
-				D0FA28E415B4C92600ECE53D /* SubwayData.m */,
 			);
 			path = muniverse2;
 			sourceTree = "<group>";
@@ -1650,6 +1652,25 @@
 				D03165D115AB76AE009DF347 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D092B8B815B4E83F0032236A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D092B8B915B4E84A0032236A /* Subway Tab */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D092B8B915B4E84A0032236A /* Subway Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D092B8B415B4E8320032236A /* SubwayTableViewController.h */,
+				D092B8B515B4E8320032236A /* SubwayTableViewController.m */,
+				D092B8BA15B4E9F10032236A /* StationViewController.h */,
+				D092B8BB15B4E9F10032236A /* StationViewController.m */,
+			);
+			name = "Subway Tab";
 			sourceTree = "<group>";
 		};
 		D0FA288A15B4B52F00ECE53D /* Managed Objects */ = {
@@ -2262,7 +2283,8 @@
 				D0FA287C15B4A9D300ECE53D /* DataManager.m in Sources */,
 				D0FA288D15B4B54A00ECE53D /* Stop.m in Sources */,
 				D0FA289015B4B54B00ECE53D /* Line.m in Sources */,
-				D0FA28E515B4C92600ECE53D /* SubwayData.m in Sources */,
+				D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */,
+				D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
