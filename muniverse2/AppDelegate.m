@@ -55,7 +55,7 @@
 //    Line *theJ = [NSEntityDescription insertNewObjectForEntityForName:@"Line" inManagedObjectContext:moc];
 //    theJ.name = @"J-Church";
     
-    NSArray *stops = [NSArray arrayWithObjects:@"West Portal Station",@"Forest Hill Station",@"Castro Station",@"Church Station",@"Van Ness Station",@"Civic Center Station",@"Powell Station",@"Montgomery Station",@"Embarcadero Station",@"Embarcadero & Folsom",@"Embarcadero & Brannan",@"2nd & King/Ballpark",@"4th & King/Caltrain", nil];
+    NSArray *stops = [NSArray arrayWithObjects:@"West Portal Station",@"Forest Hill Station",@"Castro Station",@"Church Station",@"Van Ness Station",@"Civic Center Station",@"Powell Station",@"Montgomery Station",@"Embarcadero Station",@"Folsom & Embarcadero",@"Brannan & Embarcadero",@"2nd & King / Ballpark",@"4th & King / Caltrain", nil];
     
     int i = 0;
     for (NSString *stopname in stops) {

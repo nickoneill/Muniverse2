@@ -100,7 +100,7 @@
             </objects>
             <point key="canvasLocation" x="1254" y="1751"/>
         </scene>
-        <!--Subway Table View Controller - Metro Subway-->
+        <!--Subway Table View Controller - Subway Stations-->
         <scene sceneID="RBp-h1-tlZ">
             <objects>
                 <tableViewController id="E87-fg-9eB" customClass="SubwayTableViewController" sceneMemberID="viewController">
@@ -123,8 +123,8 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Metro Subway" id="5o2-XS-Q92">
-                        <barButtonItem key="backBarButtonItem" title="Subway" id="mvE-Nu-lBf"/>
+                    <navigationItem key="navigationItem" title="Subway Stations" id="5o2-XS-Q92">
+                        <barButtonItem key="backBarButtonItem" title="Stations" id="mvE-Nu-lBf"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZA-nF-3t4" userLabel="First Responder" sceneMemberID="firstResponder"/>
