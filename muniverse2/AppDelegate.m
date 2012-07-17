@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "Line.h"
 #import "Stop.h"
-#import "SubwayData.h"
 
 @implementation AppDelegate
 
@@ -58,10 +57,13 @@
     
     NSArray *stops = [NSArray arrayWithObjects:@"West Portal",@"Forest Hill",@"Castro",@"Church",@"Van Ness",@"Civic Center",@"Powell",@"Montgomery",@"Embarcadero ARR",@"Embarcadero & Folsom",@"Embarcadero & Brannan",@"2nd & King/Ballpark",@"4th & King/Ballpark", nil];
     
+    int i = 0;
     for (NSString *stopname in stops) {
         Stop *stop = [NSEntityDescription insertNewObjectForEntityForName:@"Stop" inManagedObjectContext:moc];
         [stop setValue:[NSNumber numberWithBool:YES] forKey:@"subway"];
         [stop setValue:stopname forKey:@"name"];
+        [stop setValue:[NSNumber numberWithInt:i] forKey:@"subwayOrder"];
+        i++;
     }
     
     NSError *err;

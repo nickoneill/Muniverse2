@@ -10,4 +10,6 @@
 
 @interface StationViewController : UIViewController
 
+@property (strong) NSNumber *stopId;
+
 @end

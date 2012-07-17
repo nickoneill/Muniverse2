@@ -131,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="1254" y="1111"/>
         </scene>
-        <!--View Controller - Station Name-->
+        <!--Station View Controller - Station Name-->
         <scene sceneID="Uue-sL-K6q">
             <objects>
-                <viewController id="Rke-KB-bwA" sceneMemberID="viewController">
+                <viewController id="Rke-KB-bwA" customClass="StationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jda-ZA-S2b">
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -387,11 +387,6 @@
         <image name="Tab_Lines.png" width="30" height="30"/>
         <image name="Tab_Subway.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="SubwayTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubwayTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

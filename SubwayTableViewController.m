@@ -31,6 +31,8 @@
     NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"subwayOrder" ascending:YES];
+    [req setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     NSError *err;
     self.stops = [moc executeFetchRequest:req error:&err];
@@ -76,6 +78,11 @@
     cell.textLabel.text = [[self.stops objectAtIndex:[indexPath row]] valueForKey:@"name"];
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
 }
 
 /*
