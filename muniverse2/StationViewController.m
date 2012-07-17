@@ -45,7 +45,6 @@
 //    if (err != nil) {
 //        NSLog(@"issue with subway stops: %@",[err localizedDescription]);
 //    }
-    
     self.navigationItem.title = [self.stop valueForKey:@"name"];
 }
 

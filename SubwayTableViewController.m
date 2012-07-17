@@ -78,6 +78,7 @@
 //    }
     
     cell.textLabel.text = [[self.stops objectAtIndex:[indexPath row]] valueForKey:@"name"];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:18];
     
     return cell;
 }
