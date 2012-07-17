@@ -63,6 +63,7 @@
         [stop setValue:[NSNumber numberWithBool:YES] forKey:@"subway"];
         [stop setValue:stopname forKey:@"name"];
         [stop setValue:[NSNumber numberWithInt:i] forKey:@"subwayOrder"];
+        [stop setValue:[NSNumber numberWithInt:i] forKey:@"inboundId"];
         i++;
     }
     

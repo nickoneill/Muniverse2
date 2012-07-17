@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StationViewController : UIViewController
+@class Stop;
 
-@property (strong) NSNumber *stopId;
+@interface StationViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+
+@property (strong) Stop *stop;
+@property (strong) IBOutlet UITableView *table;
 
 @end

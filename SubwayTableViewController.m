@@ -9,6 +9,8 @@
 #import "SubwayTableViewController.h"
 #import "AppDelegate.h"
 
+#import "StationViewController.h"
+
 @interface SubwayTableViewController ()
 
 @end
@@ -82,7 +84,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSIndexPath *ip = [self.tableView indexPathForCell:sender];
     
+    [(StationViewController *)[segue destinationViewController] setStop:[self.stops objectAtIndex:[ip row]]];
 }
 
 /*

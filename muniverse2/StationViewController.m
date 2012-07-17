@@ -7,6 +7,8 @@
 //
 
 #import "StationViewController.h"
+#import "AppDelegate.h"
+#import "Stop.h"
 
 @interface StationViewController ()
 
@@ -14,7 +16,7 @@
 
 @implementation StationViewController
 
-@synthesize stopId;
+@synthesize stop,table;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +30,51 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    UIImage *bg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Background" ofType:@"png"]];
+    [self.table setBackgroundView:[[UIImageView alloc] initWithImage:bg]];
+	
+//    NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+//    
+//    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K == %@",@"inboundId",self.stopId];
+//    [req setPredicate:pred];
+//    
+//    NSError *err;
+//    NSArray *stops = [moc executeFetchRequest:req error:&err];
+//    if (err != nil) {
+//        NSLog(@"issue with subway stops: %@",[err localizedDescription]);
+//    }
+    
+    self.navigationItem.title = [self.stop valueForKey:@"name"];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    //    if (cell == nil) {
+    //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    //    }
+    
+    cell.textLabel.text = @"ok";
+    
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning
