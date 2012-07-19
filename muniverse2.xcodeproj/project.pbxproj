@@ -11,6 +11,8 @@
 		4308300815B868A9007EA209 /* DirectionBar_Inbound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4308300415B868A9007EA209 /* DirectionBar_Inbound@2x.png */; };
 		4308300915B868A9007EA209 /* DirectionBar_Outbound.png in Resources */ = {isa = PBXBuildFile; fileRef = 4308300515B868A9007EA209 /* DirectionBar_Outbound.png */; };
 		4308300A15B868A9007EA209 /* DirectionBar_Outbound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4308300615B868A9007EA209 /* DirectionBar_Outbound@2x.png */; };
+		4308300D15B8714B007EA209 /* DirectionBar_Blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 4308300B15B8714B007EA209 /* DirectionBar_Blank.png */; };
+		4308300E15B8714B007EA209 /* DirectionBar_Blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4308300C15B8714B007EA209 /* DirectionBar_Blank@2x.png */; };
 		435BA1C215AC60D600D26FA1 /* Tab_History.png in Resources */ = {isa = PBXBuildFile; fileRef = 435BA1BA15AC60D600D26FA1 /* Tab_History.png */; };
 		435BA1C315AC60D600D26FA1 /* Tab_History@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 435BA1BB15AC60D600D26FA1 /* Tab_History@2x.png */; };
 		435BA1C415AC60D600D26FA1 /* Tab_Lines.png in Resources */ = {isa = PBXBuildFile; fileRef = 435BA1BC15AC60D600D26FA1 /* Tab_Lines.png */; };
@@ -99,6 +101,8 @@
 		4308300415B868A9007EA209 /* DirectionBar_Inbound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DirectionBar_Inbound@2x.png"; sourceTree = "<group>"; };
 		4308300515B868A9007EA209 /* DirectionBar_Outbound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DirectionBar_Outbound.png; sourceTree = "<group>"; };
 		4308300615B868A9007EA209 /* DirectionBar_Outbound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DirectionBar_Outbound@2x.png"; sourceTree = "<group>"; };
+		4308300B15B8714B007EA209 /* DirectionBar_Blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DirectionBar_Blank.png; sourceTree = "<group>"; };
+		4308300C15B8714B007EA209 /* DirectionBar_Blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DirectionBar_Blank@2x.png"; sourceTree = "<group>"; };
 		435BA1BA15AC60D600D26FA1 /* Tab_History.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_History.png; sourceTree = "<group>"; };
 		435BA1BB15AC60D600D26FA1 /* Tab_History@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_History@2x.png"; sourceTree = "<group>"; };
 		435BA1BC15AC60D600D26FA1 /* Tab_Lines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Lines.png; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				4308300415B868A9007EA209 /* DirectionBar_Inbound@2x.png */,
 				4308300515B868A9007EA209 /* DirectionBar_Outbound.png */,
 				4308300615B868A9007EA209 /* DirectionBar_Outbound@2x.png */,
+				4308300B15B8714B007EA209 /* DirectionBar_Blank.png */,
+				4308300C15B8714B007EA209 /* DirectionBar_Blank@2x.png */,
 				435BA57D15AC638F00D26FA1 /* App Icons */,
 				4367C40315B64A0700767C45 /* Toolbar Icons */,
 				43B53F3F15B5A91A001F3DCE /* Subway Icons */,
@@ -535,6 +541,8 @@
 				4308300815B868A9007EA209 /* DirectionBar_Inbound@2x.png in Resources */,
 				4308300915B868A9007EA209 /* DirectionBar_Outbound.png in Resources */,
 				4308300A15B868A9007EA209 /* DirectionBar_Outbound@2x.png in Resources */,
+				4308300D15B8714B007EA209 /* DirectionBar_Blank.png in Resources */,
+				4308300E15B8714B007EA209 /* DirectionBar_Blank@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
