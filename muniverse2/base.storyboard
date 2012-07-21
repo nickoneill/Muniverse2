@@ -265,6 +265,33 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="VCN-tM-hAD">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2HP-Cw-HSG">
+                                <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1Dm-KA-JpR">
+                                <rect key="frame" x="0.0" y="154" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="A1V-RA-QXc" id="fW9-bk-kAy"/>
@@ -291,14 +318,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QRf-iY-JJ8">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QRf-iY-JJ8">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="xb6-As-9jv" kind="push" id="Ypf-81-exF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -310,6 +340,21 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2082" y="319"/>
+        </scene>
+        <!--View Controller - Stop Detail-->
+        <scene sceneID="f7o-66-skx">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ppf-GL-L7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="xb6-As-9jv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cmx-Gk-gq0">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Stop Detail" id="ne8-Dr-6dh"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2527" y="319"/>
         </scene>
         <!--Navigation Controller - All Lines-->
         <scene sceneID="RHI-Op-cza">
@@ -641,7 +686,7 @@
                                 <items>
                                     <navigationItem id="24g-5F-dON">
                                         <nil key="title"/>
-                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="K8f-MP-NVQ">
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="2" id="K8f-MP-NVQ">
                                             <rect key="frame" x="40" y="7" width="240" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
@@ -677,7 +722,7 @@
                                 <color key="tintColor" red="0.31252667309999999" green="0.4290035069" blue="0.51530939340000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="J-Church" id="yAM-ee-J9V">
-                                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="Crc-th-dRk"/>
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; Lines" id="Crc-th-dRk"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -876,6 +921,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="3208" y="-374"/>
