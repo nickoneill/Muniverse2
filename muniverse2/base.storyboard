@@ -289,7 +289,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Start@2x.png" id="iFn-HA-Upw">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Start@2x.png" highlightedImage="Marker_Start-h@2x.png" id="iFn-HA-Upw">
                                             <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -311,7 +311,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Middle@2x.png" id="v1L-Nu-Uy0">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Middle@2x.png" highlightedImage="Marker_Middle-h@2x.png" id="v1L-Nu-Uy0">
                                             <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -333,7 +333,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Middle_Current@2x.png" id="nRo-1n-6Hb">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Middle_Current@2x.png" highlightedImage="Marker_Middle_Current-h@2x.png" id="nRo-1n-6Hb">
                                             <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -355,7 +355,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_End@2x.png" id="Hb6-8P-eRY">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_End@2x.png" highlightedImage="Marker_End-h@2x.png" id="Hb6-8P-eRY">
                                             <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -999,9 +999,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Marker_End-h@2x.png" width="53" height="86"/>
         <image name="Marker_End@2x.png" width="53" height="86"/>
+        <image name="Marker_Middle-h@2x.png" width="53" height="86"/>
         <image name="Marker_Middle@2x.png" width="53" height="86"/>
+        <image name="Marker_Middle_Current-h@2x.png" width="53" height="86"/>
         <image name="Marker_Middle_Current@2x.png" width="53" height="86"/>
+        <image name="Marker_Start-h@2x.png" width="53" height="86"/>
         <image name="Marker_Start@2x.png" width="53" height="86"/>
         <image name="Tab_Favorites.png" width="26" height="26"/>
         <image name="Tab_History.png" width="25" height="25"/>
