@@ -23,14 +23,28 @@
     if (![self coreDataHasEntriesForEntityName:@"Stop"]) {
         [self addDemoData];
     }
-        
+    
     return YES;
+}
+
+- (void)removeAllData
+{
+    NSPersistentStore *store = [[self.persistentStoreCoordinator persistentStores] objectAtIndex:0];
+    NSError *error;
+    NSURL *storeURL = store.URL;
+    [self.persistentStoreCoordinator removePersistentStore:store error:&error];
+    [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
 }
 
 - (void)addDemoData
 {
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"muniversedata" ofType:@"json"];
-    NSDictionary *jsonData = [NSDictionary dictionaryWithContentsOfFile:jsonPath];
+    
+    NSError *error;
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath] options:nil error:&error];
+ 
+    NSLog(@"adding: %@",jsonData);
+
     
     NSManagedObjectContext *moc = [self managedObjectContext];
         
@@ -43,7 +57,7 @@
 //        [stop setValue:[NSNumber numberWithBool:YES] forKey:@"subway"];
         [stop setValue:[stopDict objectForKey:@"Title"] forKey:@"name"];
 //        [stop setValue:[NSNumber numberWithInt:i] forKey:@"subwayOrder"];
-//        [stop setValue:[NSNumber numberWithInt:i] forKey:@"inboundId"];
+        [stop setValue:[stopDict objectForKey:@"Tag"] forKey:@"tag"];
 
     }
     
@@ -58,10 +72,25 @@
         Line *line = [NSEntityDescription insertNewObjectForEntityForName:@"Line" inManagedObjectContext:moc];
         [line setValue:[lineDict objectForKey:@"Title"] forKey:@"name"];
         
-//        NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-//        NSPredicate *pred = [NSPredicate predicateWithFormat:@"inboundId == %@",];
-//        
-//        [req setPredicate:pred];
+        for (int j = 0; j < [[lineDict objectForKey:@"InboundTags"] count]; j++) {
+            int stoptag = [[[lineDict objectForKey:@"InboundTags"] objectAtIndex:j] intValue];
+            NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+            
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
+            [req setPredicate:pred];
+            
+            NSError *error;
+            NSArray *stops = [moc executeFetchRequest:req error:&error];
+            
+            if ([stops count] > 1) {
+                NSLog(@"!!!Should not be more than one stop for each tag");
+            } else if ([stops count] < 1) {
+                NSLog(@"!!!Should not be less than one stop for a tag");
+            } else {
+                [line addInboundStopsObject:[stops objectAtIndex:0]];
+            }
+            // stop adding debug point
+        }
     }
     
     if (![moc save:&err]) {

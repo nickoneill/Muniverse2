@@ -92,6 +92,7 @@
 		D076180915BCDF6000783055 /* muniversedata.json in Resources */ = {isa = PBXBuildFile; fileRef = D076180815BCDF6000783055 /* muniversedata.json */; };
 		D076181315BCE3B000783055 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D076181215BCE3B000783055 /* Line.m */; };
 		D076181615BCE3B100783055 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D076181515BCE3B100783055 /* Stop.m */; };
+		D07BE01115CB225A0054E392 /* AllLinesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */; };
 		D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8B515B4E8320032236A /* SubwayTableViewController.m */; };
 		D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8BB15B4E9F10032236A /* StationViewController.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
@@ -198,6 +199,8 @@
 		D076181215BCE3B000783055 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		D076181415BCE3B100783055 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		D076181515BCE3B100783055 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
+		D07BE00F15CB225A0054E392 /* AllLinesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllLinesTableViewController.h; sourceTree = "<group>"; };
+		D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllLinesTableViewController.m; sourceTree = "<group>"; };
 		D092B8B415B4E8320032236A /* SubwayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubwayTableViewController.h; path = ../SubwayTableViewController.h; sourceTree = "<group>"; };
 		D092B8B515B4E8320032236A /* SubwayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubwayTableViewController.m; path = ../SubwayTableViewController.m; sourceTree = "<group>"; };
 		D092B8BA15B4E9F10032236A /* StationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationViewController.h; sourceTree = "<group>"; };
@@ -441,9 +444,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D07BE00D15CB221D0054E392 /* All Lines Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D07BE00F15CB225A0054E392 /* AllLinesTableViewController.h */,
+				D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */,
+			);
+			name = "All Lines Tab";
+			sourceTree = "<group>";
+		};
 		D092B8B815B4E83F0032236A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D07BE00D15CB221D0054E392 /* All Lines Tab */,
 				D092B8B915B4E84A0032236A /* Subway Tab */,
 			);
 			name = "View Controllers";
@@ -660,6 +673,7 @@
 				D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */,
 				D076181315BCE3B000783055 /* Line.m in Sources */,
 				D076181615BCE3B100783055 /* Stop.m in Sources */,
+				D07BE01115CB225A0054E392 /* AllLinesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

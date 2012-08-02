@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2541" systemVersion="12A256" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2818" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1875"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1900"/>
     </dependencies>
     <scenes>
         <!--Table View Controller - Favorites-->
@@ -206,16 +206,16 @@
             </objects>
             <point key="canvasLocation" x="720" y="1111"/>
         </scene>
-        <!--Table View Controller - All Lines-->
+        <!--All Lines Table View Controller - All Lines-->
         <scene sceneID="oqy-wr-Oep">
             <objects>
-                <tableViewController id="Gz0-iW-Q9w" sceneMemberID="viewController">
+                <tableViewController id="Gz0-iW-Q9w" customClass="AllLinesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="kD2-WL-SyI">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="DNx-Mb-S07">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="DNx-Mb-S07">
                                 <rect key="frame" x="0.0" y="22" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -492,7 +492,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Balboa Park to Sunnydale          via Downtown" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="5IZ-Ns-2dS">
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Balboa Park to Sunnydale          via Downtown" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="207" id="5IZ-Ns-2dS">
                                                             <rect key="frame" x="36" y="24" width="207" height="32"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -521,7 +521,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Balboa Park to Sunnydale     via Downtown" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="XnW-aR-XAc">
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Balboa Park to Sunnydale     via Downtown" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="250" id="XnW-aR-XAc">
                                                             <rect key="frame" x="36" y="32" width="250" height="16"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -550,7 +550,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Lorem ipsum dolor sit amet consecturar elit elisum enot" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="WuH-CB-pxO">
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Lorem ipsum dolor sit amet consecturar elit elisum enot" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="253" id="WuH-CB-pxO">
                                                             <rect key="frame" x="36" y="24" width="253" height="32"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -579,7 +579,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Balboa Park to Sunnydale          via Downtown" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="7SQ-yx-5FV">
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Balboa Park to Sunnydale          via Downtown" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="207" id="7SQ-yx-5FV">
                                                             <rect key="frame" x="36" y="24" width="207" height="32"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -608,7 +608,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Lorem ipsum dolor sit amet consecturar elit elisum enot" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="fXH-J9-HIq">
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Lorem ipsum dolor sit amet consecturar elit elisum enot" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="253" id="fXH-J9-HIq">
                                                             <rect key="frame" x="36" y="24" width="253" height="32"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -637,7 +637,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Peak hour and event service (check destination signs on train)" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="HLd-VA-jH4">
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Peak hour and event service (check destination signs on train)" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="211" id="HLd-VA-jH4">
                                                             <rect key="frame" x="36" y="24" width="211" height="32"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -679,7 +679,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Castro to Fisherman's Wharf via Downtown" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="G2I-r9-Ecp">
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Castro to Fisherman's Wharf via Downtown" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="189" id="G2I-r9-Ecp">
                                                             <rect key="frame" x="92" y="24" width="189" height="32"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -712,7 +712,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Union Square to Fisherman's Wharf via Chinatown and North Beach" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="XFd-a5-UzN">
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Union Square to Fisherman's Wharf via Chinatown and North Beach" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="198" id="XFd-a5-UzN">
                                                             <rect key="frame" x="92" y="25" width="198" height="32"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1022,6 +1022,9 @@
         <image name="icon_S.png" width="16" height="16"/>
     </resources>
     <classes>
+        <class className="AllLinesTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AllLinesTableViewController.h"/>
+        </class>
         <class className="StationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
             <relationships>
