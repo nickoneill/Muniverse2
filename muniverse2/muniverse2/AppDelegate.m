@@ -47,23 +47,14 @@
 
     }
     
-    NSError *err;
-    if (![moc save:&err]) {
-        NSLog(@"Whoops, error saving demo data: %@",[err localizedDescription]);
-    }
-    
     for (int i = 0; i < [[jsonData objectForKey:@"LineList"] count]; i++) {
         NSDictionary *lineDict = [[jsonData objectForKey:@"LineList"] objectAtIndex:i];
         
         Line *line = [NSEntityDescription insertNewObjectForEntityForName:@"Line" inManagedObjectContext:moc];
         [line setValue:[lineDict objectForKey:@"Title"] forKey:@"name"];
-        
-//        NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-//        NSPredicate *pred = [NSPredicate predicateWithFormat:@"inboundId == %@",];
-//        
-//        [req setPredicate:pred];
     }
     
+    NSError *err;
     if (![moc save:&err]) {
         NSLog(@"Whoops, error saving demo data: %@",[err localizedDescription]);
     }

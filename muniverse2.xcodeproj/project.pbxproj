@@ -89,12 +89,13 @@
 		D03165CB15AB76AE009DF347 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03165B215AB76AE009DF347 /* Foundation.framework */; };
 		D03165D315AB76AE009DF347 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03165D115AB76AE009DF347 /* InfoPlist.strings */; };
 		D03165D615AB76AE009DF347 /* muniverse2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D03165D515AB76AE009DF347 /* muniverse2Tests.m */; };
+		D076180915BCDF6000783055 /* muniversedata.json in Resources */ = {isa = PBXBuildFile; fileRef = D076180815BCDF6000783055 /* muniversedata.json */; };
+		D076181315BCE3B000783055 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D076181215BCE3B000783055 /* Line.m */; };
+		D076181615BCE3B100783055 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D076181515BCE3B100783055 /* Stop.m */; };
 		D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8B515B4E8320032236A /* SubwayTableViewController.m */; };
 		D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8BB15B4E9F10032236A /* StationViewController.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
 		D0FA287C15B4A9D300ECE53D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA287B15B4A9D300ECE53D /* DataManager.m */; };
-		D0FA288D15B4B54A00ECE53D /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA288C15B4B54A00ECE53D /* Stop.m */; };
-		D0FA289015B4B54B00ECE53D /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FA288F15B4B54B00ECE53D /* Line.m */; };
 		D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +193,11 @@
 		D03165D215AB76AE009DF347 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D03165D415AB76AE009DF347 /* muniverse2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = muniverse2Tests.h; sourceTree = "<group>"; };
 		D03165D515AB76AE009DF347 /* muniverse2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muniverse2Tests.m; sourceTree = "<group>"; };
+		D076180815BCDF6000783055 /* muniversedata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = muniversedata.json; sourceTree = "<group>"; };
+		D076181115BCE3B000783055 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		D076181215BCE3B000783055 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		D076181415BCE3B100783055 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
+		D076181515BCE3B100783055 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		D092B8B415B4E8320032236A /* SubwayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubwayTableViewController.h; path = ../SubwayTableViewController.h; sourceTree = "<group>"; };
 		D092B8B515B4E8320032236A /* SubwayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubwayTableViewController.m; path = ../SubwayTableViewController.m; sourceTree = "<group>"; };
 		D092B8BA15B4E9F10032236A /* StationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationViewController.h; sourceTree = "<group>"; };
@@ -199,10 +205,6 @@
 		D0B7C00715B0B17F00DBDE20 /* CoreMuni.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMuni.xcdatamodel; sourceTree = "<group>"; };
 		D0FA287A15B4A9D300ECE53D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		D0FA287B15B4A9D300ECE53D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		D0FA288B15B4B54A00ECE53D /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
-		D0FA288C15B4B54A00ECE53D /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
-		D0FA288E15B4B54B00ECE53D /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
-		D0FA288F15B4B54B00ECE53D /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -394,6 +396,7 @@
 		D03165B615AB76AE009DF347 /* muniverse2 */ = {
 			isa = PBXGroup;
 			children = (
+				D076180815BCDF6000783055 /* muniversedata.json */,
 				D092B8B815B4E83F0032236A /* View Controllers */,
 				D0FA288A15B4B52F00ECE53D /* Managed Objects */,
 				D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */,
@@ -460,10 +463,10 @@
 		D0FA288A15B4B52F00ECE53D /* Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
-				D0FA288E15B4B54B00ECE53D /* Line.h */,
-				D0FA288F15B4B54B00ECE53D /* Line.m */,
-				D0FA288B15B4B54A00ECE53D /* Stop.h */,
-				D0FA288C15B4B54A00ECE53D /* Stop.m */,
+				D076181415BCE3B100783055 /* Stop.h */,
+				D076181515BCE3B100783055 /* Stop.m */,
+				D076181115BCE3B000783055 /* Line.h */,
+				D076181215BCE3B000783055 /* Line.m */,
 			);
 			name = "Managed Objects";
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				4308300A15B868A9007EA209 /* DirectionBar_Outbound@2x.png in Resources */,
 				4308300D15B8714B007EA209 /* DirectionBar_Blank.png in Resources */,
 				4308300E15B8714B007EA209 /* DirectionBar_Blank@2x.png in Resources */,
+<<<<<<< HEAD
 				43773F5215C74BC100E1B9AC /* Marker_End_Current-h@2x.png in Resources */,
 				43773F5315C74BC100E1B9AC /* Marker_End_Current@2x.png in Resources */,
 				43773F5415C74BC100E1B9AC /* Marker_End-h@2x.png in Resources */,
@@ -599,6 +603,9 @@
 				43773F5B15C74BC100E1B9AC /* Marker_Start_Current@2x.png in Resources */,
 				43773F5C15C74BC100E1B9AC /* Marker_Start-h@2x.png in Resources */,
 				43773F5D15C74BC100E1B9AC /* Marker_Start@2x.png in Resources */,
+=======
+				D076180915BCDF6000783055 /* muniversedata.json in Resources */,
+>>>>>>> Core data workings
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,10 +656,10 @@
 				D03165C115AB76AE009DF347 /* AppDelegate.m in Sources */,
 				D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */,
 				D0FA287C15B4A9D300ECE53D /* DataManager.m in Sources */,
-				D0FA288D15B4B54A00ECE53D /* Stop.m in Sources */,
-				D0FA289015B4B54B00ECE53D /* Line.m in Sources */,
 				D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */,
 				D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */,
+				D076181315BCE3B000783055 /* Line.m in Sources */,
+				D076181615BCE3B100783055 /* Stop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
