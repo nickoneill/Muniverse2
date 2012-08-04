@@ -616,9 +616,7 @@
 				43773F5B15C74BC100E1B9AC /* Marker_Start_Current@2x.png in Resources */,
 				43773F5C15C74BC100E1B9AC /* Marker_Start-h@2x.png in Resources */,
 				43773F5D15C74BC100E1B9AC /* Marker_Start@2x.png in Resources */,
-=======
 				D076180915BCDF6000783055 /* muniversedata.json in Resources */,
->>>>>>> Core data workings
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
