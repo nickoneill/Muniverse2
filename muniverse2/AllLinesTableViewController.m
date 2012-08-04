@@ -9,6 +9,7 @@
 #import "AllLinesTableViewController.h"
 #import "AppDelegate.h"
 #import "Line.h"
+#import "LineDisplayCell.h"
 
 @interface AllLinesTableViewController ()
 
@@ -97,9 +98,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"LineCell";
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];//[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    LineDisplayCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     [self configureCell:cell atIndexPath:indexPath];
     
