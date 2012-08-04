@@ -32,6 +32,8 @@
 {
     [super viewDidLoad];
     
+    [self.type addTarget:self action:@selector(lineTypeChange:) forControlEvents:UIControlEventValueChanged];
+    
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     self.moc = app.managedObjectContext;
     
@@ -58,6 +60,8 @@
                                    entityForName:@"Line" inManagedObjectContext:self.moc];
     [fetchRequest setEntity:entity];
     
+//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"type == %@",@""];
+    
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"name" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
@@ -72,6 +76,11 @@
     _frc.delegate = self;
     
     return _frc;
+}
+
+- (void)lineTypeChange:(id)sender
+{
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1803" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1803" systemVersion="12A256" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Line" representedClassName="Line" syncable="YES">
+        <attribute name="isHistoric" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isMetro" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="inboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="lines" inverseEntity="Stop" syncable="YES"/>
     </entity>
@@ -12,7 +14,7 @@
         <relationship name="lines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Line" inverseName="inboundStops" inverseEntity="Line" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Line" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="Line" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Stop" positionX="0" positionY="0" width="128" height="120"/>
     </elements>
 </model>

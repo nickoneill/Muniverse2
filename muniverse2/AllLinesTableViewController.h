@@ -12,5 +12,8 @@
 
 @property (nonatomic,strong) NSManagedObjectContext *moc;
 @property (nonatomic,strong) NSFetchedResultsController *frc;
+@property (nonatomic,strong) IBOutlet UISegmentedControl *type;
+
+- (void)lineTypeChange:(id)sender;
 
 @end
