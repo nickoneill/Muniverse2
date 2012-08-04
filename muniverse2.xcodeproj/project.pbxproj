@@ -603,7 +603,6 @@
 				4308300A15B868A9007EA209 /* DirectionBar_Outbound@2x.png in Resources */,
 				4308300D15B8714B007EA209 /* DirectionBar_Blank.png in Resources */,
 				4308300E15B8714B007EA209 /* DirectionBar_Blank@2x.png in Resources */,
-<<<<<<< HEAD
 				43773F5215C74BC100E1B9AC /* Marker_End_Current-h@2x.png in Resources */,
 				43773F5315C74BC100E1B9AC /* Marker_End_Current@2x.png in Resources */,
 				43773F5415C74BC100E1B9AC /* Marker_End-h@2x.png in Resources */,
