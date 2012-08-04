@@ -90,10 +90,10 @@
 		D03165D315AB76AE009DF347 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03165D115AB76AE009DF347 /* InfoPlist.strings */; };
 		D03165D615AB76AE009DF347 /* muniverse2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D03165D515AB76AE009DF347 /* muniverse2Tests.m */; };
 		D076180915BCDF6000783055 /* muniversedata.json in Resources */ = {isa = PBXBuildFile; fileRef = D076180815BCDF6000783055 /* muniversedata.json */; };
-		D076181315BCE3B000783055 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D076181215BCE3B000783055 /* Line.m */; };
-		D076181615BCE3B100783055 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D076181515BCE3B100783055 /* Stop.m */; };
 		D07BE01115CB225A0054E392 /* AllLinesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */; };
 		D07D615915CCB1330035BEB7 /* LineDisplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D615815CCB1330035BEB7 /* LineDisplayCell.m */; };
+		D07D615F15CCE0D90035BEB7 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D615E15CCE0D90035BEB7 /* Stop.m */; };
+		D07D616815CCF6320035BEB7 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D616715CCF6320035BEB7 /* Line.m */; };
 		D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8B515B4E8320032236A /* SubwayTableViewController.m */; };
 		D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8BB15B4E9F10032236A /* StationViewController.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
@@ -196,14 +196,14 @@
 		D03165D415AB76AE009DF347 /* muniverse2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = muniverse2Tests.h; sourceTree = "<group>"; };
 		D03165D515AB76AE009DF347 /* muniverse2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muniverse2Tests.m; sourceTree = "<group>"; };
 		D076180815BCDF6000783055 /* muniversedata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = muniversedata.json; sourceTree = "<group>"; };
-		D076181115BCE3B000783055 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
-		D076181215BCE3B000783055 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
-		D076181415BCE3B100783055 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
-		D076181515BCE3B100783055 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		D07BE00F15CB225A0054E392 /* AllLinesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllLinesTableViewController.h; sourceTree = "<group>"; };
 		D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllLinesTableViewController.m; sourceTree = "<group>"; };
 		D07D615715CCB1330035BEB7 /* LineDisplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDisplayCell.h; sourceTree = "<group>"; };
 		D07D615815CCB1330035BEB7 /* LineDisplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDisplayCell.m; sourceTree = "<group>"; };
+		D07D615D15CCE0D80035BEB7 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
+		D07D615E15CCE0D90035BEB7 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
+		D07D616615CCF6320035BEB7 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		D07D616715CCF6320035BEB7 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		D092B8B415B4E8320032236A /* SubwayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubwayTableViewController.h; path = ../SubwayTableViewController.h; sourceTree = "<group>"; };
 		D092B8B515B4E8320032236A /* SubwayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubwayTableViewController.m; path = ../SubwayTableViewController.m; sourceTree = "<group>"; };
 		D092B8BA15B4E9F10032236A /* StationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationViewController.h; sourceTree = "<group>"; };
@@ -489,10 +489,10 @@
 		D0FA288A15B4B52F00ECE53D /* Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
-				D076181415BCE3B100783055 /* Stop.h */,
-				D076181515BCE3B100783055 /* Stop.m */,
-				D076181115BCE3B000783055 /* Line.h */,
-				D076181215BCE3B000783055 /* Line.m */,
+				D07D615D15CCE0D80035BEB7 /* Stop.h */,
+				D07D615E15CCE0D90035BEB7 /* Stop.m */,
+				D07D616615CCF6320035BEB7 /* Line.h */,
+				D07D616715CCF6320035BEB7 /* Line.m */,
 			);
 			name = "Managed Objects";
 			sourceTree = "<group>";
@@ -681,10 +681,10 @@
 				D0FA287C15B4A9D300ECE53D /* DataManager.m in Sources */,
 				D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */,
 				D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */,
-				D076181315BCE3B000783055 /* Line.m in Sources */,
-				D076181615BCE3B100783055 /* Stop.m in Sources */,
 				D07BE01115CB225A0054E392 /* AllLinesTableViewController.m in Sources */,
 				D07D615915CCB1330035BEB7 /* LineDisplayCell.m in Sources */,
+				D07D615F15CCE0D90035BEB7 /* Stop.m in Sources */,
+				D07D616815CCF6320035BEB7 /* Line.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

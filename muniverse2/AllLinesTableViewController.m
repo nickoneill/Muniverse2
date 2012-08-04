@@ -1,3 +1,4 @@
+
 //
 //  AllLinesTableViewController.m
 //  muniverse2
@@ -16,6 +17,12 @@
 @end
 
 @implementation AllLinesTableViewController
+
+typedef enum {
+    kBusType,
+    kMetroType,
+    kHistoricType
+} LineType;
 
 @synthesize frc=_frc;
 
@@ -41,7 +48,7 @@
     if (![[self frc] performFetch:&error]) {
         NSLog(@"whoops with Lines frc: %@",error);
     }
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -60,7 +67,16 @@
                                    entityForName:@"Line" inManagedObjectContext:self.moc];
     [fetchRequest setEntity:entity];
     
-//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"type == %@",@""];
+    if (self.type.selectedSegmentIndex == kBusType) {
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K == NO && %K == NO",@"metro",@"historic"];
+        [fetchRequest setPredicate:pred];
+    } else if (self.type.selectedSegmentIndex == kMetroType) {
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K == YES",@"metro"];
+        [fetchRequest setPredicate:pred];
+    } else if (self.type.selectedSegmentIndex == kHistoricType) {
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K == YES",@"historic"];
+        [fetchRequest setPredicate:pred];
+    }
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"name" ascending:NO];
@@ -71,7 +87,7 @@
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:self.moc sectionNameKeyPath:nil
-                                                   cacheName:@"Root"];
+                                                   cacheName:nil];
     self.frc = theFetchedResultsController;
     _frc.delegate = self;
     
@@ -80,14 +96,18 @@
 
 - (void)lineTypeChange:(id)sender
 {
+    _frc = nil;
     
+    NSError *err;
+    [[self frc] performFetch:&err];
+    [[self tableView] reloadData];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     
-    self.frc = nil;
+    _frc = nil;
 }
 
 #pragma mark - Table view data source
@@ -119,6 +139,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)ip
 {
     Line *line = [[self frc] objectAtIndexPath:ip];
+    
     cell.textLabel.text = line.name;
 }
 

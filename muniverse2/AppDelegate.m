@@ -41,14 +41,16 @@
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"muniversedata" ofType:@"json"];
     
     NSError *error;
-    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath] options:nil error:&error];
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath] options:NSJSONReadingAllowFragments error:&error];
+    if (error != nil) {
+        NSLog(@"error parsing json: %@",[error localizedDescription]);
+    }
  
-    NSLog(@"adding: %@",jsonData);
-
+//    NSLog(@"adding: %@",jsonData);
     
     NSManagedObjectContext *moc = [self managedObjectContext];
-        
-    NSArray *stops = [NSArray arrayWithObjects:@"West Portal Station",@"Forest Hill Station",@"Castro Station",@"Church Station",@"Van Ness Station",@"Civic Center Station",@"Powell Station",@"Montgomery Station",@"Embarcadero Station",@"Folsom & Embarcadero",@"Brannan & Embarcadero",@"2nd & King / Ballpark",@"4th & King / Caltrain", nil];
+    
+//    NSArray *stops = [NSArray arrayWithObjects:@"West Portal Station",@"Forest Hill Station",@"Castro Station",@"Church Station",@"Van Ness Station",@"Civic Center Station",@"Powell Station",@"Montgomery Station",@"Embarcadero Station",@"Folsom & Embarcadero",@"Brannan & Embarcadero",@"2nd & King / Ballpark",@"4th & King / Caltrain", nil];
     
     for (int i = 0; i < [[jsonData objectForKey:@"StopList"] count]; i++) {
         NSDictionary *stopDict = [[jsonData objectForKey:@"StopList"] objectAtIndex:i];
@@ -71,6 +73,9 @@
         
         Line *line = [NSEntityDescription insertNewObjectForEntityForName:@"Line" inManagedObjectContext:moc];
         [line setValue:[lineDict objectForKey:@"Title"] forKey:@"name"];
+        [line setValue:[lineDict objectForKey:@"Short"] forKey:@"shortname"];
+        [line setValue:[lineDict objectForKey:@"IsHistoric"] forKey:@"historic"];
+        [line setValue:[lineDict objectForKey:@"IsMetro"] forKey:@"metro"];
         
         for (int j = 0; j < [[lineDict objectForKey:@"InboundTags"] count]; j++) {
             int stoptag = [[[lineDict objectForKey:@"InboundTags"] objectAtIndex:j] intValue];
@@ -137,6 +142,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+//    [NSFetchedResultsController deleteCacheWithName:@"Root"];
+    
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

@@ -2,7 +2,7 @@
 //  Stop.h
 //  muniverse2
 //
-//  Created by Nick O'Neill on 7/22/12.
+//  Created by Nick O'Neill on 8/3/12.
 //  Copyright (c) 2012 Nick O'Neill. All rights reserved.
 //
 
@@ -13,11 +13,10 @@
 
 @interface Stop : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * inboundId;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * outboundId;
-@property (nonatomic, retain) NSNumber * subway;
+@property (nonatomic, retain) NSNumber * isSubway;
 @property (nonatomic, retain) NSNumber * subwayOrder;
+@property (nonatomic, retain) NSNumber * tag;
 @property (nonatomic, retain) NSSet *lines;
 @end
 
