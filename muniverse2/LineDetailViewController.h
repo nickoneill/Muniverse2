@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LineDetailViewController : UITableViewController
+@class Line;
+
+@interface LineDetailViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+
+@property (nonatomic,strong) NSManagedObjectContext *moc;
+@property (nonatomic,strong) NSFetchedResultsController *frc;
+//@property (nonatomic,strong) IBOutlet UISegmentedControl *type;
+@property (nonatomic,strong) Line *line;
 
 @end

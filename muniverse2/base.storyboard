@@ -247,6 +247,7 @@
                                     <outlet property="description" destination="Fgx-gN-NXK" id="a20-hI-F9R"/>
                                     <outlet property="icon" destination="DkU-70-LdB" id="TAh-YX-UT6"/>
                                     <outlet property="name" destination="7RL-de-1ss" id="z7m-hg-lES"/>
+                                    <segue destination="A1V-RA-QXc" kind="push" id="n4c-Bn-xY8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -265,7 +266,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="type" destination="vl2-oA-DI8" id="CZe-w6-AVv"/>
-                        <segue destination="A1V-RA-QXc" kind="push" identifier="LinesToDirections" id="dma-nU-VbJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dW5-kk-4s8" userLabel="First Responder" sceneMemberID="firstResponder"/>

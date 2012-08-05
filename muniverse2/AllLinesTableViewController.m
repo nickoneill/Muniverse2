@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "Line.h"
 #import "LineDisplayCell.h"
+#import "LineDetailViewController.h"
 
 @interface AllLinesTableViewController ()
 
@@ -135,7 +136,7 @@ typedef enum {
     
     return cell;
 }
-     
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)ip
 {
     Line *line = [[self frc] objectAtIndexPath:ip];
@@ -242,7 +243,7 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"LinesToDirections" sender:self];
+//    [self performSegueWithIdentifier:@"LinesToDirections" sender:self];
     
     // Navigation logic may go here. Create and push another view controller.
     /*
@@ -251,6 +252,12 @@ typedef enum {
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    Line *selectedLine = [[self frc] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+    [(LineDetailViewController *)[segue destinationViewController] setLine:selectedLine];
 }
 
 @end
