@@ -116,7 +116,7 @@
     if (section == 0) {
         return @"";
     } else {
-        return @"To Some Station";
+        return @"To Some Destination Via Some Route";
     }
 }
 
@@ -143,6 +143,8 @@
     Stop *stop = [[self frc] objectAtIndexPath:newpath];
     
     cell.textLabel.text = stop.name;
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
+
 }
 
 /*
