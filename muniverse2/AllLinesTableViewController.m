@@ -130,7 +130,7 @@ typedef enum {
 {
     static NSString *CellIdentifier = @"LineCell";
     
-    LineDisplayCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    LineDisplayCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     [self configureCell:cell atIndexPath:indexPath];
     

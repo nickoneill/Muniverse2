@@ -120,16 +120,16 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)thistableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
     
     if ([indexPath section] == 0) {
         static NSString *CellIdentifier = @"SwitchCell";
-        cell = [thistableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     } else {
         static NSString *CellIdentifier = @"Cell";
-        cell = [thistableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         [self configureCell:cell atIndexPath:indexPath];
     }
     
@@ -139,7 +139,8 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)ip
 {
     // rewrite this index path because we manually create the first section
-    Stop *stop = [[self frc] objectAtIndexPath:[NSIndexPath indexPathForItem:[ip row] inSection:0]];
+    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[ip row]];
+    Stop *stop = [[self frc] objectAtIndexPath:newpath];
     
     cell.textLabel.text = stop.name;
 }
