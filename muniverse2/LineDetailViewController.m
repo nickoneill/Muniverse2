@@ -73,6 +73,7 @@
     if ([indexPath section] == 0) {
         static NSString *CellIdentifier = @"SwitchCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DirectionBar_Blank.png"]]];
     } else {
         static NSString *CellIdentifier = @"Cell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];

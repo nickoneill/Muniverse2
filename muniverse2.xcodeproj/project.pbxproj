@@ -90,7 +90,6 @@
 		D03165D315AB76AE009DF347 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03165D115AB76AE009DF347 /* InfoPlist.strings */; };
 		D03165D615AB76AE009DF347 /* muniverse2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D03165D515AB76AE009DF347 /* muniverse2Tests.m */; };
 		D076180915BCDF6000783055 /* muniversedata.json in Resources */ = {isa = PBXBuildFile; fileRef = D076180815BCDF6000783055 /* muniversedata.json */; };
-		D07B902B15CDEBAA00222BA3 /* InboundOutboundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B902A15CDEBAA00222BA3 /* InboundOutboundCell.m */; };
 		D07B903215CDECAA00222BA3 /* LineDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B903115CDECAA00222BA3 /* LineDetailViewController.m */; };
 		D07BE01115CB225A0054E392 /* AllLinesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */; };
 		D07D615915CCB1330035BEB7 /* LineDisplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D615815CCB1330035BEB7 /* LineDisplayCell.m */; };
@@ -198,8 +197,6 @@
 		D03165D415AB76AE009DF347 /* muniverse2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = muniverse2Tests.h; sourceTree = "<group>"; };
 		D03165D515AB76AE009DF347 /* muniverse2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muniverse2Tests.m; sourceTree = "<group>"; };
 		D076180815BCDF6000783055 /* muniversedata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = muniversedata.json; sourceTree = "<group>"; };
-		D07B902915CDEBAA00222BA3 /* InboundOutboundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboundOutboundCell.h; sourceTree = "<group>"; };
-		D07B902A15CDEBAA00222BA3 /* InboundOutboundCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboundOutboundCell.m; sourceTree = "<group>"; };
 		D07B903015CDECAA00222BA3 /* LineDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDetailViewController.h; sourceTree = "<group>"; };
 		D07B903115CDECAA00222BA3 /* LineDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDetailViewController.m; sourceTree = "<group>"; };
 		D07BE00F15CB225A0054E392 /* AllLinesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllLinesTableViewController.h; sourceTree = "<group>"; };
@@ -469,8 +466,6 @@
 			children = (
 				D07D615715CCB1330035BEB7 /* LineDisplayCell.h */,
 				D07D615815CCB1330035BEB7 /* LineDisplayCell.m */,
-				D07B902915CDEBAA00222BA3 /* InboundOutboundCell.h */,
-				D07B902A15CDEBAA00222BA3 /* InboundOutboundCell.m */,
 			);
 			name = "Shared Classes";
 			sourceTree = "<group>";
@@ -695,7 +690,6 @@
 				D07D615915CCB1330035BEB7 /* LineDisplayCell.m in Sources */,
 				D07D615F15CCE0D90035BEB7 /* Stop.m in Sources */,
 				D07D616815CCF6320035BEB7 /* Line.m in Sources */,
-				D07B902B15CDEBAA00222BA3 /* InboundOutboundCell.m in Sources */,
 				D07B903215CDECAA00222BA3 /* LineDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
