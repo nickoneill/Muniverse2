@@ -512,15 +512,12 @@
                 <relationship kind="outlet" name="type" candidateClass="UISegmentedControl"/>
             </relationships>
         </class>
-<<<<<<< HEAD
-=======
         <class className="InboundOutboundCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/InboundOutboundCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="segControl" candidateClass="UISegmentedControl"/>
             </relationships>
         </class>
->>>>>>> removed unused view controllers that were causing build errors
         <class className="LineDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LineDetailViewController.h"/>
         </class>
