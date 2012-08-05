@@ -120,16 +120,16 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)thistableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
     
     if ([indexPath section] == 0) {
         static NSString *CellIdentifier = @"SwitchCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [thistableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     } else {
         static NSString *CellIdentifier = @"Cell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [thistableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         [self configureCell:cell atIndexPath:indexPath];
     }
     
