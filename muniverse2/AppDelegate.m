@@ -76,6 +76,8 @@
         [line setValue:[lineDict objectForKey:@"Short"] forKey:@"shortname"];
         [line setValue:[lineDict objectForKey:@"IsHistoric"] forKey:@"historic"];
         [line setValue:[lineDict objectForKey:@"IsMetro"] forKey:@"metro"];
+        [line setValue:[lineDict objectForKey:@"InboundDesc"] forKey:@"inboundDesc"];
+        [line setValue:[lineDict objectForKey:@"OutboundDesc"] forKey:@"outboundDesc"];
         
         for (int j = 0; j < [[lineDict objectForKey:@"InboundTags"] count]; j++) {
             int stoptag = [[[lineDict objectForKey:@"InboundTags"] objectAtIndex:j] intValue];

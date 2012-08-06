@@ -116,7 +116,7 @@
     if (section == 0) {
         return @"";
     } else {
-        return @"To Some Destination Via Some Route";
+        return self.line.inboundDesc;
     }
 }
 

@@ -2,10 +2,10 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1803" systemVersion="12A256" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Line" representedClassName="Line" syncable="YES">
         <attribute name="historic" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="inboundLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inboundDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="metro" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="outboundLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="outboundDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shortname" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="inboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="lines" inverseEntity="Stop" syncable="YES"/>
         <relationship name="outboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="lines" inverseEntity="Stop" syncable="YES"/>
@@ -18,7 +18,7 @@
         <relationship name="lines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Line" inverseName="inboundStops" inverseEntity="Line" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Line" positionX="0" positionY="0" width="128" height="165"/>
-        <element name="Stop" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="Line" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Stop" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

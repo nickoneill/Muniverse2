@@ -99,10 +99,10 @@
 		D03165D615AB76AE009DF347 /* muniverse2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D03165D515AB76AE009DF347 /* muniverse2Tests.m */; };
 		D076180915BCDF6000783055 /* muniversedata.json in Resources */ = {isa = PBXBuildFile; fileRef = D076180815BCDF6000783055 /* muniversedata.json */; };
 		D07B903215CDECAA00222BA3 /* LineDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B903115CDECAA00222BA3 /* LineDetailViewController.m */; };
+		D07B903A15CF4E8F00222BA3 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B903915CF4E8F00222BA3 /* Line.m */; };
 		D07BE01115CB225A0054E392 /* AllLinesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */; };
 		D07D615915CCB1330035BEB7 /* LineDisplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D615815CCB1330035BEB7 /* LineDisplayCell.m */; };
 		D07D615F15CCE0D90035BEB7 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D615E15CCE0D90035BEB7 /* Stop.m */; };
-		D07D616815CCF6320035BEB7 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D616715CCF6320035BEB7 /* Line.m */; };
 		D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8B515B4E8320032236A /* SubwayTableViewController.m */; };
 		D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8BB15B4E9F10032236A /* StationViewController.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
@@ -215,14 +215,14 @@
 		D076180815BCDF6000783055 /* muniversedata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = muniversedata.json; sourceTree = "<group>"; };
 		D07B903015CDECAA00222BA3 /* LineDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDetailViewController.h; sourceTree = "<group>"; };
 		D07B903115CDECAA00222BA3 /* LineDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDetailViewController.m; sourceTree = "<group>"; };
+		D07B903815CF4E8F00222BA3 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = ../Line.h; sourceTree = "<group>"; };
+		D07B903915CF4E8F00222BA3 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Line.m; path = ../Line.m; sourceTree = "<group>"; };
 		D07BE00F15CB225A0054E392 /* AllLinesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllLinesTableViewController.h; sourceTree = "<group>"; };
 		D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllLinesTableViewController.m; sourceTree = "<group>"; };
 		D07D615715CCB1330035BEB7 /* LineDisplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDisplayCell.h; sourceTree = "<group>"; };
 		D07D615815CCB1330035BEB7 /* LineDisplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDisplayCell.m; sourceTree = "<group>"; };
 		D07D615D15CCE0D80035BEB7 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		D07D615E15CCE0D90035BEB7 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
-		D07D616615CCF6320035BEB7 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
-		D07D616715CCF6320035BEB7 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		D092B8B415B4E8320032236A /* SubwayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubwayTableViewController.h; path = ../SubwayTableViewController.h; sourceTree = "<group>"; };
 		D092B8B515B4E8320032236A /* SubwayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubwayTableViewController.m; path = ../SubwayTableViewController.m; sourceTree = "<group>"; };
 		D092B8BA15B4E9F10032236A /* StationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationViewController.h; sourceTree = "<group>"; };
@@ -520,8 +520,8 @@
 			children = (
 				D07D615D15CCE0D80035BEB7 /* Stop.h */,
 				D07D615E15CCE0D90035BEB7 /* Stop.m */,
-				D07D616615CCF6320035BEB7 /* Line.h */,
-				D07D616715CCF6320035BEB7 /* Line.m */,
+				D07B903815CF4E8F00222BA3 /* Line.h */,
+				D07B903915CF4E8F00222BA3 /* Line.m */,
 			);
 			name = "Managed Objects";
 			sourceTree = "<group>";
@@ -721,8 +721,8 @@
 				D07BE01115CB225A0054E392 /* AllLinesTableViewController.m in Sources */,
 				D07D615915CCB1330035BEB7 /* LineDisplayCell.m in Sources */,
 				D07D615F15CCE0D90035BEB7 /* Stop.m in Sources */,
-				D07D616815CCF6320035BEB7 /* Line.m in Sources */,
 				D07B903215CDECAA00222BA3 /* LineDetailViewController.m in Sources */,
+				D07B903A15CF4E8F00222BA3 /* Line.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
