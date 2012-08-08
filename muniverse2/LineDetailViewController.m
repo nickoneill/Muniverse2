@@ -116,7 +116,7 @@
     if (section == 0) {
         return @"";
     } else {
-        return self.line.inboundDesc;
+        return @"Direction Desc";//self.line.inboundDesc;
     }
 }
 
@@ -246,6 +246,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    [self performSegueWithIdentifier:@"DirectionToStop" sender:self];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
