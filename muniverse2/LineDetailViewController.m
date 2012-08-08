@@ -18,6 +18,11 @@
 
 @implementation LineDetailViewController
 
+typedef enum {
+    kDirectionInbound,
+    kDirectionOutbound,
+} DirectionTypes;
+
 @synthesize frc=_frc;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -62,10 +67,17 @@
     [fetchRequest setEntity:entity];
     
     NSMutableArray *stopTags = [NSMutableArray array];
-    for (Stop *stop in self.line.inboundStops) {
-        [stopTags addObject:stop.tag];
-    }
 
+    if (self.inoutcontrol == nil || self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+        for (Stop *stop in self.line.inboundStops) {
+            [stopTags addObject:stop.tag];
+        }
+    } else {
+        for (Stop *stop in self.line.outboundStops) {
+            [stopTags addObject:stop.tag];
+        }        
+    }
+    
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K IN %@",@"tag",stopTags];
     [fetchRequest setPredicate:pred];
     
@@ -83,6 +95,16 @@
     _frc.delegate = self;
     
     return _frc;
+}
+
+- (void)directionChange:(id)sender
+{
+    _frc = nil;
+    
+    NSError *err;
+    [[self frc] performFetch:&err];
+    [[self tableView] reloadData];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,7 +138,11 @@
     if (section == 0) {
         return @"";
     } else {
-        return @"Direction Desc";//self.line.inboundDesc;
+        if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+            return self.line.inboundDesc;
+        } else {
+            return self.line.outboundDesc;
+        }
     }
 }
 
@@ -127,6 +153,8 @@
     if ([indexPath section] == 0) {
         static NSString *CellIdentifier = @"SwitchCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        self.inoutcontrol = (UISegmentedControl *)[cell viewWithTag:1];
+        [self.inoutcontrol addTarget:self action:@selector(directionChange:) forControlEvents:UIControlEventValueChanged];
     } else {
         static NSString *CellIdentifier = @"Cell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

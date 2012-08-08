@@ -76,6 +76,7 @@
         [line setValue:[lineDict objectForKey:@"Short"] forKey:@"shortname"];
         [line setValue:[lineDict objectForKey:@"IsHistoric"] forKey:@"historic"];
         [line setValue:[lineDict objectForKey:@"IsMetro"] forKey:@"metro"];
+        
         [line setValue:[lineDict objectForKey:@"InboundDesc"] forKey:@"inboundDesc"];
         [line setValue:[lineDict objectForKey:@"OutboundDesc"] forKey:@"outboundDesc"];
         
@@ -96,7 +97,25 @@
             } else {
                 [line addInboundStopsObject:[stops objectAtIndex:0]];
             }
-            // stop adding debug point
+        }
+        
+        for (int j = 0; j < [[lineDict objectForKey:@"OutboundTags"] count]; j++) {
+            int stoptag = [[[lineDict objectForKey:@"OutboundTags"] objectAtIndex:j] intValue];
+            NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+            
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
+            [req setPredicate:pred];
+            
+            NSError *error;
+            NSArray *stops = [moc executeFetchRequest:req error:&error];
+            
+            if ([stops count] > 1) {
+                NSLog(@"!!!Should not be more than one stop for each tag");
+            } else if ([stops count] < 1) {
+                NSLog(@"!!!Should not be less than one stop for a tag");
+            } else {
+                [line addOutboundStopsObject:[stops objectAtIndex:0]];
+            }
         }
     }
     
