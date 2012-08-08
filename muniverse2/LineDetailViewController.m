@@ -48,12 +48,8 @@ typedef enum {
     if (![[self frc] performFetch:&error]) {
         NSLog(@"whoops with stops frc: %@",error);
     }
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self sortFRCtoStops];
 }
 
 - (NSFetchedResultsController *)frc {
@@ -98,6 +94,37 @@ typedef enum {
     return _frc;
 }
 
+- (void)sortFRCtoStops
+{
+    NSMutableArray *stopstrings;
+    if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+        stopstrings = [[self.line.inboundSort componentsSeparatedByString:@","] mutableCopy];
+    } else {
+        stopstrings = [[self.line.outboundSort componentsSeparatedByString:@","] mutableCopy];
+    }
+    
+    [stopstrings removeObjectAtIndex:0];
+    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSMutableArray *stoparray = [NSMutableArray array];
+    for (NSString *component in stopstrings) {
+        
+        [stoparray addObject:[f numberFromString:component]];
+    }
+    
+    self.stops = [[self.frc fetchedObjects] mutableCopy];
+    
+    [self.stops sortUsingComparator:^NSComparisonResult(Stop *obj1, Stop *obj2) {
+        if ([stoparray indexOfObject:obj1.tag] > [stoparray indexOfObject:obj2.tag]) {
+            return NSOrderedAscending;
+        } else {
+            return NSOrderedDescending;
+        }
+    }];
+}
+
 - (void)directionChange:(id)sender
 {
     _frc = nil;
@@ -127,10 +154,8 @@ typedef enum {
     // Return the number of rows in the section.
     if (section == 0) {
         return 1;
-    } else {
-        id sectionInfo = [[[self frc] sections] objectAtIndex:0];
-        
-        return [sectionInfo numberOfObjects];
+    } else {        
+        return [self.stops count];
     }
 }
 
@@ -159,6 +184,17 @@ typedef enum {
     } else {
         static NSString *CellIdentifier = @"Cell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if ([indexPath row] > 0 && [indexPath row] < [self.stops count]) {
+            
+            NSString *middlePath = [[NSBundle mainBundle] pathForResource:@"Marker_Middle" ofType:@"png"];
+            cell.imageView.image = [UIImage imageWithContentsOfFile:middlePath];
+        } else if ([indexPath row] == [self.stops count]) {
+            
+            NSString *endPath = [[NSBundle mainBundle] pathForResource:@"Marker_End" ofType:@"png"];
+            cell.imageView.image = [UIImage imageWithContentsOfFile:endPath];
+        }
+        
         [self configureCell:cell atIndexPath:indexPath];
     }
     
@@ -168,8 +204,8 @@ typedef enum {
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)ip
 {
     // rewrite this index path because we manually create the first section
-    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[ip row]];
-    Stop *stop = [[self frc] objectAtIndexPath:newpath];
+//    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[ip row]];
+    Stop *stop = [self.stops objectAtIndex:[ip row]];
     
     cell.textLabel.text = stop.name;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
@@ -268,6 +304,7 @@ typedef enum {
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+        
     [self.tableView endUpdates];
 }
 
@@ -287,9 +324,9 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[[self.tableView indexPathForSelectedRow] row]];
+//    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[[self.tableView indexPathForSelectedRow] row]];
 
-    Stop *selectedStop = [[self frc] objectAtIndexPath:newpath];
+    Stop *selectedStop = [self.stops objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
     [(StopDetailViewController *)[segue destinationViewController] setStop:selectedStop];
 }
 

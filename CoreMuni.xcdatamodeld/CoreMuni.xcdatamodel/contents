@@ -3,9 +3,11 @@
     <entity name="Line" representedClassName="Line" syncable="YES">
         <attribute name="historic" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="inboundDesc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inboundSort" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="metro" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="outboundDesc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="outboundSort" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shortname" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="inboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="lines" inverseEntity="Stop" syncable="YES"/>
         <relationship name="outboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="lines" inverseEntity="Stop" syncable="YES"/>

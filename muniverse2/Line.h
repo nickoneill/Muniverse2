@@ -2,7 +2,7 @@
 //  Line.h
 //  muniverse2
 //
-//  Created by Nick O'Neill on 8/5/12.
+//  Created by Nick O'Neill on 8/8/12.
 //  Copyright (c) 2012 Nick O'Neill. All rights reserved.
 //
 
@@ -14,11 +14,13 @@
 @interface Line : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * historic;
+@property (nonatomic, retain) NSString * inboundDesc;
 @property (nonatomic, retain) NSNumber * metro;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * shortname;
-@property (nonatomic, retain) NSString * inboundDesc;
 @property (nonatomic, retain) NSString * outboundDesc;
+@property (nonatomic, retain) NSString * shortname;
+@property (nonatomic, retain) NSString * inboundSort;
+@property (nonatomic, retain) NSString * outboundSort;
 @property (nonatomic, retain) NSSet *inboundStops;
 @property (nonatomic, retain) NSSet *outboundStops;
 @end

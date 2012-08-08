@@ -12,9 +12,10 @@
 
 @interface LineDetailViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic,strong) NSManagedObjectContext *moc;
-@property (nonatomic,strong) NSFetchedResultsController *frc;
-@property (nonatomic,strong) UISegmentedControl *inoutcontrol;
-@property (nonatomic,strong) Line *line;
+@property (strong) NSManagedObjectContext *moc;
+@property (strong) NSFetchedResultsController *frc;
+@property (strong) UISegmentedControl *inoutcontrol;
+@property (strong) Line *line;
+@property (strong) NSMutableArray *stops;
 
 @end

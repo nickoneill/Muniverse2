@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SubwayTableViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate>
+@interface SubwayTableViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate>
 
-@property (nonatomic) NSArray *stops;
+@property (nonatomic,strong) NSManagedObjectContext *moc;
+@property (nonatomic,strong) NSFetchedResultsController *frc;
 
 @end

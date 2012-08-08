@@ -80,8 +80,14 @@
         [line setValue:[lineDict objectForKey:@"InboundDesc"] forKey:@"inboundDesc"];
         [line setValue:[lineDict objectForKey:@"OutboundDesc"] forKey:@"outboundDesc"];
         
+        NSString *stopsort = @"";
         for (int j = 0; j < [[lineDict objectForKey:@"InboundTags"] count]; j++) {
             int stoptag = [[[lineDict objectForKey:@"InboundTags"] objectAtIndex:j] intValue];
+
+            // add to sort string
+            stopsort = [stopsort stringByAppendingFormat:@",%d",stoptag];
+            
+            // set stop associations
             NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
             
             NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
@@ -98,9 +104,16 @@
                 [line addInboundStopsObject:[stops objectAtIndex:0]];
             }
         }
+        [line setValue:stopsort forKey:@"inboundSort"];
         
+        stopsort = @"";
         for (int j = 0; j < [[lineDict objectForKey:@"OutboundTags"] count]; j++) {
             int stoptag = [[[lineDict objectForKey:@"OutboundTags"] objectAtIndex:j] intValue];
+            
+            // add to sort string
+            stopsort = [stopsort stringByAppendingFormat:@",%d",stoptag];
+            
+            // set stop association
             NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
             
             NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
@@ -117,6 +130,7 @@
                 [line addOutboundStopsObject:[stops objectAtIndex:0]];
             }
         }
+        [line setValue:stopsort forKey:@"outboundSort"];
     }
     
     if (![moc save:&err]) {
