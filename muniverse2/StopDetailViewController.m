@@ -7,6 +7,7 @@
 //
 
 #import "StopDetailViewController.h"
+#import "Stop.h"
 
 @interface StopDetailViewController ()
 
@@ -29,6 +30,12 @@
     
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Background" ofType:@"png"]];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
+    
+    self.stopName.text = self.stop.name;
+    self.stopID.text = [NSString stringWithFormat:@"%@",self.stop.tag];
+    
+    self.primaryArrival.text = @"Never. Muni sucks.";
+    self.secondaryArrival.text = @"1, 2 and 3 minutes";
 }
 
 - (void)didReceiveMemoryWarning

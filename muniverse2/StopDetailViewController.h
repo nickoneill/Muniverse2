@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class Stop;
+
 @interface StopDetailViewController : UIViewController
+
+@property (strong) Stop *stop;
+@property (strong) IBOutlet UILabel *stopName;
+@property (strong) IBOutlet UILabel *stopID;
+@property (strong) IBOutlet UILabel *primaryArrival;
+@property (strong) IBOutlet UILabel *secondaryArrival;
 
 @end

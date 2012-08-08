@@ -11,6 +11,7 @@
 #import "Line.h"
 #import "Stop.h"
 #import "AllLinesTableViewController.h"
+#import "StopDetailViewController.h"
 
 @interface LineDetailViewController ()
 
@@ -286,7 +287,10 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"prep line display: %@",(AllLinesTableViewController *)sender);
+    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[[self.tableView indexPathForSelectedRow] row]];
+
+    Stop *selectedStop = [[self frc] objectAtIndexPath:newpath];
+    [(StopDetailViewController *)[segue destinationViewController] setStop:selectedStop];
 }
 
 @end
