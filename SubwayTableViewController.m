@@ -27,6 +27,7 @@
         // Custom initialization
     }
     return self;
+
 }
 
 - (void)viewDidLoad
@@ -35,12 +36,16 @@
 
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     self.moc = app.managedObjectContext;
+
+
     
     NSError *error;
     if (![[self frc] performFetch:&error]) {
         NSLog(@"whoops with stops frc: %@",error);
     }
-
+    
+    
+    
 //    
 //    NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
 //    

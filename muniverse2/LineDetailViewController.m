@@ -40,9 +40,11 @@ typedef enum {
     [super viewDidLoad];
     
     self.title = self.line.name;
+
     
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     self.moc = app.managedObjectContext;
+
     
     NSError *error;
     if (![[self frc] performFetch:&error]) {

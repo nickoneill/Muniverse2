@@ -45,6 +45,13 @@ typedef enum {
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     self.moc = app.managedObjectContext;
     
+    
+    // Jamison was seeing if he'd figured out how to change the navigationbar color
+    // and set colors correctly.
+    //
+    // self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:80/255.0f green:109/255.0f blue:131/255.0f alpha:1];
+
+    
     NSError *error;
     if (![[self frc] performFetch:&error]) {
         NSLog(@"whoops with Lines frc: %@",error);
