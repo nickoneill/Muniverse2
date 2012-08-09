@@ -131,8 +131,9 @@ typedef enum {
     
     NSError *err;
     [[self frc] performFetch:&err];
+    
+    [self sortFRCtoStops];
     [[self tableView] reloadData];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -184,17 +185,7 @@ typedef enum {
     } else {
         static NSString *CellIdentifier = @"Cell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if ([indexPath row] > 0 && [indexPath row] < [self.stops count]) {
-            
-            NSString *middlePath = [[NSBundle mainBundle] pathForResource:@"Marker_Middle" ofType:@"png"];
-            cell.imageView.image = [UIImage imageWithContentsOfFile:middlePath];
-        } else if ([indexPath row] == [self.stops count]) {
-            
-            NSString *endPath = [[NSBundle mainBundle] pathForResource:@"Marker_End" ofType:@"png"];
-            cell.imageView.image = [UIImage imageWithContentsOfFile:endPath];
-        }
-        
+                
         [self configureCell:cell atIndexPath:indexPath];
     }
     
@@ -206,6 +197,18 @@ typedef enum {
     // rewrite this index path because we manually create the first section
 //    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[ip row]];
     Stop *stop = [self.stops objectAtIndex:[ip row]];
+    
+    if ([ip row] == 0) {
+        NSString *middlePath = [[NSBundle mainBundle] pathForResource:@"Marker_Start" ofType:@"png"];
+        cell.imageView.image = [UIImage imageWithContentsOfFile:middlePath];
+    } else if ([ip row] > 0 && [ip row] < [self.stops count]-1) {
+        NSString *middlePath = [[NSBundle mainBundle] pathForResource:@"Marker_Middle" ofType:@"png"];
+        cell.imageView.image = [UIImage imageWithContentsOfFile:middlePath];
+    } else if ([ip row] == [self.stops count]-1) {
+        NSString *endPath = [[NSBundle mainBundle] pathForResource:@"Marker_End" ofType:@"png"];
+        cell.imageView.image = [UIImage imageWithContentsOfFile:endPath];
+    }
+
     
     cell.textLabel.text = stop.name;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
