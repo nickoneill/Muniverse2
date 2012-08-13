@@ -43,21 +43,6 @@
     if (![[self frc] performFetch:&error]) {
         NSLog(@"whoops with stops frc: %@",error);
     }
-    
-    
-    
-//    
-//    NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
-//    
-//    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-//    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"subwayOrder" ascending:YES];
-//    [req setSortDescriptors:[NSArray arrayWithObject:sort]];
-//    
-//    NSError *err;
-//    self.stops = [moc executeFetchRequest:req error:&err];
-//    if (err != nil) {
-//        NSLog(@"issue with subway stops: %@",[err localizedDescription]);
-//    }
 }
 
 - (NSFetchedResultsController *)frc {

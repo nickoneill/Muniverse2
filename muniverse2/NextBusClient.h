@@ -10,6 +10,7 @@
 
 @interface NextBusClient : AFHTTPClient
 
-+ (id)sharedClient;
+- (void)predictionForStopId:(int)stopId withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure;
+- (void)predictionForStopTag:(int)stopTag;
 
 @end

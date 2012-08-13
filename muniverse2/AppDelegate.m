@@ -45,8 +45,6 @@
     if (error != nil) {
         NSLog(@"error parsing json: %@",[error localizedDescription]);
     }
- 
-//    NSLog(@"adding: %@",jsonData);
     
     NSManagedObjectContext *moc = [self managedObjectContext];
     
@@ -56,11 +54,9 @@
         NSDictionary *stopDict = [[jsonData objectForKey:@"StopList"] objectAtIndex:i];
         
         Stop *stop = [NSEntityDescription insertNewObjectForEntityForName:@"Stop" inManagedObjectContext:moc];
-//        [stop setValue:[NSNumber numberWithBool:YES] forKey:@"subway"];
         [stop setValue:[stopDict objectForKey:@"Title"] forKey:@"name"];
-//        [stop setValue:[NSNumber numberWithInt:i] forKey:@"subwayOrder"];
         [stop setValue:[stopDict objectForKey:@"Tag"] forKey:@"tag"];
-
+        [stop setValue:[stopDict objectForKey:@"StopId"] forKey:@"stopId"];
     }
     
     NSError *err;
