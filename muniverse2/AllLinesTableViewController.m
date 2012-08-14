@@ -48,8 +48,8 @@ typedef enum {
     
     // Jamison was seeing if he'd figured out how to change the navigationbar color
     // and set colors correctly.
-    //
-    // self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:80/255.0f green:109/255.0f blue:131/255.0f alpha:1];
+
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:80/255.0f green:109/255.0f blue:131/255.0f alpha:1];
 
     
     NSError *error;
