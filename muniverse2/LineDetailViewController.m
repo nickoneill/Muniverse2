@@ -331,8 +331,18 @@ typedef enum {
 {
 //    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[[self.tableView indexPathForSelectedRow] row]];
 
+    // set our detail stop info
     Stop *selectedStop = [self.stops objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
     [(StopDetailViewController *)[segue destinationViewController] setStop:selectedStop];
+    
+    // set line and direction info
+    [(StopDetailViewController *)[segue destinationViewController] setLine:self.line];
+    
+    if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+        [(StopDetailViewController *)[segue destinationViewController] setIsInbound:YES];
+    } else {
+        [(StopDetailViewController *)[segue destinationViewController] setIsInbound:NO];
+    }
 }
 
 @end

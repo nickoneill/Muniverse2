@@ -10,7 +10,12 @@
 
 @interface NextBusClient : AFHTTPClient
 
-- (void)predictionForStopId:(int)stopId withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure;
+typedef enum {
+    kDirectionInbound,
+    kDirectionOutbound
+} DirectionTypes;
+
+- (void)predictionForStopId:(int)stopId inDirection:(int)direction withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure;
 - (void)predictionForStopTag:(int)stopTag;
 
 @end

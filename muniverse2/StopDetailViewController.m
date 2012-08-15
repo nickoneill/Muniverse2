@@ -9,6 +9,7 @@
 #import "StopDetailViewController.h"
 #import "NextBusClient.h"
 #import "Stop.h"
+#import "Line.h"
 #import "TouchXML.h"
 
 @interface StopDetailViewController ()
@@ -29,30 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NextBusClient *client = [[NextBusClient alloc] init];
-    [client predictionForStopId:[self.stop.stopId intValue] withSuccess:^(NSArray *els) {
-        
-        if ([els count]) {
-            CXMLElement *firstDirection = [els objectAtIndex:0];
-            
-            NSError *err;
-            // we should distinguish the prediction based on IB/OB
-            CXMLNode *firstPrediction = [firstDirection nodeForXPath:@"prediction[1]" error:&err];
-            if ([firstPrediction isKindOfClass:[CXMLElement class]]) {
-                CXMLNode *secondsNode = [(CXMLElement *)firstPrediction attributeForName:@"seconds"];
-                
-                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-                [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-
-                int minutes = [[formatter numberFromString:[secondsNode stringValue]] intValue] / 60;
-                self.primaryArrival.text = [NSString stringWithFormat:@"%d Minutes",minutes];
-            }
-            
-        }
-    } andFailure:^(NSError * err) {
-        NSLog(@"some failure: %@",err);
-    }];
         
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Background" ofType:@"png"]];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
@@ -62,6 +39,62 @@
     
     self.primaryArrival.text = @"Fetching...";
     self.secondaryArrival.text = @"";
+    
+    [self refreshPredictions:nil];
+}
+
+- (IBAction)refreshPredictions:(id)sender
+{
+    [self setBarButtonItemRefreshing:YES];
+    
+    NextBusClient *client = [[NextBusClient alloc] init];
+    
+    int direction = kDirectionInbound;
+    if (!self.isInbound) {
+        direction = kDirectionOutbound;
+    }
+    [client predictionForStopId:[self.stop.stopId intValue] inDirection:direction withSuccess:^(NSArray *els) {
+        if ([els count]) {
+            if ([[els objectAtIndex:0] intValue] == 1) {
+                self.primaryArrival.text = [NSString stringWithFormat:@"%@ Minute",[els objectAtIndex:0]];
+            } else {
+                self.primaryArrival.text = [NSString stringWithFormat:@"%@ Minutes",[els objectAtIndex:0]];
+            }
+            
+            if ([els count] >= 4) {
+                self.secondaryArrival.text = [NSString stringWithFormat:@"%@, %@ and %@ minutes",[els objectAtIndex:1],[els objectAtIndex:2],[els objectAtIndex:3]];
+            } else if ([els count] == 3) {
+                self.secondaryArrival.text = [NSString stringWithFormat:@"%@ and %@ minutes",[els objectAtIndex:1],[els objectAtIndex:2]];
+            } else if ([els count] == 2) {
+                self.secondaryArrival.text = [NSString stringWithFormat:@"Also %@ minutes",[els objectAtIndex:1]];
+            } else {
+                self.secondaryArrival.text = @"No later arrivals";
+            }
+        } else {
+            self.primaryArrival.text = @"No arrivals scheduled";
+        }
+        
+//        [self performSelector:@selector(setBarButtonItemRefreshing:) withObject:NO afterDelay:500];
+        [self setBarButtonItemRefreshing:YES];
+    } andFailure:^(NSError * err) {
+        NSLog(@"some failure: %@",err);
+        
+        [self setBarButtonItemRefreshing:NO];
+    }];
+}
+
+- (void)setBarButtonItemRefreshing:(BOOL)refreshing
+{
+//    if (refreshing) {
+//        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+//        [spinner startAnimating];
+//        
+//        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+//        [self.navigationItem setRightBarButtonItem:button];
+//    } else {
+//        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshPredictions:)];
+//        [self.navigationItem setRightBarButtonItem:button];
+//    }
 }
 
 - (void)didReceiveMemoryWarning

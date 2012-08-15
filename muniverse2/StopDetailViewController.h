@@ -8,14 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@class Stop;
+@class Stop,Line;
 
 @interface StopDetailViewController : UIViewController
 
 @property (strong) Stop *stop;
+@property (strong) Line *line;
+@property BOOL isInbound;
+@property (strong) IBOutlet UIBarButtonItem *refresh;
 @property (strong) IBOutlet UILabel *stopName;
 @property (strong) IBOutlet UILabel *stopID;
 @property (strong) IBOutlet UILabel *primaryArrival;
 @property (strong) IBOutlet UILabel *secondaryArrival;
+
+- (IBAction)refreshPredictions:(id)sender;
 
 @end

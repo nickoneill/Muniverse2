@@ -19,17 +19,29 @@
     return self;
 }
 
-// possibly change this to inbound/outboundPredictionForStopId
-- (void)predictionForStopId:(int)stopId withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure
+- (void)predictionForStopId:(int)stopId inDirection:(int)direction withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure
 {
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"predictions",@"command",@"sf-muni",@"a",[NSNumber numberWithInt:stopId],@"stopId", nil];
     
     [self getPath:@"/service/publicXMLFeed" parameters:params success:^(AFHTTPRequestOperation *operation, NSData *res){
         NSError *err;
         CXMLDocument *doc = [[CXMLDocument alloc] initWithData:res options:0 error:&err];
+        
         if (doc != nil) {
-            NSArray *els = [doc nodesForXPath:@"//body/predictions/direction" error:&err];
-            success(els);
+            NSArray *predictionElements = [doc nodesForXPath:@"//body/predictions/direction/prediction" error:&err];
+            
+            NSMutableArray *predictions = [NSMutableArray array];
+            for (int i = 0; i < [predictionElements count]; i++) {
+                CXMLElement *element = [predictionElements objectAtIndex:i];
+                NSString *minutesString = [[element attributeForName:@"minutes"] stringValue];
+                
+                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+                
+                [predictions addObject:[formatter numberFromString:minutesString]];
+            }
+            
+            success(predictions);
         } else {
             failure(err);
         }
