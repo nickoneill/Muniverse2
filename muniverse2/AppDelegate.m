@@ -77,56 +77,60 @@
         [line setValue:[lineDict objectForKey:@"OutboundDesc"] forKey:@"outboundDesc"];
         
         NSString *stopsort = @"";
-        for (int j = 0; j < [[lineDict objectForKey:@"InboundTags"] count]; j++) {
-            int stoptag = [[[lineDict objectForKey:@"InboundTags"] objectAtIndex:j] intValue];
-
-            // add to sort string
-            stopsort = [stopsort stringByAppendingFormat:@",%d",stoptag];
-            
-            // set stop associations
-            NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-            
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
-            [req setPredicate:pred];
-            
-            NSError *error;
-            NSArray *stops = [moc executeFetchRequest:req error:&error];
-            
-            if ([stops count] > 1) {
-                NSLog(@"!!!Should not be more than one stop for each tag");
-            } else if ([stops count] < 1) {
-                NSLog(@"!!!Should not be less than one stop for a tag");
-            } else {
-                [line addInboundStopsObject:[stops objectAtIndex:0]];
+        if ([lineDict objectForKey:@"InboundTags"] != [NSNull null]) {
+            for (int j = 0; j < [[lineDict objectForKey:@"InboundTags"] count]; j++) {
+                int stoptag = [[[lineDict objectForKey:@"InboundTags"] objectAtIndex:j] intValue];
+                
+                // add to sort string
+                stopsort = [stopsort stringByAppendingFormat:@",%d",stoptag];
+                
+                // set stop associations
+                NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+                
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
+                [req setPredicate:pred];
+                
+                NSError *error;
+                NSArray *stops = [moc executeFetchRequest:req error:&error];
+                
+                if ([stops count] > 1) {
+                    NSLog(@"!!!Should not be more than one stop for each tag");
+                } else if ([stops count] < 1) {
+                    NSLog(@"!!!Should not be less than one stop for a tag");
+                } else {
+                    [line addInboundStopsObject:[stops objectAtIndex:0]];
+                }
             }
+            [line setValue:stopsort forKey:@"inboundSort"];
         }
-        [line setValue:stopsort forKey:@"inboundSort"];
         
         stopsort = @"";
-        for (int j = 0; j < [[lineDict objectForKey:@"OutboundTags"] count]; j++) {
-            int stoptag = [[[lineDict objectForKey:@"OutboundTags"] objectAtIndex:j] intValue];
-            
-            // add to sort string
-            stopsort = [stopsort stringByAppendingFormat:@",%d",stoptag];
-            
-            // set stop association
-            NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-            
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
-            [req setPredicate:pred];
-            
-            NSError *error;
-            NSArray *stops = [moc executeFetchRequest:req error:&error];
-            
-            if ([stops count] > 1) {
-                NSLog(@"!!!Should not be more than one stop for each tag");
-            } else if ([stops count] < 1) {
-                NSLog(@"!!!Should not be less than one stop for a tag");
-            } else {
-                [line addOutboundStopsObject:[stops objectAtIndex:0]];
+        if ([lineDict objectForKey:@"OutboundTags"] != [NSNull null]) {
+            for (int j = 0; j < [[lineDict objectForKey:@"OutboundTags"] count]; j++) {
+                int stoptag = [[[lineDict objectForKey:@"OutboundTags"] objectAtIndex:j] intValue];
+                
+                // add to sort string
+                stopsort = [stopsort stringByAppendingFormat:@",%d",stoptag];
+                
+                // set stop association
+                NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+                
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
+                [req setPredicate:pred];
+                
+                NSError *error;
+                NSArray *stops = [moc executeFetchRequest:req error:&error];
+                
+                if ([stops count] > 1) {
+                    NSLog(@"!!!Should not be more than one stop for each tag");
+                } else if ([stops count] < 1) {
+                    NSLog(@"!!!Should not be less than one stop for a tag");
+                } else {
+                    [line addOutboundStopsObject:[stops objectAtIndex:0]];
+                }
             }
+            [line setValue:stopsort forKey:@"outboundSort"];
         }
-        [line setValue:stopsort forKey:@"outboundSort"];
     }
     
     if (![moc save:&err]) {
