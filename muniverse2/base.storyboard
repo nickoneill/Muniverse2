@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2829" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1914"/>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
         <!--Table View Controller - Favorites-->
@@ -26,11 +27,43 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorites" id="Q60-2r-fXF">
                         <barButtonItem key="backBarButtonItem" title="Favorites" id="Uib-3s-lmW"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="ksX-S3-Uad"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="rvO-Pj-qGF"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AV9-ur-v0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254" y="-483"/>
+            <point key="canvasLocation" x="1746" y="1065"/>
+        </scene>
+        <!--View Controller - Nearby-->
+        <scene sceneID="zek-IF-lda">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="19G-EJ-0sP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="qtl-2H-2vo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UMo-5E-9ym">
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="m1y-pK-aSK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.31252667309999999" green="0.4290035069" blue="0.51530939340000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Nearby" id="yp5-8O-EEg">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="i2I-7E-kEi"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="KCO-JL-N3a"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="Tab_LocationArrow.png" id="koD-Iv-4gk"/>
+                    <navigationItem key="navigationItem" id="VBE-gE-oWs"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1211" y="450"/>
         </scene>
         <!--Navigation Controller - Favorites-->
         <scene sceneID="2qC-aD-bjf">
@@ -46,7 +79,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qts-k0-a15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="720" y="-484"/>
+            <point key="canvasLocation" x="1212" y="1064"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4ni-mb-4l8">
@@ -61,6 +94,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="qtl-2H-2vo" kind="relationship" relationship="viewControllers" id="Fpb-Gc-BQC"/>
                         <segue destination="wbp-LQ-185" kind="relationship" relationship="viewControllers" id="AOT-xr-AXF"/>
                         <segue destination="MNS-he-PXW" kind="relationship" relationship="viewControllers" id="oX0-yg-FnN"/>
                         <segue destination="Gmf-kX-lMJ" kind="relationship" relationship="viewControllers" id="Tyx-uL-nYe"/>
@@ -69,7 +103,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuH-VJ-h2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-119" y="837"/>
+            <point key="canvasLocation" x="238" y="1467"/>
         </scene>
         <!--Table View Controller - History-->
         <scene sceneID="BTD-Mm-WfK">
@@ -93,11 +127,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="History" id="Gpf-w6-rjA">
                         <barButtonItem key="backBarButtonItem" title="History" id="rhf-GB-1gb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="h5D-fg-RLH"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVa-cV-KZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254" y="1751"/>
+            <point key="canvasLocation" x="1746" y="3299"/>
         </scene>
         <!--Subway Table View Controller - Subway Stations-->
         <scene sceneID="RBp-h1-tlZ">
@@ -128,7 +163,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZA-nF-3t4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254" y="1111"/>
+            <point key="canvasLocation" x="1746" y="2659"/>
         </scene>
         <!--Station View Controller - Station Name-->
         <scene sceneID="Uue-sL-K6q">
@@ -189,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EgZ-go-hZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1657" y="1111"/>
+            <point key="canvasLocation" x="2149" y="2659"/>
         </scene>
         <!--Navigation Controller - Subway-->
         <scene sceneID="6KL-Q6-FVH">
@@ -205,7 +240,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsw-dV-Gx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="720" y="1111"/>
+            <point key="canvasLocation" x="1212" y="2659"/>
         </scene>
         <!--All Lines Table View Controller - All Lines-->
         <scene sceneID="oqy-wr-Oep">
@@ -223,19 +258,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Church" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="7RL-de-1ss">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Church" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7RL-de-1ss">
                                             <rect key="frame" x="60" y="3" width="60" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Balboa Park to Sunnydale, but not the Sunnydale from Buffy the Vampire Slayer,        via Downtown" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="230" id="Fgx-gN-NXK">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Balboa Park to Sunnydale, but not the Sunnydale from Buffy the Vampire Slayer,        via Downtown" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fgx-gN-NXK">
                                             <rect key="frame" x="60" y="24" width="230" height="32"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Big_59-h.png" id="qnz-FR-neD">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="59"/>
@@ -270,7 +305,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dW5-kk-4s8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1246" y="319"/>
+            <point key="canvasLocation" x="1738" y="1867"/>
         </scene>
         <!--Line Detail View Controller - Directions-->
         <scene sceneID="Rkg-ON-ILR">
@@ -307,12 +342,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Stop Name" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="qvB-mH-0b9">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Stop Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qvB-mH-0b9">
                                             <rect key="frame" x="37" y="0.0" width="253" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Start@2x.png" highlightedImage="Marker_Start-h@2x.png" id="iFn-HA-Upw">
                                             <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
@@ -332,12 +367,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Stop Name" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="gL1-oc-UGL">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Stop Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gL1-oc-UGL">
                                             <rect key="frame" x="37" y="0.0" width="253" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Middle@2x.png" highlightedImage="Marker_Middle-h@2x.png" id="v1L-Nu-Uy0">
                                             <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
@@ -354,12 +389,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Nearest Stop" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="vDS-qY-7YF">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Nearest Stop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vDS-qY-7YF">
                                             <rect key="frame" x="37" y="0.0" width="253" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Middle_Current@2x.png" highlightedImage="Marker_Middle_Current-h@2x.png" id="nRo-1n-6Hb">
                                             <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
@@ -376,12 +411,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Stop Name" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="aUF-IU-Ocb">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Stop Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aUF-IU-Ocb">
                                             <rect key="frame" x="37" y="0.0" width="253" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_End@2x.png" highlightedImage="Marker_End-h@2x.png" id="Hb6-8P-eRY">
                                             <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
@@ -398,12 +433,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Directions" id="5HG-EA-Ebg">
-                        <barButtonItem key="backBarButtonItem" title="Stops" id="fdu-H6-Uw6"/>
+                        <barButtonItem key="backBarButtonItem" title="X-Line" id="fdu-H6-Uw6"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPO-xU-fZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1657" y="319"/>
+            <point key="canvasLocation" x="2149" y="1867"/>
         </scene>
         <!--Stop Detail View Controller - Stop Detail-->
         <scene sceneID="f7o-66-skx">
@@ -414,25 +449,32 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="StopDetailBG.png" id="Pc9-Ti-HKd">
-                                <rect key="frame" x="10" y="79" width="300" height="130"/>
+                                <rect key="frame" x="10" y="89" width="300" height="130"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="Stop Name" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="qEF-Dr-CKM">
-                                <rect key="frame" x="10" y="7" width="300" height="34"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Stop Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="qEF-Dr-CKM">
+                                <rect key="frame" x="76" y="18" width="234" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="highlightedColor"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="Stop ID" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="LNO-Kn-9e0">
-                                <rect key="frame" x="10" y="41" width="300" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Stop ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="LNO-Kn-9e0">
+                                <rect key="frame" x="121" y="46" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Stop #" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Bo2-tx-Fpo">
+                                <rect key="frame" x="76" y="46" width="65" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mQf-BL-6Gh">
-                                <rect key="frame" x="10" y="227" width="300" height="37"/>
+                                <rect key="frame" x="10" y="244" width="300" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" title="Add to Favorites">
@@ -443,24 +485,29 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="34 Minutes" textAlignment="center" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="cnA-ap-LsR">
-                                <rect key="frame" x="20" y="95" width="280" height="41"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="34 minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="cnA-ap-LsR">
+                                <rect key="frame" x="20" y="106" width="280" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="highlightedColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="12, 12, and 12 minutes" textAlignment="center" autoshrinkMode="minimumFontSize" id="ZyX-eO-xHW">
-                                <rect key="frame" x="20" y="150" width="280" height="41"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12, 12, and 12 minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ZyX-eO-xHW">
+                                <rect key="frame" x="20" y="161" width="280" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="highlightedColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="placeholder-stop-icon-fav@2x.png" id="rMw-ki-RP0">
+                                <rect key="frame" x="10" y="20" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Stop Detail" id="ne8-Dr-6dh">
+                        <barButtonItem key="backBarButtonItem" title="Stop" id="1IR-LU-lgf"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="lcj-yK-AGr">
                             <connections>
                                 <action selector="refreshPredictions:" destination="xb6-As-9jv" id="R1y-Uv-2Pp"/>
@@ -477,7 +524,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppf-GL-L7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2065" y="319"/>
+            <point key="canvasLocation" x="2557" y="1867"/>
         </scene>
         <!--Navigation Controller - All Lines-->
         <scene sceneID="RHI-Op-cza">
@@ -497,7 +544,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LH8-LY-umT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="720" y="313"/>
+            <point key="canvasLocation" x="1212" y="1861"/>
         </scene>
         <!--Navigation Controller - History-->
         <scene sceneID="lRL-MG-Q2T">
@@ -513,7 +560,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgb-TG-F81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="720" y="1751"/>
+            <point key="canvasLocation" x="1212" y="3299"/>
         </scene>
     </scenes>
     <resources>
@@ -530,7 +577,9 @@
         <image name="Tab_Favorites.png" width="26" height="26"/>
         <image name="Tab_History.png" width="25" height="25"/>
         <image name="Tab_Lines.png" width="30" height="30"/>
+        <image name="Tab_LocationArrow.png" width="24" height="24"/>
         <image name="Tab_Subway.png" width="30" height="30"/>
+        <image name="placeholder-stop-icon-fav@2x.png" width="92" height="92"/>
     </resources>
     <classes>
         <class className="AllLinesTableViewController" superclassName="UITableViewController">
