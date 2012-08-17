@@ -323,6 +323,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="DirectionBar_Blank.png" highlightedImage="DirectionBar_Blank.png" id="JuO-Pi-hO5">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="QkI-hE-hG0">
                                             <rect key="frame" x="57" y="7" width="207" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -330,6 +334,7 @@
                                                 <segment title="Inbound"/>
                                                 <segment title="Outbound"/>
                                             </segments>
+                                            <color key="tintColor" red="0.67450980390000004" green="0.71764705880000002" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </segmentedControl>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -564,6 +569,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DirectionBar_Blank.png" width="320" height="44"/>
         <image name="Icon_F-h.png" width="50" height="59"/>
         <image name="Icon_F.png" width="50" height="59"/>
         <image name="Marker_End-h@2x.png" width="50" height="86"/>
