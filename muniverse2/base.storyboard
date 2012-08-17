@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
@@ -271,7 +272,7 @@
                                             <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Big_59-h.png" id="qnz-FR-neD">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Icon_F.png" highlightedImage="Icon_F-h.png" id="qnz-FR-neD">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -289,7 +290,7 @@
                     <navigationItem key="navigationItem" title="All Lines" id="QbF-8q-s7X">
                         <barButtonItem key="backBarButtonItem" title="Lines" id="5DG-Mb-7PP"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="vl2-oA-DI8">
-                            <rect key="frame" x="40" y="7" width="240" height="30"/>
+                            <rect key="frame" x="30" y="7" width="260" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Bus"/>
@@ -342,14 +343,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Stop Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qvB-mH-0b9">
-                                            <rect key="frame" x="37" y="0.0" width="253" height="43"/>
+                                            <rect key="frame" x="35" y="0.0" width="255" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Start@2x.png" highlightedImage="Marker_Start-h@2x.png" id="iFn-HA-Upw">
-                                            <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="25" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -367,14 +368,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Stop Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gL1-oc-UGL">
-                                            <rect key="frame" x="37" y="0.0" width="253" height="43"/>
+                                            <rect key="frame" x="35" y="0.0" width="255" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Middle@2x.png" highlightedImage="Marker_Middle-h@2x.png" id="v1L-Nu-Uy0">
-                                            <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="25" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -389,14 +390,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Nearest Stop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vDS-qY-7YF">
-                                            <rect key="frame" x="37" y="0.0" width="253" height="43"/>
+                                            <rect key="frame" x="35" y="0.0" width="255" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_Middle_Current@2x.png" highlightedImage="Marker_Middle_Current-h@2x.png" id="nRo-1n-6Hb">
-                                            <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="25" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -411,14 +412,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Stop Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aUF-IU-Ocb">
-                                            <rect key="frame" x="37" y="0.0" width="253" height="43"/>
+                                            <rect key="frame" x="35" y="0.0" width="255" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Marker_End@2x.png" highlightedImage="Marker_End-h@2x.png" id="Hb6-8P-eRY">
-                                            <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="25" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -452,24 +453,24 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Stop Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="qEF-Dr-CKM">
-                                <rect key="frame" x="76" y="18" width="234" height="28"/>
+                                <rect key="frame" x="70" y="18" width="245" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Stop ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="LNO-Kn-9e0">
-                                <rect key="frame" x="121" y="46" width="86" height="21"/>
+                                <rect key="frame" x="115" y="46" width="86" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Stop #" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Bo2-tx-Fpo">
-                                <rect key="frame" x="76" y="46" width="65" height="21"/>
+                                <rect key="frame" x="70" y="46" width="65" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mQf-BL-6Gh">
@@ -563,15 +564,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Big_59-h.png" width="50" height="59"/>
-        <image name="Marker_End-h@2x.png" width="53" height="86"/>
-        <image name="Marker_End@2x.png" width="53" height="86"/>
-        <image name="Marker_Middle-h@2x.png" width="53" height="86"/>
-        <image name="Marker_Middle@2x.png" width="53" height="86"/>
-        <image name="Marker_Middle_Current-h@2x.png" width="53" height="86"/>
-        <image name="Marker_Middle_Current@2x.png" width="53" height="86"/>
-        <image name="Marker_Start-h@2x.png" width="53" height="86"/>
-        <image name="Marker_Start@2x.png" width="53" height="86"/>
+        <image name="Icon_F-h.png" width="50" height="59"/>
+        <image name="Icon_F.png" width="50" height="59"/>
+        <image name="Marker_End-h@2x.png" width="50" height="86"/>
+        <image name="Marker_End@2x.png" width="50" height="86"/>
+        <image name="Marker_Middle-h@2x.png" width="50" height="86"/>
+        <image name="Marker_Middle@2x.png" width="50" height="86"/>
+        <image name="Marker_Middle_Current-h@2x.png" width="50" height="86"/>
+        <image name="Marker_Middle_Current@2x.png" width="50" height="86"/>
+        <image name="Marker_Start-h@2x.png" width="50" height="86"/>
+        <image name="Marker_Start@2x.png" width="50" height="86"/>
         <image name="StopDetailBG.png" width="600" height="260"/>
         <image name="Tab_Favorites.png" width="26" height="26"/>
         <image name="Tab_History.png" width="25" height="25"/>
