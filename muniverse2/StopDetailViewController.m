@@ -55,7 +55,10 @@
     }
     [client predictionForStopId:[self.stop.stopId intValue] inDirection:direction withSuccess:^(NSArray *els) {
         if ([els count]) {
-            if ([[els objectAtIndex:0] intValue] == 1) {
+            
+            if ([[els objectAtIndex:0] intValue] == 0) {
+                self.primaryArrival.text = @"Arriving now";
+            } else if ([[els objectAtIndex:0] intValue] == 1) {
                 self.primaryArrival.text = [NSString stringWithFormat:@"%@ Minute",[els objectAtIndex:0]];
             } else {
                 self.primaryArrival.text = [NSString stringWithFormat:@"%@ Minutes",[els objectAtIndex:0]];
