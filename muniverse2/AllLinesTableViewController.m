@@ -82,8 +82,7 @@ typedef enum {
         [fetchRequest setPredicate:pred];
     }
     
-    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"shortname" ascending:YES selector:@selector(caseInsensitiveCompare:)];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:20];
