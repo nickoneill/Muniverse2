@@ -67,8 +67,7 @@ typedef enum {
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Line" inManagedObjectContext:self.moc];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Line" inManagedObjectContext:self.moc];
     [fetchRequest setEntity:entity];
     
     if (self.type.selectedSegmentIndex == kBusType) {
@@ -118,14 +117,40 @@ typedef enum {
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    if (self.type.selectedSegmentIndex == kHistoricType) {
+        return 2;
+    } else {
+        return 1;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (self.type.selectedSegmentIndex == kHistoricType) {
+        if (section == 0) {
+            return @"Historic Streetcar";
+        } else {
+            return @"Cable Car";
+        }
+    } else {
+        return @"";
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id sectionInfo = [[[self frc] sections] objectAtIndex:section];
-    
-    return [sectionInfo numberOfObjects];
+    if (self.type.selectedSegmentIndex == kHistoricType) {
+        // blah, totally unhappy with this
+        if (section == 0) {
+            return 1;
+        } else {
+            return 3;
+        }
+    } else {
+        id sectionInfo = [[[self frc] sections] objectAtIndex:section];
+
+        return [sectionInfo numberOfObjects];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -141,7 +166,18 @@ typedef enum {
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)ip
 {
-    Line *line = [[self frc] objectAtIndexPath:ip];
+    Line *line;
+    if (self.type.selectedSegmentIndex == kHistoricType) {
+        NSIndexPath *newip;
+        if ([ip section] == 0) {
+            newip = [NSIndexPath indexPathForRow:3 inSection:0];
+        } else {
+            newip = [NSIndexPath indexPathForRow:[ip row] inSection:0];
+        }
+        line = [[self frc] objectAtIndexPath:newip];
+    } else {
+        line = [[self frc] objectAtIndexPath:ip];
+    }
     
     cell.textLabel.text = line.name;
 }
