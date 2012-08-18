@@ -120,9 +120,9 @@ typedef enum {
     
     [self.stops sortUsingComparator:^NSComparisonResult(Stop *obj1, Stop *obj2) {
         if ([stoparray indexOfObject:obj1.tag] > [stoparray indexOfObject:obj2.tag]) {
-            return NSOrderedAscending;
-        } else {
             return NSOrderedDescending;
+        } else {
+            return NSOrderedAscending;
         }
     }];
 }
