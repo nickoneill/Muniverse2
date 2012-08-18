@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12A256" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Line" representedClassName="Line" syncable="YES">
         <attribute name="historic" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="inboundDesc" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,8 +9,8 @@
         <attribute name="outboundDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="outboundSort" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shortname" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="inboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="lines" inverseEntity="Stop" syncable="YES"/>
-        <relationship name="outboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="lines" inverseEntity="Stop" syncable="YES"/>
+        <relationship name="inboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="inboundLines" inverseEntity="Stop" syncable="YES"/>
+        <relationship name="outboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="outboundLines" inverseEntity="Stop" syncable="YES"/>
     </entity>
     <entity name="Stop" representedClassName="Stop" syncable="YES">
         <attribute name="isSubway" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -18,10 +18,11 @@
         <attribute name="stopId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="subwayOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="tag" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Line" inverseName="inboundStops" inverseEntity="Line" syncable="YES"/>
+        <relationship name="inboundLines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Line" inverseName="inboundStops" inverseEntity="Line" syncable="YES"/>
+        <relationship name="outboundLines" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Line" inverseName="outboundStops" inverseEntity="Line" syncable="YES"/>
     </entity>
     <elements>
         <element name="Line" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Stop" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Stop" positionX="0" positionY="0" width="128" height="150"/>
     </elements>
 </model>

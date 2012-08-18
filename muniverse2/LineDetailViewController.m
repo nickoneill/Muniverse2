@@ -40,12 +40,10 @@ typedef enum {
     [super viewDidLoad];
     
     self.title = self.line.name;
-
     
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     self.moc = app.managedObjectContext;
 
-    
     NSError *error;
     if (![[self frc] performFetch:&error]) {
         NSLog(@"whoops with stops frc: %@",error);
@@ -112,7 +110,6 @@ typedef enum {
     
     NSMutableArray *stoparray = [NSMutableArray array];
     for (NSString *component in stopstrings) {
-        
         [stoparray addObject:[f numberFromString:component]];
     }
     
@@ -132,7 +129,9 @@ typedef enum {
     _frc = nil;
     
     NSError *err;
-    [[self frc] performFetch:&err];
+    if (![[self frc] performFetch:&err]) {
+        NSLog(@"issue fetching stops after direction change: %@",err);
+    }
     
     [self sortFRCtoStops];
     [[self tableView] reloadData];
