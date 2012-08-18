@@ -46,7 +46,6 @@ typedef enum {
     self.moc = app.managedObjectContext;
 
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:80/255.0f green:109/255.0f blue:131/255.0f alpha:1];
-
     
     NSError *error;
     if (![[self frc] performFetch:&error]) {
@@ -292,8 +291,8 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    Line *selectedLine = [[self frc] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
-    [(LineDetailViewController *)[segue destinationViewController] setLine:selectedLine];
+//    Line *selectedLine = [[self frc] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+//    [(LineDetailViewController *)[segue destinationViewController] setLine:selectedLine];
 }
 
 @end

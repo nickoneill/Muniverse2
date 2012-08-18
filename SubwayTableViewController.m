@@ -8,6 +8,7 @@
 
 #import "SubwayTableViewController.h"
 #import "AppDelegate.h"
+#import "Subway.h"
 #import "Stop.h"
 
 #import "StationViewController.h"
@@ -39,10 +40,9 @@
 
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:80/255.0f green:109/255.0f blue:131/255.0f alpha:1];
 
-    
     NSError *error;
     if (![[self frc] performFetch:&error]) {
-        NSLog(@"whoops with stops frc: %@",error);
+        NSLog(@"whoops with subway frc: %@",error);
     }
 }
 
@@ -53,23 +53,19 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Stop" inManagedObjectContext:self.moc];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Subway" inManagedObjectContext:self.moc];
     [fetchRequest setEntity:entity];
     
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K == YES",@"isSubway"];
-    [fetchRequest setPredicate:pred];
+//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K == YES",@"isSubway"];
+//    [fetchRequest setPredicate:pred];
     
-    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:20];
     
-    NSFetchedResultsController *theFetchedResultsController =
-    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:self.moc sectionNameKeyPath:nil
-                                                   cacheName:nil];
+    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.moc sectionNameKeyPath:@"isAboveGround" cacheName:nil];
+    
     self.frc = theFetchedResultsController;
     _frc.delegate = self;
     
@@ -92,12 +88,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [[[self frc] sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id sectionInfo = [[[self frc] sections] objectAtIndex:0];
+    id sectionInfo = [[[self frc] sections] objectAtIndex:section];
     
     return [sectionInfo numberOfObjects];
 }
@@ -114,9 +110,9 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)ip
 {
-    Stop *stop = [[self frc] objectAtIndexPath:ip];
+    Subway *subway = [[self frc] objectAtIndexPath:ip];
     
-    cell.textLabel.text = stop.name;
+    cell.textLabel.text = subway.name;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:18];
 }
 

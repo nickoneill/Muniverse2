@@ -9,10 +9,11 @@
 #import "AppDelegate.h"
 #import "Line.h"
 #import "Stop.h"
+#import "Subway.h"
 
 @implementation AppDelegate
 
-@synthesize window,subway;
+@synthesize window;
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -48,8 +49,6 @@
     
     NSManagedObjectContext *moc = [self managedObjectContext];
     
-//    NSArray *stops = [NSArray arrayWithObjects:@"West Portal Station",@"Forest Hill Station",@"Castro Station",@"Church Station",@"Van Ness Station",@"Civic Center Station",@"Powell Station",@"Montgomery Station",@"Embarcadero Station",@"Folsom & Embarcadero",@"Brannan & Embarcadero",@"2nd & King / Ballpark",@"4th & King / Caltrain", nil];
-    
     NSMutableDictionary *stopCache = [NSMutableDictionary dictionary];
     for (int i = 0; i < [[jsonData objectForKey:@"StopList"] count]; i++) {
         NSDictionary *stopDict = [[jsonData objectForKey:@"StopList"] objectAtIndex:i];
@@ -58,15 +57,13 @@
         [stop setValue:[stopDict objectForKey:@"Title"] forKey:@"name"];
         [stop setValue:[stopDict objectForKey:@"Tag"] forKey:@"tag"];
         [stop setValue:[stopDict objectForKey:@"StopId"] forKey:@"stopId"];
+        [stop setValue:[stopDict objectForKey:@"Lat"] forKey:@"lat"];
+        [stop setValue:[stopDict objectForKey:@"Lon"] forKey:@"lon"];
         
-        [stopCache setObject:stop forKey:[stopDict objectForKey:@"StopId"]];
+        [stopCache setObject:stop forKey:[stopDict objectForKey:@"Tag"]];
     }
     
-    NSError *err;
-    if (![moc save:&err]) {
-        NSLog(@"Whoops, error saving demo data: %@",[err localizedDescription]);
-    }
-    
+    NSLog(@"ok");
     for (int i = 0; i < [[jsonData objectForKey:@"LineList"] count]; i++) {
         NSDictionary *lineDict = [[jsonData objectForKey:@"LineList"] objectAtIndex:i];
         
@@ -141,6 +138,17 @@
         }
     }
     
+    for (int i = 0; i < [[jsonData objectForKey:@"SubwayList"] count]; i++) {
+        NSDictionary *subwayDict = [[jsonData objectForKey:@"SubwayList"] objectAtIndex:i];
+        
+        Subway *subway = [NSEntityDescription insertNewObjectForEntityForName:@"Subway" inManagedObjectContext:moc];
+        [subway setValue:[subwayDict objectForKey:@"Name"] forKey:@"name"];
+//        [subway setValue:[subwayDict objectForKey:@"IBStopTag"] forKey:@""];
+        [subway setValue:[subwayDict objectForKey:@"AboveGround"] forKey:@"isAboveGround"];
+        [subway setValue:[subwayDict objectForKey:@"Order"] forKey:@"order"];
+    }
+    
+    NSError *err;
     if (![moc save:&err]) {
         NSLog(@"Whoops, error saving demo data: %@",[err localizedDescription]);
     }

@@ -13,16 +13,25 @@
         <relationship name="outboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="outboundLines" inverseEntity="Stop" syncable="YES"/>
     </entity>
     <entity name="Stop" representedClassName="Stop" syncable="YES">
-        <attribute name="isSubway" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stopId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="subwayOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="tag" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="inboundLines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Line" inverseName="inboundStops" inverseEntity="Line" syncable="YES"/>
-        <relationship name="outboundLines" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Line" inverseName="outboundStops" inverseEntity="Line" syncable="YES"/>
+        <relationship name="ibSubway" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Subway" inverseName="inboundStop" inverseEntity="Subway" syncable="YES"/>
+        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Line" inverseName="inboundStops" inverseEntity="Line" syncable="YES"/>
+        <relationship name="obSubway" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Subway" inverseName="outboundStop" inverseEntity="Subway" syncable="YES"/>
+    </entity>
+    <entity name="Subway" representedClassName="Subway" syncable="YES">
+        <attribute name="isAboveGround" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="inboundStop" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Stop" inverseName="ibSubway" inverseEntity="Stop" syncable="YES"/>
+        <relationship name="outboundStop" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Stop" inverseName="obSubway" inverseEntity="Stop" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Line" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Stop" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Line" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Stop" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Subway" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
