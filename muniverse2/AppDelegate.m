@@ -50,6 +50,7 @@
     
 //    NSArray *stops = [NSArray arrayWithObjects:@"West Portal Station",@"Forest Hill Station",@"Castro Station",@"Church Station",@"Van Ness Station",@"Civic Center Station",@"Powell Station",@"Montgomery Station",@"Embarcadero Station",@"Folsom & Embarcadero",@"Brannan & Embarcadero",@"2nd & King / Ballpark",@"4th & King / Caltrain", nil];
     
+    NSMutableDictionary *stopCache = [NSMutableDictionary dictionary];
     for (int i = 0; i < [[jsonData objectForKey:@"StopList"] count]; i++) {
         NSDictionary *stopDict = [[jsonData objectForKey:@"StopList"] objectAtIndex:i];
         
@@ -57,6 +58,8 @@
         [stop setValue:[stopDict objectForKey:@"Title"] forKey:@"name"];
         [stop setValue:[stopDict objectForKey:@"Tag"] forKey:@"tag"];
         [stop setValue:[stopDict objectForKey:@"StopId"] forKey:@"stopId"];
+        
+        [stopCache setObject:stop forKey:[stopDict objectForKey:@"StopId"]];
     }
     
     NSError *err;
@@ -80,6 +83,11 @@
         if ([lineDict objectForKey:@"InboundTags"] != [NSNull null]) {
             for (int j = 0; j < [[lineDict objectForKey:@"InboundTags"] count]; j++) {
                 int stoptag = [[[lineDict objectForKey:@"InboundTags"] objectAtIndex:j] intValue];
+                
+                // can we speed this up with stopcache?
+//                Stop *stop = [stopCache objectForKey:[NSNumber numberWithInt:stoptag]];
+//                
+//                [line addInboundStopsObject:stop];
                 
                 // add to sort string
                 stopsort = [stopsort stringByAppendingFormat:@",%d",stoptag];
