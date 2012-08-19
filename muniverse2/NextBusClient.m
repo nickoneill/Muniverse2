@@ -27,6 +27,7 @@
     [self getPath:@"/service/publicXMLFeed" parameters:params success:^(AFHTTPRequestOperation *operation, NSData *res){
         NSError *err;
         CXMLDocument *doc = [[CXMLDocument alloc] initWithData:res options:0 error:&err];
+        NSLog(@"doc: %@",doc);
         
         if (doc != nil) {
             NSArray *predictionElements = [doc nodesForXPath:@"//body/predictions/direction/prediction" error:&err];

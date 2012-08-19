@@ -2,7 +2,7 @@
 //  Line.m
 //  muniverse2
 //
-//  Created by Nick O'Neill on 8/8/12.
+//  Created by Nick O'Neill on 8/19/12.
 //  Copyright (c) 2012 Nick O'Neill. All rights reserved.
 //
 
@@ -14,12 +14,14 @@
 
 @dynamic historic;
 @dynamic inboundDesc;
+@dynamic inboundSort;
 @dynamic metro;
 @dynamic name;
 @dynamic outboundDesc;
-@dynamic shortname;
-@dynamic inboundSort;
 @dynamic outboundSort;
+@dynamic shortname;
+@dynamic inboundTags;
+@dynamic outboundTags;
 @dynamic inboundStops;
 @dynamic outboundStops;
 

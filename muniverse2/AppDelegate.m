@@ -63,7 +63,6 @@
         [stopCache setObject:stop forKey:[stopDict objectForKey:@"Tag"]];
     }
     
-    NSLog(@"ok");
     for (int i = 0; i < [[jsonData objectForKey:@"LineList"] count]; i++) {
         NSDictionary *lineDict = [[jsonData objectForKey:@"LineList"] objectAtIndex:i];
         
@@ -72,7 +71,8 @@
         [line setValue:[lineDict objectForKey:@"Short"] forKey:@"shortname"];
         [line setValue:[lineDict objectForKey:@"IsHistoric"] forKey:@"historic"];
         [line setValue:[lineDict objectForKey:@"IsMetro"] forKey:@"metro"];
-        
+        [line setValue:[lineDict objectForKey:@"IBTag"] forKey:@"inboundTags"];
+        [line setValue:[lineDict objectForKey:@"OBTag"] forKey:@"outboundTags"];
         [line setValue:[lineDict objectForKey:@"InboundDesc"] forKey:@"inboundDesc"];
         [line setValue:[lineDict objectForKey:@"OutboundDesc"] forKey:@"outboundDesc"];
         
@@ -80,31 +80,12 @@
         if ([lineDict objectForKey:@"InboundTags"] != [NSNull null]) {
             for (int j = 0; j < [[lineDict objectForKey:@"InboundTags"] count]; j++) {
                 int stoptag = [[[lineDict objectForKey:@"InboundTags"] objectAtIndex:j] intValue];
-                
-                // can we speed this up with stopcache?
-//                Stop *stop = [stopCache objectForKey:[NSNumber numberWithInt:stoptag]];
-//                
-//                [line addInboundStopsObject:stop];
-                
                 // add to sort string
                 stopsort = [stopsort stringByAppendingFormat:@",%d",stoptag];
                 
-                // set stop associations
-                NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-                
-                NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
-                [req setPredicate:pred];
-                
-                NSError *error;
-                NSArray *stops = [moc executeFetchRequest:req error:&error];
-                
-                if ([stops count] > 1) {
-                    NSLog(@"!!!Should not be more than one stop for each tag");
-                } else if ([stops count] < 1) {
-                    NSLog(@"!!!Should not be less than one stop for a tag");
-                } else {
-                    [line addInboundStopsObject:[stops objectAtIndex:0]];
-                }
+                // add stop from cache
+                Stop *stop = [stopCache objectForKey:[NSNumber numberWithInt:stoptag]];
+                [line addInboundStopsObject:stop];
             }
             [line setValue:stopsort forKey:@"inboundSort"];
         }
@@ -113,26 +94,12 @@
         if ([lineDict objectForKey:@"OutboundTags"] != [NSNull null]) {
             for (int j = 0; j < [[lineDict objectForKey:@"OutboundTags"] count]; j++) {
                 int stoptag = [[[lineDict objectForKey:@"OutboundTags"] objectAtIndex:j] intValue];
-                
                 // add to sort string
                 stopsort = [stopsort stringByAppendingFormat:@",%d",stoptag];
                 
-                // set stop association
-                NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-                
-                NSPredicate *pred = [NSPredicate predicateWithFormat:@"tag == %d",stoptag];
-                [req setPredicate:pred];
-                
-                NSError *error;
-                NSArray *stops = [moc executeFetchRequest:req error:&error];
-                
-                if ([stops count] > 1) {
-                    NSLog(@"!!!Should not be more than one stop for each tag");
-                } else if ([stops count] < 1) {
-                    NSLog(@"!!!Should not be less than one stop for a tag");
-                } else {
-                    [line addOutboundStopsObject:[stops objectAtIndex:0]];
-                }
+                // add stop from cache
+                Stop *stop = [stopCache objectForKey:[NSNumber numberWithInt:stoptag]];
+                [line addOutboundStopsObject:stop];
             }
             [line setValue:stopsort forKey:@"outboundSort"];
         }

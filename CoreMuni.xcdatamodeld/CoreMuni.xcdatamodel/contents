@@ -4,10 +4,12 @@
         <attribute name="historic" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="inboundDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="inboundSort" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inboundTags" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="metro" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="outboundDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="outboundSort" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="outboundTags" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shortname" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="inboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="inboundLines" inverseEntity="Stop" syncable="YES"/>
         <relationship name="outboundStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="outboundLines" inverseEntity="Stop" syncable="YES"/>
@@ -31,8 +33,8 @@
         <relationship name="outboundStop" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Stop" inverseName="obSubway" inverseEntity="Stop" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Line" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Stop" positionX="0" positionY="0" width="128" height="180"/>
-        <element name="Subway" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="Line" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Stop" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Subway" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
