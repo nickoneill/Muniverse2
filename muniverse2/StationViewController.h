@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class Stop;
+@class Subway,Line;
 
 @interface StationViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (strong) Stop *stop;
+@property (strong) Subway *subway;
+@property (strong) NSArray *lines;
 @property (strong) IBOutlet UITableView *table;
 
 @end

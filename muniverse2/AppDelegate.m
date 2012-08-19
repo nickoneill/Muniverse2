@@ -60,6 +60,7 @@
         [stop setValue:[stopDict objectForKey:@"Lat"] forKey:@"lat"];
         [stop setValue:[stopDict objectForKey:@"Lon"] forKey:@"lon"];
         
+        NSLog(@"stop: %@",[[stopDict objectForKey:@"Tag"] class]);
         [stopCache setObject:stop forKey:[stopDict objectForKey:@"Tag"]];
     }
     
@@ -143,7 +144,7 @@
         
         Subway *subway = [NSEntityDescription insertNewObjectForEntityForName:@"Subway" inManagedObjectContext:moc];
         [subway setValue:[subwayDict objectForKey:@"Name"] forKey:@"name"];
-//        [subway setValue:[subwayDict objectForKey:@"IBStopTag"] forKey:@""];
+        [subway setValue:[stopCache objectForKey:[subwayDict objectForKey:@"IBStopTag"]] forKey:@"inboundStop"];
         [subway setValue:[subwayDict objectForKey:@"AboveGround"] forKey:@"isAboveGround"];
         [subway setValue:[subwayDict objectForKey:@"Order"] forKey:@"order"];
     }

@@ -237,7 +237,7 @@
 {
     NSIndexPath *ip = [self.tableView indexPathForCell:sender];
     
-    [(StationViewController *)[segue destinationViewController] setStop:[[self frc] objectAtIndexPath:ip]];
+    [(StationViewController *)[segue destinationViewController] setSubway:[[self frc] objectAtIndexPath:ip]];
 }
 
 
