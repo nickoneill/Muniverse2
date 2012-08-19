@@ -10,17 +10,14 @@
 #import "AppDelegate.h"
 #import "Subway.h"
 #import "Line.h"
+#import "GroupedPredictionCell.h"
+#import "NextBusClient.h"
 
 @interface StationViewController ()
 
 @end
 
 @implementation StationViewController
-
-typedef enum {
-    kDirectionInbound,
-    kDirectionOutbound,
-} DirectionTypes;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,25 +67,36 @@ typedef enum {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    GroupedPredictionCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     Line *line = [self.lines objectAtIndex:[indexPath row]];
     
+    cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Icon_%@.png",line.shortname]];
+    
     if ([line.shortname isEqualToString:@"J"]) {
-        cell.textLabel.text = @"Church";
+        cell.primaryText.text = @"Church";
     } else if ([line.shortname isEqualToString:@"L"]) {
-        cell.textLabel.text = @"Taraval";
+        cell.primaryText.text = @"Taraval";
     } else if ([line.shortname isEqualToString:@"M"]) {
-        cell.textLabel.text = @"Ocean View";
+        cell.primaryText.text = @"Ocean View";
     } else if ([line.shortname isEqualToString:@"N"]) {
-        cell.textLabel.text = @"Judah";
+        cell.primaryText.text = @"Judah";
     } else if ([line.shortname isEqualToString:@"KT"]) {
         if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
-            cell.textLabel.text = @"Third Street";
+            cell.primaryText.text = @"Third Street";
         } else {
-            cell.textLabel.text = @"Ingleside";
+            cell.primaryText.text = @"Ingleside";
         }
     }
+    
+    if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+        cell.secondaryText.text = [self stripPrefix:@"Inbound " fromText:line.inboundDesc];
+    } else {
+        cell.secondaryText.text = [self stripPrefix:@"Outbound " fromText:line.outboundDesc];
+    }
+    
+    cell.primaryPrediction.text = @"";
+    cell.secondaryprediction.text = @"";
     
     return cell;
 }
@@ -96,6 +104,23 @@ typedef enum {
 - (IBAction)directionChange:(id)sender
 {
     [self.table reloadData];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    return @"KT is sometimes K, sometimes T. I know, that's some whack shit.";
+}
+
+- (void)refreshPredictions
+{
+    
+}
+
+- (NSString *)stripPrefix:(NSString *)prefix fromText:(NSString *)text
+{
+    NSRange prefixRange = [text rangeOfString:prefix];
+    
+    return [text stringByReplacingCharactersInRange:prefixRange withString:@""];
 }
 
 - (void)didReceiveMemoryWarning

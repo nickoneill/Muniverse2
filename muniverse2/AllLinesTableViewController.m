@@ -178,6 +178,8 @@ typedef enum {
         line = [[self frc] objectAtIndexPath:ip];
     }
     
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Icon_%@.png",line.shortname]];
+    
     cell.textLabel.text = line.name;
 }
 

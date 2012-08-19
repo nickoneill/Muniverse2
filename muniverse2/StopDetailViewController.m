@@ -53,7 +53,7 @@
     if (!self.isInbound) {
         direction = kDirectionOutbound;
     }
-    [client predictionForStopId:[self.stop.stopId intValue] inDirection:direction withSuccess:^(NSArray *els) {
+    [client predictionForStopId:[self.stop.stopId intValue] withSuccess:^(NSArray *els) {
         if ([els count]) {
             
             if ([[els objectAtIndex:0] intValue] == 0) {
@@ -77,7 +77,6 @@
             self.primaryArrival.text = @"No arrivals scheduled";
         }
         
-//        [self performSelector:@selector(setBarButtonItemRefreshing:) withObject:NO afterDelay:500];
         [self setBarButtonItemRefreshing:YES];
     } andFailure:^(NSError * err) {
         NSLog(@"some failure: %@",err);

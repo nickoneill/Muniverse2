@@ -19,7 +19,8 @@
     return self;
 }
 
-- (void)predictionForStopId:(int)stopId inDirection:(int)direction withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure
+// request a set of predictions from a single stop id
+- (void)predictionForStopId:(int)stopId withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure
 {
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"predictions",@"command",@"sf-muni",@"a",[NSNumber numberWithInt:stopId],@"stopId", nil];
     
@@ -51,26 +52,18 @@
     }];
 }
 
-- (void)predictionForStopTag:(int)stopTag
+// request a set of predictions from multiple stop ids
+// stopids should be a dictionary of line short names ("tags") and integer stop ids, such as @"N":6997
+- (void)predictionForStopIds:(NSDictionary *)stopIds withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure
 {
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"predictions",@"command",@"sf-muni",@"a",@"N",@"r",[NSNumber numberWithInt:stopTag],@"s", nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"predictions",@"command",@"sf-muni",@"a",nil];
+    
+//    for (id key in stopIds) {
+//        if ([key isKindOfClass:[NSString class]]) {
+//            [params setObject:[NSString stringWithFormat:@""] forKey:@"stops"];
+//        }
+//    }
 
-    [self getPath:@"/service/publicXMLFeed" parameters:params success:^(AFHTTPRequestOperation *operation, NSData *res){
-        
-        NSError *err;
-        CXMLDocument *doc = [[CXMLDocument alloc] initWithData:res options:0 error:&err];
-        if (doc != nil) {
-            NSArray *els = [doc nodesForXPath:@"//body/predictions/direction" error:&err];
-            
-            NSLog(@"els: %@",els);
-        } else {
-            NSLog(@"Error parsing xml: %@",[err description]);
-        }
-        
-//        NSLog(@"got res: %@",[res class]);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed req with %@",error);
-    }];
 }
 
 @end
