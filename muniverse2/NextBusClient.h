@@ -15,6 +15,6 @@ typedef enum {
     kDirectionOutbound
 } DirectionTypes;
 
-- (void)predictionForStopId:(int)stopId withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure;
+- (void)predictionForLineTag:(NSString *)lineTag atStopId:(int)stopId withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure;
 
 @end

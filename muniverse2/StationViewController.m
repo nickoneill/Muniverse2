@@ -9,6 +9,7 @@
 #import "StationViewController.h"
 #import "AppDelegate.h"
 #import "Subway.h"
+#import "Stop.h"
 #import "Line.h"
 #import "GroupedPredictionCell.h"
 #import "NextBusClient.h"
@@ -48,6 +49,8 @@
     }
     
     self.navigationItem.title = [self.subway valueForKey:@"name"];
+    
+    [self refreshPredictions];
 }
 
 #pragma mark - Table view data source
@@ -96,7 +99,7 @@
     }
     
     cell.primaryPrediction.text = @"";
-    cell.secondaryprediction.text = @"";
+    cell.secondaryPrediction.text = @"";
     
     return cell;
 }
@@ -117,11 +120,33 @@
     
     for (int i = 0; i < [self.lines count]; i++) {
         int stopid = 0;
+        NSString *lineTag = @"";
         if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
-//            stopid = [[self.lines objectAtIndex:i] inboundStop];
+            stopid = [[self.subway.inboundStop stopId] intValue];
+            lineTag = [[self.lines objectAtIndex:i] inboundTags];
+        } else {
+            stopid = [[self.subway.outboundStop stopId] intValue];
+            lineTag = [[self.lines objectAtIndex:i] outboundTags];
         }
         
-//        [client predictionForStopId:<#(int)#> withSuccess:<#^(NSArray *els)success#> andFailure:<#^(NSError *err)failure#>]
+        [client predictionForLineTag:lineTag atStopId:stopid withSuccess:^(NSArray *els) {
+            GroupedPredictionCell *cell = (GroupedPredictionCell *)[self.table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            
+            if ([els count]) {
+                cell.primaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:0]];
+                
+                if ([els count] > 1) {
+                    cell.secondaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:1]];
+                } else {
+                    cell.secondaryPrediction.text = @"";
+                }
+            } else {
+                cell.primaryPrediction.text = @"";
+                cell.secondaryPrediction.text = @"";
+            }
+        } andFailure:^(NSError *err) {
+            NSLog(@"some failure: %@",err);
+        }];
     }
 }
 

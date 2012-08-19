@@ -14,6 +14,6 @@
 @property (strong) IBOutlet UILabel *primaryText;
 @property (strong) IBOutlet UILabel *secondaryText;
 @property (strong) IBOutlet UILabel *primaryPrediction;
-@property (strong) IBOutlet UILabel *secondaryprediction;
+@property (strong) IBOutlet UILabel *secondaryPrediction;
 
 @end

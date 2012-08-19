@@ -223,8 +223,8 @@
                                             <outlet property="lineIcon" destination="m87-Na-Xw8" id="oOs-4s-gTh"/>
                                             <outlet property="primaryPrediction" destination="ISU-4z-XHe" id="XGr-la-qBR"/>
                                             <outlet property="primaryText" destination="gh2-cA-TgU" id="3Jf-b1-3z1"/>
+                                            <outlet property="secondaryPrediction" destination="DX2-ZJ-qjg" id="Iut-XN-f8i"/>
                                             <outlet property="secondaryText" destination="ez7-cG-ErB" id="gNi-UZ-n0r"/>
-                                            <outlet property="secondaryprediction" destination="DX2-ZJ-qjg" id="U5h-fu-GoK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -632,57 +632,6 @@
         <image name="Tab_Subway.png" width="30" height="30"/>
         <image name="placeholder-stop-icon-fav@2x.png" width="92" height="92"/>
     </resources>
-    <classes>
-        <class className="AllLinesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AllLinesTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="type" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="GroupedPredictionCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GroupedPredictionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lineIcon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="primaryPrediction" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="primaryText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="secondaryText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="secondaryprediction" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="LineDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LineDetailViewController.h"/>
-        </class>
-        <class className="LineDisplayCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LineDisplayCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="description" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="icon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="StationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="directionChange:"/>
-                <relationship kind="outlet" name="inoutcontrol" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="StopDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StopDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPredictions:"/>
-                <relationship kind="outlet" name="primaryArrival" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="secondaryArrival" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stopID" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stopName" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SubwayTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubwayTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

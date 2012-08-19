@@ -49,11 +49,11 @@
     
     NextBusClient *client = [[NextBusClient alloc] init];
     
-    int direction = kDirectionInbound;
+    NSString *lineTag = self.line.inboundTags;
     if (!self.isInbound) {
-        direction = kDirectionOutbound;
+        lineTag = self.line.outboundTags;
     }
-    [client predictionForStopId:[self.stop.stopId intValue] withSuccess:^(NSArray *els) {
+    [client predictionForLineTag:lineTag atStopId:[self.stop.stopId intValue] withSuccess:^(NSArray *els) {
         if ([els count]) {
             
             if ([[els objectAtIndex:0] intValue] == 0) {
