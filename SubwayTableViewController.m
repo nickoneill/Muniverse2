@@ -91,6 +91,15 @@
     return [[[self frc] sections] count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return @"Surface Stations";
+    } else {
+        return @"";
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id sectionInfo = [[[self frc] sections] objectAtIndex:section];
