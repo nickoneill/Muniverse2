@@ -71,7 +71,7 @@
     
     Line *line = [self.lines objectAtIndex:[indexPath row]];
     
-    cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Icon_%@.png",line.shortname]];
+    cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_%@.png",line.shortname]];
     
     if ([line.shortname isEqualToString:@"J"]) {
         cell.primaryText.text = @"Church";

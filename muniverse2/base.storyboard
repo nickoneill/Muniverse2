@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A256" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
@@ -185,21 +185,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="m87-Na-Xw8">
-                                                    <rect key="frame" x="0.0" y="-4" width="50" height="59"/>
+                                                    <rect key="frame" x="11" y="11" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="gh2-cA-TgU">
-                                                    <rect key="frame" x="60" y="6" width="175" height="21"/>
+                                                    <rect key="frame" x="51" y="6" width="185" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="ez7-cG-ErB">
-                                                    <rect key="frame" x="60" y="25" width="175" height="21"/>
+                                                    <rect key="frame" x="51" y="25" width="185" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ISU-4z-XHe">
@@ -632,56 +632,6 @@
         <image name="Tab_Subway.png" width="30" height="30"/>
         <image name="placeholder-stop-icon-fav@2x.png" width="92" height="92"/>
     </resources>
-    <classes>
-        <class className="AllLinesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AllLinesTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="type" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="GroupedPredictionCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GroupedPredictionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lineIcon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="primaryPrediction" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="primaryText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="secondaryText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="secondaryprediction" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="LineDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LineDetailViewController.h"/>
-        </class>
-        <class className="LineDisplayCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LineDisplayCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="description" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="icon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="StationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="inoutcontrol" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="StopDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StopDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPredictions:"/>
-                <relationship kind="outlet" name="primaryArrival" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="secondaryArrival" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stopID" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stopName" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SubwayTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubwayTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
