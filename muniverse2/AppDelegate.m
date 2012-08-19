@@ -60,7 +60,6 @@
         [stop setValue:[stopDict objectForKey:@"Lat"] forKey:@"lat"];
         [stop setValue:[stopDict objectForKey:@"Lon"] forKey:@"lon"];
         
-        NSLog(@"stop: %@",[[stopDict objectForKey:@"Tag"] class]);
         [stopCache setObject:stop forKey:[stopDict objectForKey:@"Tag"]];
     }
     

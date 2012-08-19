@@ -294,8 +294,8 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    Line *selectedLine = [[self frc] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
-//    [(LineDetailViewController *)[segue destinationViewController] setLine:selectedLine];
+    Line *selectedLine = [[self frc] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+    [(LineDetailViewController *)[segue destinationViewController] setLine:selectedLine];
 }
 
 @end

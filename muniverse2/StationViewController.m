@@ -113,7 +113,16 @@
 
 - (void)refreshPredictions
 {
+    NextBusClient *client = [[NextBusClient alloc] init];
     
+    for (int i = 0; i < [self.lines count]; i++) {
+        int stopid = 0;
+        if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+//            stopid = [[self.lines objectAtIndex:i] inboundStop];
+        }
+        
+//        [client predictionForStopId:<#(int)#> withSuccess:<#^(NSArray *els)success#> andFailure:<#^(NSError *err)failure#>]
+    }
 }
 
 - (NSString *)stripPrefix:(NSString *)prefix fromText:(NSString *)text

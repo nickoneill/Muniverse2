@@ -75,6 +75,7 @@ typedef enum {
         }        
     }
     
+    
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K IN %@",@"tag",stopTags];
     [fetchRequest setPredicate:pred];
     
