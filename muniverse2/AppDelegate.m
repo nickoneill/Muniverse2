@@ -62,7 +62,7 @@
         
         [stopCache setObject:stop forKey:[stopDict objectForKey:@"Tag"]];
     }
-    
+        
     for (int i = 0; i < [[jsonData objectForKey:@"LineList"] count]; i++) {
         NSDictionary *lineDict = [[jsonData objectForKey:@"LineList"] objectAtIndex:i];
         
@@ -111,6 +111,7 @@
         Subway *subway = [NSEntityDescription insertNewObjectForEntityForName:@"Subway" inManagedObjectContext:moc];
         [subway setValue:[subwayDict objectForKey:@"Name"] forKey:@"name"];
         [subway setValue:[stopCache objectForKey:[subwayDict objectForKey:@"IBStopTag"]] forKey:@"inboundStop"];
+        [subway setValue:[stopCache objectForKey:[subwayDict objectForKey:@"OBStopTag"]] forKey:@"outboundStop"];
         [subway setValue:[subwayDict objectForKey:@"AboveGround"] forKey:@"isAboveGround"];
         [subway setValue:[subwayDict objectForKey:@"Order"] forKey:@"order"];
     }

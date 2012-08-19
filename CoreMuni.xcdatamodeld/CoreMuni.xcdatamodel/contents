@@ -23,7 +23,7 @@
         <relationship name="ibSubway" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Subway" inverseName="inboundStop" inverseEntity="Subway" syncable="YES"/>
         <relationship name="inboundLines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Line" inverseName="inboundStops" inverseEntity="Line" syncable="YES"/>
         <relationship name="obSubway" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Subway" inverseName="outboundStop" inverseEntity="Subway" syncable="YES"/>
-        <relationship name="outboundLines" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Line" inverseName="outboundStops" inverseEntity="Line" syncable="YES"/>
+        <relationship name="outboundLines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Line" inverseName="outboundStops" inverseEntity="Line" syncable="YES"/>
     </entity>
     <entity name="Subway" representedClassName="Subway" syncable="YES">
         <attribute name="isAboveGround" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -33,8 +33,8 @@
         <relationship name="outboundStop" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Stop" inverseName="obSubway" inverseEntity="Stop" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Line" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Stop" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Subway" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Line" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="Stop" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="Subway" positionX="0" positionY="0" width="128" height="120"/>
     </elements>
 </model>

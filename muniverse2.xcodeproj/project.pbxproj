@@ -664,6 +664,8 @@
 				D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */,
 				D07B903015CDECAA00222BA3 /* LineDetailViewController.h */,
 				D07B903115CDECAA00222BA3 /* LineDetailViewController.m */,
+				D07B903B15D2F73300222BA3 /* StopDetailViewController.h */,
+				D07B903C15D2F73300222BA3 /* StopDetailViewController.m */,
 			);
 			name = "All Lines Tab";
 			sourceTree = "<group>";
@@ -673,8 +675,6 @@
 			children = (
 				D07D615715CCB1330035BEB7 /* LineDisplayCell.h */,
 				D07D615815CCB1330035BEB7 /* LineDisplayCell.m */,
-				D07B903B15D2F73300222BA3 /* StopDetailViewController.h */,
-				D07B903C15D2F73300222BA3 /* StopDetailViewController.m */,
 				D0661C2315E150D400AF3EC1 /* GroupedPredictionCell.h */,
 				D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */,
 			);

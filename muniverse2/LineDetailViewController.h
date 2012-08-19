@@ -10,10 +10,8 @@
 
 @class Line;
 
-@interface LineDetailViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface LineDetailViewController : UITableViewController
 
-@property (strong) NSManagedObjectContext *moc;
-@property (nonatomic, strong) NSFetchedResultsController *frc;
 @property (strong) UISegmentedControl *inoutcontrol;
 @property (strong) Line *line;
 @property (strong) NSMutableArray *stops;
