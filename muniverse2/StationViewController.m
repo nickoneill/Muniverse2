@@ -17,6 +17,11 @@
 
 @implementation StationViewController
 
+typedef enum {
+    kDirectionInbound,
+    kDirectionOutbound,
+} DirectionTypes;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -69,9 +74,28 @@
     
     Line *line = [self.lines objectAtIndex:[indexPath row]];
     
-    cell.textLabel.text = line.name;
+    if ([line.shortname isEqualToString:@"J"]) {
+        cell.textLabel.text = @"Church";
+    } else if ([line.shortname isEqualToString:@"L"]) {
+        cell.textLabel.text = @"Taraval";
+    } else if ([line.shortname isEqualToString:@"M"]) {
+        cell.textLabel.text = @"Ocean View";
+    } else if ([line.shortname isEqualToString:@"N"]) {
+        cell.textLabel.text = @"Judah";
+    } else if ([line.shortname isEqualToString:@"KT"]) {
+        if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+            cell.textLabel.text = @"Third Street";
+        } else {
+            cell.textLabel.text = @"Ingleside";
+        }
+    }
     
     return cell;
+}
+
+- (IBAction)directionChange:(id)sender
+{
+    [self.table reloadData];
 }
 
 - (void)didReceiveMemoryWarning

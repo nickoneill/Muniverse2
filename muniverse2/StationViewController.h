@@ -15,5 +15,6 @@
 @property (strong) Subway *subway;
 @property (strong) NSArray *lines;
 @property (strong) IBOutlet UITableView *table;
+@property (strong) IBOutlet UISegmentedControl *inoutcontrol;
 
 @end
