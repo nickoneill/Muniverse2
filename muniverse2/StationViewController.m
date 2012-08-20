@@ -138,7 +138,7 @@
                 if ([els count] > 1) {
                     cell.secondaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:1]];
                 } else {
-                    cell.secondaryPrediction.text = @"";
+                    cell.secondaryPrediction.text = @"--";
                 }
             } else {
                 cell.primaryPrediction.text = @"";
