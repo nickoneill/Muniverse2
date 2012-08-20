@@ -20,7 +20,9 @@
 @property (strong) IBOutlet UILabel *stopID;
 @property (strong) IBOutlet UILabel *primaryArrival;
 @property (strong) IBOutlet UILabel *secondaryArrival;
+@property (strong) IBOutlet UIButton *favoriteButton;
 
 - (IBAction)refreshPredictions:(id)sender;
+- (IBAction)toggleFavorite:(id)sender;
 
 @end

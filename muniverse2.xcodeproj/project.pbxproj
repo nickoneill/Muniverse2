@@ -151,6 +151,8 @@
 		D08AC51315D790D600A45338 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = D08AC50515D790D600A45338 /* CTidy.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8B515B4E8320032236A /* SubwayTableViewController.m */; };
 		D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8BB15B4E9F10032236A /* StationViewController.m */; };
+		D0938E6215E1C75100CCAF78 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0938E6115E1C75100CCAF78 /* FavoritesViewController.m */; };
+		D0938E6515E1CABA00CCAF78 /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = D0938E6415E1CAB900CCAF78 /* Favorite.m */; };
 		D0AB65AC15D70EC3003FD349 /* NextBusClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AB65AB15D70EC3003FD349 /* NextBusClient.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
 		D0C602D015D5E942003200E9 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602BC15D5E942003200E9 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -347,6 +349,10 @@
 		D092B8B515B4E8320032236A /* SubwayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubwayTableViewController.m; path = ../SubwayTableViewController.m; sourceTree = "<group>"; };
 		D092B8BA15B4E9F10032236A /* StationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationViewController.h; sourceTree = "<group>"; };
 		D092B8BB15B4E9F10032236A /* StationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationViewController.m; sourceTree = "<group>"; };
+		D0938E6015E1C75100CCAF78 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		D0938E6115E1C75100CCAF78 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		D0938E6315E1CAB900CCAF78 /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
+		D0938E6415E1CAB900CCAF78 /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		D0AB65AA15D70EC3003FD349 /* NextBusClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextBusClient.h; sourceTree = "<group>"; };
 		D0AB65AB15D70EC3003FD349 /* NextBusClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextBusClient.m; sourceTree = "<group>"; };
 		D0B7C00715B0B17F00DBDE20 /* CoreMuni.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMuni.xcdatamodel; sourceTree = "<group>"; };
@@ -736,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				D07D615515CCB1050035BEB7 /* Shared Classes */,
+				D0938E5E15E1C73700CCAF78 /* Favorites */,
 				D07BE00D15CB221D0054E392 /* All Lines Tab */,
 				D092B8B915B4E84A0032236A /* Subway Tab */,
 			);
@@ -751,6 +758,15 @@
 				D092B8BB15B4E9F10032236A /* StationViewController.m */,
 			);
 			name = "Subway Tab";
+			sourceTree = "<group>";
+		};
+		D0938E5E15E1C73700CCAF78 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				D0938E6015E1C75100CCAF78 /* FavoritesViewController.h */,
+				D0938E6115E1C75100CCAF78 /* FavoritesViewController.m */,
+			);
+			name = Favorites;
 			sourceTree = "<group>";
 		};
 		D0C602BA15D5E942003200E9 /* AFNetworking */ = {
@@ -803,6 +819,8 @@
 		D0FA288A15B4B52F00ECE53D /* Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
+				D0938E6315E1CAB900CCAF78 /* Favorite.h */,
+				D0938E6415E1CAB900CCAF78 /* Favorite.m */,
 				D0F2739F15E18CA5003EF4C0 /* Line.h */,
 				D0F273A015E18CA5003EF4C0 /* Line.m */,
 				D0EBAA3315E0582D0014A8E5 /* Subway.h */,
@@ -1070,6 +1088,8 @@
 				D0EBAA3515E0582D0014A8E5 /* Subway.m in Sources */,
 				D0661C2515E150D400AF3EC1 /* GroupedPredictionCell.m in Sources */,
 				D0F273A115E18CA5003EF4C0 /* Line.m in Sources */,
+				D0938E6215E1C75100CCAF78 /* FavoritesViewController.m in Sources */,
+				D0938E6515E1CABA00CCAF78 /* Favorite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

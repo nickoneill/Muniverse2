@@ -7,9 +7,11 @@
 //
 
 #import "StopDetailViewController.h"
+#import "AppDelegate.h"
 #import "NextBusClient.h"
 #import "Stop.h"
 #import "Line.h"
+#import "Favorite.h"
 #import "TouchXML.h"
 
 @interface StopDetailViewController ()
@@ -40,6 +42,11 @@
     self.primaryArrival.text = @"Fetching...";
     self.secondaryArrival.text = @"";
     
+    if ([self isFavorite]) {
+        [self.favoriteButton setTitle:@"Remove favorite" forState:UIControlStateNormal];
+    } else {
+        [self.favoriteButton setTitle:@"Add fffavorite" forState:UIControlStateNormal];
+    }
     [self refreshPredictions:nil];
 }
 
@@ -83,6 +90,51 @@
         
         [self setBarButtonItemRefreshing:NO];
     }];
+}
+
+- (IBAction)toggleFavorite:(id)sender
+{
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+
+    if ([self isFavorite]) {
+        // remove the favorite
+    } else {
+        // add the favorite
+        Favorite *fav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:app.managedObjectContext];
+        
+        [fav setIsInbound:[NSNumber numberWithBool:self.isInbound]];
+        [fav setLine:self.line];
+        [fav setStop:self.stop];
+        
+        NSError *err;
+        if (![app.managedObjectContext save:&err]) {
+            NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
+        }
+        
+        [self.favoriteButton setTitle:@"Remove favorite" forState:UIControlStateNormal];
+    }
+}
+
+- (BOOL)isFavorite
+{
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Favorite"];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ && %K == %@",@"stop",self.stop,@"line",self.line];
+    
+    [req setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *results = [app.managedObjectContext executeFetchRequest:req error:&error];
+    if (!results) {
+        NSLog(@"Fetch error: %@", error);
+        abort();
+    }
+    if ([results count] == 0) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)setBarButtonItemRefreshing:(BOOL)refreshing
