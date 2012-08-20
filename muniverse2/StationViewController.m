@@ -74,21 +74,26 @@
     
     Line *line = [self.lines objectAtIndex:[indexPath row]];
     
-    cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_%@.png",line.shortname]];
     
     if ([line.shortname isEqualToString:@"J"]) {
         cell.primaryText.text = @"Church";
+        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_J.png"]];
     } else if ([line.shortname isEqualToString:@"L"]) {
         cell.primaryText.text = @"Taraval";
+        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_L.png"]];
     } else if ([line.shortname isEqualToString:@"M"]) {
         cell.primaryText.text = @"Ocean View";
+        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_M.png"]];
     } else if ([line.shortname isEqualToString:@"N"]) {
         cell.primaryText.text = @"Judah";
+        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_N.png"]];
     } else if ([line.shortname isEqualToString:@"KT"]) {
         if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
             cell.primaryText.text = @"Third Street";
+            cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
         } else {
             cell.primaryText.text = @"Ingleside";
+            cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_K.png"]];
         }
     }
     
@@ -111,7 +116,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    return @"KT is sometimes K, sometimes T. I know, that's some whack shit.";
+    return @"K-Ingleside/T-Third Street is one line which changes name at different points in the tunnel.";
 }
 
 - (void)refreshPredictions
