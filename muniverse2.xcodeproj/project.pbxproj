@@ -130,6 +130,7 @@
 		D03165CB15AB76AE009DF347 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03165B215AB76AE009DF347 /* Foundation.framework */; };
 		D03165D315AB76AE009DF347 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03165D115AB76AE009DF347 /* InfoPlist.strings */; };
 		D03165D615AB76AE009DF347 /* muniverse2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D03165D515AB76AE009DF347 /* muniverse2Tests.m */; };
+		D039D98215E44A040089F3AF /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D039D98115E44A040089F3AF /* FavoriteCell.m */; };
 		D0661C2515E150D400AF3EC1 /* GroupedPredictionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */; };
 		D076180915BCDF6000783055 /* muniversedata.json in Resources */ = {isa = PBXBuildFile; fileRef = D076180815BCDF6000783055 /* muniversedata.json */; };
 		D07B903215CDECAA00222BA3 /* LineDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B903115CDECAA00222BA3 /* LineDetailViewController.m */; };
@@ -307,6 +308,8 @@
 		D03165D215AB76AE009DF347 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D03165D415AB76AE009DF347 /* muniverse2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = muniverse2Tests.h; sourceTree = "<group>"; };
 		D03165D515AB76AE009DF347 /* muniverse2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muniverse2Tests.m; sourceTree = "<group>"; };
+		D039D98015E44A040089F3AF /* FavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteCell.h; sourceTree = "<group>"; };
+		D039D98115E44A040089F3AF /* FavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteCell.m; sourceTree = "<group>"; };
 		D0661C2315E150D400AF3EC1 /* GroupedPredictionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupedPredictionCell.h; sourceTree = "<group>"; };
 		D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupedPredictionCell.m; sourceTree = "<group>"; };
 		D076180815BCDF6000783055 /* muniversedata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = muniversedata.json; sourceTree = "<group>"; };
@@ -683,6 +686,8 @@
 				D07D615815CCB1330035BEB7 /* LineDisplayCell.m */,
 				D0661C2315E150D400AF3EC1 /* GroupedPredictionCell.h */,
 				D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */,
+				D039D98015E44A040089F3AF /* FavoriteCell.h */,
+				D039D98115E44A040089F3AF /* FavoriteCell.m */,
 			);
 			name = "Shared Classes";
 			sourceTree = "<group>";
@@ -1090,6 +1095,7 @@
 				D0F273A115E18CA5003EF4C0 /* Line.m in Sources */,
 				D0938E6215E1C75100CCAF78 /* FavoritesViewController.m in Sources */,
 				D0938E6515E1CABA00CCAF78 /* Favorite.m in Sources */,
+				D039D98215E44A040089F3AF /* FavoriteCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

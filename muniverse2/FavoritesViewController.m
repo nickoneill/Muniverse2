@@ -9,6 +9,7 @@
 #import "FavoritesViewController.h"
 #import "AppDelegate.h"
 #import "Favorite.h"
+#import "FavoriteCell.h"
 #import "Line.h"
 #import "Stop.h"
 
@@ -107,18 +108,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FavoriteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)ip
+- (void)configureCell:(FavoriteCell *)cell atIndexPath:(NSIndexPath *)ip
 {
     Favorite *fav = [self.frc objectAtIndexPath:ip];
     
-    cell.textLabel.text = fav.stop.name;
+    cell.stopName.text = fav.stop.name;
+    cell.lineName.text = fav.line.name;
+    if (fav.isInbound) {
+        cell.destination.text = fav.line.inboundDesc;
+    } else {
+        cell.destination.text = fav.line.outboundDesc;
+    }
 }
 
 /*
@@ -183,7 +190,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(FavoriteCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
