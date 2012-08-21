@@ -217,8 +217,6 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[[self.tableView indexPathForSelectedRow] row]];
-
     // set our detail stop info
     Stop *selectedStop = [self.stops objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
     [(StopDetailViewController *)[segue destinationViewController] setStop:selectedStop];

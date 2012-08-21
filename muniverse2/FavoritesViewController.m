@@ -13,6 +13,7 @@
 #import "Line.h"
 #import "Stop.h"
 #import "NextBusClient.h"
+#import "StopDetailViewController.h"
 
 @interface FavoritesViewController ()
 
@@ -277,6 +278,23 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // set our detail stop info
+    Favorite *selectedFav = [self.frc objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+    [(StopDetailViewController *)[segue destinationViewController] setStop:selectedFav.stop];
+    
+    // set line and direction info
+    [(StopDetailViewController *)[segue destinationViewController] setLine:selectedFav.line];
+    
+    if (selectedFav.isInbound) {
+        [(StopDetailViewController *)[segue destinationViewController] setIsInbound:YES];
+    } else {
+        [(StopDetailViewController *)[segue destinationViewController] setIsInbound:NO];
+    }
+
 }
 
 @end
