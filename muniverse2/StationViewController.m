@@ -112,6 +112,7 @@
 - (IBAction)directionChange:(id)sender
 {
     [self.table reloadData];
+    [self refreshPredictions];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
