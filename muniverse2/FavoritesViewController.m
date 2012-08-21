@@ -12,6 +12,7 @@
 #import "FavoriteCell.h"
 #import "Line.h"
 #import "Stop.h"
+#import "NextBusClient.h"
 
 @interface FavoritesViewController ()
 
@@ -44,6 +45,7 @@
         NSLog(@"whoops with faves frc: %@",error);
     }
 
+    [self refreshPredictions];
 }
 
 - (NSFetchedResultsController *)frc {
@@ -127,6 +129,47 @@
         cell.destination.text = fav.line.outboundDesc;
     }
 }
+
+- (IBAction)refreshAll:(id)sender
+{
+    [self refreshPredictions];
+}
+
+- (void)refreshPredictions
+{
+    NextBusClient *client = [[NextBusClient alloc] init];
+    
+    for (int i = 0; i < [[self.frc fetchedObjects] count]; i++) {
+        Favorite *fav = [self.frc objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        int stopid = [fav.stop.stopId intValue];
+        NSString *lineTag = @"";
+        if (fav.isInbound) {
+            lineTag = fav.line.inboundTags;
+        } else {
+            lineTag = fav.line.outboundTags;
+        }
+        
+        [client predictionForLineTag:lineTag atStopId:stopid withSuccess:^(NSArray *els) {
+            FavoriteCell *cell = (FavoriteCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            
+            if ([els count]) {
+                cell.primaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:0]];
+                
+                if ([els count] > 1) {
+                    cell.secondaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:1]];
+                } else {
+                    cell.secondaryPrediction.text = @"--";
+                }
+            } else {
+                cell.primaryPrediction.text = @"";
+                cell.secondaryPrediction.text = @"";
+            }
+        } andFailure:^(NSError *err) {
+            NSLog(@"some failure: %@",err);
+        }];
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.
