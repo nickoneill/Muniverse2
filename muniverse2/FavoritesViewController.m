@@ -162,8 +162,8 @@
                     cell.secondaryPrediction.text = @"--";
                 }
             } else {
-                cell.primaryPrediction.text = @"";
-                cell.secondaryPrediction.text = @"";
+                cell.primaryPrediction.text = @"--";
+                cell.secondaryPrediction.text = @"--";
             }
         } andFailure:^(NSError *err) {
             NSLog(@"some failure: %@",err);
