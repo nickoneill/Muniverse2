@@ -98,9 +98,12 @@
     }
     
     if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
-        cell.secondaryText.text = [self stripPrefix:@"Inbound " fromText:line.inboundDesc];
+        cell.secondaryText.text = [line.inboundDesc stringByReplacingOccurrencesOfString:@"Inbound t" withString:@"T"];
+//      cell.secondaryText.text = [self stripPrefix:@"Inbound " fromText:line.inboundDesc];
     } else {
-        cell.secondaryText.text = [self stripPrefix:@"Outbound " fromText:line.outboundDesc];
+
+        cell.secondaryText.text = [line.outboundDesc stringByReplacingOccurrencesOfString:@"Outbound t" withString:@"T"];
+//      cell.secondaryText.text = [self stripPrefix:@"Outbound " fromText:line.outboundDesc];
     }
     
     cell.primaryPrediction.text = @"--";
