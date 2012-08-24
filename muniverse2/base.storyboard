@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
@@ -81,7 +82,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AV9-ur-v0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="1065"/>
+            <point key="canvasLocation" x="1703" y="1064"/>
         </scene>
         <!--View Controller - Nearby-->
         <scene sceneID="zek-IF-lda">
@@ -179,7 +180,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVa-cV-KZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="3299"/>
+            <point key="canvasLocation" x="1690" y="3299"/>
         </scene>
         <!--Subway Table View Controller - Subway Stations-->
         <scene sceneID="RBp-h1-tlZ">
@@ -210,7 +211,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZA-nF-3t4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="2659"/>
+            <point key="canvasLocation" x="1703" y="2659"/>
         </scene>
         <!--Station View Controller - Station Name-->
         <scene sceneID="Uue-sL-K6q">
@@ -400,7 +401,7 @@
             </objects>
             <point key="canvasLocation" x="1703" y="1867"/>
         </scene>
-        <!--Line Detail View Controller - Directions-->
+        <!--Line Detail View Controller - Line Name-->
         <scene sceneID="Rkg-ON-ILR">
             <objects>
                 <tableViewController id="A1V-RA-QXc" customClass="LineDetailViewController" sceneMemberID="viewController">
@@ -530,7 +531,7 @@
                             <outlet property="delegate" destination="A1V-RA-QXc" id="BYi-bb-PQj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Directions" id="5HG-EA-Ebg">
+                    <navigationItem key="navigationItem" title="Line Name" id="5HG-EA-Ebg">
                         <barButtonItem key="backBarButtonItem" title="X-Line" id="fdu-H6-Uw6"/>
                     </navigationItem>
                 </tableViewController>
@@ -538,7 +539,7 @@
             </objects>
             <point key="canvasLocation" x="2149" y="1867"/>
         </scene>
-        <!--Stop Detail View Controller - Stop Detail-->
+        <!--Stop Detail View Controller - Arrival Times-->
         <scene sceneID="f7o-66-skx">
             <objects>
                 <viewController id="xb6-As-9jv" customClass="StopDetailViewController" sceneMemberID="viewController">
@@ -607,7 +608,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Stop Detail" id="ne8-Dr-6dh">
+                    <navigationItem key="navigationItem" title="Arrival Times" id="ne8-Dr-6dh">
                         <barButtonItem key="backBarButtonItem" title="Stop" id="1IR-LU-lgf"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="lcj-yK-AGr">
                             <connections>
@@ -626,7 +627,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppf-GL-L7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2661" y="1500"/>
+            <point key="canvasLocation" x="2823" y="1467"/>
         </scene>
         <!--Navigation Controller - All Lines-->
         <scene sceneID="RHI-Op-cza">
@@ -760,6 +761,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="y8u-WC-Wwy"/>
+        <segue reference="uQX-81-USq"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -106,8 +106,8 @@
 //      cell.secondaryText.text = [self stripPrefix:@"Outbound " fromText:line.outboundDesc];
     }
     
-    cell.primaryPrediction.text = @"--";
-    cell.secondaryPrediction.text = @"--";
+    cell.primaryPrediction.text = @"";
+    cell.secondaryPrediction.text = @"";
     
     return cell;
 }
