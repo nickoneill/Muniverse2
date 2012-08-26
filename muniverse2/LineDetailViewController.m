@@ -147,18 +147,24 @@ typedef enum {
     
     if ([ip row] == 0) {
         NSString *middlePath = [[NSBundle mainBundle] pathForResource:@"Marker_Start" ofType:@"png"];
+        NSString *middlePathHighlighted = [[NSBundle mainBundle] pathForResource:@"Marker_Start-h" ofType:@"png"];
         cell.imageView.image = [UIImage imageWithContentsOfFile:middlePath];
-    } else if ([ip row] > 0 && [ip row] < [self.stops count]-1) {
+        cell.imageView.highlightedImage = [UIImage imageWithContentsOfFile:middlePathHighlighted];
+   } else if ([ip row] > 0 && [ip row] < [self.stops count]-1) {
         NSString *middlePath = [[NSBundle mainBundle] pathForResource:@"Marker_Middle" ofType:@"png"];
+        NSString *middlePathHighlighted = [[NSBundle mainBundle] pathForResource:@"Marker_Middle-h" ofType:@"png"];
         cell.imageView.image = [UIImage imageWithContentsOfFile:middlePath];
+        cell.imageView.highlightedImage = [UIImage imageWithContentsOfFile:middlePathHighlighted];
     } else if ([ip row] == [self.stops count]-1) {
         NSString *endPath = [[NSBundle mainBundle] pathForResource:@"Marker_End" ofType:@"png"];
+        NSString *endPathHighlighted = [[NSBundle mainBundle] pathForResource:@"Marker_End-h" ofType:@"png"];
         cell.imageView.image = [UIImage imageWithContentsOfFile:endPath];
-    }
+        cell.imageView.highlightedImage = [UIImage imageWithContentsOfFile:endPathHighlighted];
+   }
 
     
     cell.textLabel.text = stop.name;
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
+//    cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
 
 }
 
