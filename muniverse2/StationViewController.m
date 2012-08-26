@@ -120,7 +120,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    return @"K-Ingleside/T-Third Street is one line which changes name at different points in the tunnel.";
+    return @"  ";
 }
 
 - (void)refreshPredictions
