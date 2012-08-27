@@ -152,7 +152,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    return @"T-Third Street trains continue outbound as K-Ingleside after Folsom & Embarcadero";
+    return @"T-Third Street line continues outbound as K-Ingleside after Folsom & Embarcadero";
 }
 
 - (void)refreshPredictions
