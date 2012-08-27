@@ -78,38 +78,70 @@
     if ([line.shortname isEqualToString:@"J"]) {
         cell.primaryText.text = @"Church";
         cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_J.png"]];
+        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
+            cell.secondaryText.text = @"To Balboa Park Station";
+        } else {
+            cell.secondaryText.text = @"To Embarcadero Station";
+        }
     } else if ([line.shortname isEqualToString:@"L"]) {
         cell.primaryText.text = @"Taraval";
         cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_L.png"]];
+        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
+            cell.secondaryText.text = @"To SF Zoo";
+        } else {
+            cell.secondaryText.text = @"To Embarcadero Station";
+        }
     } else if ([line.shortname isEqualToString:@"M"]) {
         cell.primaryText.text = @"Ocean View";
         cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_M.png"]];
+        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
+            cell.secondaryText.text = @"To Balboa Park Station";
+        } else {
+            cell.secondaryText.text = @"To Embarcadero Station";
+        }
     } else if ([line.shortname isEqualToString:@"N"]) {
         cell.primaryText.text = @"Judah";
         cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_N.png"]];
-    } else if ([line.shortname isEqualToString:@"KT"]) {
-        if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
-            cell.primaryText.text = @"Third Street";
-            cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
+        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
+            cell.secondaryText.text = @"To Ocean Beach";
         } else {
-            cell.primaryText.text = @"Ingleside";
-            cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_K.png"]];
+            cell.secondaryText.text = @"To Ballpark/Caltrain";
+        }
+    } else if ([line.shortname isEqualToString:@"KT"]) {
+        
+        // special case to handle it being T outbound on the surface and K outbound in the tunnel
+        
+        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
+            if ([self.subway.isAboveGround intValue] == 0) {
+                cell.primaryText.text = @"Ingleside";
+                cell.secondaryText.text = @"To Balboa Park Station";
+                cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_K.png"]];
+            } else {
+                cell.primaryText.text = @"Third Street";
+                cell.secondaryText.text = @"To Castro Station";
+                cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
+            }        
+        } else {
+            cell.primaryText.text = @"Third Street";
+            cell.secondaryText.text = @"To Sunnydale";
+            cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
         }
     }
     
-    if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
-        cell.secondaryText.text = [line.inboundDesc stringByReplacingOccurrencesOfString:@"Inbound t" withString:@"T"];
+//    if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+    //      cell.secondaryText.text = [line.inboundDesc stringByReplacingOccurrencesOfString:@"Inbound t" withString:@"T"];
 //      cell.secondaryText.text = [self stripPrefix:@"Inbound " fromText:line.inboundDesc];
-    } else {
+//    } else {
 
-        cell.secondaryText.text = [line.outboundDesc stringByReplacingOccurrencesOfString:@"Outbound t" withString:@"T"];
+//        cell.secondaryText.text = [line.outboundDesc stringByReplacingOccurrencesOfString:@"Outbound t" withString:@"T"];
 //      cell.secondaryText.text = [self stripPrefix:@"Outbound " fromText:line.outboundDesc];
-    }
+//    }
     
     cell.primaryPrediction.text = @"";
     cell.secondaryPrediction.text = @"";
     
     return cell;
+
 }
 
 - (IBAction)directionChange:(id)sender
@@ -120,7 +152,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    return @"  ";
+    return @"T-Third Street trains continue outbound as K-Ingleside after Folsom & Embarcadero";
 }
 
 - (void)refreshPredictions
