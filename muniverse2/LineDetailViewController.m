@@ -38,7 +38,7 @@ typedef enum {
     [super viewDidLoad];
     
     self.title = self.line.name;
-    
+        
     [self directionChange:nil];
 }
 
@@ -129,6 +129,9 @@ typedef enum {
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         self.inoutcontrol = (UISegmentedControl *)[cell viewWithTag:1];
         [self.inoutcontrol addTarget:self action:@selector(directionChange:) forControlEvents:UIControlEventValueChanged];
+        if (self.line.outboundSort == nil) {
+            [self.inoutcontrol setEnabled:NO forSegmentAtIndex:1];
+        }
     } else {
         static NSString *CellIdentifier = @"Cell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
