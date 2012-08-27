@@ -75,6 +75,7 @@
         [line setValue:[lineDict objectForKey:@"OBTag"] forKey:@"outboundTags"];
         [line setValue:[lineDict objectForKey:@"InboundDesc"] forKey:@"inboundDesc"];
         [line setValue:[lineDict objectForKey:@"OutboundDesc"] forKey:@"outboundDesc"];
+        [line setValue:[lineDict objectForKey:@"AllLinesSort"] forKey:@"allLinesSort"];
         
         NSString *stopsort = @"";
         if ([lineDict objectForKey:@"InboundTags"] != [NSNull null]) {

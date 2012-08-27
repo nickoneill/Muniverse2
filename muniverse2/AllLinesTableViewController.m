@@ -74,7 +74,7 @@ typedef enum {
         [fetchRequest setPredicate:pred];
     }
     
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"shortname" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"allLinesSort" ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:20];
@@ -176,6 +176,7 @@ typedef enum {
     cell.imageView.highlightedImage = [UIImage imageNamed:[NSString stringWithFormat:@"Icon_%@-h.png",line.shortname]];
 
     cell.textLabel.text = line.name;
+    cell.detailTextLabel.text = line.inboundDesc;
 }
 
 /*

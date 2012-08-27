@@ -119,6 +119,7 @@
 		43CD348315B4C188005D8CA2 /* Tab_Favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 43CD348115B4C188005D8CA2 /* Tab_Favorites.png */; };
 		43CD348415B4C188005D8CA2 /* Tab_Favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43CD348215B4C188005D8CA2 /* Tab_Favorites@2x.png */; };
 		D014A27F15AE1D1600FF5952 /* base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D014A27E15AE1D1600FF5952 /* base.storyboard */; };
+		D01F3E6215EC308A00584F2D /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F3E6115EC308A00584F2D /* Line.m */; };
 		D03165B115AB76AE009DF347 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03165B015AB76AE009DF347 /* UIKit.framework */; };
 		D03165B315AB76AE009DF347 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03165B215AB76AE009DF347 /* Foundation.framework */; };
 		D03165B515AB76AE009DF347 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03165B415AB76AE009DF347 /* CoreGraphics.framework */; };
@@ -169,7 +170,6 @@
 		D0C602DE15D5E95E003200E9 /* LAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602DD15D5E95E003200E9 /* LAUtil.m */; };
 		D0EBAA3215E0582D0014A8E5 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EBAA3115E0582D0014A8E5 /* Stop.m */; };
 		D0EBAA3515E0582D0014A8E5 /* Subway.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EBAA3415E0582D0014A8E5 /* Subway.m */; };
-		D0F273A115E18CA5003EF4C0 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F273A015E18CA5003EF4C0 /* Line.m */; };
 		D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
@@ -292,6 +292,8 @@
 		43CD348115B4C188005D8CA2 /* Tab_Favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Favorites.png; sourceTree = "<group>"; };
 		43CD348215B4C188005D8CA2 /* Tab_Favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Favorites@2x.png"; sourceTree = "<group>"; };
 		D014A27E15AE1D1600FF5952 /* base.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = base.storyboard; sourceTree = "<group>"; };
+		D01F3E6015EC308A00584F2D /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		D01F3E6115EC308A00584F2D /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		D03165AC15AB76AE009DF347 /* muniverse2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muniverse2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03165B015AB76AE009DF347 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D03165B215AB76AE009DF347 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -386,8 +388,6 @@
 		D0EBAA3115E0582D0014A8E5 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		D0EBAA3315E0582D0014A8E5 /* Subway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subway.h; sourceTree = "<group>"; };
 		D0EBAA3415E0582D0014A8E5 /* Subway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subway.m; sourceTree = "<group>"; };
-		D0F2739F15E18CA5003EF4C0 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = ../Line.h; sourceTree = "<group>"; };
-		D0F273A015E18CA5003EF4C0 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Line.m; path = ../Line.m; sourceTree = "<group>"; };
 		D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -826,8 +826,8 @@
 			children = (
 				D0938E6315E1CAB900CCAF78 /* Favorite.h */,
 				D0938E6415E1CAB900CCAF78 /* Favorite.m */,
-				D0F2739F15E18CA5003EF4C0 /* Line.h */,
-				D0F273A015E18CA5003EF4C0 /* Line.m */,
+				D01F3E6015EC308A00584F2D /* Line.h */,
+				D01F3E6115EC308A00584F2D /* Line.m */,
 				D0EBAA3315E0582D0014A8E5 /* Subway.h */,
 				D0EBAA3415E0582D0014A8E5 /* Subway.m */,
 				D0EBAA3015E0582D0014A8E5 /* Stop.h */,
@@ -1092,10 +1092,10 @@
 				D0EBAA3215E0582D0014A8E5 /* Stop.m in Sources */,
 				D0EBAA3515E0582D0014A8E5 /* Subway.m in Sources */,
 				D0661C2515E150D400AF3EC1 /* GroupedPredictionCell.m in Sources */,
-				D0F273A115E18CA5003EF4C0 /* Line.m in Sources */,
 				D0938E6215E1C75100CCAF78 /* FavoritesViewController.m in Sources */,
 				D0938E6515E1CABA00CCAF78 /* Favorite.m in Sources */,
 				D039D98215E44A040089F3AF /* FavoriteCell.m in Sources */,
+				D01F3E6215EC308A00584F2D /* Line.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
