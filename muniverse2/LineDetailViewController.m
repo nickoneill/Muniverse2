@@ -144,8 +144,6 @@ typedef enum {
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)ip
 {
-    // rewrite this index path because we manually create the first section
-//    NSIndexPath *newpath = [[NSIndexPath indexPathWithIndex:0] indexPathByAddingIndex:[ip row]];
     Stop *stop = [self.stops objectAtIndex:[ip row]];
     
     if ([ip row] == 0) {
@@ -164,11 +162,8 @@ typedef enum {
         cell.imageView.image = [UIImage imageWithContentsOfFile:endPath];
         cell.imageView.highlightedImage = [UIImage imageWithContentsOfFile:endPathHighlighted];
    }
-
     
     cell.textLabel.text = stop.name;
-//    cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
-
 }
 
 /*
