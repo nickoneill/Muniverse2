@@ -113,8 +113,11 @@ typedef enum {
         return @"";
     } else {
         if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+
+            self.line.inboundDesc = [self.line.inboundDesc stringByReplacingOccurrencesOfString:@"Inbound t" withString:@"T"];
             return self.line.inboundDesc;
         } else {
+            self.line.outboundDesc = [self.line.outboundDesc stringByReplacingOccurrencesOfString:@"Outbound t" withString:@"T"];
             return self.line.outboundDesc;
         }
     }
