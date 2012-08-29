@@ -2,7 +2,7 @@
 //  Stop.m
 //  muniverse2
 //
-//  Created by Nick O'Neill on 8/18/12.
+//  Created by Nick O'Neill on 8/29/12.
 //  Copyright (c) 2012 Nick O'Neill. All rights reserved.
 //
 
@@ -13,13 +13,14 @@
 
 @implementation Stop
 
+@dynamic lat;
+@dynamic lon;
 @dynamic name;
 @dynamic stopId;
 @dynamic tag;
-@dynamic lat;
-@dynamic lon;
-@dynamic lines;
 @dynamic ibSubway;
+@dynamic inboundLines;
 @dynamic obSubway;
+@dynamic outboundLines;
 
 @end

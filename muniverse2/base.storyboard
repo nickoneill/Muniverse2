@@ -71,7 +71,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorites" id="Q60-2r-fXF">
                         <barButtonItem key="backBarButtonItem" title="Favorites" id="Uib-3s-lmW"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="ksX-S3-Uad"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="ksX-S3-Uad">
+                            <connections>
+                                <action selector="editButton:" destination="Wlu-aR-MCt" id="FR0-Q3-PZ2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="rvO-Pj-qGF">
                             <connections>
                                 <action selector="refreshAll:" destination="Wlu-aR-MCt" id="seg-jj-zCL"/>
@@ -128,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="1212" y="1064"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Muni Tab Controller-->
         <scene sceneID="4ni-mb-4l8">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="qez-RO-x6V" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="qez-RO-x6V" customClass="MuniTabController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="3dP-ic-BwD"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <nil key="simulatedBottomBarMetrics"/>

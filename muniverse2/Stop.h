@@ -2,7 +2,7 @@
 //  Stop.h
 //  muniverse2
 //
-//  Created by Nick O'Neill on 8/18/12.
+//  Created by Nick O'Neill on 8/29/12.
 //  Copyright (c) 2012 Nick O'Neill. All rights reserved.
 //
 
@@ -13,21 +13,27 @@
 
 @interface Stop : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * lat;
+@property (nonatomic, retain) NSNumber * lon;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * stopId;
 @property (nonatomic, retain) NSNumber * tag;
-@property (nonatomic, retain) NSNumber * lat;
-@property (nonatomic, retain) NSNumber * lon;
-@property (nonatomic, retain) NSSet *lines;
 @property (nonatomic, retain) Subway *ibSubway;
+@property (nonatomic, retain) NSSet *inboundLines;
 @property (nonatomic, retain) Subway *obSubway;
+@property (nonatomic, retain) NSSet *outboundLines;
 @end
 
 @interface Stop (CoreDataGeneratedAccessors)
 
-- (void)addLinesObject:(Line *)value;
-- (void)removeLinesObject:(Line *)value;
-- (void)addLines:(NSSet *)values;
-- (void)removeLines:(NSSet *)values;
+- (void)addInboundLinesObject:(Line *)value;
+- (void)removeInboundLinesObject:(Line *)value;
+- (void)addInboundLines:(NSSet *)values;
+- (void)removeInboundLines:(NSSet *)values;
+
+- (void)addOutboundLinesObject:(Line *)value;
+- (void)removeOutboundLinesObject:(Line *)value;
+- (void)addOutboundLines:(NSSet *)values;
+- (void)removeOutboundLines:(NSSet *)values;
 
 @end

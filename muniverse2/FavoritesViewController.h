@@ -13,4 +13,7 @@
 @property (nonatomic,strong) NSManagedObjectContext *moc;
 @property (nonatomic,strong) NSFetchedResultsController *frc;
 
+- (IBAction)refreshAll:(id)sender;
+- (IBAction)editButton:(id)sender;
+
 @end

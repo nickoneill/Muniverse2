@@ -171,6 +171,28 @@
     }
 }
 
+- (IBAction)editButton:(id)sender
+{
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+    
+    [fetch setPredicate:[NSPredicate predicateWithFormat:@"%K == %@",@"stopId",@14015]];
+    
+    NSError *err;
+    NSArray *stops = [self.moc executeFetchRequest:fetch error:&err];
+    
+    Stop *stop = [stops objectAtIndex:0];
+    
+    Favorite *newfav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:self.moc];
+    
+    [newfav setIsInbound:[NSNumber numberWithBool:YES]];
+    [newfav setStop:stop];
+    [newfav setLine:[[stop inboundLines] anyObject]];
+    
+    if (![self.moc save:&err]) {
+        NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.

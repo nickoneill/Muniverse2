@@ -2,7 +2,7 @@
 //  Favorite.h
 //  muniverse2
 //
-//  Created by Nick O'Neill on 8/19/12.
+//  Created by Nick O'Neill on 8/29/12.
 //  Copyright (c) 2012 Nick O'Neill. All rights reserved.
 //
 
@@ -15,7 +15,8 @@
 
 @property (nonatomic, retain) NSNumber * isInbound;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) Stop *stop;
+@property (nonatomic, retain) NSNumber * order;
 @property (nonatomic, retain) Line *line;
+@property (nonatomic, retain) Stop *stop;
 
 @end

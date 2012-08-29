@@ -94,24 +94,29 @@
 
 - (IBAction)toggleFavorite:(id)sender
 {
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-
     if ([self isFavorite]) {
         // remove the favorite
     } else {
-        // add the favorite
-        Favorite *fav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:app.managedObjectContext];
-        
-        [fav setIsInbound:[NSNumber numberWithBool:self.isInbound]];
-        [fav setLine:self.line];
-        [fav setStop:self.stop];
-        
-        NSError *err;
-        if (![app.managedObjectContext save:&err]) {
-            NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
-        }
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteAdded" object:nil];
         [self.favoriteButton setTitle:@"Remove favorite" forState:UIControlStateNormal];
+        // add the favorite
+        [self performSelector:@selector(addFavorite) withObject:nil afterDelay:0.6];
+    }
+}
+
+- (void)addFavorite
+{
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    Favorite *fav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:app.managedObjectContext];
+    
+    [fav setIsInbound:[NSNumber numberWithBool:self.isInbound]];
+    [fav setLine:self.line];
+    [fav setStop:self.stop];
+    
+    NSError *err;
+    if (![app.managedObjectContext save:&err]) {
+        NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
     }
 }
 
