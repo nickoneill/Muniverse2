@@ -45,7 +45,7 @@
     if ([self isFavorite]) {
         [self.favoriteButton setTitle:@"Remove favorite" forState:UIControlStateNormal];
     } else {
-        [self.favoriteButton setTitle:@"Add fffavorite" forState:UIControlStateNormal];
+        [self.favoriteButton setTitle:@"Add favorite" forState:UIControlStateNormal];
     }
     [self refreshPredictions:nil];
 }
