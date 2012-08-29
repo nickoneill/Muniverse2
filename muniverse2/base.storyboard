@@ -798,9 +798,6 @@
         </class>
         <class className="FavoritesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshAll:"/>
-            </relationships>
         </class>
         <class className="GroupedPredictionCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GroupedPredictionCell.h"/>
@@ -826,7 +823,6 @@
         <class className="StationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
             <relationships>
-                <relationship kind="action" name="directionChange:"/>
                 <relationship kind="outlet" name="inoutcontrol" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="table" candidateClass="UITableView"/>
             </relationships>
