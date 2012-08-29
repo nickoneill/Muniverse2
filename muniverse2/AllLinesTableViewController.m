@@ -161,11 +161,12 @@ typedef enum {
 {
     Line *line;
     if (self.type.selectedSegmentIndex == kHistoricType) {
+        // yep, also unhappy with this
         NSIndexPath *newip;
         if ([ip section] == 0) {
-            newip = [NSIndexPath indexPathForRow:3 inSection:0];
+            newip = [NSIndexPath indexPathForRow:0 inSection:0];
         } else {
-            newip = [NSIndexPath indexPathForRow:[ip row] inSection:0];
+            newip = [NSIndexPath indexPathForRow:[ip row]+1 inSection:0];
         }
         line = [[self frc] objectAtIndexPath:newip];
     } else {
@@ -220,59 +221,59 @@ typedef enum {
 
 #pragma mark - frc delegate stuff
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
-    [self.tableView beginUpdates];
-}
-
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    
-    UITableView *tableView = self.tableView;
-    
-    switch(type) {
-            
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:[NSArray
-                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:[NSArray
-                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-    
-    switch(type) {
-            
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
-    [self.tableView endUpdates];
-}
+//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+//    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+//    [self.tableView beginUpdates];
+//}
+//
+//
+//- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+//    
+//    UITableView *tableView = self.tableView;
+//    
+//    switch(type) {
+//            
+//        case NSFetchedResultsChangeInsert:
+//            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//            
+//        case NSFetchedResultsChangeDelete:
+//            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//            
+//        case NSFetchedResultsChangeUpdate:
+//            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+//            break;
+//            
+//        case NSFetchedResultsChangeMove:
+//            [tableView deleteRowsAtIndexPaths:[NSArray
+//                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            [tableView insertRowsAtIndexPaths:[NSArray
+//                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//    }
+//}
+//
+//
+//- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+//    
+//    switch(type) {
+//            
+//        case NSFetchedResultsChangeInsert:
+//            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//            
+//        case NSFetchedResultsChangeDelete:
+//            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//    }
+//}
+//
+//
+//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+//    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+//    [self.tableView endUpdates];
+//}
 
 #pragma mark - Table view delegate
 
@@ -289,7 +290,22 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    Line *selectedLine = [[self frc] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];    
+    Line *selectedLine;
+    
+    if (self.type.selectedSegmentIndex == kHistoricType) {
+        // uh, this is teh sux
+        NSIndexPath *tablepath = [self.tableView indexPathForSelectedRow];
+        
+        NSIndexPath *frcpath = [NSIndexPath indexPathForRow:0 inSection:0];
+        if ([tablepath section] == 1) {
+            frcpath = [NSIndexPath indexPathForRow:[tablepath row]+1 inSection:0];
+        }
+        
+        selectedLine = [[self frc] objectAtIndexPath:frcpath];
+    } else {
+        selectedLine = [[self frc] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+    }
+    
     [(LineDetailViewController *)[segue destinationViewController] setLine:selectedLine];
 }
 
