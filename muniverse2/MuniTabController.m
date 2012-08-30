@@ -7,6 +7,7 @@
 //
 
 #import "MuniTabController.h"
+#import "AppDelegate.h"
 
 @interface MuniTabController ()
 
@@ -35,6 +36,17 @@
             [self setSelectedIndex:1];
         }];
     }];
+    
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Favorite"];
+    
+    NSError *err;
+    int favorites = [app.managedObjectContext countForFetchRequest:fetch error:&err];
+
+    if (favorites > 0) {
+        [self setSelectedIndex:1];
+    }
 }
 
 - (void)viewDidUnload

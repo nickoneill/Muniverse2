@@ -172,6 +172,8 @@
 		D0C602D815D5E942003200E9 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602CD15D5E942003200E9 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0C602D915D5E942003200E9 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602CF15D5E942003200E9 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0C602DE15D5E95E003200E9 /* LAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602DD15D5E95E003200E9 /* LAUtil.m */; };
+		D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */; };
+		D0C7F04315EEEDB800A06EA6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C7F04215EEEDB800A06EA6 /* MapKit.framework */; };
 		D0EBAA3515E0582D0014A8E5 /* Subway.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EBAA3415E0582D0014A8E5 /* Subway.m */; };
 		D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */; };
 /* End PBXBuildFile section */
@@ -393,6 +395,9 @@
 		D0C602CF15D5E942003200E9 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		D0C602DC15D5E95E003200E9 /* LAUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAUtil.h; sourceTree = "<group>"; };
 		D0C602DD15D5E95E003200E9 /* LAUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAUtil.m; sourceTree = "<group>"; };
+		D0C7F03D15EEED7700A06EA6 /* NearbyMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyMapViewController.h; sourceTree = "<group>"; };
+		D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyMapViewController.m; sourceTree = "<group>"; };
+		D0C7F04215EEEDB800A06EA6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D0EBAA3315E0582D0014A8E5 /* Subway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subway.h; sourceTree = "<group>"; };
 		D0EBAA3415E0582D0014A8E5 /* Subway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subway.m; sourceTree = "<group>"; };
 		D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -403,6 +408,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C7F04315EEEDB800A06EA6 /* MapKit.framework in Frameworks */,
 				D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */,
 				D03165B115AB76AE009DF347 /* UIKit.framework in Frameworks */,
 				D03165B315AB76AE009DF347 /* Foundation.framework in Frameworks */,
@@ -617,6 +623,7 @@
 		D03165AF15AB76AE009DF347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0C7F04215EEEDB800A06EA6 /* MapKit.framework */,
 				D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */,
 				D03165B015AB76AE009DF347 /* UIKit.framework */,
 				D03165B215AB76AE009DF347 /* Foundation.framework */,
@@ -758,6 +765,7 @@
 				D074AD6215EED1A300D5BC84 /* MuniTabController.h */,
 				D074AD6315EED1A300D5BC84 /* MuniTabController.m */,
 				D07D615515CCB1050035BEB7 /* Shared Classes */,
+				D0C7F04115EEED8100A06EA6 /* Nearby */,
 				D0938E5E15E1C73700CCAF78 /* Favorites */,
 				D07BE00D15CB221D0054E392 /* All Lines Tab */,
 				D092B8B915B4E84A0032236A /* Subway Tab */,
@@ -830,6 +838,15 @@
 				D0C602DD15D5E95E003200E9 /* LAUtil.m */,
 			);
 			name = "Launch Apps";
+			sourceTree = "<group>";
+		};
+		D0C7F04115EEED8100A06EA6 /* Nearby */ = {
+			isa = PBXGroup;
+			children = (
+				D0C7F03D15EEED7700A06EA6 /* NearbyMapViewController.h */,
+				D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */,
+			);
+			name = Nearby;
 			sourceTree = "<group>";
 		};
 		D0FA288A15B4B52F00ECE53D /* Managed Objects */ = {
@@ -1110,6 +1127,7 @@
 				D074AD5E15EECE1B00D5BC84 /* Line.m in Sources */,
 				D074AD6115EECE1C00D5BC84 /* Favorite.m in Sources */,
 				D074AD6415EED1A300D5BC84 /* MuniTabController.m in Sources */,
+				D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
