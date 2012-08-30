@@ -143,7 +143,12 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    return @"T-Third Street line continues outbound as K-Ingleside after Folsom & Embarcadero";
+    if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
+        return @"T-Third Street line continues outbound as K-Ingleside after Folsom & Embarcadero";
+    } else {
+        return @"For Ballpark or Caltrain service, take any inbound N-Judah or T-Third Street train";
+    }
+
 }
 
 - (void)refreshPredictions
