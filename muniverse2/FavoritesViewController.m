@@ -59,7 +59,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Favorite" inManagedObjectContext:self.moc];
     [fetchRequest setEntity:entity];
         
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:20];

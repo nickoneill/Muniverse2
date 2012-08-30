@@ -107,17 +107,40 @@
 - (void)addFavorite
 {
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    
+        
     Favorite *fav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:app.managedObjectContext];
     
     [fav setIsInbound:[NSNumber numberWithBool:self.isInbound]];
     [fav setLine:self.line];
     [fav setStop:self.stop];
+    [fav setOrder:[NSNumber numberWithInt:[self maxFavoriteOrder]]];
     
     NSError *err;
     if (![app.managedObjectContext save:&err]) {
         NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
     }
+}
+
+- (int)maxFavoriteOrder
+{
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Favorite"];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:NO];
+    
+    [fetch setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    [fetch setFetchLimit:1];
+    
+    NSError *err;
+    NSArray *maxfav = [app.managedObjectContext executeFetchRequest:fetch error:&err];
+    
+    int maxorder = 0;
+    if ([maxfav count] == 1) {
+        maxorder = [[[maxfav objectAtIndex:0] order] integerValue];
+    }
+    
+    return maxorder;
 }
 
 - (BOOL)isFavorite
