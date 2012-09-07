@@ -14,4 +14,6 @@
 + (id)recursiveMutable:(id)object;
 // returns documents path
 + (NSString *)docsPath;
+// bumps up single-line text in multi-line labels for top alignment
++ (void)alignTop:(UILabel *)label;
 @end

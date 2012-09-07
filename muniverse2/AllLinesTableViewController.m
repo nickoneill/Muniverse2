@@ -177,7 +177,8 @@ typedef enum {
     cell.imageView.highlightedImage = [UIImage imageNamed:[NSString stringWithFormat:@"Icon_%@-h.png",line.shortname]];
 
     cell.textLabel.text = line.name;
-    cell.detailTextLabel.text = line.inboundDesc;
+    cell.detailTextLabel.text = line.fullDesc;
+    [LAUtil alignTop:cell.detailTextLabel];
 }
 
 /*
