@@ -138,6 +138,7 @@
 		D074AD5E15EECE1B00D5BC84 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D074AD5D15EECE1B00D5BC84 /* Line.m */; };
 		D074AD6115EECE1C00D5BC84 /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = D074AD6015EECE1C00D5BC84 /* Favorite.m */; };
 		D074AD6415EED1A300D5BC84 /* MuniTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = D074AD6315EED1A300D5BC84 /* MuniTabController.m */; };
+		D074AD7F15EFE6C000D5BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D074AD7E15EFE6C000D5BC84 /* CoreLocation.framework */; };
 		D076180915BCDF6000783055 /* muniversedata.json in Resources */ = {isa = PBXBuildFile; fileRef = D076180815BCDF6000783055 /* muniversedata.json */; };
 		D07B903215CDECAA00222BA3 /* LineDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B903115CDECAA00222BA3 /* LineDetailViewController.m */; };
 		D07B903D15D2F73300222BA3 /* StopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B903C15D2F73300222BA3 /* StopDetailViewController.m */; };
@@ -327,6 +328,7 @@
 		D074AD6015EECE1C00D5BC84 /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		D074AD6215EED1A300D5BC84 /* MuniTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuniTabController.h; sourceTree = "<group>"; };
 		D074AD6315EED1A300D5BC84 /* MuniTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuniTabController.m; sourceTree = "<group>"; };
+		D074AD7E15EFE6C000D5BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D076180815BCDF6000783055 /* muniversedata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = muniversedata.json; sourceTree = "<group>"; };
 		D07B903015CDECAA00222BA3 /* LineDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDetailViewController.h; sourceTree = "<group>"; };
 		D07B903115CDECAA00222BA3 /* LineDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDetailViewController.m; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D074AD7F15EFE6C000D5BC84 /* CoreLocation.framework in Frameworks */,
 				D0C7F04315EEEDB800A06EA6 /* MapKit.framework in Frameworks */,
 				D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */,
 				D03165B115AB76AE009DF347 /* UIKit.framework in Frameworks */,
@@ -623,6 +626,7 @@
 		D03165AF15AB76AE009DF347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D074AD7E15EFE6C000D5BC84 /* CoreLocation.framework */,
 				D0C7F04215EEEDB800A06EA6 /* MapKit.framework */,
 				D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */,
 				D03165B015AB76AE009DF347 /* UIKit.framework */,

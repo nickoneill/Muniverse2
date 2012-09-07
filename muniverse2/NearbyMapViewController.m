@@ -7,6 +7,7 @@
 //
 
 #import "NearbyMapViewController.h"
+#import <MapKit/MapKit.h>
 
 @interface NearbyMapViewController ()
 
@@ -26,7 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    [self.map setCenterCoordinate:CLLocationCoordinate2DMake(37.766644, -122.414474)];
 }
 
 - (void)viewDidUnload

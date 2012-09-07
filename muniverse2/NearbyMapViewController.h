@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class MKMapView;
+
 @interface NearbyMapViewController : UIViewController
+
+@property (strong) IBOutlet MKMapView *map;
 
 @end
