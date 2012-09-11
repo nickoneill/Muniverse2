@@ -82,9 +82,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="edit" destination="ksX-S3-Uad" id="cmX-GV-KRj"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AV9-ur-v0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -790,7 +787,6 @@
             <relationships>
                 <relationship kind="action" name="editButton:"/>
                 <relationship kind="action" name="refreshAll:"/>
-                <relationship kind="outlet" name="edit" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="GroupedPredictionCell" superclassName="UITableViewCell">
@@ -825,6 +821,10 @@
         </class>
         <class className="NewStopDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewStopDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="StationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
