@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class Stop,Line;
+@class Stop,Line,MKMapView;
 
 @interface NewStopDetailViewController : UIViewController
 
 @property (strong) Stop *stop;
 @property (strong) Line *line;
 @property BOOL isInbound;
+
+@property (strong) IBOutlet MKMapView *map;
 
 @end

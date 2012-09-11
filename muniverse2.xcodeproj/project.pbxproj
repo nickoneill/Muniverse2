@@ -160,6 +160,7 @@
 		D092B8B615B4E8320032236A /* SubwayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8B515B4E8320032236A /* SubwayTableViewController.m */; };
 		D092B8BC15B4E9F10032236A /* StationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D092B8BB15B4E9F10032236A /* StationViewController.m */; };
 		D0938E6215E1C75100CCAF78 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0938E6115E1C75100CCAF78 /* FavoritesViewController.m */; };
+		D0A4A29015FEC1370043462C /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A4A28F15FEC1370043462C /* MKMapView+ZoomLevel.m */; };
 		D0AB65AC15D70EC3003FD349 /* NextBusClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AB65AB15D70EC3003FD349 /* NextBusClient.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
 		D0C602D015D5E942003200E9 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602BC15D5E942003200E9 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -372,6 +373,8 @@
 		D092B8BB15B4E9F10032236A /* StationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationViewController.m; sourceTree = "<group>"; };
 		D0938E6015E1C75100CCAF78 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		D0938E6115E1C75100CCAF78 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		D0A4A28E15FEC1370043462C /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
+		D0A4A28F15FEC1370043462C /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		D0AB65AA15D70EC3003FD349 /* NextBusClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextBusClient.h; sourceTree = "<group>"; };
 		D0AB65AB15D70EC3003FD349 /* NextBusClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextBusClient.m; sourceTree = "<group>"; };
 		D0B7C00715B0B17F00DBDE20 /* CoreMuni.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMuni.xcdatamodel; sourceTree = "<group>"; };
@@ -836,6 +839,8 @@
 				D08AC4E915D790D600A45338 /* TouchXML */,
 				D0C602DF15D5E962003200E9 /* Launch Apps */,
 				D0C602BA15D5E942003200E9 /* AFNetworking */,
+				D0A4A28E15FEC1370043462C /* MKMapView+ZoomLevel.h */,
+				D0A4A28F15FEC1370043462C /* MKMapView+ZoomLevel.m */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -1138,6 +1143,7 @@
 				D074AD6415EED1A300D5BC84 /* MuniTabController.m in Sources */,
 				D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */,
 				D0C7F04615F14B9F00A06EA6 /* NewStopDetailViewController.m in Sources */,
+				D0A4A29015FEC1370043462C /* MKMapView+ZoomLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
