@@ -173,37 +173,47 @@
 
 - (IBAction)editButton:(id)sender
 {
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-    
-    [fetch setPredicate:[NSPredicate predicateWithFormat:@"%K == %@",@"stopId",@14015]];
-    
-    NSError *err;
-    NSArray *stops = [self.moc executeFetchRequest:fetch error:&err];
-    
-    Stop *stop = [stops objectAtIndex:0];
-    
-    Favorite *newfav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:self.moc];
-    
-    [newfav setIsInbound:[NSNumber numberWithBool:YES]];
-    [newfav setStop:stop];
-    [newfav setLine:[[stop inboundLines] anyObject]];
-    
-    if (![self.moc save:&err]) {
-        NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
+    UIBarButtonItem *button = sender;
+        
+    if ([self.tableView isEditing]) {
+        [button setTitle:@"Edit"];
+        [button setStyle:UIBarButtonItemStylePlain];
+
+        [self.tableView setEditing:NO animated:YES];
+    } else {
+        [button setTitle:@"Done"];
+        [button setStyle:UIBarButtonItemStyleDone];
+        
+        [self.tableView setEditing:YES animated:YES];
     }
+//    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+//    
+//    [fetch setPredicate:[NSPredicate predicateWithFormat:@"%K == %@",@"stopId",@14015]];
+//    
+//    NSError *err;
+//    NSArray *stops = [self.moc executeFetchRequest:fetch error:&err];
+//    
+//    Stop *stop = [stops objectAtIndex:0];
+//    
+//    Favorite *newfav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:self.moc];
+//    
+//    [newfav setIsInbound:[NSNumber numberWithBool:YES]];
+//    [newfav setStop:stop];
+//    [newfav setLine:[[stop inboundLines] anyObject]];
+//    
+//    if (![self.moc save:&err]) {
+//        NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
+//    }
 }
 
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -215,14 +225,11 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
-/*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 }
-*/
 
 /*
 // Override to support conditional rearranging of the table view.
