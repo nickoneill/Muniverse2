@@ -12,6 +12,7 @@
 #import "Stop.h"
 #import <MapKit/MapKit.h>
 #import "MKMapView+ZoomLevel.h"
+#import "NextBusClient.h"
 
 @interface NewStopDetailViewController ()
 
@@ -33,6 +34,34 @@
     [super viewDidLoad];
 	
     [self.map setCenterCoordinate:CLLocationCoordinate2DMake([self.stop.lat floatValue], [self.stop.lon floatValue]) zoomLevel:15 animated:NO];
+    
+    NextBusClient *client = [[NextBusClient alloc] init];
+    
+    NSString *lineTag = @"";
+    if (self.isInbound) {
+        lineTag = self.line.inboundTags;
+    } else {
+        lineTag = self.line.outboundTags;
+    }
+
+    [client predictionForLineTag:lineTag atStopId:[self.stop.stopId intValue] withSuccess:^(NSArray *els) {
+        GroupedPredictionCell *cell = (GroupedPredictionCell *)[self.table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        
+        if ([els count]) {
+            cell.primaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:0]];
+            
+            if ([els count] > 1) {
+                cell.secondaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:1]];
+            } else {
+                cell.secondaryPrediction.text = @"--";
+            }
+        } else {
+            cell.primaryPrediction.text = @"";
+            cell.secondaryPrediction.text = @"";
+        }
+    } andFailure:^(NSError *err) {
+        NSLog(@"some failure: %@",err);
+    }];
     
 }
 
@@ -66,8 +95,8 @@
         cell.secondaryText.text = self.line.outboundDesc;
     }
     
-    if ([self.line.shortname isEqualToString:@"J"]) {
-        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_L.png"]];
+    if (self.line.metro) {
+        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_@%.png",self.line.shortname]];
     }
 
     cell.primaryPrediction.text = @"--";

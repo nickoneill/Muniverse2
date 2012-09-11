@@ -17,5 +17,6 @@
 @property BOOL isInbound;
 
 @property (strong) IBOutlet MKMapView *map;
+@property (strong) IBOutlet UITableView *table;
 
 @end
