@@ -276,7 +276,7 @@
 		438661FE15DE8F09008725DC /* Tab_LocationArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_LocationArrow@2x.png"; sourceTree = "<group>"; };
 		4399365015ED50D60053E518 /* Stop_Fav_Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop_Fav_Off.png; sourceTree = "<group>"; };
 		4399365115ED50D60053E518 /* Stop_Fav_On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop_Fav_On.png; sourceTree = "<group>"; };
-		43AD8A991601374800771A80 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		43AD8A991601374800771A80 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		43B53F4115B5A98C001F3DCE /* Subway_Icon_J.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Subway_Icon_J.png; sourceTree = "<group>"; };
 		43B53F4215B5A98C001F3DCE /* Subway_Icon_J@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Subway_Icon_J@2x.png"; sourceTree = "<group>"; };
 		43B53F4315B5A98C001F3DCE /* Subway_Icon_K.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Subway_Icon_K.png; sourceTree = "<group>"; };
@@ -451,6 +451,7 @@
 				43CD347015B4BBFC005D8CA2 /* Background@2x.png */,
 				435BA57515AC61A500D26FA1 /* Default.png */,
 				435BA57615AC61A500D26FA1 /* Default@2x.png */,
+				43AD8A991601374800771A80 /* Default-568h@2x.png */,
 				4308300315B868A9007EA209 /* DirectionBar_Inbound.png */,
 				4308300415B868A9007EA209 /* DirectionBar_Inbound@2x.png */,
 				4308300515B868A9007EA209 /* DirectionBar_Outbound.png */,
@@ -615,7 +616,6 @@
 		D03165A115AB76AE009DF347 = {
 			isa = PBXGroup;
 			children = (
-				43AD8A991601374800771A80 /* Default-568h@2x.png */,
 				D03165B615AB76AE009DF347 /* muniverse2 */,
 				D03165CE15AB76AE009DF347 /* muniverse2Tests */,
 				D03165AF15AB76AE009DF347 /* Frameworks */,
@@ -1243,7 +1243,7 @@
 				GCC_PREFIX_HEADER = "muniverse2/muniverse2-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "muniverse2/muniverse2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1260,7 +1260,7 @@
 				GCC_PREFIX_HEADER = "muniverse2/muniverse2-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "muniverse2/muniverse2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
