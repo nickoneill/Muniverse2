@@ -8,6 +8,7 @@
 
 #import "NearbyMapViewController.h"
 #import <MapKit/MapKit.h>
+#import "MKMapView+ZoomLevel.h"
 
 @interface NearbyMapViewController ()
 
@@ -28,7 +29,7 @@
 {
     [super viewDidLoad];
 	
-    [self.map setCenterCoordinate:CLLocationCoordinate2DMake(37.766644, -122.414474)];
+    [self.map setCenterCoordinate:CLLocationCoordinate2DMake(37.766644, -122.414474) zoomLevel:11 animated:NO];
 }
 
 - (void)viewDidUnload

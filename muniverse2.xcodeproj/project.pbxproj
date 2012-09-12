@@ -302,7 +302,7 @@
 		43CD348115B4C188005D8CA2 /* Tab_Favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Favorites.png; sourceTree = "<group>"; };
 		43CD348215B4C188005D8CA2 /* Tab_Favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Favorites@2x.png"; sourceTree = "<group>"; };
 		D014A27E15AE1D1600FF5952 /* base.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = base.storyboard; sourceTree = "<group>"; };
-		D03165AC15AB76AE009DF347 /* muniverse2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muniverse2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D03165AC15AB76AE009DF347 /* Muniverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muniverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03165B015AB76AE009DF347 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D03165B215AB76AE009DF347 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D03165B415AB76AE009DF347 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -623,7 +623,7 @@
 		D03165AD15AB76AE009DF347 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D03165AC15AB76AE009DF347 /* muniverse2.app */,
+				D03165AC15AB76AE009DF347 /* Muniverse.app */,
 				D03165C715AB76AE009DF347 /* muniverse2Tests.octest */,
 			);
 			name = Products;
@@ -881,9 +881,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D03165AB15AB76AE009DF347 /* muniverse2 */ = {
+		D03165AB15AB76AE009DF347 /* Muniverse */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D03165D915AB76AE009DF347 /* Build configuration list for PBXNativeTarget "muniverse2" */;
+			buildConfigurationList = D03165D915AB76AE009DF347 /* Build configuration list for PBXNativeTarget "Muniverse" */;
 			buildPhases = (
 				D03165A815AB76AE009DF347 /* Sources */,
 				D03165A915AB76AE009DF347 /* Frameworks */,
@@ -893,9 +893,9 @@
 			);
 			dependencies = (
 			);
-			name = muniverse2;
+			name = Muniverse;
 			productName = muniverse2;
-			productReference = D03165AC15AB76AE009DF347 /* muniverse2.app */;
+			productReference = D03165AC15AB76AE009DF347 /* Muniverse.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D03165C615AB76AE009DF347 /* muniverse2Tests */ = {
@@ -938,7 +938,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D03165AB15AB76AE009DF347 /* muniverse2 */,
+				D03165AB15AB76AE009DF347 /* Muniverse */,
 				D03165C615AB76AE009DF347 /* muniverse2Tests */,
 			);
 		};
@@ -1160,7 +1160,7 @@
 /* Begin PBXTargetDependency section */
 		D03165CD15AB76AE009DF347 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D03165AB15AB76AE009DF347 /* muniverse2 */;
+			target = D03165AB15AB76AE009DF347 /* Muniverse */;
 			targetProxy = D03165CC15AB76AE009DF347 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1239,7 +1239,7 @@
 				GCC_PREFIX_HEADER = "muniverse2/muniverse2-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "muniverse2/muniverse2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1256,7 +1256,7 @@
 				GCC_PREFIX_HEADER = "muniverse2/muniverse2-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "muniverse2/muniverse2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1312,7 +1312,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D03165D915AB76AE009DF347 /* Build configuration list for PBXNativeTarget "muniverse2" */ = {
+		D03165D915AB76AE009DF347 /* Build configuration list for PBXNativeTarget "Muniverse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D03165DA15AB76AE009DF347 /* Debug */,
