@@ -110,10 +110,12 @@
         
     Favorite *fav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:app.managedObjectContext];
     
+    int max = [self maxFavoriteOrder] + 1;
+    
     [fav setIsInbound:[NSNumber numberWithBool:self.isInbound]];
     [fav setLine:self.line];
     [fav setStop:self.stop];
-    [fav setOrder:[NSNumber numberWithInt:[self maxFavoriteOrder]]];
+    [fav setOrder:[NSNumber numberWithInt:max]];
     
     NSError *err;
     if (![app.managedObjectContext save:&err]) {

@@ -59,7 +59,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Favorite" inManagedObjectContext:self.moc];
     [fetchRequest setEntity:entity];
         
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:NO];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:20];
@@ -176,6 +176,14 @@
     UIBarButtonItem *button = sender;
         
     if ([self.tableView isEditing]) {
+        
+        // favorite order debugging
+        NSMutableArray *favs = [[self.frc fetchedObjects] mutableCopy];
+        
+        for (Favorite *favobj in favs) {
+            NSLog(@"fav: %@ %@",favobj.line.name,favobj.order);
+        }
+        
         [button setTitle:@"Edit"];
         [button setStyle:UIBarButtonItemStylePlain];
 
@@ -188,13 +196,10 @@
     }
 }
 
+- (void)resetFavoriteOrder
+{
 
-// Override to support conditional editing of the table view.
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Return NO if you do not want the specified item to be editable.
-//    return YES;
-//}
+}
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -217,21 +222,26 @@
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    NSLog(@"rearranged %d to %d",[fromIndexPath row],[toIndexPath row]);
-}
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"end");
+    
+    NSMutableArray *favs = [[self.frc fetchedObjects] mutableCopy];
+    
+    Favorite *fav = [self.frc objectAtIndexPath:fromIndexPath];
+    
+    [favs removeObject:fav];
+    [favs insertObject:fav atIndex:[toIndexPath row]];
+    
+    int i = 0;
+    for (Favorite *favobj in favs) {
+        [favobj setOrder:[NSNumber numberWithInt:i++]];
+    }
+    
+    NSError *err;
+    [self.moc save:&err];
+    if (err != nil) {
+        NSLog(@"there was an issue reordering the favorite");
+    }
+    
+    [self.tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
 }
 
 #pragma mark - frc delegate stuff
@@ -261,10 +271,7 @@
             break;
             
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:[NSArray
-                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:[NSArray
-                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            // don't do our work for us
             break;
     }
 }
