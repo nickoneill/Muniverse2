@@ -259,6 +259,7 @@
     switch(type) {
             
         case NSFetchedResultsChangeInsert:
+            [self refreshPredictions];
             [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             

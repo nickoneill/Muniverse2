@@ -33,6 +33,9 @@
 {
     [super viewDidLoad];
 	
+    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Background" ofType:@"png"]];
+    [self.table setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
+    
     [self.map setCenterCoordinate:CLLocationCoordinate2DMake([self.stop.lat floatValue], [self.stop.lon floatValue]) zoomLevel:15 animated:NO];
     
     NextBusClient *client = [[NextBusClient alloc] init];
