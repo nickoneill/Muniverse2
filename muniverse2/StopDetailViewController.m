@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
         
-    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Background" ofType:@"png"]];
+    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
     
     self.stopName.text = self.stop.name;

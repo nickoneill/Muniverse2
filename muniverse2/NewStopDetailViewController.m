@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 	
-    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Background" ofType:@"png"]];
+    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundBottomTrimLine" ofType:@"png"]];
     [self.table setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
     
     [self.map setCenterCoordinate:CLLocationCoordinate2DMake([self.stop.lat floatValue], [self.stop.lon floatValue]) zoomLevel:15 animated:NO];
