@@ -13,5 +13,7 @@
 @interface NearbyMapViewController : UIViewController
 
 @property (strong) IBOutlet MKMapView *map;
+@property (strong) NSMutableArray *loadedStops;
+@property BOOL shouldZoomToUser;
 
 @end
