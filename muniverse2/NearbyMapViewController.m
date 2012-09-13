@@ -42,6 +42,8 @@
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
     NSLog(@"region change");
+    // don't zoom to user if the region has been changed alredy
+    self.shouldZoomToUser = NO;
     
     [self loadAndDisplayStopsAroundCoordinate:[mapView region].center];
 }
