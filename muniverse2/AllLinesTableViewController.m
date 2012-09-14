@@ -178,7 +178,6 @@ typedef enum {
 
     cell.textLabel.text = line.name;
     cell.detailTextLabel.text = line.fullDesc;
-    [LAUtil alignTop:cell.detailTextLabel];
 }
 
 /*

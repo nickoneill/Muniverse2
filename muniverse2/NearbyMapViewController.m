@@ -32,20 +32,23 @@
     [super viewDidLoad];
     
     self.loadedStops = [NSMutableArray array];
-    self.shouldZoomToUser = YES;
     
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(37.766644, -122.414474);
 	
     [self.map setCenterCoordinate:coord zoomLevel:11 animated:NO];
+    
+    self.shouldZoomToUser = YES;
 }
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
-    NSLog(@"region change");
+    NSLog(@"region change %d",self.shouldZoomToUser);
     // don't zoom to user if the region has been changed alredy
 //    self.shouldZoomToUser = NO;
     
-//    [self loadAndDisplayStopsAroundCoordinate:[mapView region].center];
+//    if (!self.shouldZoomToUser) {
+//        [self loadAndDisplayStopsAroundCoordinate:[mapView region].center];
+//    }
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
