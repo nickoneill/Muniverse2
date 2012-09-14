@@ -43,9 +43,9 @@
 {
     NSLog(@"region change");
     // don't zoom to user if the region has been changed alredy
-    self.shouldZoomToUser = NO;
+//    self.shouldZoomToUser = NO;
     
-    [self loadAndDisplayStopsAroundCoordinate:[mapView region].center];
+//    [self loadAndDisplayStopsAroundCoordinate:[mapView region].center];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -65,11 +65,19 @@
 
 - (void)loadAndDisplayStopsAroundCoordinate:(CLLocationCoordinate2D)coord
 {
-    float adjustment = 0.004;
+    float adjustment = 0.001;
+    
+    MKCoordinateRegion region = [self.map region];
+    CLLocationCoordinate2D mincoord;
+    mincoord.latitude = region.center.latitude - (region.span.latitudeDelta/2) + adjustment;
+    mincoord.longitude = region.center.longitude - (region.span.longitudeDelta/2) + adjustment;
+    CLLocationCoordinate2D maxcoord;
+    maxcoord.latitude = region.center.latitude + (region.span.latitudeDelta/2) - adjustment;
+    maxcoord.longitude = region.center.longitude + (region.span.longitudeDelta/2) - adjustment;
     
     NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
     
-    NSPredicate *nearbyPredicate = [NSPredicate predicateWithFormat:@"%K > %f && %K < %f && %K > %f && %K < %f",@"lat",coord.latitude-adjustment,@"lat",coord.latitude+adjustment,@"lon",coord.longitude-adjustment,@"lon",coord.longitude+adjustment];
+    NSPredicate *nearbyPredicate = [NSPredicate predicateWithFormat:@"%K > %f && %K < %f && %K > %f && %K < %f",@"lat",mincoord.latitude,@"lat",maxcoord.latitude,@"lon",mincoord.longitude,@"lon",maxcoord.longitude];
     [fetch setPredicate:nearbyPredicate];
     
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
