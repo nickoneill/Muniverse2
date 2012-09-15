@@ -245,7 +245,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="m87-Na-Xw8">
-                                                    <rect key="frame" x="11" y="11" width="29" height="29"/>
+                                                    <rect key="frame" x="10" y="10" width="31" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="gh2-cA-TgU">
@@ -364,21 +364,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Church" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7RL-de-1ss">
-                                            <rect key="frame" x="60" y="1" width="63" height="22"/>
+                                            <rect key="frame" x="59" y="1" width="63" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Balboa Park to Sunnydale, but not the Sunnydale from Buffy the Vampire Slayer,        via Downtown" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fgx-gN-NXK">
-                                            <rect key="frame" x="60" y="23" width="230" height="36"/>
+                                            <rect key="frame" x="59" y="23" width="231" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Icon_F.png" highlightedImage="Icon_F-h.png" id="qnz-FR-neD">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="49" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -580,7 +580,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="DIW-wB-uWb">
-                                                    <rect key="frame" x="11" y="11" width="29" height="29"/>
+                                                    <rect key="frame" x="10" y="10" width="31" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="tMN-Gc-1mb">
@@ -754,8 +754,8 @@
     </scenes>
     <resources>
         <image name="DirectionBar_Blank.png" width="320" height="43"/>
-        <image name="Icon_F-h.png" width="50" height="59"/>
-        <image name="Icon_F.png" width="50" height="59"/>
+        <image name="Icon_F-h.png" width="49" height="59"/>
+        <image name="Icon_F.png" width="49" height="59"/>
         <image name="MapBottomTrimLine@2x.png" width="640" height="2"/>
         <image name="Marker_End-h@2x.png" width="50" height="86"/>
         <image name="Marker_End@2x.png" width="50" height="86"/>
