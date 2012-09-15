@@ -94,6 +94,7 @@
             
             MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
             point.coordinate = CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]);
+            self.loadedStops.image = [UIImage imageNamed:@"Pin_Circle.png"];
             [self.map addAnnotation:point];
         }
     }
