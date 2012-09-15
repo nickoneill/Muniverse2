@@ -118,7 +118,7 @@
                 cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_K.png"]];
             } else {
                 cell.primaryText.text = @"Third Street";
-                cell.secondaryText.text = @"To Castro Station";
+                cell.secondaryText.text = @"To Embarcadero Station";
                 cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
             }        
         } else {
