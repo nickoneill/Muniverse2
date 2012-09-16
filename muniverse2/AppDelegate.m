@@ -21,37 +21,69 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (![self coreDataHasEntriesForEntityName:@"Stop"]) {
-        [self addDemoData];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"muniversedata" ofType:@"json"];
+
+    if ([[defaults objectForKey:@"dataBuildDate"] isKindOfClass:[NSDate class]]) {
+        NSDate *buildDate = [defaults objectForKey:@"dataBuildDate"];
+        
+        NSError *error;
+        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath] options:NSJSONReadingAllowFragments error:&error];
+        
+        if (error != nil) {
+            NSLog(@"error parsing json: %@",[error localizedDescription]);
+        } else {
+            NSDate *jsonDate = [NSDate dateWithTimeIntervalSince1970:[[jsonData objectForKey:@"BuildDate"] integerValue]];
+            
+            if ([buildDate laterDate:jsonDate] == jsonDate) {
+                [self removeAllEntitiesOfType:@"Stop"];
+                [self removeAllEntitiesOfType:@"Line"];
+                [self removeAllEntitiesOfType:@"Subway"];
+                [self addJsonData:jsonData];
+            }
+        }
+    } else {
+        // likely the first start for the app
+        
+        NSError *error;
+        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath] options:NSJSONReadingAllowFragments error:&error];
+        if (error != nil) {
+            NSLog(@"error parsing json: %@",[error localizedDescription]);
+        } else {
+            // this should never happen, except for beta testers who might not have a lastBuildDate set
+            [self removeAllEntitiesOfType:@"Stop"];
+            [self removeAllEntitiesOfType:@"Line"];
+            [self removeAllEntitiesOfType:@"Subway"];
+            // add new data
+            [self addJsonData:jsonData];
+        }
     }
     
     return YES;
 }
 
-- (void)removeAllData
+- (void)removeAllEntitiesOfType:(NSString *)entityDescription
 {
-    NSPersistentStore *store = [[self.persistentStoreCoordinator persistentStores] objectAtIndex:0];
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:entityDescription];
+    
     NSError *error;
-    NSURL *storeURL = store.URL;
-    [self.persistentStoreCoordinator removePersistentStore:store error:&error];
-    [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
+    NSArray *results = [self.managedObjectContext executeFetchRequest:fetch error:&error];
+    
+    for (NSManagedObject *managedObject in results) {
+        [self.managedObjectContext deleteObject:managedObject];
+    }
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"there was an issue removing all %@: %@",entityDescription,[error localizedDescription]);
+    }
 }
 
-- (void)addDemoData
+- (void)addJsonData:(NSDictionary *)data
 {
-    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"muniversedata" ofType:@"json"];
-    
-    NSError *error;
-    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath] options:NSJSONReadingAllowFragments error:&error];
-    if (error != nil) {
-        NSLog(@"error parsing json: %@",[error localizedDescription]);
-    }
-    
     NSManagedObjectContext *moc = [self managedObjectContext];
     
     NSMutableDictionary *stopCache = [NSMutableDictionary dictionary];
-    for (int i = 0; i < [[jsonData objectForKey:@"StopList"] count]; i++) {
-        NSDictionary *stopDict = [[jsonData objectForKey:@"StopList"] objectAtIndex:i];
+    for (int i = 0; i < [[data objectForKey:@"StopList"] count]; i++) {
+        NSDictionary *stopDict = [[data objectForKey:@"StopList"] objectAtIndex:i];
         
         Stop *stop = [NSEntityDescription insertNewObjectForEntityForName:@"Stop" inManagedObjectContext:moc];
         [stop setValue:[stopDict objectForKey:@"Title"] forKey:@"name"];
@@ -63,8 +95,8 @@
         [stopCache setObject:stop forKey:[stopDict objectForKey:@"Tag"]];
     }
         
-    for (int i = 0; i < [[jsonData objectForKey:@"LineList"] count]; i++) {
-        NSDictionary *lineDict = [[jsonData objectForKey:@"LineList"] objectAtIndex:i];
+    for (int i = 0; i < [[data objectForKey:@"LineList"] count]; i++) {
+        NSDictionary *lineDict = [[data objectForKey:@"LineList"] objectAtIndex:i];
         
         Line *line = [NSEntityDescription insertNewObjectForEntityForName:@"Line" inManagedObjectContext:moc];
         [line setValue:[lineDict objectForKey:@"Title"] forKey:@"name"];
@@ -107,8 +139,8 @@
         }
     }
     
-    for (int i = 0; i < [[jsonData objectForKey:@"SubwayList"] count]; i++) {
-        NSDictionary *subwayDict = [[jsonData objectForKey:@"SubwayList"] objectAtIndex:i];
+    for (int i = 0; i < [[data objectForKey:@"SubwayList"] count]; i++) {
+        NSDictionary *subwayDict = [[data objectForKey:@"SubwayList"] objectAtIndex:i];
         
         Subway *subway = [NSEntityDescription insertNewObjectForEntityForName:@"Subway" inManagedObjectContext:moc];
         [subway setValue:[subwayDict objectForKey:@"Name"] forKey:@"name"];
@@ -122,6 +154,13 @@
     if (![moc save:&err]) {
         NSLog(@"Whoops, error saving demo data: %@",[err localizedDescription]);
     }
+    
+    int time = [[data objectForKey:@"BuildDate"] integerValue];
+    NSDate *dataBuildDate = [NSDate dateWithTimeIntervalSince1970:time];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:dataBuildDate forKey:@"dataBuildDate"];
+    [defaults synchronize];
 }
 
 - (BOOL)coreDataHasEntriesForEntityName:(NSString *)entityName {
