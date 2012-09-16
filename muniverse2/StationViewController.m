@@ -42,6 +42,9 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"%@ IN %K",self.subway.inboundStop,@"inboundStops"];
     [req setPredicate:pred];
     
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"allLinesSort" ascending:YES];
+    [req setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
     NSError *err;
     self.lines = [moc executeFetchRequest:req error:&err];
     if (err != nil) {
