@@ -156,8 +156,8 @@
                     <connections>
                         <segue destination="qtl-2H-2vo" kind="relationship" relationship="viewControllers" id="Fpb-Gc-BQC"/>
                         <segue destination="wbp-LQ-185" kind="relationship" relationship="viewControllers" id="AOT-xr-AXF"/>
-                        <segue destination="MNS-he-PXW" kind="relationship" relationship="viewControllers" id="oX0-yg-FnN"/>
                         <segue destination="Gmf-kX-lMJ" kind="relationship" relationship="viewControllers" id="Tyx-uL-nYe"/>
+                        <segue destination="MNS-he-PXW" kind="relationship" relationship="viewControllers" id="oX0-yg-FnN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuH-VJ-h2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -836,7 +836,10 @@
         <class className="StationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
             <relationships>
+<<<<<<< HEAD
                 <relationship kind="action" name="directionChange:"/>
+=======
+>>>>>>> redordered subway and all lines tabs
                 <relationship kind="outlet" name="inoutcontrol" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="table" candidateClass="UITableView"/>
             </relationships>
@@ -864,6 +867,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="IAe-lz-LiQ"/>
+        <segue reference="uQX-81-USq"/>
     </inferredMetricsTieBreakers>
 </document>
