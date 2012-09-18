@@ -197,6 +197,7 @@
 		D0A4A29015FEC1370043462C /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A4A28F15FEC1370043462C /* MKMapView+ZoomLevel.m */; };
 		D0AB65AC15D70EC3003FD349 /* NextBusClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AB65AB15D70EC3003FD349 /* NextBusClient.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
+		D0B879E01607D6A7002CA8A6 /* MuniAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B879DF1607D6A7002CA8A6 /* MuniAnnotation.m */; };
 		D0C602D015D5E942003200E9 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602BC15D5E942003200E9 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0C602D115D5E942003200E9 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602BE15D5E942003200E9 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0C602D215D5E942003200E9 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602C015D5E942003200E9 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -446,6 +447,8 @@
 		D0AB65AA15D70EC3003FD349 /* NextBusClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextBusClient.h; sourceTree = "<group>"; };
 		D0AB65AB15D70EC3003FD349 /* NextBusClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextBusClient.m; sourceTree = "<group>"; };
 		D0B7C00715B0B17F00DBDE20 /* CoreMuni.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMuni.xcdatamodel; sourceTree = "<group>"; };
+		D0B879DE1607D6A7002CA8A6 /* MuniAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuniAnnotation.h; sourceTree = "<group>"; };
+		D0B879DF1607D6A7002CA8A6 /* MuniAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuniAnnotation.m; sourceTree = "<group>"; };
 		D0C602BB15D5E942003200E9 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		D0C602BC15D5E942003200E9 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		D0C602BD15D5E942003200E9 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -818,6 +821,8 @@
 				D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */,
 				D039D98015E44A040089F3AF /* FavoriteCell.h */,
 				D039D98115E44A040089F3AF /* FavoriteCell.m */,
+				D0B879DE1607D6A7002CA8A6 /* MuniAnnotation.h */,
+				D0B879DF1607D6A7002CA8A6 /* MuniAnnotation.m */,
 			);
 			name = "Shared Classes";
 			sourceTree = "<group>";
@@ -1280,6 +1285,7 @@
 				D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */,
 				D0C7F04615F14B9F00A06EA6 /* NewStopDetailViewController.m in Sources */,
 				D0A4A29015FEC1370043462C /* MKMapView+ZoomLevel.m in Sources */,
+				D0B879E01607D6A7002CA8A6 /* MuniAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

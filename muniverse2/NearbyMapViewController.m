@@ -11,6 +11,7 @@
 #import "MKMapView+ZoomLevel.h"
 #import "AppDelegate.h"
 #import "Stop.h"
+#import "MuniAnnotation.h"
 
 @interface NearbyMapViewController ()
 
@@ -31,6 +32,11 @@
 {
     [super viewDidLoad];
     
+    [self.detailView setFrame:CGRectMake(0, 411, self.detailView.frame.size.width, self.detailView.frame.size.height)];
+    
+    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
+    [self.detailTable setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
+    
     self.loadedStops = [NSMutableArray array];
     
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(37.766644, -122.414474);
@@ -42,13 +48,18 @@
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
-    NSLog(@"region change %d",self.shouldZoomToUser);
     // don't zoom to user if the region has been changed alredy
 //    self.shouldZoomToUser = NO;
     
 //    if (!self.shouldZoomToUser) {
 //        [self loadAndDisplayStopsAroundCoordinate:[mapView region].center];
 //    }
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    NSLog(@"region change %d",self.shouldZoomToUser);
+    [self isAtStopZoomLevel];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -95,11 +106,73 @@
         if (![self.loadedStops containsObject:stop]) {
             [self.loadedStops addObject:stop];
             
-            MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-            point.coordinate = CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]);
+            MuniAnnotation *point = [[MuniAnnotation alloc] init];
+            [point setTitle:stop.name];
+            [point setSubtitle:@"none"];
+            [point setCoordinate:CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue])];
             [self.map addAnnotation:point];
         }
     }
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MuniPin"];
+    [pin setCanShowCallout:YES];
+    [pin setImage:[UIImage imageNamed:@"Pin_Circle.png"]];
+    [pin setDraggable:NO];
+    [pin setCalloutOffset:CGPointMake(0, 5)];
+    
+    UIButton *calloutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [calloutButton addTarget:self action:@selector(detail) forControlEvents:UIControlEventTouchUpInside];
+    [pin setRightCalloutAccessoryView:calloutButton];
+    
+//    UIButton *favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    UIImageView *favoriteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Stop_Fav_On.png"]];
+//    [favoriteButton addSubview:favoriteImage];
+//    [favoriteButton addTarget:self action:@selector(detail) forControlEvents:UIControlEventTouchUpInside];
+//    [pin setLeftCalloutAccessoryView:favoriteButton];
+    
+    return pin;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    CLLocationCoordinate2D coord = [(MuniAnnotation *)view.annotation coordinate];
+    coord.latitude += 0.00035;
+    
+    if ([self isAtStopZoomLevel]) {
+        [self.map setCenterCoordinate:coord animated:NO];
+    } else {
+        [self.map setCenterCoordinate:coord zoomLevel:16 animated:NO];
+    }
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.map setFrame:CGRectMake(0, 44, 320, 100)];
+        [self.detailView setFrame:CGRectMake(0, 144, self.detailView.frame.size.width, self.detailView.frame.size.height)];
+    }];
+}
+
+- (void)detail
+{
+    NSLog(@"details");
+}
+
+- (BOOL)isAtStopZoomLevel
+{
+    float regionsize = [self.map region].span.latitudeDelta;
+
+    NSLog(@"region: %f",regionsize);
+    
+    if (regionsize <= 0.0032) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)viewDidUnload
