@@ -177,6 +177,7 @@
 
 - (void)viewDidUnload
 {
+    [self setCloseButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

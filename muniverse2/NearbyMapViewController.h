@@ -18,4 +18,6 @@
 @property (strong) NSMutableArray *loadedStops;
 @property BOOL shouldZoomToUser;
 
+@property (weak, nonatomic) IBOutlet UIImageView *closeButton;
+
 @end
