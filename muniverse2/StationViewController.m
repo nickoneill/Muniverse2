@@ -135,7 +135,6 @@
     cell.secondaryPrediction.text = @"";
     
     return cell;
-
 }
 
 - (IBAction)directionChange:(id)sender
