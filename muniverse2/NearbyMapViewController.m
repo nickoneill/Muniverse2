@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    [self.detailView setFrame:CGRectMake(0, 411, self.detailView.frame.size.width, self.detailView.frame.size.height)];
+    [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
     
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
     [self.detailTable setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
@@ -125,10 +125,10 @@
         if (!callout) {
             callout = [[CalloutAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"callout"];
             
-//            UILabel *calloutLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 22)];
-//            [calloutLabel setFont:[UIFont systemFontOfSize:22]];
-//            [calloutLabel setText:@"test"];
-//            [callout.contentView addSubview:calloutLabel];
+            UILabel *calloutLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
+            [calloutLabel setFont:[UIFont systemFontOfSize:22]];
+            [calloutLabel setText:@"test"];
+            [callout.contentView addSubview:calloutLabel];
         }
         callout.mapView = self.map;
         callout.parentAnnotationView = self.selectedAnnotationView;
@@ -161,16 +161,63 @@
     return nil;
 }
 
+- (void)adjustMapRegionForAnnotation:(MKAnnotationView *)annotationView {
+	CGFloat xPixelShift = 0;
+	CGFloat yPixelShift = 0;
+	
+	CGPoint mapViewOriginRelativeToParent = [self.map convertPoint:self.map.frame.origin toView:annotationView];
+    
+    xPixelShift = mapViewOriginRelativeToParent.x + 150;
+    yPixelShift = mapViewOriginRelativeToParent.y + 40;
+    
+    
+    //	CGFloat pixelsFromTopOfMapView = -(mapViewOriginRelativeToParent.y + self.frame.size.height - CalloutMapAnnotationViewBottomShadowBufferSize);
+    //	CGFloat pixelsFromBottomOfMapView = self.mapView.frame.size.height + mapViewOriginRelativeToParent.y - self.parentAnnotationView.frame.size.height;
+    //	if (pixelsFromTopOfMapView < 7) {
+    //		yPixelShift = 7 - pixelsFromTopOfMapView;
+    //	} else if (pixelsFromBottomOfMapView < 10) {
+    //		yPixelShift = -(10 - pixelsFromBottomOfMapView);
+    //	}
+	
+	//Calculate new center point, if needed
+	if (xPixelShift || yPixelShift) {
+		CGFloat pixelsPerDegreeLongitude = self.map.frame.size.width / self.map.region.span.longitudeDelta;
+		CGFloat pixelsPerDegreeLatitude = self.map.frame.size.height / self.map.region.span.latitudeDelta;
+		
+		CLLocationDegrees longitudinalShift = -(xPixelShift / pixelsPerDegreeLongitude);
+		CLLocationDegrees latitudinalShift = yPixelShift / pixelsPerDegreeLatitude;
+		
+		CLLocationCoordinate2D newCenterCoordinate = {self.map.region.center.latitude + latitudinalShift,
+			self.map.region.center.longitude + longitudinalShift};
+		
+		[self.map setCenterCoordinate:newCenterCoordinate animated:YES];
+		
+		//fix for now
+//		self.frame = CGRectMake(self.frame.origin.x - xPixelShift,
+//								self.frame.origin.y - yPixelShift,
+//								self.frame.size.width,
+//								self.frame.size.height);
+
+		//fix for later (after zoom or other action that resets the frame)
+//		self.centerOffset = CGPointMake(self.centerOffset.x - xPixelShift, self.centerOffset.y);
+	}
+    
+    // and finally add the annotation view we wanted
+    if (self.calloutAnnotation == nil) {
+        self.calloutAnnotation = [[CalloutAnnotation alloc] initWithLatitude:annotationView.annotation.coordinate.latitude andLongitude:annotationView.annotation.coordinate.longitude];
+    } else {
+        self.calloutAnnotation.coordinate = CLLocationCoordinate2DMake(annotationView.annotation.coordinate.latitude, annotationView.annotation.coordinate.longitude);
+    }
+    [self.map addAnnotation:self.calloutAnnotation];
+}
+
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     NSLog(@"did select ann %@",view.annotation);
     if ([view.annotation isKindOfClass:[MuniPinAnnotation class]]) {
-        if (self.calloutAnnotation == nil) {
-            self.calloutAnnotation = [[CalloutAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude];
-        } else {
-            self.calloutAnnotation.coordinate = CLLocationCoordinate2DMake(view.annotation.coordinate.latitude, view.annotation.coordinate.longitude);
-        }
-        [self.map addAnnotation:self.calloutAnnotation];
+        // actual callout annotation will be added at the end of this map transformation
+        [self adjustMapRegionForAnnotation:view];
+        
         self.selectedAnnotationView = view;
         
 //        CLLocationCoordinate2D coord = [(MuniAnnotation *)view.annotation coordinate];
@@ -182,22 +229,24 @@
 //            [self.map setCenterCoordinate:coord zoomLevel:16 animated:NO];
 //        }
 //        
-//        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
 //            [self.map setFrame:CGRectMake(0, 44, 320, 100)];
-//            [self.detailView setFrame:CGRectMake(0, 144, self.detailView.frame.size.width, self.detailView.frame.size.height)];
-//        }];
+            [self.detailView setFrame:CGRectMake(0, 144, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
+        }];
     }
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-    [self.map removeAnnotation:self.calloutAnnotation];
+//    [self.map removeAnnotation:self.calloutAnnotation];
 }
 
 - (IBAction)closeDetail
 {
+    [self.map removeAnnotation:self.calloutAnnotation];
+    
     [UIView animateWithDuration:0.3 animations:^{
-        [self.map setFrame:CGRectMake(0, 44, 320, 367)];
-        [self.detailView setFrame:CGRectMake(0, 411, self.detailView.frame.size.width, self.detailView.frame.size.height)];
+//        [self.map setFrame:CGRectMake(0, 44, 320, 367)];
+        [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
     }];
 }
 

@@ -43,27 +43,26 @@
 	CGRect frame = self.frame;
 	CGFloat height =	CalloutMapAnnotationViewHeight +
 	CalloutMapAnnotationViewContentHeightBuffer +
-	CalloutMapAnnotationViewBottomShadowBufferSize -
-	self.offsetFromParent.y;
+	CalloutMapAnnotationViewBottomShadowBufferSize;
 	
 	frame.size = CGSizeMake(300, height);
 	self.frame = frame;
 }
 
 - (void)prepareOffset {
-	CGPoint parentOrigin = [self.mapView convertPoint:self.parentAnnotationView.frame.origin
-											 fromView:self.parentAnnotationView.superview];
+//	CGPoint parentOrigin = [self.mapView convertPoint:self.parentAnnotationView.frame.origin
+//											 fromView:self.parentAnnotationView.superview];
+//	
+//	CGFloat xOffset = (self.mapView.frame.size.width / 2) - (parentOrigin.x + self.offsetFromParent.x);
+//	
+//	//Add half our height plus half of the height of the annotation we are tied to so that our bottom lines up to its top
+//	//Then take into account its offset and the extra space needed for our drop shadow
+//	CGFloat yOffset = -(self.frame.size.height / 2 +
+//						self.parentAnnotationView.frame.size.height / 2) +
+//    self.offsetFromParent.y +
+//    CalloutMapAnnotationViewBottomShadowBufferSize;
 	
-	CGFloat xOffset = (self.mapView.frame.size.width / 2) - (parentOrigin.x + self.offsetFromParent.x);
-	
-	//Add half our height plus half of the height of the annotation we are tied to so that our bottom lines up to its top
-	//Then take into account its offset and the extra space needed for our drop shadow
-	CGFloat yOffset = -(self.frame.size.height / 2 +
-						self.parentAnnotationView.frame.size.height / 2) +
-    self.offsetFromParent.y +
-    CalloutMapAnnotationViewBottomShadowBufferSize;
-	
-	self.centerOffset = CGPointMake(0, 0);
+	self.centerOffset = CGPointMake(0, -40);
     self.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 }
 
@@ -79,7 +78,7 @@
 - (void)didMoveToSuperview {
     // I think this does something useful, but not without changing it to center the point up top
 //	[self adjustMapRegionIfNeeded];
-//	[self animateIn];
+	[self animateIn];
 }
 
 - (void)drawRect:(CGRect)rect {
