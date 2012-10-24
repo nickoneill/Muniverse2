@@ -1,5 +1,5 @@
 //
-//  MuniAnnotation.h
+//  CalloutAnnotation.h
 //  muniverse2
 //
 //  Created by Nick O'Neill on 9/17/12.
@@ -8,10 +8,12 @@
 
 #import <MapKit/MapKit.h>
 
-@interface MuniAnnotation : NSObject<MKAnnotation>
+@interface CalloutAnnotation : NSObject <MKAnnotation>
 
 @property CLLocationCoordinate2D coordinate;
 @property (strong) NSString *title;
 @property (strong) NSString *subtitle;
+
+- (id)initWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude;
 
 @end

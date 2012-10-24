@@ -7,17 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@class MKMapView;
+@class MKMapView,CalloutAnnotation,CalloutAnnotationView;
 
-@interface NearbyMapViewController : UIViewController
+@interface NearbyMapViewController : UIViewController <MKMapViewDelegate>
 
 @property (strong) IBOutlet MKMapView *map;
 @property (strong) IBOutlet UIView *detailView;
 @property (strong) IBOutlet UITableView *detailTable;
+
 @property (strong) NSMutableArray *loadedStops;
+@property (strong) CalloutAnnotation *calloutAnnotation;
+@property (strong) MKAnnotationView *selectedAnnotationView;
+//@property (strong) MuniPinAnnotation *pinAnnotation;
 @property BOOL shouldZoomToUser;
 
-@property (weak, nonatomic) IBOutlet UIImageView *closeButton;
+@property (strong) IBOutlet UIImageView *closeButton;
+
+- (IBAction)closeDetail;
 
 @end

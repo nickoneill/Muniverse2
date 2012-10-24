@@ -156,6 +156,7 @@
 		43CD347215B4BBFC005D8CA2 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43CD347015B4BBFC005D8CA2 /* Background@2x.png */; };
 		43CD348315B4C188005D8CA2 /* Tab_Favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 43CD348115B4C188005D8CA2 /* Tab_Favorites.png */; };
 		43CD348415B4C188005D8CA2 /* Tab_Favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43CD348215B4C188005D8CA2 /* Tab_Favorites@2x.png */; };
+		D00AFFA4162CE89C000BEB01 /* MuniPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */; };
 		D014A27F15AE1D1600FF5952 /* base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D014A27E15AE1D1600FF5952 /* base.storyboard */; };
 		D03165B115AB76AE009DF347 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03165B015AB76AE009DF347 /* UIKit.framework */; };
 		D03165B315AB76AE009DF347 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03165B215AB76AE009DF347 /* Foundation.framework */; };
@@ -168,6 +169,7 @@
 		D03165CB15AB76AE009DF347 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03165B215AB76AE009DF347 /* Foundation.framework */; };
 		D03165D315AB76AE009DF347 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03165D115AB76AE009DF347 /* InfoPlist.strings */; };
 		D03165D615AB76AE009DF347 /* muniverse2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D03165D515AB76AE009DF347 /* muniverse2Tests.m */; };
+		D038DC06161E839F00253786 /* CalloutAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D038DC05161E839F00253786 /* CalloutAnnotationView.m */; };
 		D039D98215E44A040089F3AF /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D039D98115E44A040089F3AF /* FavoriteCell.m */; };
 		D0661C2515E150D400AF3EC1 /* GroupedPredictionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */; };
 		D074AD5B15EECD5700D5BC84 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = D074AD5A15EECD5700D5BC84 /* Stop.m */; };
@@ -199,7 +201,7 @@
 		D0A4A29015FEC1370043462C /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A4A28F15FEC1370043462C /* MKMapView+ZoomLevel.m */; };
 		D0AB65AC15D70EC3003FD349 /* NextBusClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AB65AB15D70EC3003FD349 /* NextBusClient.m */; };
 		D0B7C00815B0B17F00DBDE20 /* CoreMuni.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0B7C00615B0B17F00DBDE20 /* CoreMuni.xcdatamodeld */; };
-		D0B879E01607D6A7002CA8A6 /* MuniAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B879DF1607D6A7002CA8A6 /* MuniAnnotation.m */; };
+		D0B879E01607D6A7002CA8A6 /* CalloutAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B879DF1607D6A7002CA8A6 /* CalloutAnnotation.m */; };
 		D0C602D015D5E942003200E9 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602BC15D5E942003200E9 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0C602D115D5E942003200E9 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602BE15D5E942003200E9 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0C602D215D5E942003200E9 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602C015D5E942003200E9 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -374,6 +376,8 @@
 		43CD347015B4BBFC005D8CA2 /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background@2x.png"; sourceTree = "<group>"; };
 		43CD348115B4C188005D8CA2 /* Tab_Favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Favorites.png; sourceTree = "<group>"; };
 		43CD348215B4C188005D8CA2 /* Tab_Favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Favorites@2x.png"; sourceTree = "<group>"; };
+		D00AFFA2162CE89C000BEB01 /* MuniPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuniPinAnnotation.h; sourceTree = "<group>"; };
+		D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuniPinAnnotation.m; sourceTree = "<group>"; };
 		D014A27E15AE1D1600FF5952 /* base.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = base.storyboard; sourceTree = "<group>"; };
 		D03165AC15AB76AE009DF347 /* Muniverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muniverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03165B015AB76AE009DF347 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -391,6 +395,8 @@
 		D03165D215AB76AE009DF347 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D03165D415AB76AE009DF347 /* muniverse2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = muniverse2Tests.h; sourceTree = "<group>"; };
 		D03165D515AB76AE009DF347 /* muniverse2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muniverse2Tests.m; sourceTree = "<group>"; };
+		D038DC04161E839F00253786 /* CalloutAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutAnnotationView.h; sourceTree = "<group>"; };
+		D038DC05161E839F00253786 /* CalloutAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutAnnotationView.m; sourceTree = "<group>"; };
 		D039D98015E44A040089F3AF /* FavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteCell.h; sourceTree = "<group>"; };
 		D039D98115E44A040089F3AF /* FavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteCell.m; sourceTree = "<group>"; };
 		D0661C2315E150D400AF3EC1 /* GroupedPredictionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupedPredictionCell.h; sourceTree = "<group>"; };
@@ -451,8 +457,8 @@
 		D0AB65AA15D70EC3003FD349 /* NextBusClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextBusClient.h; sourceTree = "<group>"; };
 		D0AB65AB15D70EC3003FD349 /* NextBusClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextBusClient.m; sourceTree = "<group>"; };
 		D0B7C00715B0B17F00DBDE20 /* CoreMuni.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMuni.xcdatamodel; sourceTree = "<group>"; };
-		D0B879DE1607D6A7002CA8A6 /* MuniAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuniAnnotation.h; sourceTree = "<group>"; };
-		D0B879DF1607D6A7002CA8A6 /* MuniAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuniAnnotation.m; sourceTree = "<group>"; };
+		D0B879DE1607D6A7002CA8A6 /* CalloutAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutAnnotation.h; sourceTree = "<group>"; };
+		D0B879DF1607D6A7002CA8A6 /* CalloutAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutAnnotation.m; sourceTree = "<group>"; };
 		D0C602BB15D5E942003200E9 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		D0C602BC15D5E942003200E9 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		D0C602BD15D5E942003200E9 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -827,8 +833,12 @@
 				D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */,
 				D039D98015E44A040089F3AF /* FavoriteCell.h */,
 				D039D98115E44A040089F3AF /* FavoriteCell.m */,
-				D0B879DE1607D6A7002CA8A6 /* MuniAnnotation.h */,
-				D0B879DF1607D6A7002CA8A6 /* MuniAnnotation.m */,
+				D038DC04161E839F00253786 /* CalloutAnnotationView.h */,
+				D038DC05161E839F00253786 /* CalloutAnnotationView.m */,
+				D0B879DE1607D6A7002CA8A6 /* CalloutAnnotation.h */,
+				D0B879DF1607D6A7002CA8A6 /* CalloutAnnotation.m */,
+				D00AFFA2162CE89C000BEB01 /* MuniPinAnnotation.h */,
+				D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */,
 			);
 			name = "Shared Classes";
 			sourceTree = "<group>";
@@ -1293,7 +1303,9 @@
 				D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */,
 				D0C7F04615F14B9F00A06EA6 /* NewStopDetailViewController.m in Sources */,
 				D0A4A29015FEC1370043462C /* MKMapView+ZoomLevel.m in Sources */,
-				D0B879E01607D6A7002CA8A6 /* MuniAnnotation.m in Sources */,
+				D0B879E01607D6A7002CA8A6 /* CalloutAnnotation.m in Sources */,
+				D038DC06161E839F00253786 /* CalloutAnnotationView.m in Sources */,
+				D00AFFA4162CE89C000BEB01 /* MuniPinAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
