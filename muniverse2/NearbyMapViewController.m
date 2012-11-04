@@ -44,7 +44,6 @@
     self.loadedStops = [NSMutableArray array];
     
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(37.766644, -122.414474);
-	
     [self.map setCenterCoordinate:coord zoomLevel:11 animated:NO];
     
     self.shouldZoomToUser = YES;
@@ -62,11 +61,17 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    [self isAtStopZoomLevel];
-    
+    NSLog(@"region change: %f",mapView.region.span.latitudeDelta);
+    // automatic changes in regions (triggered by us) are a special case
     if (self.autoRegionChange) {
         [self.map addAnnotation:self.calloutAnnotation];
         self.autoRegionChange = NO;
+    } else {
+        if (mapView.region.span.latitudeDelta <= 0.05) {
+            CLLocationCoordinate2D loc = mapView.centerCoordinate;
+            
+            [self loadAndDisplayStopsAroundCoordinate:loc];
+        }
     }
 }
 
@@ -74,15 +79,15 @@
 {
     NSLog(@"updated user location");
     
-    if (self.shouldZoomToUser) {
-        CLLocationCoordinate2D loc = [userLocation.location coordinate];
-        
-        [self.map setCenterCoordinate:loc zoomLevel:14 animated:NO];
-        
-        [self loadAndDisplayStopsAroundCoordinate:loc];
-        
-        self.shouldZoomToUser = NO;
-    }
+//    if (self.shouldZoomToUser) {
+//        CLLocationCoordinate2D loc = [userLocation.location coordinate];
+//        
+//        [self.map setCenterCoordinate:loc zoomLevel:14 animated:NO];
+//        
+//        [self loadAndDisplayStopsAroundCoordinate:loc];
+//        
+//        self.shouldZoomToUser = NO;
+//    }
 }
 
 - (void)loadAndDisplayStopsAroundCoordinate:(CLLocationCoordinate2D)coord
@@ -307,7 +312,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"count called");
     // Return the number of rows in the section.
     return [self.linesCache count];
 }
@@ -321,12 +325,16 @@
     Line *line = [self.linesCache objectAtIndex:[indexPath row]];
     
     cell.primaryText.text = line.shortname;
-    cell.secondaryText.text = line.inboundDesc;
+    if ([line.inboundStops containsObject:pin.stop]) {
+        cell.secondaryText.text = line.inboundDesc;
+    } else {
+        cell.secondaryText.text = line.outboundDesc;
+    }
     
     if ([line.shortname isEqualToString:@"J"]) {
         cell.primaryText.text = @"Church";
         cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_J.png"]];
-        if ([line.inboundStops containsObject:pin.stop]) {
+        if (![line.inboundStops containsObject:pin.stop]) {
             cell.secondaryText.text = @"To Balboa Park Station";
         } else {
             cell.secondaryText.text = @"To Embarcadero Station";
@@ -334,7 +342,7 @@
     } else if ([line.shortname isEqualToString:@"L"]) {
         cell.primaryText.text = @"Taraval";
         cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_L.png"]];
-        if ([line.inboundStops containsObject:pin.stop]) {
+        if (![line.inboundStops containsObject:pin.stop]) {
             cell.secondaryText.text = @"To SF Zoo";
         } else {
             cell.secondaryText.text = @"To Embarcadero Station";
@@ -342,7 +350,7 @@
     } else if ([line.shortname isEqualToString:@"M"]) {
         cell.primaryText.text = @"Ocean View";
         cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_M.png"]];
-        if ([line.inboundStops containsObject:pin.stop]) {
+        if (![line.inboundStops containsObject:pin.stop]) {
             cell.secondaryText.text = @"To Balboa Park Station";
         } else {
             cell.secondaryText.text = @"To Embarcadero Station";
@@ -350,7 +358,7 @@
     } else if ([line.shortname isEqualToString:@"N"]) {
         cell.primaryText.text = @"Judah";
         cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_N.png"]];
-        if ([line.inboundStops containsObject:pin.stop]) {
+        if (![line.inboundStops containsObject:pin.stop]) {
             cell.secondaryText.text = @"To Ocean Beach";
         } else {
             cell.secondaryText.text = @"To Ballpark/Caltrain";
@@ -359,7 +367,7 @@
         
         // special case to handle it being T outbound on the surface and K outbound in the tunnel
         
-        if ([line.inboundStops containsObject:pin.stop]) {
+        if (![line.inboundStops containsObject:pin.stop]) {
             if (0) {
                 cell.primaryText.text = @"Ingleside";
                 cell.secondaryText.text = @"To Balboa Park Station";
