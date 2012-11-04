@@ -8,10 +8,13 @@
 
 #import <MapKit/MapKit.h>
 
+@class Stop;
+
 @interface MuniPinAnnotation : NSObject <MKAnnotation>
 
 @property CLLocationCoordinate2D coordinate;
 @property (strong) NSString *title;
 @property (strong) NSString *subtitle;
+@property (strong) Stop *stop;
 
 @end

@@ -11,9 +11,11 @@
 #import "MKMapView+ZoomLevel.h"
 #import "AppDelegate.h"
 #import "Stop.h"
+#import "Line.h"
 #import "CalloutAnnotation.h"
 #import "CalloutAnnotationView.h"
 #import "MuniPinAnnotation.h"
+#import "GroupedPredictionCell.h"
 
 @interface NearbyMapViewController ()
 
@@ -60,7 +62,6 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    NSLog(@"region change %d",self.shouldZoomToUser);
     [self isAtStopZoomLevel];
     
     if (self.autoRegionChange) {
@@ -116,6 +117,7 @@
             MuniPinAnnotation *point = [[MuniPinAnnotation alloc] init];
             [point setTitle:stop.name];
             [point setSubtitle:@"none"];
+            [point setStop:stop];
             [point setCoordinate:CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue])];
             [self.map addAnnotation:point];
         }
@@ -124,18 +126,20 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    NSLog(@"view for ann %@",[annotation class]);
     if ([annotation isKindOfClass:[CalloutAnnotation class]]) {
         CalloutAnnotationView *callout = (CalloutAnnotationView *)[self.map dequeueReusableAnnotationViewWithIdentifier:@"callout"];
         if (!callout) {
             callout = [[CalloutAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"callout"];
-            
+            callout.mapView = self.map;
+                        
             UILabel *calloutLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
+            [calloutLabel setTag:1];
             [calloutLabel setFont:[UIFont systemFontOfSize:22]];
-            [calloutLabel setText:@"test"];
             [callout.contentView addSubview:calloutLabel];
         }
-        callout.mapView = self.map;
+        MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
+        [(UILabel *)[callout.contentView viewWithTag:1] setText:pin.title];
+        
         callout.parentAnnotationView = self.selectedAnnotationView;
         
         return callout;
@@ -174,15 +178,6 @@
     
     xPixelShift = mapViewOriginRelativeToParent.x + 150;
     yPixelShift = mapViewOriginRelativeToParent.y + 40;
-    
-    
-    //	CGFloat pixelsFromTopOfMapView = -(mapViewOriginRelativeToParent.y + self.frame.size.height - CalloutMapAnnotationViewBottomShadowBufferSize);
-    //	CGFloat pixelsFromBottomOfMapView = self.mapView.frame.size.height + mapViewOriginRelativeToParent.y - self.parentAnnotationView.frame.size.height;
-    //	if (pixelsFromTopOfMapView < 7) {
-    //		yPixelShift = 7 - pixelsFromTopOfMapView;
-    //	} else if (pixelsFromBottomOfMapView < 10) {
-    //		yPixelShift = -(10 - pixelsFromBottomOfMapView);
-    //	}
 	
 	//Calculate new center point, if needed
 	if (xPixelShift || yPixelShift) {
@@ -218,8 +213,10 @@
             // set the selected view for reference later
             self.selectedAnnotationView = view;
 
+            MuniPinAnnotation *pin = view.annotation;
+            NSLog(@"selected stop: %@ %@",pin.title,pin.stop);
             // animate and update the detail view
-            // TODO: Update detail view here
+            [self loadLinesForSelectedStop];
             [UIView animateWithDuration:0.3 animations:^{
                 [self.detailView setFrame:CGRectMake(0, 144, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
             }];
@@ -241,21 +238,13 @@
     [self.map removeAnnotation:self.calloutAnnotation];
     
     [UIView animateWithDuration:0.3 animations:^{
-//        [self.map setFrame:CGRectMake(0, 44, 320, 367)];
         [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
     }];
-}
-
-- (void)detail
-{
-    NSLog(@"details");
 }
 
 - (BOOL)isAtStopZoomLevel
 {
     float regionsize = [self.map region].span.latitudeDelta;
-
-    NSLog(@"region: %f",regionsize);
     
     if (regionsize <= 0.0032) {
         return YES;
@@ -263,6 +252,136 @@
     
     return NO;
 }
+
+- (void)loadLinesForSelectedStop
+{
+    NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    
+    MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
+    
+    NSFetchRequest *inboundReq = [NSFetchRequest fetchRequestWithEntityName:@"Line"];
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%@ IN %K",pin.stop,@"inboundStops"];
+    [inboundReq setPredicate:pred];
+    
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"allLinesSort" ascending:YES];
+    [inboundReq setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    NSError *err;
+    self.linesCache = [moc executeFetchRequest:inboundReq error:&err];
+    if (err != nil) {
+        NSLog(@"issue with inbound stops: %@",[err localizedDescription]);
+    }
+    
+    NSFetchRequest *outboundReq = [NSFetchRequest fetchRequestWithEntityName:@"Line"];
+    
+    pred = [NSPredicate predicateWithFormat:@"%@ IN %K",pin.stop,@"outboundStops"];
+    [outboundReq setPredicate:pred];
+    
+    [outboundReq setSortDescriptors:[NSArray arrayWithObject:sort]];
+
+    NSArray *outboundLines = [moc executeFetchRequest:outboundReq error:&err];
+    if (err != nil) {
+        NSLog(@"issue with outbound stops: %@",[err localizedDescription]);
+    }
+
+    if ([outboundLines count]) {
+        self.linesCache = [self.linesCache arrayByAddingObjectsFromArray:outboundLines];
+    }
+    
+    [self.detailTable reloadData];
+}
+
+#pragma mark - Table view data source
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Lines for this stop:";
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSLog(@"count called");
+    // Return the number of rows in the section.
+    return [self.linesCache count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"GPCell";
+    GroupedPredictionCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
+    Line *line = [self.linesCache objectAtIndex:[indexPath row]];
+    
+    cell.primaryText.text = line.shortname;
+    cell.secondaryText.text = line.inboundDesc;
+    
+    if ([line.shortname isEqualToString:@"J"]) {
+        cell.primaryText.text = @"Church";
+        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_J.png"]];
+        if ([line.inboundStops containsObject:pin.stop]) {
+            cell.secondaryText.text = @"To Balboa Park Station";
+        } else {
+            cell.secondaryText.text = @"To Embarcadero Station";
+        }
+    } else if ([line.shortname isEqualToString:@"L"]) {
+        cell.primaryText.text = @"Taraval";
+        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_L.png"]];
+        if ([line.inboundStops containsObject:pin.stop]) {
+            cell.secondaryText.text = @"To SF Zoo";
+        } else {
+            cell.secondaryText.text = @"To Embarcadero Station";
+        }
+    } else if ([line.shortname isEqualToString:@"M"]) {
+        cell.primaryText.text = @"Ocean View";
+        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_M.png"]];
+        if ([line.inboundStops containsObject:pin.stop]) {
+            cell.secondaryText.text = @"To Balboa Park Station";
+        } else {
+            cell.secondaryText.text = @"To Embarcadero Station";
+        }
+    } else if ([line.shortname isEqualToString:@"N"]) {
+        cell.primaryText.text = @"Judah";
+        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_N.png"]];
+        if ([line.inboundStops containsObject:pin.stop]) {
+            cell.secondaryText.text = @"To Ocean Beach";
+        } else {
+            cell.secondaryText.text = @"To Ballpark/Caltrain";
+        }
+    } else if ([line.shortname isEqualToString:@"KT"]) {
+        
+        // special case to handle it being T outbound on the surface and K outbound in the tunnel
+        
+        if ([line.inboundStops containsObject:pin.stop]) {
+            if (0) {
+                cell.primaryText.text = @"Ingleside";
+                cell.secondaryText.text = @"To Balboa Park Station";
+                cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_K.png"]];
+            } else {
+                cell.primaryText.text = @"Third Street";
+                cell.secondaryText.text = @"To Embarcadero Station";
+                cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
+            }
+        } else {
+            cell.primaryText.text = @"Third Street";
+            cell.secondaryText.text = @"To Sunnydale";
+            cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
+        }
+    }
+    
+    cell.primaryPrediction.text = @"";
+    cell.secondaryPrediction.text = @"";
+    
+    return cell;
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

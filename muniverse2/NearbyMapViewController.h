@@ -18,10 +18,10 @@
 @property (strong) IBOutlet UITableView *detailTable;
 
 @property (strong) NSMutableArray *loadedStops;
+@property (strong) NSArray *linesCache;
 @property (strong) CalloutAnnotation *calloutAnnotation;
 @property (strong) MKAnnotationView *selectedAnnotationView;
 @property BOOL autoRegionChange;
-//@property (strong) MuniPinAnnotation *pinAnnotation;
 @property BOOL shouldZoomToUser;
 
 @property (strong) IBOutlet UIImageView *closeButton;
