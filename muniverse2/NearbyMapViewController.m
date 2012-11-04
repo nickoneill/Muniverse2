@@ -210,26 +210,25 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    NSLog(@"did select ann %@",view.annotation);
     if ([view.annotation isKindOfClass:[MuniPinAnnotation class]]) {
-        // actual callout annotation will be added at the end of this map transformation
-        [self adjustMapRegionForAnnotation:view];
-        
-        self.selectedAnnotationView = view;
-        
-//        CLLocationCoordinate2D coord = [(MuniAnnotation *)view.annotation coordinate];
-//        coord.latitude += 0.00035;
-//        
-//        if ([self isAtStopZoomLevel]) {
-//            [self.map setCenterCoordinate:coord animated:NO];
-//        } else {
-//            [self.map setCenterCoordinate:coord zoomLevel:16 animated:NO];
-//        }
-//        
-        [UIView animateWithDuration:0.3 animations:^{
-//            [self.map setFrame:CGRectMake(0, 44, 320, 100)];
-            [self.detailView setFrame:CGRectMake(0, 144, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
-        }];
+        if ([self isAtStopZoomLevel]) {
+            // actual callout annotation will be added at the end of this map transformation
+            [self adjustMapRegionForAnnotation:view];
+            
+            // set the selected view for reference later
+            self.selectedAnnotationView = view;
+
+            // animate and update the detail view
+            // TODO: Update detail view here
+            [UIView animateWithDuration:0.3 animations:^{
+                [self.detailView setFrame:CGRectMake(0, 144, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
+            }];
+        } else {
+            CLLocationCoordinate2D coord = [view.annotation coordinate];
+            
+            // zoom to the annoation we may have tapped on
+            [self.map setCenterCoordinate:coord zoomLevel:16 animated:YES];
+        }        
     }
 }
 
