@@ -25,7 +25,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
+        self.autoRegionChange = NO;
     }
     return self;
 }
@@ -37,7 +37,7 @@
     [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
     
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
-    [self.detailTable setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
+    [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
     
     self.loadedStops = [NSMutableArray array];
     
@@ -62,6 +62,11 @@
 {
     NSLog(@"region change %d",self.shouldZoomToUser);
     [self isAtStopZoomLevel];
+    
+    if (self.autoRegionChange) {
+        [self.map addAnnotation:self.calloutAnnotation];
+        self.autoRegionChange = NO;
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -191,15 +196,6 @@
 			self.map.region.center.longitude + longitudinalShift};
 		
 		[self.map setCenterCoordinate:newCenterCoordinate animated:YES];
-		
-		//fix for now
-//		self.frame = CGRectMake(self.frame.origin.x - xPixelShift,
-//								self.frame.origin.y - yPixelShift,
-//								self.frame.size.width,
-//								self.frame.size.height);
-
-		//fix for later (after zoom or other action that resets the frame)
-//		self.centerOffset = CGPointMake(self.centerOffset.x - xPixelShift, self.centerOffset.y);
 	}
     
     // and finally add the annotation view we wanted
@@ -208,7 +204,8 @@
     } else {
         self.calloutAnnotation.coordinate = CLLocationCoordinate2DMake(annotationView.annotation.coordinate.latitude, annotationView.annotation.coordinate.longitude);
     }
-    [self.map addAnnotation:self.calloutAnnotation];
+    
+    self.autoRegionChange = YES;
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
@@ -274,3 +271,4 @@
 }
 
 @end
+

@@ -20,6 +20,7 @@
 @property (strong) NSMutableArray *loadedStops;
 @property (strong) CalloutAnnotation *calloutAnnotation;
 @property (strong) MKAnnotationView *selectedAnnotationView;
+@property BOOL autoRegionChange;
 //@property (strong) MuniPinAnnotation *pinAnnotation;
 @property BOOL shouldZoomToUser;
 
