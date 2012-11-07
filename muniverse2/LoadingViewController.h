@@ -11,5 +11,6 @@
 @interface LoadingViewController : UIViewController
 
 @property (strong) IBOutlet UILabel *loadingLabel;
+@property (strong) IBOutlet UIImageView *loadingImageView;
 
 @end

@@ -28,9 +28,9 @@
     
     [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
     
-    LoadingViewController *loading = [[LoadingViewController alloc] initWithNibName:@"LoadingViewController" bundle:nil];
+    self.loading = [[LoadingViewController alloc] initWithNibName:@"LoadingViewController" bundle:nil];
     
-    [self.window setRootViewController:loading];
+    [self.window setRootViewController:self.loading];
     [self.window makeKeyAndVisible];
 
     return YES;
@@ -53,12 +53,13 @@
         NSError *error;
         NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath] options:NSJSONReadingAllowFragments error:&error];
         
-        if (error != nil) {
+        if (error) {
             NSLog(@"error parsing json: %@",[error localizedDescription]);
         } else {
             NSDate *jsonDate = [NSDate dateWithTimeIntervalSince1970:[[jsonData objectForKey:@"BuildDate"] integerValue]];
             
             if ([buildDate laterDate:jsonDate] == jsonDate) {
+                [self.loading.loadingLabel setHidden:NO];
                 
                 [self removeAllEntitiesOfType:@"Stop"];
                 [self removeAllEntitiesOfType:@"Line"];
@@ -67,6 +68,10 @@
             }
         }
     } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.loading.loadingLabel setHidden:NO];
+        });
+
         // likely the first start for the app
         
         NSError *error;
@@ -74,6 +79,7 @@
         if (error != nil) {
             NSLog(@"error parsing json: %@",[error localizedDescription]);
         } else {
+            
             // this should never happen, except for beta testers who might not have a lastBuildDate set
             [self removeAllEntitiesOfType:@"Stop"];
             [self removeAllEntitiesOfType:@"Line"];
@@ -84,6 +90,8 @@
     }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
+        [NSThread sleepForTimeInterval:4];
+        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"base" bundle:nil];
         UITabBarController *mainViewController = [storyboard instantiateInitialViewController];
         
