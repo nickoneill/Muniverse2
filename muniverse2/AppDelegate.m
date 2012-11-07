@@ -10,6 +10,7 @@
 #import "Line.h"
 #import "Stop.h"
 #import "Subway.h"
+#import "LoadingViewController.h"
 
 @implementation AppDelegate
 
@@ -21,9 +22,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self checkForData];
+    });
+    
+    [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
+    
+    LoadingViewController *loading = [[LoadingViewController alloc] initWithNibName:@"LoadingViewController" bundle:nil];
+    
+    [self.window setRootViewController:loading];
+    [self.window makeKeyAndVisible];
+
+    return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    NSLog(@"did become active");
+}
+
+- (void)checkForData
+{
+    // if we have not set the completion flag yet, or if its out of date, add the data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"muniversedata" ofType:@"json"];
-
+    
     if ([[defaults objectForKey:@"dataBuildDate"] isKindOfClass:[NSDate class]]) {
         NSDate *buildDate = [defaults objectForKey:@"dataBuildDate"];
         
@@ -36,6 +59,7 @@
             NSDate *jsonDate = [NSDate dateWithTimeIntervalSince1970:[[jsonData objectForKey:@"BuildDate"] integerValue]];
             
             if ([buildDate laterDate:jsonDate] == jsonDate) {
+                
                 [self removeAllEntitiesOfType:@"Stop"];
                 [self removeAllEntitiesOfType:@"Line"];
                 [self removeAllEntitiesOfType:@"Subway"];
@@ -59,7 +83,12 @@
         }
     }
     
-    return YES;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"base" bundle:nil];
+        UITabBarController *mainViewController = [storyboard instantiateInitialViewController];
+        
+        [self.window setRootViewController:mainViewController];
+    });
 }
 
 - (void)removeAllEntitiesOfType:(NSString *)entityDescription
@@ -94,7 +123,7 @@
         
         [stopCache setObject:stop forKey:[stopDict objectForKey:@"Tag"]];
     }
-        
+    
     for (int i = 0; i < [[data objectForKey:@"LineList"] count]; i++) {
         NSDictionary *lineDict = [[data objectForKey:@"LineList"] objectAtIndex:i];
         
@@ -177,12 +206,6 @@
     }
     return YES;
 }
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
