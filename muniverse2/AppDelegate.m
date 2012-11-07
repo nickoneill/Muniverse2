@@ -28,6 +28,7 @@
     
     [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
     
+    // our loading screen is not in the base storyboard, it's just a standalone nib
     self.loading = [[LoadingViewController alloc] initWithNibName:@"LoadingViewController" bundle:nil];
     
     [self.window setRootViewController:self.loading];
@@ -48,6 +49,8 @@
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"muniversedata" ofType:@"json"];
     
     if ([[defaults objectForKey:@"dataBuildDate"] isKindOfClass:[NSDate class]]) {
+        // every start other than the first will come here, but only do extra processing if we have upgraded muni data
+        
         NSDate *buildDate = [defaults objectForKey:@"dataBuildDate"];
         
         NSError *error;
@@ -59,7 +62,9 @@
             NSDate *jsonDate = [NSDate dateWithTimeIntervalSince1970:[[jsonData objectForKey:@"BuildDate"] integerValue]];
             
             if ([buildDate laterDate:jsonDate] == jsonDate) {
-                [self.loading.loadingLabel setHidden:NO];
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self.loading.loadingLabel setHidden:NO];
+                });
                 
                 [self removeAllEntitiesOfType:@"Stop"];
                 [self removeAllEntitiesOfType:@"Line"];
@@ -68,11 +73,11 @@
             }
         }
     } else {
+        // likely the first start for the app
+        
         dispatch_sync(dispatch_get_main_queue(), ^{
             [self.loading.loadingLabel setHidden:NO];
         });
-
-        // likely the first start for the app
         
         NSError *error;
         NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath] options:NSJSONReadingAllowFragments error:&error];
@@ -80,18 +85,18 @@
             NSLog(@"error parsing json: %@",[error localizedDescription]);
         } else {
             
-            // this should never happen, except for beta testers who might not have a lastBuildDate set
+            // new users should not have this data, but potentially a failed first startup could half-fill them
             [self removeAllEntitiesOfType:@"Stop"];
             [self removeAllEntitiesOfType:@"Line"];
             [self removeAllEntitiesOfType:@"Subway"];
+            
             // add new data
             [self addJsonData:jsonData];
         }
     }
     
+    // we're all set, bring up the storyboard on the main thread
     dispatch_sync(dispatch_get_main_queue(), ^{
-        [NSThread sleepForTimeInterval:4];
-        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"base" bundle:nil];
         UITabBarController *mainViewController = [storyboard instantiateInitialViewController];
         
@@ -118,7 +123,9 @@
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     
+    // the stop cache improves this process by not forcing a core data lookup when we later want to add stops to their associated lines
     NSMutableDictionary *stopCache = [NSMutableDictionary dictionary];
+    
     for (int i = 0; i < [[data objectForKey:@"StopList"] count]; i++) {
         NSDictionary *stopDict = [[data objectForKey:@"StopList"] objectAtIndex:i];
         
@@ -192,6 +199,7 @@
         NSLog(@"Whoops, error saving demo data: %@",[err localizedDescription]);
     }
     
+    // build date serves as proof of complete data addition, as well as an upgrade point
     int time = [[data objectForKey:@"BuildDate"] integerValue];
     NSDate *dataBuildDate = [NSDate dateWithTimeIntervalSince1970:time];
     
