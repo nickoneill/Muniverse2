@@ -47,9 +47,6 @@
     NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
     [fetch setFetchLimit:4000];
     
-    //    NSPredicate *nearbyPredicate = [NSPredicate predicateWithFormat:@"%K > %f && %K < %f && %K > %f && %K < %f",@"lat",mincoord.latitude,@"lat",maxcoord.latitude,@"lon",mincoord.longitude,@"lon",maxcoord.longitude];
-    //    [fetch setPredicate:nearbyPredicate];
-    
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
     NSError *err;
@@ -60,51 +57,38 @@
         
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(37.766644, -122.414474);
     [self.map setCenterCoordinate:coord zoomLevel:11 animated:NO];
+    [self.map setUserTrackingMode:MKUserTrackingModeNone];
     
     self.shouldZoomToUser = YES;
 }
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
-    // don't zoom to user if the region has been changed alredy
-//    self.shouldZoomToUser = NO;
-    
-//    if (!self.shouldZoomToUser) {
-//        [self loadAndDisplayStopsAroundCoordinate:[mapView region].center];
-//    }
+    //
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    NSLog(@"region change: %f",mapView.region.span.latitudeDelta);
     // automatic changes in regions (triggered by us) are a special case
     if (self.autoRegionChange) {
         [self.map addAnnotation:self.calloutAnnotation];
         self.autoRegionChange = NO;
     } else {
         [self displayStops];
-        
-//        if (mapView.region.span.latitudeDelta <= 0.05) {
-//            CLLocationCoordinate2D loc = mapView.centerCoordinate;
-//            
-//            [self loadAndDisplayStopsAroundCoordinate:loc];
-//        }
     }
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    NSLog(@"updated user location");
+//    NSLog(@"updated user location %f %f",[userLocation.location coordinate].latitude,[userLocation.location coordinate].longitude);
     
-//    if (self.shouldZoomToUser) {
-//        CLLocationCoordinate2D loc = [userLocation.location coordinate];
-//        
-//        [self.map setCenterCoordinate:loc zoomLevel:14 animated:NO];
-//        
-//        [self loadAndDisplayStopsAroundCoordinate:loc];
-//        
-//        self.shouldZoomToUser = NO;
-//    }
+    if (self.shouldZoomToUser && userLocation.location.coordinate.latitude != 0) {
+        CLLocationCoordinate2D loc = [userLocation.location coordinate];
+        
+        [self.map setCenterCoordinate:loc zoomLevel:14 animated:NO];
+        
+        self.shouldZoomToUser = NO;
+    }
 }
 
 - (void)displayStops
@@ -140,13 +124,13 @@
                 [self.map addAnnotation:point];
             }
         }
-    } else {
+    } else if (self.map.region.span.latitudeDelta <= 0.16) {
         // VERY crude implementation of clustering
         // divide the current region into smaller squares (tune more/less by changing the divisions)
-        // then sum up stops in that region, and weight-average the stop coordinates
+        // then sum up stops in that region, and weighted-average the stop coordinates
         [self.map removeAnnotations:self.map.annotations];
         
-        int divisions = 4;
+        int divisions = 5;
         
         for (int i = 0; i < divisions; i++) {
             for (int j = 0; j < divisions; j++) {
@@ -178,11 +162,15 @@
         }
         
         self.lastDisplayCluster = YES;
+    } else {
+        [self.map removeAnnotations:self.map.annotations];
     }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
+    // detect the type of annotation and display the associated annotation view
+    
     if ([annotation isKindOfClass:[CalloutAnnotation class]]) {
         CalloutAnnotationView *callout = (CalloutAnnotationView *)[self.map dequeueReusableAnnotationViewWithIdentifier:@"callout"];
         if (!callout) {
@@ -226,13 +214,12 @@
 }
 
 - (void)adjustMapRegionForAnnotation:(MKAnnotationView *)annotationView {
-	CGFloat xPixelShift = 0;
-	CGFloat yPixelShift = 0;
-	
+    // this brings the selected annotation up the top center, where the callout looks best
+    
 	CGPoint mapViewOriginRelativeToParent = [self.map convertPoint:self.map.frame.origin toView:annotationView];
     
-    xPixelShift = mapViewOriginRelativeToParent.x + 150;
-    yPixelShift = mapViewOriginRelativeToParent.y + 40;
+    CGFloat xPixelShift = mapViewOriginRelativeToParent.x + 150;
+    CGFloat yPixelShift = mapViewOriginRelativeToParent.y + 40;
 	
 	//Calculate new center point, if needed
 	if (xPixelShift || yPixelShift) {
@@ -268,7 +255,6 @@
             // set the selected view for reference later
             self.selectedAnnotationView = view;
 
-            MuniPinAnnotation *pin = view.annotation;
             // animate and update the detail view
             [self loadLinesForSelectedStop];
             [UIView animateWithDuration:0.3 animations:^{
@@ -281,10 +267,6 @@
             [self.map setCenterCoordinate:coord zoomLevel:16 animated:YES];
         }        
     }
-}
-
-- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-//    [self.map removeAnnotation:self.calloutAnnotation];
 }
 
 - (IBAction)closeDetail
