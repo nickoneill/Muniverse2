@@ -49,19 +49,7 @@
 	self.frame = frame;
 }
 
-- (void)prepareOffset {
-//	CGPoint parentOrigin = [self.mapView convertPoint:self.parentAnnotationView.frame.origin
-//											 fromView:self.parentAnnotationView.superview];
-//	
-//	CGFloat xOffset = (self.mapView.frame.size.width / 2) - (parentOrigin.x + self.offsetFromParent.x);
-//	
-//	//Add half our height plus half of the height of the annotation we are tied to so that our bottom lines up to its top
-//	//Then take into account its offset and the extra space needed for our drop shadow
-//	CGFloat yOffset = -(self.frame.size.height / 2 +
-//						self.parentAnnotationView.frame.size.height / 2) +
-//    self.offsetFromParent.y +
-//    CalloutMapAnnotationViewBottomShadowBufferSize;
-	
+- (void)prepareOffset {	
 	self.centerOffset = CGPointMake(0, -40);
     self.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 }
@@ -77,7 +65,6 @@
 
 - (void)didMoveToSuperview {
     // I think this does something useful, but not without changing it to center the point up top
-//	[self adjustMapRegionIfNeeded];
 	[self animateIn];
 }
 
@@ -219,15 +206,6 @@
     xPixelShift = mapViewOriginRelativeToParent.x + 150;
     yPixelShift = mapViewOriginRelativeToParent.y + 40;
     
-    
-//	CGFloat pixelsFromTopOfMapView = -(mapViewOriginRelativeToParent.y + self.frame.size.height - CalloutMapAnnotationViewBottomShadowBufferSize);
-//	CGFloat pixelsFromBottomOfMapView = self.mapView.frame.size.height + mapViewOriginRelativeToParent.y - self.parentAnnotationView.frame.size.height;
-//	if (pixelsFromTopOfMapView < 7) {
-//		yPixelShift = 7 - pixelsFromTopOfMapView;
-//	} else if (pixelsFromBottomOfMapView < 10) {
-//		yPixelShift = -(10 - pixelsFromBottomOfMapView);
-//	}
-	
 	//Calculate new center point, if needed
 	if (xPixelShift || yPixelShift) {
         NSLog(@"shifting %f %f",xPixelShift,yPixelShift);

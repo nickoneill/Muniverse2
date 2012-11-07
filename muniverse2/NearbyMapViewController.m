@@ -18,6 +18,7 @@
 #import "GroupedPredictionCell.h"
 #import "CluserAnnotationView.h"
 #import "ClusterAnnotation.h"
+#import "NextBusClient.h"
 
 @interface NearbyMapViewController ()
 
@@ -176,14 +177,38 @@
         if (!callout) {
             callout = [[CalloutAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"callout"];
             callout.mapView = self.map;
-                        
-            UILabel *calloutLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
+            
+//            UIImageView *favorite = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Stop_Fav_Off.png"]];
+//            [favorite setFrame:CGRectMake(1, 3, 48, 48)];
+
+            UIButton *favButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [favButton setFrame:CGRectMake(1, 3, 48, 48)];
+            [favButton setImage:[UIImage imageNamed:@"Stop_Fav_Off.png"] forState:UIControlStateNormal];
+            [favButton addTarget:self action:@selector(favorite:) forControlEvents:UIControlEventTouchUpInside];
+            [callout.contentView addSubview:favButton];
+            
+            UILabel *calloutLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 2, 230, 24)];
             [calloutLabel setTag:1];
-            [calloutLabel setFont:[UIFont systemFontOfSize:22]];
+            [calloutLabel setFont:[UIFont boldSystemFontOfSize:22]];
+            [calloutLabel setTextColor:[UIColor whiteColor]];
+            [calloutLabel setShadowColor:[UIColor blackColor]];
+            [calloutLabel setShadowOffset:CGSizeMake(1, 1)];
+            [calloutLabel setBackgroundColor:[UIColor clearColor]];
             [callout.contentView addSubview:calloutLabel];
+
+            UILabel *calloutsubLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 28, 230, 18)];
+            [calloutsubLabel setTag:2];
+            [calloutsubLabel setFont:[UIFont systemFontOfSize:16]];
+            [calloutsubLabel setTextColor:[UIColor whiteColor]];
+//            [calloutsubLabel setShadowColor:[UIColor blackColor]];
+//            [calloutsubLabel setShadowOffset:CGSizeMake(1, 1)];
+            [calloutsubLabel setBackgroundColor:[UIColor clearColor]];
+            [callout.contentView addSubview:calloutsubLabel];
         }
+        
         MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
         [(UILabel *)[callout.contentView viewWithTag:1] setText:pin.stop.name];
+        [(UILabel *)[callout.contentView viewWithTag:2] setText:[NSString stringWithFormat:@"Stop #%@",pin.stop.tag]];
         
         callout.parentAnnotationView = self.selectedAnnotationView;
         
@@ -267,6 +292,11 @@
             [self.map setCenterCoordinate:coord zoomLevel:16 animated:YES];
         }        
     }
+}
+
+- (void)favorite:(id)sender
+{
+    NSLog(@"favorite");
 }
 
 - (IBAction)closeDetail
@@ -358,64 +388,24 @@
     MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
     Line *line = [self.linesCache objectAtIndex:[indexPath row]];
     
-    cell.primaryText.text = line.shortname;
-    if ([line.inboundStops containsObject:pin.stop]) {
-        cell.secondaryText.text = line.inboundDesc;
+    if ([line.metro boolValue]) {
+        [cell.lineIcon setHidden:NO];
+        [cell.lineIcon setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_%@.png",line.shortname]]];
+        
+        [cell.primaryText setFrame:CGRectMake(50, cell.primaryText.frame.origin.y, cell.primaryText.frame.size.width, cell.primaryText.frame.size.height)];
+        [cell.secondaryText setFrame:CGRectMake(50, cell.secondaryText.frame.origin.y, cell.secondaryText.frame.size.width, cell.secondaryText.frame.size.height)];
     } else {
-        cell.secondaryText.text = line.outboundDesc;
+        [cell.lineIcon setHidden:YES];
+        
+        [cell.primaryText setFrame:CGRectMake(10, cell.primaryText.frame.origin.y, cell.primaryText.frame.size.width, cell.primaryText.frame.size.height)];
+        [cell.secondaryText setFrame:CGRectMake(10, cell.secondaryText.frame.origin.y, cell.secondaryText.frame.size.width, cell.secondaryText.frame.size.height)];
     }
     
-    if ([line.shortname isEqualToString:@"J"]) {
-        cell.primaryText.text = @"Church";
-        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_J.png"]];
-        if (![line.inboundStops containsObject:pin.stop]) {
-            cell.secondaryText.text = @"To Balboa Park Station";
-        } else {
-            cell.secondaryText.text = @"To Embarcadero Station";
-        }
-    } else if ([line.shortname isEqualToString:@"L"]) {
-        cell.primaryText.text = @"Taraval";
-        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_L.png"]];
-        if (![line.inboundStops containsObject:pin.stop]) {
-            cell.secondaryText.text = @"To SF Zoo";
-        } else {
-            cell.secondaryText.text = @"To Embarcadero Station";
-        }
-    } else if ([line.shortname isEqualToString:@"M"]) {
-        cell.primaryText.text = @"Ocean View";
-        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_M.png"]];
-        if (![line.inboundStops containsObject:pin.stop]) {
-            cell.secondaryText.text = @"To Balboa Park Station";
-        } else {
-            cell.secondaryText.text = @"To Embarcadero Station";
-        }
-    } else if ([line.shortname isEqualToString:@"N"]) {
-        cell.primaryText.text = @"Judah";
-        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_N.png"]];
-        if (![line.inboundStops containsObject:pin.stop]) {
-            cell.secondaryText.text = @"To Ocean Beach";
-        } else {
-            cell.secondaryText.text = @"To Ballpark/Caltrain";
-        }
-    } else if ([line.shortname isEqualToString:@"KT"]) {
-        
-        // special case to handle it being T outbound on the surface and K outbound in the tunnel
-        
-        if (![line.inboundStops containsObject:pin.stop]) {
-            if (0) {
-                cell.primaryText.text = @"Ingleside";
-                cell.secondaryText.text = @"To Balboa Park Station";
-                cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_K.png"]];
-            } else {
-                cell.primaryText.text = @"Third Street";
-                cell.secondaryText.text = @"To Embarcadero Station";
-                cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
-            }
-        } else {
-            cell.primaryText.text = @"Third Street";
-            cell.secondaryText.text = @"To Sunnydale";
-            cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
-        }
+    [cell.primaryText setText:line.name];
+    if ([line.inboundStops containsObject:pin.stop]) {
+        [cell.secondaryText setText:line.inboundDesc];
+    } else {
+        [cell.secondaryText setText:line.outboundDesc];
     }
     
     cell.primaryPrediction.text = @"";
