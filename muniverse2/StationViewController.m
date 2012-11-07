@@ -138,7 +138,7 @@
                 cell.secondaryPrediction.text = @"";
             }
         } andFailure:^(NSError *err) {
-            NSLog(@"some failure: %@",err);
+            NSLog(@"failed getting predictions: %@",[err localizedDescription]);
         }];
     }
 }

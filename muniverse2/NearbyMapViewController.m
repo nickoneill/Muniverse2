@@ -359,6 +359,7 @@
     }
     
     [self.detailTable reloadData];
+    [self refreshPredictions];
 }
 
 #pragma mark - Table view data source
@@ -414,6 +415,41 @@
     return cell;
 }
 
+- (void)refreshPredictions
+{
+    NextBusClient *client = [[NextBusClient alloc] init];
+    
+    Stop *stop = [(MuniPinAnnotation *)self.selectedAnnotationView.annotation stop];
+    for (int i = 0; i < [self.linesCache count]; i++) {
+        Line *line = [self.linesCache objectAtIndex:i];
+        
+        NSString *lineTag = @"";
+        if ([line.inboundStops containsObject:stop]) {
+            lineTag = line.inboundTags;
+        } else if ([line.outboundStops containsObject:stop]) {
+            lineTag = line.outboundTags;
+        }
+                
+        [client predictionForLineTag:lineTag atStopId:[[stop stopId] intValue] withSuccess:^(NSArray *els) {
+            GroupedPredictionCell *cell = (GroupedPredictionCell *)[self.detailTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            
+            if ([els count]) {
+                cell.primaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:0]];
+                
+                if ([els count] > 1) {
+                    cell.secondaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:1]];
+                } else {
+                    cell.secondaryPrediction.text = @"--";
+                }
+            } else {
+                cell.primaryPrediction.text = @"";
+                cell.secondaryPrediction.text = @"";
+            }
+        } andFailure:^(NSError *err) {
+            NSLog(@"failed getting predictions: %@",[err localizedDescription]);
+        }];
+    }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
