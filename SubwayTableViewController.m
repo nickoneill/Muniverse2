@@ -56,9 +56,6 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Subway" inManagedObjectContext:self.moc];
     [fetchRequest setEntity:entity];
     
-//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K == YES",@"isSubway"];
-//    [fetchRequest setPredicate:pred];
-    
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
@@ -123,6 +120,24 @@
     
     cell.textLabel.text = subway.name;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:18];
+    
+    // remove any potential image views when we're reusing cells
+    [[cell.contentView viewWithTag:1] removeFromSuperview];
+    
+    // would like to add another bit to the Subway model for this, but it seems like wasted effort since it can be implemented in this much code
+    if ([subway.name isEqualToString:@"Civic Center Station"] || [subway.name isEqualToString:@"Powell Station"] || [subway.name isEqualToString:@"Montgomery Station"] || [subway.name isEqualToString:@"Embarcadero Station"]) {
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Connection_BART.png"] highlightedImage:[UIImage imageNamed:@"Connection_BART-h.png"]];
+        [image setFrame:CGRectMake(250, image.frame.origin.y, image.frame.size.width, image.frame.size.height)];
+        [image setTag:1];
+        
+        [cell.contentView addSubview:image];
+    } else if ([subway.name isEqualToString:@"4th & King/Caltrain"]) {
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Connection_Caltrain.png"] highlightedImage:[UIImage imageNamed:@"Connection_Caltrain-h.png"]];
+        [image setFrame:CGRectMake(250, image.frame.origin.y, image.frame.size.width, image.frame.size.height)];
+        [image setTag:1];
+        
+        [cell.contentView addSubview:image];
+    }
 }
 
 /*
