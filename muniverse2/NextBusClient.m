@@ -52,4 +52,29 @@
     }];
 }
 
+// I don't think this really goes here... maybe a whole muniverse utilities class?
++ (NSString *)truncatedDescription:(NSString *)desc
+{
+    // remove the "Inbound" and "Outbound" parts of the description on some pages when we already indicate direction
+    NSError *err;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@".+ to (.+)" options:NSRegularExpressionCaseInsensitive error:&err];
+    if (err) {
+        NSLog(@"Error with regex: %@",[err localizedDescription]);
+    }
+    
+    return [regex stringByReplacingMatchesInString:desc options:0 range:NSMakeRange(0, [desc length]) withTemplate:@"To $1"];
+}
+
++ (NSString *)nameStripShort:(NSString *)name
+{
+    // remove the shortname from the beginning part of the line name
+    NSError *err;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@".+-(.+)" options:NSRegularExpressionCaseInsensitive error:&err];
+    if (err) {
+        NSLog(@"Error with regex: %@",[err localizedDescription]);
+    }
+    
+    return [regex stringByReplacingMatchesInString:name options:0 range:NSMakeRange(0, [name length]) withTemplate:@"$1"];
+}
+
 @end

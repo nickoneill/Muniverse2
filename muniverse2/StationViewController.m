@@ -77,58 +77,12 @@
     
     Line *line = [self.lines objectAtIndex:[indexPath row]];
     
-    
-    if ([line.shortname isEqualToString:@"J"]) {
-        cell.primaryText.text = @"Church";
-        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_J.png"]];
-        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
-            cell.secondaryText.text = @"To Balboa Park Station";
-        } else {
-            cell.secondaryText.text = @"To Embarcadero Station";
-        }
-    } else if ([line.shortname isEqualToString:@"L"]) {
-        cell.primaryText.text = @"Taraval";
-        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_L.png"]];
-        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
-            cell.secondaryText.text = @"To SF Zoo";
-        } else {
-            cell.secondaryText.text = @"To Embarcadero Station";
-        }
-    } else if ([line.shortname isEqualToString:@"M"]) {
-        cell.primaryText.text = @"Ocean View";
-        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_M.png"]];
-        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
-            cell.secondaryText.text = @"To Balboa Park Station";
-        } else {
-            cell.secondaryText.text = @"To Embarcadero Station";
-        }
-    } else if ([line.shortname isEqualToString:@"N"]) {
-        cell.primaryText.text = @"Judah";
-        cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_N.png"]];
-        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
-            cell.secondaryText.text = @"To Ocean Beach";
-        } else {
-            cell.secondaryText.text = @"To Ballpark/Caltrain";
-        }
-    } else if ([line.shortname isEqualToString:@"KT"]) {
-        
-        // special case to handle it being T outbound on the surface and K outbound in the tunnel
-        
-        if (self.inoutcontrol.selectedSegmentIndex == kDirectionOutbound) {
-            if ([self.subway.isAboveGround intValue] == 0) {
-                cell.primaryText.text = @"Ingleside";
-                cell.secondaryText.text = @"To Balboa Park Station";
-                cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_K.png"]];
-            } else {
-                cell.primaryText.text = @"Third Street";
-                cell.secondaryText.text = @"To Embarcadero Station";
-                cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
-            }        
-        } else {
-            cell.primaryText.text = @"Third Street";
-            cell.secondaryText.text = @"To Sunnydale";
-            cell.lineIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_T.png"]];
-        }
+    [cell.primaryText setText:[NextBusClient nameStripShort:line.name]];
+    [cell.lineIcon setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_%@.png",line.shortname]]];
+    if (self.inoutcontrol.selectedSegmentIndex == kDirectionInbound) {
+        [cell.secondaryText setText:[NextBusClient truncatedDescription:line.inboundDesc]];
+    } else {
+        [cell.secondaryText setText:[NextBusClient truncatedDescription:line.outboundDesc]];
     }
     
     cell.primaryPrediction.text = @"";

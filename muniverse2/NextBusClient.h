@@ -17,4 +17,7 @@ typedef enum {
 
 - (void)predictionForLineTag:(NSString *)lineTag atStopId:(int)stopId withSuccess:(void(^)(NSArray *els))success andFailure:(void(^)(NSError *err))failure;
 
++ (NSString *)truncatedDescription:(NSString *)desc;
++ (NSString *)nameStripShort:(NSString *)name;
+
 @end
