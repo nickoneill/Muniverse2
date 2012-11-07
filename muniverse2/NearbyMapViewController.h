@@ -17,12 +17,13 @@
 @property (strong) IBOutlet UIView *detailView;
 @property (strong) IBOutlet UITableView *detailTable;
 
-@property (strong) NSMutableArray *loadedStops;
+@property (strong) NSArray *loadedStops;
 @property (strong) NSArray *linesCache;
 @property (strong) CalloutAnnotation *calloutAnnotation;
 @property (strong) MKAnnotationView *selectedAnnotationView;
 @property BOOL autoRegionChange;
 @property BOOL shouldZoomToUser;
+@property BOOL lastDisplayCluster;
 
 @property (strong) IBOutlet UIImageView *closeButton;
 

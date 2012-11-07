@@ -16,6 +16,8 @@
 #import "CalloutAnnotationView.h"
 #import "MuniPinAnnotation.h"
 #import "GroupedPredictionCell.h"
+#import "CluserAnnotationView.h"
+#import "ClusterAnnotation.h"
 
 @interface NearbyMapViewController ()
 
@@ -28,6 +30,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.autoRegionChange = NO;
+        self.lastDisplayCluster = NO;
     }
     return self;
 }
@@ -41,8 +44,20 @@
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
     [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
     
-    self.loadedStops = [NSMutableArray array];
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+    [fetch setFetchLimit:4000];
     
+    //    NSPredicate *nearbyPredicate = [NSPredicate predicateWithFormat:@"%K > %f && %K < %f && %K > %f && %K < %f",@"lat",mincoord.latitude,@"lat",maxcoord.latitude,@"lon",mincoord.longitude,@"lon",maxcoord.longitude];
+    //    [fetch setPredicate:nearbyPredicate];
+    
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    NSError *err;
+    self.loadedStops = [app.managedObjectContext executeFetchRequest:fetch error:&err];
+    if (err != nil) {
+        NSLog(@"There was an issue fetching nearby stops");
+    }
+        
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(37.766644, -122.414474);
     [self.map setCenterCoordinate:coord zoomLevel:11 animated:NO];
     
@@ -67,11 +82,13 @@
         [self.map addAnnotation:self.calloutAnnotation];
         self.autoRegionChange = NO;
     } else {
-        if (mapView.region.span.latitudeDelta <= 0.05) {
-            CLLocationCoordinate2D loc = mapView.centerCoordinate;
-            
-            [self loadAndDisplayStopsAroundCoordinate:loc];
-        }
+        [self displayStops];
+        
+//        if (mapView.region.span.latitudeDelta <= 0.05) {
+//            CLLocationCoordinate2D loc = mapView.centerCoordinate;
+//            
+//            [self loadAndDisplayStopsAroundCoordinate:loc];
+//        }
     }
 }
 
@@ -90,42 +107,77 @@
 //    }
 }
 
-- (void)loadAndDisplayStopsAroundCoordinate:(CLLocationCoordinate2D)coord
+- (void)displayStops
 {
-    float adjustment = 0.001;
+    // loading stops all the way to the edge of the screen feels weird, this adjusts that in slightly
+    float adjustment = -0.0005;
     
     MKCoordinateRegion region = [self.map region];
     CLLocationCoordinate2D mincoord;
-    mincoord.latitude = region.center.latitude - (region.span.latitudeDelta/2) + adjustment;
-    mincoord.longitude = region.center.longitude - (region.span.longitudeDelta/2) + adjustment;
+    mincoord.latitude = region.center.latitude - (region.span.latitudeDelta/2) - adjustment;
+    mincoord.longitude = region.center.longitude - (region.span.longitudeDelta/2) - adjustment;
     CLLocationCoordinate2D maxcoord;
-    maxcoord.latitude = region.center.latitude + (region.span.latitudeDelta/2) - adjustment;
-    maxcoord.longitude = region.center.longitude + (region.span.longitudeDelta/2) - adjustment;
+    maxcoord.latitude = region.center.latitude + (region.span.latitudeDelta/2) + adjustment;
+    maxcoord.longitude = region.center.longitude + (region.span.longitudeDelta/2) + adjustment;
     
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-    
-    NSPredicate *nearbyPredicate = [NSPredicate predicateWithFormat:@"%K > %f && %K < %f && %K > %f && %K < %f",@"lat",mincoord.latitude,@"lat",maxcoord.latitude,@"lon",mincoord.longitude,@"lon",maxcoord.longitude];
-    [fetch setPredicate:nearbyPredicate];
-    
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    
-    NSError *err;
-    NSArray *stops = [app.managedObjectContext executeFetchRequest:fetch error:&err];
-    if (err != nil) {
-        NSLog(@"There was an issue fetching nearby stops");
-    }
-    
-    for (Stop *stop in stops) {
-        if (![self.loadedStops containsObject:stop]) {
-            [self.loadedStops addObject:stop];
-            
-            MuniPinAnnotation *point = [[MuniPinAnnotation alloc] init];
-            [point setTitle:stop.name];
-            [point setSubtitle:@"none"];
-            [point setStop:stop];
-            [point setCoordinate:CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue])];
-            [self.map addAnnotation:point];
+    if (self.map.region.span.latitudeDelta <= 0.02) {
+        // under a certain distance, we can display the stops themselves
+        
+        if (self.lastDisplayCluster) {
+            // remove cluster annotations if that was the last thing we annotated
+            // this is used to persist the stop annotations between drags, it could potentially slow down if someone dragged a lot but small use case, I think
+            [self.map removeAnnotations:self.map.annotations];
+            self.lastDisplayCluster = NO;
         }
+        
+        // pick stops from the cache for the current region
+        for (Stop *stop in self.loadedStops) {
+            if ([stop.lat floatValue] >= mincoord.latitude && [stop.lat floatValue] <= maxcoord.latitude && [stop.lon floatValue] >= mincoord.longitude && [stop.lon floatValue] <= maxcoord.longitude) {
+
+                MuniPinAnnotation *point = [[MuniPinAnnotation alloc] init];
+                [point setStop:stop];
+                [point setCoordinate:CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue])];
+                [self.map addAnnotation:point];
+            }
+        }
+    } else {
+        // VERY crude implementation of clustering
+        // divide the current region into smaller squares (tune more/less by changing the divisions)
+        // then sum up stops in that region, and weight-average the stop coordinates
+        [self.map removeAnnotations:self.map.annotations];
+        
+        int divisions = 4;
+        
+        for (int i = 0; i < divisions; i++) {
+            for (int j = 0; j < divisions; j++) {
+                CLLocationCoordinate2D minBox = {mincoord.latitude + ((region.span.latitudeDelta/divisions)*i), mincoord.longitude + ((region.span.longitudeDelta/divisions)*j)};
+                CLLocationCoordinate2D maxBox = {minBox.latitude + region.span.latitudeDelta/divisions, minBox.longitude + region.span.longitudeDelta/divisions};
+                
+                int stopCount = 0;
+                CLLocationCoordinate2D avg = CLLocationCoordinate2DMake(0, 0);
+                for (Stop *stop in self.loadedStops) {
+                    if ([stop.lat floatValue] >= minBox.latitude && [stop.lat floatValue] <= maxBox.latitude && [stop.lon floatValue] >= minBox.longitude && [stop.lon floatValue] <= maxBox.longitude) {
+                        
+                        if (avg.latitude == 0) {
+                            avg = CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]);
+                        } else {
+                            avg = CLLocationCoordinate2DMake((avg.latitude + [stop.lat floatValue])/2, (avg.longitude + [stop.lon floatValue])/2);
+                        }
+                        
+                        stopCount++;
+                    }
+                }
+                
+                ClusterAnnotation *point = [[ClusterAnnotation alloc] init];
+                [point setClusterCount:[NSNumber numberWithInt:stopCount]];
+                [point setCoordinate:avg];
+                
+                [self.map addAnnotation:point];
+            }
+
+        }
+        
+        self.lastDisplayCluster = YES;
     }
 }
 
@@ -143,7 +195,7 @@
             [callout.contentView addSubview:calloutLabel];
         }
         MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
-        [(UILabel *)[callout.contentView viewWithTag:1] setText:pin.title];
+        [(UILabel *)[callout.contentView viewWithTag:1] setText:pin.stop.name];
         
         callout.parentAnnotationView = self.selectedAnnotationView;
         
@@ -159,19 +211,17 @@
         }
         
         return pin;
+    } else if ([annotation isKindOfClass:[ClusterAnnotation class]]) {
+        CluserAnnotationView *cluster = (CluserAnnotationView *)[self.map dequeueReusableAnnotationViewWithIdentifier:@"cluster"];
+        
+        if (!cluster) {
+            cluster = [[CluserAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"cluster"];
+        }
+        [cluster.clusterCount setText:[NSString stringWithFormat:@"%@",[(ClusterAnnotation *)annotation clusterCount]]];
+        
+        return cluster;
     }
-    
-    
-//    UIButton *calloutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//    [calloutButton addTarget:self action:@selector(detail) forControlEvents:UIControlEventTouchUpInside];
-//    [pin setRightCalloutAccessoryView:calloutButton];
-    
-//    UIButton *favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    UIImageView *favoriteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Stop_Fav_On.png"]];
-//    [favoriteButton addSubview:favoriteImage];
-//    [favoriteButton addTarget:self action:@selector(detail) forControlEvents:UIControlEventTouchUpInside];
-//    [pin setLeftCalloutAccessoryView:favoriteButton];
-    
+        
     return nil;
 }
 
@@ -219,7 +269,6 @@
             self.selectedAnnotationView = view;
 
             MuniPinAnnotation *pin = view.annotation;
-            NSLog(@"selected stop: %@ %@",pin.title,pin.stop);
             // animate and update the detail view
             [self loadLinesForSelectedStop];
             [UIView animateWithDuration:0.3 animations:^{
@@ -249,7 +298,7 @@
 
 - (BOOL)isAtStopZoomLevel
 {
-    float regionsize = [self.map region].span.latitudeDelta;
+    float regionsize = self.map.region.span.latitudeDelta;
     
     if (regionsize <= 0.0032) {
         return YES;
@@ -258,12 +307,14 @@
     return NO;
 }
 
+// this stop could be used for inbound, outbound or a combination of the two
 - (void)loadLinesForSelectedStop
 {
     NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     
     MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
     
+    // fetch potential inbound stops
     NSFetchRequest *inboundReq = [NSFetchRequest fetchRequestWithEntityName:@"Line"];
     
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"%@ IN %K",pin.stop,@"inboundStops"];
@@ -278,6 +329,7 @@
         NSLog(@"issue with inbound stops: %@",[err localizedDescription]);
     }
     
+    // fetch potential outbound stops
     NSFetchRequest *outboundReq = [NSFetchRequest fetchRequestWithEntityName:@"Line"];
     
     pred = [NSPredicate predicateWithFormat:@"%@ IN %K",pin.stop,@"outboundStops"];

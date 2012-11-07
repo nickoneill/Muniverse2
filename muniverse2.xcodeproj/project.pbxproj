@@ -182,7 +182,6 @@
 		D07B903D15D2F73300222BA3 /* StopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B903C15D2F73300222BA3 /* StopDetailViewController.m */; };
 		D07BE01115CB225A0054E392 /* AllLinesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */; };
 		D07D615915CCB1330035BEB7 /* LineDisplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D615815CCB1330035BEB7 /* LineDisplayCell.m */; };
-		D07F89D01649DAE8005E746F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D07F89CF1649DAE8005E746F /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D07F89DE1649EC28005E746F /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07F89DC1649EC28005E746F /* LoadingViewController.m */; };
 		D07F89DF1649EC28005E746F /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07F89DD1649EC28005E746F /* LoadingViewController.xib */; };
 		D08AC50715D790D600A45338 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D08AC4EC15D790D600A45338 /* CXMLDocument_CreationExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -219,6 +218,10 @@
 		D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */; };
 		D0C7F04315EEEDB800A06EA6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C7F04215EEEDB800A06EA6 /* MapKit.framework */; };
 		D0C7F04615F14B9F00A06EA6 /* NewStopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7F04515F14B9F00A06EA6 /* NewStopDetailViewController.m */; };
+		D0E2DB27164AF9EF004FC5A8 /* CluserAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2DB26164AF9EE004FC5A8 /* CluserAnnotationView.m */; };
+		D0E2DB2A164AFA03004FC5A8 /* ClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2DB29164AFA02004FC5A8 /* ClusterAnnotation.m */; };
+		D0E2DB2D164B0885004FC5A8 /* cluster.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E2DB2B164B0885004FC5A8 /* cluster.png */; };
+		D0E2DB2E164B0885004FC5A8 /* cluster@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E2DB2C164B0885004FC5A8 /* cluster@2x.png */; };
 		D0EBAA3515E0582D0014A8E5 /* Subway.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EBAA3415E0582D0014A8E5 /* Subway.m */; };
 		D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */; };
 /* End PBXBuildFile section */
@@ -422,8 +425,6 @@
 		D07BE01015CB225A0054E392 /* AllLinesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllLinesTableViewController.m; sourceTree = "<group>"; };
 		D07D615715CCB1330035BEB7 /* LineDisplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDisplayCell.h; sourceTree = "<group>"; };
 		D07D615815CCB1330035BEB7 /* LineDisplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDisplayCell.m; sourceTree = "<group>"; };
-		D07F89CE1649DAE8005E746F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		D07F89CF1649DAE8005E746F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		D07F89DB1649EC28005E746F /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		D07F89DC1649EC28005E746F /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		D07F89DD1649EC28005E746F /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
@@ -495,6 +496,12 @@
 		D0C7F04215EEEDB800A06EA6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D0C7F04415F14B9F00A06EA6 /* NewStopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStopDetailViewController.h; sourceTree = "<group>"; };
 		D0C7F04515F14B9F00A06EA6 /* NewStopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStopDetailViewController.m; sourceTree = "<group>"; };
+		D0E2DB25164AF9EE004FC5A8 /* CluserAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluserAnnotationView.h; sourceTree = "<group>"; };
+		D0E2DB26164AF9EE004FC5A8 /* CluserAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluserAnnotationView.m; sourceTree = "<group>"; };
+		D0E2DB28164AFA02004FC5A8 /* ClusterAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotation.h; sourceTree = "<group>"; };
+		D0E2DB29164AFA02004FC5A8 /* ClusterAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotation.m; sourceTree = "<group>"; };
+		D0E2DB2B164B0885004FC5A8 /* cluster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cluster.png; sourceTree = "<group>"; };
+		D0E2DB2C164B0885004FC5A8 /* cluster@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cluster@2x.png"; sourceTree = "<group>"; };
 		D0EBAA3315E0582D0014A8E5 /* Subway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subway.h; sourceTree = "<group>"; };
 		D0EBAA3415E0582D0014A8E5 /* Subway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subway.m; sourceTree = "<group>"; };
 		D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -530,6 +537,8 @@
 		435BA1B515AC60BB00D26FA1 /* Image Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0E2DB2B164B0885004FC5A8 /* cluster.png */,
+				D0E2DB2C164B0885004FC5A8 /* cluster@2x.png */,
 				436CF92816045EFA00231D40 /* Pin_Circle@2x.png */,
 				436CF92416045ED400231D40 /* Pin_Circle.png */,
 				4304DC3F160A8EFE00E299F6 /* Button_Close.png */,
@@ -847,18 +856,12 @@
 				D0B879DF1607D6A7002CA8A6 /* CalloutAnnotation.m */,
 				D00AFFA2162CE89C000BEB01 /* MuniPinAnnotation.h */,
 				D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */,
+				D0E2DB25164AF9EE004FC5A8 /* CluserAnnotationView.h */,
+				D0E2DB26164AF9EE004FC5A8 /* CluserAnnotationView.m */,
+				D0E2DB28164AFA02004FC5A8 /* ClusterAnnotation.h */,
+				D0E2DB29164AFA02004FC5A8 /* ClusterAnnotation.m */,
 			);
 			name = "Shared Classes";
-			sourceTree = "<group>";
-		};
-		D07F89CD1649DAE8005E746F /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				D07F89CE1649DAE8005E746F /* MBProgressHUD.h */,
-				D07F89CF1649DAE8005E746F /* MBProgressHUD.m */,
-			);
-			name = MBProgressHUD;
-			path = ../../external/MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		D08AC4E915D790D600A45338 /* TouchXML */ = {
@@ -980,7 +983,6 @@
 		D0C602DB15D5E946003200E9 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				D07F89CD1649DAE8005E746F /* MBProgressHUD */,
 				D08AC4E915D790D600A45338 /* TouchXML */,
 				D0C602DF15D5E962003200E9 /* Launch Apps */,
 				D0C602BA15D5E942003200E9 /* AFNetworking */,
@@ -1235,6 +1237,8 @@
 				4304DC3D160A8AED00E299F6 /* Button_Close@2x.png in Resources */,
 				4304DC40160A8EFE00E299F6 /* Button_Close.png in Resources */,
 				D07F89DF1649EC28005E746F /* LoadingViewController.xib in Resources */,
+				D0E2DB2D164B0885004FC5A8 /* cluster.png in Resources */,
+				D0E2DB2E164B0885004FC5A8 /* cluster@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1329,8 +1333,9 @@
 				D0B879E01607D6A7002CA8A6 /* CalloutAnnotation.m in Sources */,
 				D038DC06161E839F00253786 /* CalloutAnnotationView.m in Sources */,
 				D00AFFA4162CE89C000BEB01 /* MuniPinAnnotation.m in Sources */,
-				D07F89D01649DAE8005E746F /* MBProgressHUD.m in Sources */,
 				D07F89DE1649EC28005E746F /* LoadingViewController.m in Sources */,
+				D0E2DB27164AF9EF004FC5A8 /* CluserAnnotationView.m in Sources */,
+				D0E2DB2A164AFA03004FC5A8 /* ClusterAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
