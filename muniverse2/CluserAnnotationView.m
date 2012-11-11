@@ -14,7 +14,7 @@
 
 	if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
         
-        self.image = [UIImage imageNamed:@"cluster.png"];
+        self.image = [UIImage imageNamed:@"StopCluster.png"];
         self.clusterCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 26, 26)];
         self.clusterCount.text = @"C";
         self.clusterCount.textColor = [UIColor whiteColor];
