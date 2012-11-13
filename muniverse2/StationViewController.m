@@ -25,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPredictions) name:@"becameActive" object:nil];
     }
     return self;
 }
@@ -33,9 +34,14 @@
 {
     [super viewDidLoad];
     
+    // set the title from our provided data
+    self.navigationItem.title = [self.subway valueForKey:@"name"];
+
+    // set background image for the table
     UIImage *bg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
     [self.table setBackgroundView:[[UIImageView alloc] initWithImage:bg]];
-	
+        
+    // finally request the lines from core data
     NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Line"];
@@ -50,9 +56,8 @@
     if (err != nil) {
         NSLog(@"issue with subway stops: %@",[err localizedDescription]);
     }
-    
-    self.navigationItem.title = [self.subway valueForKey:@"name"];
-    
+
+    // kick off predictions
     [self refreshPredictions];
 }
 
@@ -104,7 +109,6 @@
     } else {
         return @"For Ballpark or Caltrain service, take any inbound N-Judah or T-Third Street train";
     }
-
 }
 
 - (void)refreshPredictions
@@ -154,6 +158,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
