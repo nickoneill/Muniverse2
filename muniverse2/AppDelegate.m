@@ -39,7 +39,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    NSLog(@"did become active");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"becameActive" object:nil];
 }
 
 - (void)checkForData
