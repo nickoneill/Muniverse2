@@ -218,6 +218,8 @@
 		D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */; };
 		D0C7F04315EEEDB800A06EA6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C7F04215EEEDB800A06EA6 /* MapKit.framework */; };
 		D0C7F04615F14B9F00A06EA6 /* NewStopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7F04515F14B9F00A06EA6 /* NewStopDetailViewController.m */; };
+		D0CFB51D165301FC00BCC7EC /* refreshBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0CFB51C165301FC00BCC7EC /* refreshBg@2x.png */; };
+		D0CFB5201653026B00BCC7EC /* refreshBg.png in Resources */ = {isa = PBXBuildFile; fileRef = D0CFB51F1653026B00BCC7EC /* refreshBg.png */; };
 		D0E2DB27164AF9EF004FC5A8 /* CluserAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2DB26164AF9EE004FC5A8 /* CluserAnnotationView.m */; };
 		D0E2DB2A164AFA03004FC5A8 /* ClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2DB29164AFA02004FC5A8 /* ClusterAnnotation.m */; };
 		D0E2DB2D164B0885004FC5A8 /* cluster.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E2DB2B164B0885004FC5A8 /* cluster.png */; };
@@ -496,6 +498,8 @@
 		D0C7F04215EEEDB800A06EA6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D0C7F04415F14B9F00A06EA6 /* NewStopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStopDetailViewController.h; sourceTree = "<group>"; };
 		D0C7F04515F14B9F00A06EA6 /* NewStopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStopDetailViewController.m; sourceTree = "<group>"; };
+		D0CFB51C165301FC00BCC7EC /* refreshBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refreshBg@2x.png"; sourceTree = SOURCE_ROOT; };
+		D0CFB51F1653026B00BCC7EC /* refreshBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refreshBg.png; sourceTree = SOURCE_ROOT; };
 		D0E2DB25164AF9EE004FC5A8 /* CluserAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluserAnnotationView.h; sourceTree = "<group>"; };
 		D0E2DB26164AF9EE004FC5A8 /* CluserAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluserAnnotationView.m; sourceTree = "<group>"; };
 		D0E2DB28164AFA02004FC5A8 /* ClusterAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotation.h; sourceTree = "<group>"; };
@@ -537,6 +541,8 @@
 		435BA1B515AC60BB00D26FA1 /* Image Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0CFB51F1653026B00BCC7EC /* refreshBg.png */,
+				D0CFB51C165301FC00BCC7EC /* refreshBg@2x.png */,
 				D0E2DB2B164B0885004FC5A8 /* cluster.png */,
 				D0E2DB2C164B0885004FC5A8 /* cluster@2x.png */,
 				436CF92816045EFA00231D40 /* Pin_Circle@2x.png */,
@@ -1239,6 +1245,8 @@
 				D07F89DF1649EC28005E746F /* LoadingViewController.xib in Resources */,
 				D0E2DB2D164B0885004FC5A8 /* cluster.png in Resources */,
 				D0E2DB2E164B0885004FC5A8 /* cluster@2x.png in Resources */,
+				D0CFB51D165301FC00BCC7EC /* refreshBg@2x.png in Resources */,
+				D0CFB5201653026B00BCC7EC /* refreshBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

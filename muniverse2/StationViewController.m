@@ -25,7 +25,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPredictions) name:@"becameActive" object:nil];
     }
     return self;
 }
@@ -33,6 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    // subscribe to the application becoming active after being in the background
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPredictions) name:@"becameActive" object:nil];
     
     // set the title from our provided data
     self.navigationItem.title = [self.subway valueForKey:@"name"];
@@ -40,7 +42,16 @@
     // set background image for the table
     UIImage *bg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
     [self.table setBackgroundView:[[UIImageView alloc] initWithImage:bg]];
-        
+    
+    // setup pull to refresh views
+    UIView *pullView = [[UIView alloc] initWithFrame:CGRectMake(0, -52, 320, 52)];
+    
+    UILabel *pullLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 18)];
+    [pullLabel setText:@"Pull to refresh"];
+    
+    [pullView addSubview:pullLabel];
+    [self.table addSubview:pullView];
+
     // finally request the lines from core data
     NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     
@@ -56,6 +67,10 @@
     if (err != nil) {
         NSLog(@"issue with subway stops: %@",[err localizedDescription]);
     }
+    
+    UIActivityIndicatorView *spin = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+    [spin setTag:1];
+    self.refreshing = [[UIBarButtonItem alloc] initWithCustomView:spin];
 
     // kick off predictions
     [self refreshPredictions];
@@ -113,6 +128,11 @@
 
 - (void)refreshPredictions
 {
+    NSLog(@"refresh station");
+    
+    [[self navigationItem] setRightBarButtonItem:self.refreshing];
+    [(UIActivityIndicatorView *)self.refreshing.customView startAnimating];
+    
     NextBusClient *client = [[NextBusClient alloc] init];
     
     for (int i = 0; i < [self.lines count]; i++) {
@@ -141,8 +161,14 @@
                 cell.primaryPrediction.text = @"";
                 cell.secondaryPrediction.text = @"";
             }
+            
+            [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];
+            [[self navigationItem] setRightBarButtonItem:self.refresh];
         } andFailure:^(NSError *err) {
             NSLog(@"failed getting predictions: %@",[err localizedDescription]);
+
+            [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];
+            [[self navigationItem] setRightBarButtonItem:self.refresh];
         }];
     }
 }
