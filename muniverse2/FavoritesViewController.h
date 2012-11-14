@@ -12,6 +12,8 @@
 
 @property (nonatomic,strong) NSManagedObjectContext *moc;
 @property (nonatomic,strong) NSFetchedResultsController *frc;
+@property (strong) IBOutlet UIBarButtonItem *refresh;
+@property (strong) UIBarButtonItem *refreshing;
 
 - (IBAction)refreshAll:(id)sender;
 - (IBAction)editButton:(id)sender;

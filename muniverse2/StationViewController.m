@@ -43,15 +43,6 @@
     UIImage *bg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
     [self.table setBackgroundView:[[UIImageView alloc] initWithImage:bg]];
     
-    // setup pull to refresh views
-    UIView *pullView = [[UIView alloc] initWithFrame:CGRectMake(0, -52, 320, 52)];
-    
-    UILabel *pullLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 18)];
-    [pullLabel setText:@"Pull to refresh"];
-    
-    [pullView addSubview:pullLabel];
-    [self.table addSubview:pullView];
-
     // finally request the lines from core data
     NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     
@@ -68,6 +59,7 @@
         NSLog(@"issue with subway stops: %@",[err localizedDescription]);
     }
     
+    // set up needed items for the refresh button states
     UIActivityIndicatorView *spin = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
     [spin setTag:1];
     self.refreshing = [[UIBarButtonItem alloc] initWithCustomView:spin];
@@ -126,9 +118,9 @@
     }
 }
 
-- (void)refreshPredictions
+- (IBAction)refreshPredictions
 {
-    NSLog(@"refresh station");
+    NSLog(@"refreshing");
     
     [[self navigationItem] setRightBarButtonItem:self.refreshing];
     [(UIActivityIndicatorView *)self.refreshing.customView startAnimating];

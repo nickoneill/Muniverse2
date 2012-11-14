@@ -78,10 +78,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="rvO-Pj-qGF">
                             <connections>
-                                <action selector="refreshAll:" destination="Wlu-aR-MCt" id="seg-jj-zCL"/>
+                                <action selector="refreshPredictions" destination="Wlu-aR-MCt" id="Zjm-5P-TKE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="refresh" destination="rvO-Pj-qGF" id="bPZ-yW-Ze6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AV9-ur-v0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,9 +103,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.31252667309999999" green="0.4290035069" blue="0.51530939340000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="Nearby" id="yp5-8O-EEg">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="KCO-JL-N3a"/>
-                                    </navigationItem>
+                                    <navigationItem title="Nearby" id="yp5-8O-EEg"/>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="8Lo-Cw-7w5">
@@ -415,7 +416,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Station Name" id="L4l-mw-JRa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="X5j-pz-m58"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="X5j-pz-m58">
+                            <connections>
+                                <action selector="refreshPredictions" destination="Rke-KB-bwA" id="Mlh-l1-GMu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="inoutcontrol" destination="dp0-5W-ncQ" id="yGI-rD-9vP"/>
@@ -810,14 +815,14 @@
                         <barButtonItem key="backBarButtonItem" title="Stop" id="1IR-LU-lgf"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="lcj-yK-AGr">
                             <connections>
-                                <action selector="refreshPredictions:" destination="xb6-As-9jv" id="R1y-Uv-2Pp"/>
+                                <action selector="refreshPredictions" destination="xb6-As-9jv" id="BZ3-1l-BVd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteButton" destination="mQf-BL-6Gh" id="mlb-Bm-POL"/>
                         <outlet property="primaryArrival" destination="cnA-ap-LsR" id="ire-dZ-iB1"/>
-                        <outlet property="refresh" destination="lcj-yK-AGr" id="884-gy-sEs"/>
+                        <outlet property="refresh" destination="lcj-yK-AGr" id="pEe-XM-5qG"/>
                         <outlet property="secondaryArrival" destination="ZyX-eO-xHW" id="7ho-Jg-R1o"/>
                         <outlet property="stopID" destination="LNO-Kn-9e0" id="dL9-5W-izv"/>
                         <outlet property="stopName" destination="qEF-Dr-CKM" id="IXo-Pz-gGS"/>
@@ -875,6 +880,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uQX-81-USq"/>
+        <segue reference="IAe-lz-LiQ"/>
     </inferredMetricsTieBreakers>
 </document>
