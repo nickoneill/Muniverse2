@@ -12,7 +12,6 @@
 #import "Stop.h"
 #import "Line.h"
 #import "Favorite.h"
-#import "TouchXML.h"
 
 @interface StopDetailViewController ()
 
@@ -32,7 +31,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+
+    // subscribe to the application becoming active after being in the background
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPredictions) name:@"becameActive" object:nil];
+
+
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
     
@@ -47,12 +50,19 @@
     } else {
         [self.favoriteButton setTitle:@"Add favorite" forState:UIControlStateNormal];
     }
-    [self refreshPredictions:nil];
+    
+    // set up needed items for the refresh button states
+    UIActivityIndicatorView *spin = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+    [spin setTag:1];
+    self.refreshing = [[UIBarButtonItem alloc] initWithCustomView:spin];
+    
+    [self refreshPredictions];
 }
 
-- (IBAction)refreshPredictions:(id)sender
+- (IBAction)refreshPredictions
 {
-    [self setBarButtonItemRefreshing:YES];
+    [[self navigationItem] setRightBarButtonItem:self.refreshing];
+    [(UIActivityIndicatorView *)self.refreshing.customView startAnimating];
     
     NextBusClient *client = [[NextBusClient alloc] init];
     
@@ -60,6 +70,7 @@
     if (!self.isInbound) {
         lineTag = self.line.outboundTags;
     }
+    
     [client predictionForLineTag:lineTag atStopId:[self.stop.stopId intValue] withSuccess:^(NSArray *els) {
         if ([els count]) {
             
@@ -84,11 +95,13 @@
             self.primaryArrival.text = @"No arrivals scheduled";
         }
         
-        [self setBarButtonItemRefreshing:YES];
+        [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];
+        [[self navigationItem] setRightBarButtonItem:self.refresh];
     } andFailure:^(NSError * err) {
         NSLog(@"some failure: %@",err);
         
-        [self setBarButtonItemRefreshing:NO];
+        [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];
+        [[self navigationItem] setRightBarButtonItem:self.refresh];
     }];
 }
 
@@ -165,20 +178,6 @@
         return NO;
     }
     return YES;
-}
-
-- (void)setBarButtonItemRefreshing:(BOOL)refreshing
-{
-//    if (refreshing) {
-//        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-//        [spinner startAnimating];
-//        
-//        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-//        [self.navigationItem setRightBarButtonItem:button];
-//    } else {
-//        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshPredictions:)];
-//        [self.navigationItem setRightBarButtonItem:button];
-//    }
 }
 
 - (void)didReceiveMemoryWarning

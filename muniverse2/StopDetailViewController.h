@@ -15,14 +15,13 @@
 @property (strong) Stop *stop;
 @property (strong) Line *line;
 @property BOOL isInbound;
-@property (strong) IBOutlet UIBarButtonItem *refresh;
 @property (strong) IBOutlet UILabel *stopName;
 @property (strong) IBOutlet UILabel *stopID;
 @property (strong) IBOutlet UILabel *primaryArrival;
 @property (strong) IBOutlet UILabel *secondaryArrival;
 @property (strong) IBOutlet UIButton *favoriteButton;
 
-- (IBAction)refreshPredictions:(id)sender;
-- (IBAction)toggleFavorite:(id)sender;
+@property (strong) IBOutlet UIBarButtonItem *refresh;
+@property (strong) UIBarButtonItem *refreshing;
 
 @end
