@@ -13,31 +13,11 @@
 - (id)initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
 
 	if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
-        
         self.image = [UIImage imageNamed:@"StopCluster.png"];
-        self.clusterCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 26, 26)];
-        self.clusterCount.text = @"C";
-        self.clusterCount.textColor = [UIColor whiteColor];
-        self.clusterCount.backgroundColor = [UIColor clearColor];
-       
-        self.clusterCount.font = [UIFont boldSystemFontOfSize:12];
-        self.clusterCount.textAlignment = UITextAlignmentCenter;
         
-        self.clusterCount.shadowColor = [UIColor blackColor];
-        self.clusterCount.shadowOffset = CGSizeMake(0,-1);
-
-        [self addSubview:self.clusterCount];
+        // maybe we'll add the count back in at some point in the future
 	}
 	return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
