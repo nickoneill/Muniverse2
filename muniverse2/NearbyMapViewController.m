@@ -19,6 +19,7 @@
 #import "CluserAnnotationView.h"
 #import "ClusterAnnotation.h"
 #import "NextBusClient.h"
+#import "MuniUtilities.h"
 
 @interface NearbyMapViewController ()
 
@@ -178,14 +179,15 @@
         if (!pin) {
             pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MuniPin"];
             [pin setCanShowCallout:NO];
-            [pin setImage:[UIImage imageNamed:@"StopPin.png"]];
             [pin setDraggable:NO];
             [pin setCenterOffset:CGPointMake(0, -9)];
         }
         
-//        if ([(MuniPinAnnotation *)annotation stop]) {
-//            <#statements#>
-//        }
+        if ([[(MuniPinAnnotation *)annotation stop] isFavorite]) {
+            [pin setImage:[UIImage imageNamed:@"StopPinFav.png"]];
+        } else {
+            [pin setImage:[UIImage imageNamed:@"StopPin.png"]];
+        }
         
         return pin;
     } else if ([annotation isKindOfClass:[ClusterAnnotation class]]) {
@@ -247,7 +249,7 @@
     }
 }
 
-- (void)favorite:(id)sender
+- (void)toggleFavorite
 {
     NSLog(@"favorite");
 }
@@ -256,6 +258,17 @@
 {
     // load data for the stop
     [self loadLinesForSelectedStop];
+    
+    MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
+    Stop *stop = pin.stop;
+    
+    [(UILabel *)[self.detailView viewWithTag:11] setText:stop.name];
+    
+    if ([stop isFavorite]) {
+        [(UIButton *)[self.detailView viewWithTag:12] setImage:[UIImage imageNamed:@"FavoriteButton-on.png"] forState:UIControlStateNormal];
+    } else {
+        [(UIButton *)[self.detailView viewWithTag:12] setImage:[UIImage imageNamed:@"FavoriteButton-off.png"] forState:UIControlStateNormal];
+    }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
     [self.map addGestureRecognizer:tap];

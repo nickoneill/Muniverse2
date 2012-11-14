@@ -27,6 +27,6 @@
 
 @property (strong) IBOutlet UIImageView *closeButton;
 
-- (IBAction)closeDetail;
+- (IBAction)toggleFavorite;
 
 @end
