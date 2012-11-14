@@ -36,15 +36,26 @@
 {
     [super viewDidLoad];
     
+    // subscribe to the application becoming active after being in the background
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPredictions) name:@"becameActive" object:nil];
+    
+    
+    
+//    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:80/255.0f green:109/255.0f blue:131/255.0f alpha:1];
+    
+    // load up easy-to-access managed object context
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     self.moc = app.managedObjectContext;
-    
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:80/255.0f green:109/255.0f blue:131/255.0f alpha:1];
     
     NSError *error;
     if (![[self frc] performFetch:&error]) {
         NSLog(@"whoops with faves frc: %@",error);
     }
+    
+    // set up needed items for the refresh button states
+    UIActivityIndicatorView *spin = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+    [spin setTag:1];
+    self.refreshing = [[UIBarButtonItem alloc] initWithCustomView:spin];
 
     [self refreshPredictions];
 }
@@ -138,6 +149,11 @@
 
 - (void)refreshPredictions
 {
+    if ([[self.frc fetchedObjects] count]) {
+        [[self navigationItem] setRightBarButtonItem:self.refreshing];
+        [(UIActivityIndicatorView *)self.refreshing.customView startAnimating];
+    }
+
     NextBusClient *client = [[NextBusClient alloc] init];
     
     for (int i = 0; i < [[self.frc fetchedObjects] count]; i++) {
@@ -165,8 +181,14 @@
                 cell.primaryPrediction.text = @"";
                 cell.secondaryPrediction.text = @"!";
             }
+            
+            [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];
+            [[self navigationItem] setRightBarButtonItem:self.refresh];
         } andFailure:^(NSError *err) {
             NSLog(@"some failure: %@",err);
+
+            [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];
+            [[self navigationItem] setRightBarButtonItem:self.refresh];
         }];
     }
 }

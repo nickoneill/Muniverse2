@@ -17,6 +17,6 @@
 @property (strong) IBOutlet UITableView *table;
 @property (strong) IBOutlet UISegmentedControl *inoutcontrol;
 @property (strong) IBOutlet UIBarButtonItem *refresh;
-@property (strong) IBOutlet UIBarButtonItem *refreshing;
+@property (strong) UIBarButtonItem *refreshing;
 
 @end

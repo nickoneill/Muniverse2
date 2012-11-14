@@ -82,6 +82,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="refresh" destination="rvO-Pj-qGF" id="PcN-5N-pl5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AV9-ur-v0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,9 +103,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.31252667309999999" green="0.4290035069" blue="0.51530939340000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="Nearby" id="yp5-8O-EEg">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="KCO-JL-N3a"/>
-                                    </navigationItem>
+                                    <navigationItem title="Nearby" id="yp5-8O-EEg"/>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="8Lo-Cw-7w5">
@@ -875,6 +876,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uQX-81-USq"/>
+        <segue reference="IAe-lz-LiQ"/>
     </inferredMetricsTieBreakers>
 </document>
