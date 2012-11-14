@@ -77,4 +77,13 @@
     return [regex stringByReplacingMatchesInString:name options:0 range:NSMakeRange(0, [name length]) withTemplate:@"$1"];
 }
 
++ (NSString *)formattedTimeFromNumer:(NSNumber *)number
+{
+    if ([number isEqualToNumber:[NSNumber numberWithInt:0]]) {
+        return @"Now";
+    }
+    
+    return [NSString stringWithFormat:@"%@",number];
+}
+
 @end
