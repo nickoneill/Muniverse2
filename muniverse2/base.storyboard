@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qez-RO-x6V">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
@@ -117,8 +116,26 @@
                                 <rect key="frame" x="0.0" y="144" width="320" height="267"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <view tag="10" contentMode="scaleToFill" id="dhv-xi-5tx">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OaT-zS-CLU">
+                                                <rect key="frame" x="49" y="14" width="251" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" image="Stop_Fav_Off.png" id="EQ9-as-4Fm">
+                                                <rect key="frame" x="12" y="9" width="29" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="53" sectionHeaderHeight="10" sectionFooterHeight="10" id="Sr9-Pd-UQb">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="267"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="267"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
@@ -178,21 +195,6 @@
                                             <outlet property="dataSource" destination="qtl-2H-2vo" id="a7n-oO-J79"/>
                                         </connections>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="k4A-tF-J9N">
-                                        <rect key="frame" x="291" y="8" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="Button_Close.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="closeDetail" destination="qtl-2H-2vo" eventType="touchUpInside" id="bJv-Z8-f9j"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -854,25 +856,25 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Button_Close.png" width="16" height="16"/>
-        <image name="DirectionBar_Blank.png" width="16" height="16"/>
-        <image name="Icon_F-h.png" width="16" height="16"/>
-        <image name="Icon_F.png" width="16" height="16"/>
-        <image name="MapBottomTrimLine@2x.png" width="16" height="16"/>
-        <image name="Marker_End-h@2x.png" width="16" height="16"/>
-        <image name="Marker_End@2x.png" width="16" height="16"/>
-        <image name="Marker_Middle-h@2x.png" width="16" height="16"/>
-        <image name="Marker_Middle@2x.png" width="16" height="16"/>
-        <image name="Marker_Middle_Current-h@2x.png" width="16" height="16"/>
-        <image name="Marker_Middle_Current@2x.png" width="16" height="16"/>
-        <image name="Marker_Start-h@2x.png" width="16" height="16"/>
-        <image name="Marker_Start@2x.png" width="16" height="16"/>
-        <image name="StopDetailBG.png" width="16" height="16"/>
-        <image name="Tab_Favorites.png" width="16" height="16"/>
-        <image name="Tab_Lines.png" width="16" height="16"/>
-        <image name="Tab_LocationArrow.png" width="16" height="16"/>
-        <image name="Tab_Subway.png" width="16" height="16"/>
-        <image name="placeholder-stop-icon-fav@2x.png" width="16" height="16"/>
+        <image name="DirectionBar_Blank.png" width="320" height="43"/>
+        <image name="Icon_F-h.png" width="49" height="59"/>
+        <image name="Icon_F.png" width="49" height="59"/>
+        <image name="MapBottomTrimLine@2x.png" width="640" height="2"/>
+        <image name="Marker_End-h@2x.png" width="50" height="86"/>
+        <image name="Marker_End@2x.png" width="50" height="86"/>
+        <image name="Marker_Middle-h@2x.png" width="50" height="86"/>
+        <image name="Marker_Middle@2x.png" width="50" height="86"/>
+        <image name="Marker_Middle_Current-h@2x.png" width="50" height="86"/>
+        <image name="Marker_Middle_Current@2x.png" width="50" height="86"/>
+        <image name="Marker_Start-h@2x.png" width="50" height="86"/>
+        <image name="Marker_Start@2x.png" width="50" height="86"/>
+        <image name="StopDetailBG.png" width="600" height="260"/>
+        <image name="Stop_Fav_Off.png" width="58" height="58"/>
+        <image name="Tab_Favorites.png" width="26" height="26"/>
+        <image name="Tab_Lines.png" width="30" height="30"/>
+        <image name="Tab_LocationArrow.png" width="24" height="24"/>
+        <image name="Tab_Subway.png" width="30" height="30"/>
+        <image name="placeholder-stop-icon-fav@2x.png" width="92" height="92"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

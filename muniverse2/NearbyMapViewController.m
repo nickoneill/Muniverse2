@@ -172,48 +172,7 @@
 {
     // detect the type of annotation and display the associated annotation view
     
-    if ([annotation isKindOfClass:[CalloutAnnotation class]]) {
-        CalloutAnnotationView *callout = (CalloutAnnotationView *)[self.map dequeueReusableAnnotationViewWithIdentifier:@"callout"];
-        if (!callout) {
-            callout = [[CalloutAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"callout"];
-            callout.mapView = self.map;
-            
-//            UIImageView *favorite = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Stop_Fav_Off.png"]];
-//            [favorite setFrame:CGRectMake(1, 3, 48, 48)];
-
-            UIButton *favButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [favButton setFrame:CGRectMake(1, 3, 48, 48)];
-            [favButton setImage:[UIImage imageNamed:@"Stop_Fav_Off.png"] forState:UIControlStateNormal];
-            [favButton addTarget:self action:@selector(favorite:) forControlEvents:UIControlEventTouchUpInside];
-            [callout.contentView addSubview:favButton];
-            
-            UILabel *calloutLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 2, 230, 24)];
-            [calloutLabel setTag:1];
-            [calloutLabel setFont:[UIFont boldSystemFontOfSize:22]];
-            [calloutLabel setTextColor:[UIColor whiteColor]];
-            [calloutLabel setShadowColor:[UIColor blackColor]];
-            [calloutLabel setShadowOffset:CGSizeMake(1, 1)];
-            [calloutLabel setBackgroundColor:[UIColor clearColor]];
-            [callout.contentView addSubview:calloutLabel];
-
-            UILabel *calloutsubLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 28, 230, 18)];
-            [calloutsubLabel setTag:2];
-            [calloutsubLabel setFont:[UIFont systemFontOfSize:16]];
-            [calloutsubLabel setTextColor:[UIColor whiteColor]];
-//            [calloutsubLabel setShadowColor:[UIColor blackColor]];
-//            [calloutsubLabel setShadowOffset:CGSizeMake(1, 1)];
-            [calloutsubLabel setBackgroundColor:[UIColor clearColor]];
-            [callout.contentView addSubview:calloutsubLabel];
-        }
-        
-        MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
-        [(UILabel *)[callout.contentView viewWithTag:1] setText:pin.stop.name];
-        [(UILabel *)[callout.contentView viewWithTag:2] setText:[NSString stringWithFormat:@"Stop #%@",pin.stop.tag]];
-        
-        callout.parentAnnotationView = self.selectedAnnotationView;
-        
-        return callout;
-    } else if ([annotation isKindOfClass:[MuniPinAnnotation class]]) {
+    if ([annotation isKindOfClass:[MuniPinAnnotation class]]) {
         MKAnnotationView *pin = (MKAnnotationView *)[self.map dequeueReusableAnnotationViewWithIdentifier:@"pin"];
         
         if (!pin) {
@@ -222,6 +181,10 @@
             [pin setImage:[UIImage imageNamed:@"StopPin.png"]];
             [pin setDraggable:NO];
         }
+        
+//        if ([(MuniPinAnnotation *)annotation stop]) {
+//            <#statements#>
+//        }
         
         return pin;
     } else if ([annotation isKindOfClass:[ClusterAnnotation class]]) {
@@ -259,14 +222,7 @@
 		
 		[self.map setCenterCoordinate:newCenterCoordinate animated:YES];
 	}
-    
-    // and finally add the annotation view we wanted
-    if (self.calloutAnnotation == nil) {
-        self.calloutAnnotation = [[CalloutAnnotation alloc] initWithLatitude:annotationView.annotation.coordinate.latitude andLongitude:annotationView.annotation.coordinate.longitude];
-    } else {
-        self.calloutAnnotation.coordinate = CLLocationCoordinate2DMake(annotationView.annotation.coordinate.latitude, annotationView.annotation.coordinate.longitude);
-    }
-    
+        
     self.autoRegionChange = YES;
 }
 
@@ -364,10 +320,10 @@
 
 #pragma mark - Table view data source
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"Lines for this stop:";
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    return @"Lines for this stop:";
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
