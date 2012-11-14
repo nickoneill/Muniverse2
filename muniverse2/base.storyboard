@@ -117,25 +117,25 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view tag="10" contentMode="scaleToFill" id="dhv-xi-5tx">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OaT-zS-CLU">
-                                                <rect key="frame" x="49" y="16" width="251" height="21"/>
+                                                <rect key="frame" x="49" y="11" width="251" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" image="Stop_Fav_Off.png" id="EQ9-as-4Fm">
-                                                <rect key="frame" x="12" y="11" width="29" height="29"/>
+                                            <imageView userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" image="FavoriteButton-off.png" id="EQ9-as-4Fm">
+                                                <rect key="frame" x="12" y="7" width="29" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="53" sectionHeaderHeight="10" sectionFooterHeight="10" id="Sr9-Pd-UQb">
-                                        <rect key="frame" x="0.0" y="50" width="320" height="267"/>
+                                        <rect key="frame" x="0.0" y="44" width="320" height="260"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
@@ -903,6 +903,7 @@
     </scenes>
     <resources>
         <image name="DirectionBar_Blank.png" width="320" height="43"/>
+        <image name="FavoriteButton-off.png" width="29" height="29"/>
         <image name="Icon_F-h.png" width="49" height="59"/>
         <image name="Icon_F.png" width="49" height="59"/>
         <image name="MapBottomTrimLine@2x.png" width="640" height="2"/>
@@ -915,7 +916,6 @@
         <image name="Marker_Start-h@2x.png" width="50" height="86"/>
         <image name="Marker_Start@2x.png" width="50" height="86"/>
         <image name="StopDetailBG.png" width="600" height="260"/>
-        <image name="Stop_Fav_Off.png" width="58" height="58"/>
         <image name="Tab_Favorites.png" width="26" height="26"/>
         <image name="Tab_Lines.png" width="30" height="30"/>
         <image name="Tab_LocationArrow.png" width="24" height="24"/>

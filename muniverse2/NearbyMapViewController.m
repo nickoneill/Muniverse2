@@ -41,6 +41,7 @@
     [super viewDidLoad];
     
     [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
+    [[self.detailView viewWithTag:10] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"NearbyDetailBg.png"]]];
     
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
     [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
@@ -179,6 +180,7 @@
             [pin setCanShowCallout:NO];
             [pin setImage:[UIImage imageNamed:@"StopPin.png"]];
             [pin setDraggable:NO];
+            [pin setCenterOffset:CGPointMake(0, -9)];
         }
         
 //        if ([(MuniPinAnnotation *)annotation stop]) {
