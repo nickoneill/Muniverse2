@@ -849,25 +849,25 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Button_Close.png" width="22" height="22"/>
-        <image name="DirectionBar_Blank.png" width="320" height="43"/>
-        <image name="Icon_F-h.png" width="49" height="59"/>
-        <image name="Icon_F.png" width="49" height="59"/>
-        <image name="MapBottomTrimLine@2x.png" width="640" height="2"/>
-        <image name="Marker_End-h@2x.png" width="50" height="86"/>
-        <image name="Marker_End@2x.png" width="50" height="86"/>
-        <image name="Marker_Middle-h@2x.png" width="50" height="86"/>
-        <image name="Marker_Middle@2x.png" width="50" height="86"/>
-        <image name="Marker_Middle_Current-h@2x.png" width="50" height="86"/>
-        <image name="Marker_Middle_Current@2x.png" width="50" height="86"/>
-        <image name="Marker_Start-h@2x.png" width="50" height="86"/>
-        <image name="Marker_Start@2x.png" width="50" height="86"/>
-        <image name="StopDetailBG.png" width="600" height="260"/>
-        <image name="Tab_Favorites.png" width="26" height="26"/>
-        <image name="Tab_Lines.png" width="30" height="30"/>
-        <image name="Tab_LocationArrow.png" width="24" height="24"/>
-        <image name="Tab_Subway.png" width="30" height="30"/>
-        <image name="placeholder-stop-icon-fav@2x.png" width="92" height="92"/>
+        <image name="Button_Close.png" width="16" height="16"/>
+        <image name="DirectionBar_Blank.png" width="16" height="16"/>
+        <image name="Icon_F-h.png" width="16" height="16"/>
+        <image name="Icon_F.png" width="16" height="16"/>
+        <image name="MapBottomTrimLine@2x.png" width="16" height="16"/>
+        <image name="Marker_End-h@2x.png" width="16" height="16"/>
+        <image name="Marker_End@2x.png" width="16" height="16"/>
+        <image name="Marker_Middle-h@2x.png" width="16" height="16"/>
+        <image name="Marker_Middle@2x.png" width="16" height="16"/>
+        <image name="Marker_Middle_Current-h@2x.png" width="16" height="16"/>
+        <image name="Marker_Middle_Current@2x.png" width="16" height="16"/>
+        <image name="Marker_Start-h@2x.png" width="16" height="16"/>
+        <image name="Marker_Start@2x.png" width="16" height="16"/>
+        <image name="StopDetailBG.png" width="16" height="16"/>
+        <image name="Tab_Favorites.png" width="16" height="16"/>
+        <image name="Tab_Lines.png" width="16" height="16"/>
+        <image name="Tab_LocationArrow.png" width="16" height="16"/>
+        <image name="Tab_Subway.png" width="16" height="16"/>
+        <image name="placeholder-stop-icon-fav@2x.png" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
