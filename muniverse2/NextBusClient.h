@@ -19,5 +19,6 @@ typedef enum {
 
 + (NSString *)truncatedDescription:(NSString *)desc;
 + (NSString *)nameStripShort:(NSString *)name;
++ (NSString *)formattedTimeFromNumer:(NSNumber *)number;
 
 @end

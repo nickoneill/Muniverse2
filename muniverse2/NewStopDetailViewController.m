@@ -51,10 +51,10 @@
         GroupedPredictionCell *cell = (GroupedPredictionCell *)[self.table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         
         if ([els count]) {
-            cell.primaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:0]];
+            cell.primaryPrediction.text = [NextBusClient formattedTimeFromNumer:[els objectAtIndex:0]];
             
             if ([els count] > 1) {
-                cell.secondaryPrediction.text = [NSString stringWithFormat:@"%@",[els objectAtIndex:1]];
+                cell.secondaryPrediction.text = [NextBusClient formattedTimeFromNumer:[els objectAtIndex:1]];
             } else {
                 cell.secondaryPrediction.text = @"--";
             }
