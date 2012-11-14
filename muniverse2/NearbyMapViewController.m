@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
     
-    [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
+    [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
     
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BackgroundTextured" ofType:@"png"]];
     [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
@@ -55,7 +55,7 @@
     if (err != nil) {
         NSLog(@"There was an issue fetching nearby stops");
     }
-        
+    
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(37.766644, -122.414474);
     [self.map setCenterCoordinate:coord zoomLevel:11 animated:NO];
     [self.map setUserTrackingMode:MKUserTrackingModeNone];
@@ -72,7 +72,6 @@
 {
     // automatic changes in regions (triggered by us) are a special case
     if (self.autoRegionChange) {
-        [self.map addAnnotation:self.calloutAnnotation];
         self.autoRegionChange = NO;
     } else {
         [self displayStops];
@@ -206,8 +205,8 @@
     
 	CGPoint mapViewOriginRelativeToParent = [self.map convertPoint:self.map.frame.origin toView:annotationView];
     
-    CGFloat xPixelShift = mapViewOriginRelativeToParent.x + 150;
-    CGFloat yPixelShift = mapViewOriginRelativeToParent.y + 40;
+    CGFloat xPixelShift = mapViewOriginRelativeToParent.x + 136;
+    CGFloat yPixelShift = mapViewOriginRelativeToParent.y + 25;
 	
 	//Calculate new center point, if needed
 	if (xPixelShift || yPixelShift) {
@@ -236,11 +235,7 @@
             // set the selected view for reference later
             self.selectedAnnotationView = view;
 
-            // animate and update the detail view
-            [self loadLinesForSelectedStop];
-            [UIView animateWithDuration:0.3 animations:^{
-                [self.detailView setFrame:CGRectMake(0, 144, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
-            }];
+            [self openDetail];
         } else {
             CLLocationCoordinate2D coord = [view.annotation coordinate];
             
@@ -255,12 +250,37 @@
     NSLog(@"favorite");
 }
 
-- (IBAction)closeDetail
+- (void)openDetail
 {
-    [self.map removeAnnotation:self.calloutAnnotation];
+    // load data for the stop
+    [self loadLinesForSelectedStop];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
+    [self.map addGestureRecognizer:tap];
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
+    [self.map addGestureRecognizer:pan];
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
+    [self.map addGestureRecognizer:pinch];
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
+    [self.map addGestureRecognizer:swipe];
+    UIRotationGestureRecognizer *rot = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
+    [self.map addGestureRecognizer:rot];
+    
+    // animate open the drawer
     [UIView animateWithDuration:0.3 animations:^{
-        [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 100)];
+        [self.detailView setFrame:CGRectMake(0, 184, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
+    }];
+}
+
+- (void)closeDetail
+{
+    for (UIGestureRecognizer *gest in self.map.gestureRecognizers) {
+        [self.map removeGestureRecognizer:gest];
+    }
+    
+    // close the drawer
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
     }];
 }
 
@@ -339,23 +359,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"GPCell";
-    GroupedPredictionCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    GroupedPredictionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GPCell"];
     
     MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
     Line *line = [self.linesCache objectAtIndex:[indexPath row]];
     
     if ([line.metro boolValue]) {
-        [cell.lineIcon setHidden:NO];
         [cell.lineIcon setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_%@.png",line.shortname]]];
-        
-        [cell.primaryText setFrame:CGRectMake(50, cell.primaryText.frame.origin.y, cell.primaryText.frame.size.width, cell.primaryText.frame.size.height)];
-        [cell.secondaryText setFrame:CGRectMake(50, cell.secondaryText.frame.origin.y, cell.secondaryText.frame.size.width, cell.secondaryText.frame.size.height)];
     } else {
-        [cell.lineIcon setHidden:YES];
-        
-        [cell.primaryText setFrame:CGRectMake(10, cell.primaryText.frame.origin.y, cell.primaryText.frame.size.width, cell.primaryText.frame.size.height)];
-        [cell.secondaryText setFrame:CGRectMake(10, cell.secondaryText.frame.origin.y, cell.secondaryText.frame.size.width, cell.secondaryText.frame.size.height)];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"GPCellText"];
     }
     
     [cell.primaryText setText:line.name];
