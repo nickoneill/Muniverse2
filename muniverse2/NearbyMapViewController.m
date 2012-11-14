@@ -219,7 +219,7 @@
         if (!pin) {
             pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MuniPin"];
             [pin setCanShowCallout:NO];
-            [pin setImage:[UIImage imageNamed:@"Pin_Circle.png"]];
+            [pin setImage:[UIImage imageNamed:@"StopPin.png"]];
             [pin setDraggable:NO];
         }
         
