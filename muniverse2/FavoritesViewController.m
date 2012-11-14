@@ -142,12 +142,7 @@
     }
 }
 
-- (IBAction)refreshAll:(id)sender
-{
-    [self refreshPredictions];
-}
-
-- (void)refreshPredictions
+- (IBAction)refreshPredictions
 {
     if ([[self.frc fetchedObjects] count]) {
         [[self navigationItem] setRightBarButtonItem:self.refreshing];

@@ -118,8 +118,10 @@
     }
 }
 
-- (void)refreshPredictions
+- (IBAction)refreshPredictions
 {
+    NSLog(@"refreshing");
+    
     [[self navigationItem] setRightBarButtonItem:self.refreshing];
     [(UIActivityIndicatorView *)self.refreshing.customView startAnimating];
     
