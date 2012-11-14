@@ -835,11 +835,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mQf-BL-6Gh">
-                                <rect key="frame" x="10" y="244" width="300" height="37"/>
+                                <rect key="frame" x="55" y="244" width="211" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" title="Add to Favorites">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -1002,7 +1002,6 @@
         <class className="StationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
             <relationships>
-                <relationship kind="action" name="directionChange:"/>
                 <relationship kind="outlet" name="inoutcontrol" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="table" candidateClass="UITableView"/>

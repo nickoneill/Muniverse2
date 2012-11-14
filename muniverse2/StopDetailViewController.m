@@ -51,6 +51,9 @@
         [self.favoriteButton setTitle:@"Add favorite" forState:UIControlStateNormal];
     }
     
+    UIImage *buttonBg = [[UIImage imageNamed:@"blueButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    [self.favoriteButton setBackgroundImage:buttonBg forState:UIControlStateNormal];
+    
     // set up needed items for the refresh button states
     UIActivityIndicatorView *spin = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
     [spin setTag:1];
