@@ -31,11 +31,14 @@
 	
     [[NSNotificationCenter defaultCenter] addObserverForName:@"FavoriteAdded" object:nil queue:nil usingBlock:^(NSNotification *note) {
         UIView *stopDetail = self.selectedViewController.view;
-        UIView *favorites = [[self.viewControllers objectAtIndex:1] view];
         
-        [UIView transitionFromView:stopDetail toView:favorites duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
-            [self setSelectedIndex:1];
-        }];
+        if (self.selectedIndex != 1) {
+            UIView *favorites = [[self.viewControllers objectAtIndex:1] view];
+            
+            [UIView transitionFromView:stopDetail toView:favorites duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
+                [self setSelectedIndex:1];
+            }];
+        }
     }];
     
     AppDelegate *app = [[UIApplication sharedApplication] delegate];

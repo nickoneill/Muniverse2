@@ -10,4 +10,6 @@
 
 @interface MuniUtilities : NSObject
 
++ (int)maxFavoriteOrder;
+
 @end

@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "Stop.h"
 #import "Line.h"
+#import "Favorite.h"
 #import "MuniPinAnnotation.h"
 #import "GroupedPredictionCell.h"
 #import "ClusterAnnotation.h"
@@ -372,7 +373,31 @@
 
 - (void)toggleFavorite
 {
-    NSLog(@"favorite");
+    MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
+    Stop *stop = pin.stop;
+
+    if ([stop isFavorite]) {
+        // unfavorite anything with stop
+    } else {
+        // pick a line
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteAdded" object:nil];
+
+//        AppDelegate *app = [[UIApplication sharedApplication] delegate];
+//        
+//        Favorite *fav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:app.managedObjectContext];
+//        
+//        int max = [MuniUtilities maxFavoriteOrder] + 1;
+//        
+//        [fav setIsInbound:[NSNumber numberWithBool:self.isInbound]];
+//        [fav setLine:self.line];
+//        [fav setStop:stop];
+//        [fav setOrder:[NSNumber numberWithInt:max]];
+//        
+//        NSError *err;
+//        if (![app.managedObjectContext save:&err]) {
+//            NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
+//        }
+    }
 }
 
 - (void)openDetail

@@ -9,6 +9,7 @@
 #import "StopDetailViewController.h"
 #import "AppDelegate.h"
 #import "NextBusClient.h"
+#import "MuniUtilities.h"
 #import "Stop.h"
 #import "Line.h"
 #import "Favorite.h"
@@ -111,12 +112,40 @@
 - (IBAction)toggleFavorite:(id)sender
 {
     if ([self isFavorite]) {
-        // remove the favorite
+        [self removeFavorite];
+        
+        [self.favoriteButton setTitle:@"Add favorite" forState:UIControlStateNormal];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteAdded" object:nil];
         [self.favoriteButton setTitle:@"Remove favorite" forState:UIControlStateNormal];
-        // add the favorite
+
         [self performSelector:@selector(addFavorite) withObject:nil afterDelay:0.6];
+    }
+}
+
+- (void)removeFavorite
+{
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Favorite"];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ && %K == %@",@"stop",self.stop,@"line",self.line];
+    
+    [req setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *results = [app.managedObjectContext executeFetchRequest:req error:&error];
+    if (error) {
+        NSLog(@"there was an error getting the favorite: %@",[error localizedDescription]);
+    }
+    
+    for (Favorite *fav in results) {
+        [app.managedObjectContext deleteObject:fav];
+    }
+    
+    [app.managedObjectContext save:&error];
+    if (error) {
+        NSLog(@"error saving context after delete: %@",[error localizedDescription]);
     }
 }
 
@@ -126,7 +155,7 @@
         
     Favorite *fav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:app.managedObjectContext];
     
-    int max = [self maxFavoriteOrder] + 1;
+    int max = [MuniUtilities maxFavoriteOrder] + 1;
     
     [fav setIsInbound:[NSNumber numberWithBool:self.isInbound]];
     [fav setLine:self.line];
@@ -139,28 +168,6 @@
     }
 }
 
-- (int)maxFavoriteOrder
-{
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Favorite"];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:NO];
-    
-    [fetch setSortDescriptors:[NSArray arrayWithObject:sort]];
-    
-    [fetch setFetchLimit:1];
-    
-    NSError *err;
-    NSArray *maxfav = [app.managedObjectContext executeFetchRequest:fetch error:&err];
-    
-    int maxorder = 0;
-    if ([maxfav count] == 1) {
-        maxorder = [[[maxfav objectAtIndex:0] order] integerValue];
-    }
-    
-    return maxorder;
-}
-
 - (BOOL)isFavorite
 {
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
@@ -171,15 +178,15 @@
     
     [req setPredicate:predicate];
     
-    NSError *error = nil;
-    NSArray *results = [app.managedObjectContext executeFetchRequest:req error:&error];
-    if (!results) {
-        NSLog(@"Fetch error: %@", error);
-        abort();
+    NSError *error;
+    int resultCount = [app.managedObjectContext countForFetchRequest:req error:&error];
+    if (error) {
+        NSLog(@"count error: %@", error);
     }
-    if ([results count] == 0) {
+    if (resultCount == 0) {
         return NO;
     }
+    
     return YES;
 }
 
