@@ -320,8 +320,8 @@
     
 	CGPoint mapViewOriginRelativeToParent = [self.map convertPoint:self.map.frame.origin toView:annotationView];
     
-    CGFloat xPixelShift = mapViewOriginRelativeToParent.x + 136;
-    CGFloat yPixelShift = mapViewOriginRelativeToParent.y + 25;
+    CGFloat xPixelShift = mapViewOriginRelativeToParent.x + 150;
+    CGFloat yPixelShift = mapViewOriginRelativeToParent.y + 10;
 	
 	//Calculate new center point, if needed
 	if (xPixelShift || yPixelShift) {
@@ -467,11 +467,6 @@
 }
 
 #pragma mark - Table view data source
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    return @"Lines for this stop:";
-//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
