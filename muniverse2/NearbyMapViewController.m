@@ -16,14 +16,16 @@
 #import "CalloutAnnotationView.h"
 #import "MuniPinAnnotation.h"
 #import "GroupedPredictionCell.h"
-#import "CluserAnnotationView.h"
 #import "ClusterAnnotation.h"
+#import "SmallClusterAnnotation.h"
 #import "NextBusClient.h"
 #import "MuniUtilities.h"
 
 @interface NearbyMapViewController ()
 
 @end
+
+#define SMALL_CLUSTER_DISTANCE 60
 
 @implementation NearbyMapViewController
 
@@ -106,8 +108,8 @@
     maxcoord.latitude = region.center.latitude + (region.span.latitudeDelta/2) + adjustment;
     maxcoord.longitude = region.center.longitude + (region.span.longitudeDelta/2) + adjustment;
     
-    if (self.map.region.span.latitudeDelta <= 0.02) {
-        // under a certain distance, we can display the stops themselves
+    if (self.map.region.span.latitudeDelta <= 0.005) {
+        // display all stops if we're real close
         
         if (self.lastDisplayCluster) {
             // remove cluster annotations if that was the last thing we annotated
@@ -119,13 +121,97 @@
         // pick stops from the cache for the current region
         for (Stop *stop in self.loadedStops) {
             if ([stop.lat floatValue] >= mincoord.latitude && [stop.lat floatValue] <= maxcoord.latitude && [stop.lon floatValue] >= mincoord.longitude && [stop.lon floatValue] <= maxcoord.longitude) {
-
+                
                 MuniPinAnnotation *point = [[MuniPinAnnotation alloc] init];
                 [point setStop:stop];
                 [point setCoordinate:CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue])];
                 [self.map addAnnotation:point];
             }
         }
+        
+    } else if (self.map.region.span.latitudeDelta <= 0.04) {
+        // display stops with some clusters if we're somewhat close
+        
+        [self.map removeAnnotations:self.map.annotations];
+
+        // pick stops from the cache for the current region
+        NSMutableArray *visibleStops = [NSMutableArray array];
+        for (Stop *stop in self.loadedStops) {
+            MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]));
+
+            if (MKMapRectContainsPoint(self.map.visibleMapRect, point)) {
+                [visibleStops addObject:stop];
+            }
+        }
+        
+        NSMutableArray *stopClusters = [NSMutableArray array];
+        NSMutableArray *ignoreStops = [NSMutableArray array];
+        for (Stop *stop in visibleStops) {
+            if (![ignoreStops containsObject:stop]) {
+                CLLocation *stopLoc = [[CLLocation alloc] initWithLatitude:[stop.lat floatValue] longitude:[stop.lon floatValue]];
+                
+                BOOL addedToCluster = NO;
+                for (NSArray __strong *cluster in stopClusters) {
+                    float avgLat = 0;
+                    float avgLon = 0;
+                    
+                    for (Stop *clusterStop in cluster) {
+                        avgLat += [clusterStop.lat floatValue];
+                        avgLon += [clusterStop.lon floatValue];
+                    }
+                    int clusterCount = [cluster count];
+                    
+                    CLLocation *avgLoc = [[CLLocation alloc] initWithLatitude:avgLat/clusterCount longitude:avgLon/clusterCount];
+                    if ([stopLoc distanceFromLocation:avgLoc] <= SMALL_CLUSTER_DISTANCE) {
+                        [ignoreStops addObject:stop];
+                        cluster = [cluster arrayByAddingObject:stop];
+                        addedToCluster = YES;
+                    }
+                }
+
+                if (!addedToCluster) {
+                    for (Stop *otherStop in visibleStops) {
+                        if (![ignoreStops containsObject:otherStop] && ![ignoreStops containsObject:stop]) {
+                            CLLocation *otherStopLoc = [[CLLocation alloc] initWithLatitude:[otherStop.lat floatValue] longitude:[otherStop.lon floatValue]];
+                            
+                            if ([stopLoc distanceFromLocation:otherStopLoc] <= SMALL_CLUSTER_DISTANCE && [stopLoc distanceFromLocation:otherStopLoc] != 0.0) {
+                                [ignoreStops addObjectsFromArray:@[stop,otherStop]];
+                                [stopClusters addObject:@[stop, otherStop]];
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        
+        for (Stop *stop in visibleStops) {
+            if (![ignoreStops containsObject:stop]) {
+                MuniPinAnnotation *point = [[MuniPinAnnotation alloc] init];
+                [point setStop:stop];
+                [point setCoordinate:CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue])];
+                [self.map addAnnotation:point];
+            }
+        }
+        
+        for (NSArray *cluster in stopClusters) {
+            float avgLat = 0;
+            float avgLon = 0;
+            
+            for (Stop *stop in cluster) {
+                avgLat += [stop.lat floatValue];
+                avgLon += [stop.lon floatValue];
+            }
+            int clusterCount = [cluster count];
+            
+            CLLocation *avgLoc = [[CLLocation alloc] initWithLatitude:avgLat/clusterCount longitude:avgLon/clusterCount];
+
+            SmallClusterAnnotation *clusterNote = [[SmallClusterAnnotation alloc] init];
+            [clusterNote setCoordinate:[avgLoc coordinate]];
+            [self.map addAnnotation:clusterNote];
+        }
+        
+        self.lastDisplayCluster = YES;
     } else if (self.map.region.span.latitudeDelta <= 0.16) {
         // VERY crude implementation of clustering
         // divide the current region into smaller squares (tune more/less by changing the divisions)
@@ -155,7 +241,6 @@
                 }
                 
                 ClusterAnnotation *point = [[ClusterAnnotation alloc] init];
-                [point setClusterCount:[NSNumber numberWithInt:stopCount]];
                 [point setCoordinate:avg];
                 
                 [self.map addAnnotation:point];
@@ -168,6 +253,8 @@
         [self.map removeAnnotations:self.map.annotations];
     }
 }
+
+
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
@@ -191,12 +278,26 @@
         
         return pin;
     } else if ([annotation isKindOfClass:[ClusterAnnotation class]]) {
-        CluserAnnotationView *cluster = (CluserAnnotationView *)[self.map dequeueReusableAnnotationViewWithIdentifier:@"cluster"];
+        MKAnnotationView *cluster = [self.map dequeueReusableAnnotationViewWithIdentifier:@"cluster"];
         
         if (!cluster) {
-            cluster = [[CluserAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"cluster"];
+            cluster = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"cluster"];
+            [cluster setCanShowCallout:NO];
+            [cluster setDraggable:NO];
         }
-        [cluster.clusterCount setText:[NSString stringWithFormat:@"%@",[(ClusterAnnotation *)annotation clusterCount]]];
+        [cluster setImage:[UIImage imageNamed:@"StopClusterBig.png"]];
+
+        
+        return cluster;
+    } else if ([annotation isKindOfClass:[SmallClusterAnnotation class]]) {
+        MKAnnotationView *cluster = [self.map dequeueReusableAnnotationViewWithIdentifier:@"smallcluster"];
+        
+        if (!cluster) {
+            cluster = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"smallcluster"];
+            [cluster setCanShowCallout:NO];
+            [cluster setDraggable:NO];
+        }
+        [cluster setImage:[UIImage imageNamed:@"StopCluster.png"]];
         
         return cluster;
     }
@@ -244,8 +345,18 @@
             CLLocationCoordinate2D coord = [view.annotation coordinate];
             
             // zoom to the annoation we may have tapped on
-            [self.map setCenterCoordinate:coord zoomLevel:16 animated:YES];
+            [self.map setCenterCoordinate:coord zoomLevel:17 animated:YES];
         }        
+    } else if ([view.annotation isKindOfClass:[ClusterAnnotation class]]) {
+        CLLocationCoordinate2D coord = [view.annotation coordinate];
+        
+        // zoom to the annoation we may have tapped on
+        [self.map setCenterCoordinate:coord zoomLevel:15 animated:YES];
+    } else if ([view.annotation isKindOfClass:[SmallClusterAnnotation class]]) {
+        CLLocationCoordinate2D coord = [view.annotation coordinate];
+        
+        // zoom to the annoation we may have tapped on
+        [self.map setCenterCoordinate:coord zoomLevel:17 animated:YES];
     }
 }
 
@@ -272,14 +383,6 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
     [self.map addGestureRecognizer:tap];
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
-    [self.map addGestureRecognizer:pan];
-    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
-    [self.map addGestureRecognizer:pinch];
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
-    [self.map addGestureRecognizer:swipe];
-    UIRotationGestureRecognizer *rot = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(closeDetail)];
-    [self.map addGestureRecognizer:rot];
     
     // animate open the drawer
     [UIView animateWithDuration:0.3 animations:^{
@@ -287,7 +390,7 @@
     }];
 }
 
-- (void)closeDetail
+- (IBAction)closeDetail
 {
     for (UIGestureRecognizer *gest in self.map.gestureRecognizers) {
         [self.map removeGestureRecognizer:gest];

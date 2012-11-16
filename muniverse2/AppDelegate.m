@@ -39,7 +39,6 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    NSLog(@"active");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"becameActive" object:nil];
 }
 
