@@ -273,7 +273,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Nearby" image="Tab_LocationArrow.png" id="koD-Iv-4gk"/>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="Tab_Radar.png" id="koD-Iv-4gk"/>
                     <navigationItem key="navigationItem" id="VBE-gE-oWs"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -945,7 +945,7 @@
         <image name="StopDetailBG.png" width="600" height="260"/>
         <image name="Tab_Favorites.png" width="26" height="26"/>
         <image name="Tab_Lines.png" width="30" height="30"/>
-        <image name="Tab_LocationArrow.png" width="24" height="24"/>
+        <image name="Tab_Radar.png" width="27" height="27"/>
         <image name="Tab_Subway.png" width="30" height="30"/>
         <image name="placeholder-stop-icon-fav@2x.png" width="92" height="92"/>
     </resources>

@@ -160,6 +160,10 @@
 		43DA6EBB164F3AD600C28748 /* StopCluster@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DA6EB7164F3AD600C28748 /* StopCluster@2x.png */; };
 		43DA6EBC164F3AD600C28748 /* StopPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DA6EB8164F3AD600C28748 /* StopPin.png */; };
 		43DA6EBD164F3AD600C28748 /* StopPin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DA6EB9164F3AD600C28748 /* StopPin@2x.png */; };
+		43DEB51E1656CE70001B9B4E /* Tab_Radar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DEB51C1656CE70001B9B4E /* Tab_Radar@2x.png */; };
+		43DEB51F1656CE70001B9B4E /* Tab_Radar.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DEB51D1656CE70001B9B4E /* Tab_Radar.png */; };
+		43DEB5231656CEA5001B9B4E /* Tab_Location_Target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DEB5211656CEA5001B9B4E /* Tab_Location_Target@2x.png */; };
+		43DEB5241656CEA5001B9B4E /* Tab_Location_Target.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DEB5221656CEA5001B9B4E /* Tab_Location_Target.png */; };
 		D00AFFA4162CE89C000BEB01 /* MuniPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */; };
 		D014A27F15AE1D1600FF5952 /* base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D014A27E15AE1D1600FF5952 /* base.storyboard */; };
 		D030A3B11655B07400FEA9FE /* SmallClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D030A3B01655B07400FEA9FE /* SmallClusterAnnotation.m */; };
@@ -397,6 +401,10 @@
 		43DA6EB7164F3AD600C28748 /* StopCluster@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StopCluster@2x.png"; sourceTree = "<group>"; };
 		43DA6EB8164F3AD600C28748 /* StopPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopPin.png; sourceTree = "<group>"; };
 		43DA6EB9164F3AD600C28748 /* StopPin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StopPin@2x.png"; sourceTree = "<group>"; };
+		43DEB51C1656CE70001B9B4E /* Tab_Radar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Radar@2x.png"; sourceTree = "<group>"; };
+		43DEB51D1656CE70001B9B4E /* Tab_Radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Radar.png; sourceTree = "<group>"; };
+		43DEB5211656CEA5001B9B4E /* Tab_Location_Target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_Location_Target@2x.png"; sourceTree = "<group>"; };
+		43DEB5221656CEA5001B9B4E /* Tab_Location_Target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_Location_Target.png; sourceTree = "<group>"; };
 		D00AFFA2162CE89C000BEB01 /* MuniPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuniPinAnnotation.h; sourceTree = "<group>"; };
 		D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuniPinAnnotation.m; sourceTree = "<group>"; };
 		D014A27E15AE1D1600FF5952 /* base.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = base.storyboard; sourceTree = "<group>"; };
@@ -619,6 +627,10 @@
 				435BA1BB15AC60D600D26FA1 /* Tab_History@2x.png */,
 				438661FD15DE8F09008725DC /* Tab_LocationArrow.png */,
 				438661FE15DE8F09008725DC /* Tab_LocationArrow@2x.png */,
+				43DEB51C1656CE70001B9B4E /* Tab_Radar@2x.png */,
+				43DEB51D1656CE70001B9B4E /* Tab_Radar.png */,
+				43DEB5221656CEA5001B9B4E /* Tab_Location_Target.png */,
+				43DEB5211656CEA5001B9B4E /* Tab_Location_Target@2x.png */,
 			);
 			name = "Tab Icons";
 			sourceTree = "<group>";
@@ -1282,6 +1294,10 @@
 				D06C80EE165453860065DC5C /* blueButton@2x.png in Resources */,
 				D06C80EF165453860065DC5C /* blueButtonHighlight.png in Resources */,
 				D06C80F0165453860065DC5C /* blueButtonHighlight@2x.png in Resources */,
+				43DEB51E1656CE70001B9B4E /* Tab_Radar@2x.png in Resources */,
+				43DEB51F1656CE70001B9B4E /* Tab_Radar.png in Resources */,
+				43DEB5231656CEA5001B9B4E /* Tab_Location_Target@2x.png in Resources */,
+				43DEB5241656CEA5001B9B4E /* Tab_Location_Target.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
