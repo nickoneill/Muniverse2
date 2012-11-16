@@ -118,8 +118,9 @@
         
         // pick stops from the cache for the current region
         for (Stop *stop in self.loadedStops) {
-            if ([stop.lat floatValue] >= mincoord.latitude && [stop.lat floatValue] <= maxcoord.latitude && [stop.lon floatValue] >= mincoord.longitude && [stop.lon floatValue] <= maxcoord.longitude) {
-                
+            MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]));
+            
+            if (MKMapRectContainsPoint(self.map.visibleMapRect, point)) {
                 MuniPinAnnotation *point = [[MuniPinAnnotation alloc] init];
                 [point setStop:stop];
                 [point setCoordinate:CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue])];
@@ -142,12 +143,15 @@
             }
         }
         
+        // stop clusters stores the current clusters as they're built
+        // ignore stops is the stops we've used, we want to treat them as clusters (but can't mutate the array we're enumerating
         NSMutableArray *stopClusters = [NSMutableArray array];
         NSMutableArray *ignoreStops = [NSMutableArray array];
         for (Stop *stop in visibleStops) {
             if (![ignoreStops containsObject:stop]) {
                 CLLocation *stopLoc = [[CLLocation alloc] initWithLatitude:[stop.lat floatValue] longitude:[stop.lon floatValue]];
                 
+                // if we're added to a cluster, we don't want to take any other action afterwards
                 BOOL addedToCluster = NO;
                 for (NSArray __strong *cluster in stopClusters) {
                     float avgLat = 0;
@@ -160,6 +164,7 @@
                     int clusterCount = [cluster count];
                     
                     CLLocation *avgLoc = [[CLLocation alloc] initWithLatitude:avgLat/clusterCount longitude:avgLon/clusterCount];
+                    // the center of the cluster matching region changes subtley with an additional stop, but less impact with each additional stop added
                     if ([stopLoc distanceFromLocation:avgLoc] <= SMALL_CLUSTER_DISTANCE) {
                         [ignoreStops addObject:stop];
                         cluster = [cluster arrayByAddingObject:stop];
@@ -167,6 +172,7 @@
                     }
                 }
 
+                // if we're not added to a cluster, we check if we're close to any other stops for forming new clusters
                 if (!addedToCluster) {
                     for (Stop *otherStop in visibleStops) {
                         if (![ignoreStops containsObject:otherStop] && ![ignoreStops containsObject:stop]) {
@@ -183,6 +189,7 @@
             }
         }
         
+        // add all the stops that weren't added to clusters
         for (Stop *stop in visibleStops) {
             if (![ignoreStops containsObject:stop]) {
                 MuniPinAnnotation *point = [[MuniPinAnnotation alloc] init];
@@ -192,6 +199,7 @@
             }
         }
         
+        // add the clusters to the map
         for (NSArray *cluster in stopClusters) {
             float avgLat = 0;
             float avgLon = 0;
@@ -211,13 +219,14 @@
         
         self.lastDisplayCluster = YES;
     } else if (self.map.region.span.latitudeDelta <= 0.16) {
-        // VERY crude implementation of clustering
-        // divide the current region into smaller squares (tune more/less by changing the divisions)
-        // then sum up stops in that region, and weighted-average the stop coordinates
+        // VERY crude implementation of clustering for zoomed out views
+        // much faster than the more detailed model, but with significantly less accuracy
+        //
         [self.map removeAnnotations:self.map.annotations];
         
         int divisions = 5;
         
+        // divide the current region into smaller squares (tune more/less by changing the divisions)
         for (int i = 0; i < divisions; i++) {
             for (int j = 0; j < divisions; j++) {
                 CLLocationCoordinate2D minBox = {mincoord.latitude + ((region.span.latitudeDelta/divisions)*i), mincoord.longitude + ((region.span.longitudeDelta/divisions)*j)};
@@ -225,9 +234,11 @@
                 
                 int stopCount = 0;
                 CLLocationCoordinate2D avg = CLLocationCoordinate2DMake(0, 0);
+                // then sum up stops in that region, and weighted-average the stop coordinates (for simplicity)
                 for (Stop *stop in self.loadedStops) {
-                    if ([stop.lat floatValue] >= minBox.latitude && [stop.lat floatValue] <= maxBox.latitude && [stop.lon floatValue] >= minBox.longitude && [stop.lon floatValue] <= maxBox.longitude) {
-                        
+                    MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]));
+                    
+                    if (MKMapRectContainsPoint(self.map.visibleMapRect, point)) {
                         if (avg.latitude == 0) {
                             avg = CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]);
                         } else {
@@ -268,6 +279,7 @@
             [pin setCenterOffset:CGPointMake(0, -9)];
         }
         
+        // change the pin style if it's a favorite already
         if ([[(MuniPinAnnotation *)annotation stop] isFavorite]) {
             [pin setImage:[UIImage imageNamed:@"StopPinFav.png"]];
         } else {
