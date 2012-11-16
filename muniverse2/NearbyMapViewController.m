@@ -12,8 +12,6 @@
 #import "AppDelegate.h"
 #import "Stop.h"
 #import "Line.h"
-#import "CalloutAnnotation.h"
-#import "CalloutAnnotationView.h"
 #import "MuniPinAnnotation.h"
 #import "GroupedPredictionCell.h"
 #import "ClusterAnnotation.h"
@@ -129,7 +127,7 @@
             }
         }
         
-    } else if (self.map.region.span.latitudeDelta <= 0.04) {
+    } else if (self.map.region.span.latitudeDelta <= 0.03) {
         // display stops with some clusters if we're somewhat close
         
         [self.map removeAnnotations:self.map.annotations];
