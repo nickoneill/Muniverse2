@@ -232,7 +232,6 @@
 		D0C602DE15D5E95E003200E9 /* LAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602DD15D5E95E003200E9 /* LAUtil.m */; };
 		D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */; };
 		D0C7F04315EEEDB800A06EA6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C7F04215EEEDB800A06EA6 /* MapKit.framework */; };
-		D0C7F04615F14B9F00A06EA6 /* NewStopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7F04515F14B9F00A06EA6 /* NewStopDetailViewController.m */; };
 		D0E2DB2A164AFA03004FC5A8 /* ClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2DB29164AFA02004FC5A8 /* ClusterAnnotation.m */; };
 		D0EBAA3515E0582D0014A8E5 /* Subway.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EBAA3415E0582D0014A8E5 /* Subway.m */; };
 		D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */; };
@@ -522,8 +521,6 @@
 		D0C7F03D15EEED7700A06EA6 /* NearbyMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyMapViewController.h; sourceTree = "<group>"; };
 		D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyMapViewController.m; sourceTree = "<group>"; };
 		D0C7F04215EEEDB800A06EA6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		D0C7F04415F14B9F00A06EA6 /* NewStopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStopDetailViewController.h; sourceTree = "<group>"; };
-		D0C7F04515F14B9F00A06EA6 /* NewStopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStopDetailViewController.m; sourceTree = "<group>"; };
 		D0E2DB28164AFA02004FC5A8 /* ClusterAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotation.h; sourceTree = "<group>"; };
 		D0E2DB29164AFA02004FC5A8 /* ClusterAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotation.m; sourceTree = "<group>"; };
 		D0EBAA3315E0582D0014A8E5 /* Subway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subway.h; sourceTree = "<group>"; };
@@ -875,8 +872,6 @@
 				D07B903115CDECAA00222BA3 /* LineDetailViewController.m */,
 				D07B903B15D2F73300222BA3 /* StopDetailViewController.h */,
 				D07B903C15D2F73300222BA3 /* StopDetailViewController.m */,
-				D0C7F04415F14B9F00A06EA6 /* NewStopDetailViewController.h */,
-				D0C7F04515F14B9F00A06EA6 /* NewStopDetailViewController.m */,
 			);
 			name = "All Lines Tab";
 			sourceTree = "<group>";
@@ -1376,7 +1371,6 @@
 				D074AD6115EECE1C00D5BC84 /* Favorite.m in Sources */,
 				D074AD6415EED1A300D5BC84 /* MuniTabController.m in Sources */,
 				D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */,
-				D0C7F04615F14B9F00A06EA6 /* NewStopDetailViewController.m in Sources */,
 				D0A4A29015FEC1370043462C /* MKMapView+ZoomLevel.m in Sources */,
 				D00AFFA4162CE89C000BEB01 /* MuniPinAnnotation.m in Sources */,
 				D07F89DE1649EC28005E746F /* LoadingViewController.m in Sources */,
