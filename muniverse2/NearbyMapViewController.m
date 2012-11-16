@@ -230,8 +230,6 @@
         // divide the current region into smaller squares (tune more/less by changing the divisions)
         for (int i = 0; i < divisions; i++) {
             for (int j = 0; j < divisions; j++) {
-                CLLocationCoordinate2D minBox = {mincoord.latitude + ((region.span.latitudeDelta/divisions)*i), mincoord.longitude + ((region.span.longitudeDelta/divisions)*j)};
-                CLLocationCoordinate2D maxBox = {minBox.latitude + region.span.latitudeDelta/divisions, minBox.longitude + region.span.longitudeDelta/divisions};
                 
                 int stopCount = 0;
                 CLLocationCoordinate2D avg = CLLocationCoordinate2DMake(0, 0);
@@ -376,27 +374,81 @@
     MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
     Stop *stop = pin.stop;
 
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+
     if ([stop isFavorite]) {
-        // unfavorite anything with stop
+        
+        NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Favorite"];
+        
+        // could potentially remove multiple favorite stops for different lines with this... not sure if that's a common use case
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@",@"stop",stop];
+        
+        [req setPredicate:predicate];
+        
+        NSError *error = nil;
+        NSArray *results = [app.managedObjectContext executeFetchRequest:req error:&error];
+        if (error) {
+            NSLog(@"there was an error getting the favorite: %@",[error localizedDescription]);
+        }
+        
+        for (Favorite *fav in results) {
+            [app.managedObjectContext deleteObject:fav];
+        }
+        
+        [app.managedObjectContext save:&error];
+        if (error) {
+            NSLog(@"error saving context after delete: %@",[error localizedDescription]);
+        }
+        
+        [(UIButton *)[self.detailView viewWithTag:12] setImage:[UIImage imageNamed:@"FavoriteButton-off.png"] forState:UIControlStateNormal];
     } else {
         // pick a line
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteAdded" object:nil];
 
-//        AppDelegate *app = [[UIApplication sharedApplication] delegate];
-//        
-//        Favorite *fav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:app.managedObjectContext];
-//        
-//        int max = [MuniUtilities maxFavoriteOrder] + 1;
-//        
-//        [fav setIsInbound:[NSNumber numberWithBool:self.isInbound]];
-//        [fav setLine:self.line];
-//        [fav setStop:stop];
-//        [fav setOrder:[NSNumber numberWithInt:max]];
-//        
-//        NSError *err;
-//        if (![app.managedObjectContext save:&err]) {
-//            NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
-//        }
+        if ([self.linesCache count] > 1) {
+            UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Please select a line" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+            
+            for (Line *line in self.linesCache) {
+                [action addButtonWithTitle:line.name];
+            }
+            
+            [action showFromTabBar:self.tabBarController.tabBar];
+        } else {
+            [(UIButton *)[self.detailView viewWithTag:12] setImage:[UIImage imageNamed:@"FavoriteButton-on.png"] forState:UIControlStateNormal];
+            [self performSelector:@selector(addFavoriteForCurrentStopAndLine:) withObject:self.linesCache[0] afterDelay:0.6];
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteAdded" object:nil];
+        }
+    }
+}
+
+- (void)addFavoriteForCurrentStopAndLine:(Line *)line
+{
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
+    Stop *stop = pin.stop;
+    
+    Favorite *fav = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:app.managedObjectContext];
+    
+    int max = [MuniUtilities maxFavoriteOrder] + 1;
+    
+    [fav setIsInbound:[NSNumber numberWithBool:[MuniUtilities isStop:stop inboundForLine:line]]];
+    [fav setLine:line];
+    [fav setStop:stop];
+    [fav setOrder:[NSNumber numberWithInt:max]];
+    
+    NSError *err;
+    if (![app.managedObjectContext save:&err]) {
+        NSLog(@"Whoops, error saving favorite data: %@",[err localizedDescription]);
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != 0) {
+        [(UIButton *)[self.detailView viewWithTag:12] setImage:[UIImage imageNamed:@"FavoriteButton-on.png"] forState:UIControlStateNormal];
+        [self performSelector:@selector(addFavoriteForCurrentStopAndLine:) withObject:self.linesCache[buttonIndex-1] afterDelay:0.6];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteAdded" object:nil];
     }
 }
 

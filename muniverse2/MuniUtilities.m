@@ -35,5 +35,10 @@
     return maxorder;
 }
 
++ (BOOL)isStop:(Stop *)stop inboundForLine:(Line *)line
+{
+    return YES;
+}
+
 @end
 

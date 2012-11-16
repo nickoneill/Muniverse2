@@ -11,7 +11,7 @@
 
 @class MKMapView,CalloutAnnotation,CalloutAnnotationView;
 
-@interface NearbyMapViewController : UIViewController <MKMapViewDelegate>
+@interface NearbyMapViewController : UIViewController <MKMapViewDelegate,UIActionSheetDelegate>
 
 @property (strong) IBOutlet MKMapView *map;
 @property (strong) IBOutlet UIView *detailView;

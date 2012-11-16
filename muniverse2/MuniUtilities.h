@@ -11,5 +11,6 @@
 @interface MuniUtilities : NSObject
 
 + (int)maxFavoriteOrder;
++ (BOOL)isStop:(Stop *)stop inboundForLine:(Line *)line;
 
 @end
