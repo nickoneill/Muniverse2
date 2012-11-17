@@ -38,7 +38,7 @@ typedef enum {
     [super viewDidLoad];
     
     // set this above the table view when people pull down, plain white is too jarring
-    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Background.png"]];
+    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TexturedBackground.png"]];
     [background setFrame:CGRectMake(0, -480, background.frame.size.width, background.frame.size.height)];
     [self.tableView addSubview:background];
     
