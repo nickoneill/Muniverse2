@@ -40,7 +40,7 @@
     self.navigationItem.title = [self.subway valueForKey:@"name"];
 
     // set background image for the table
-    UIImage *bg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TexturedBackground" ofType:@"png"]];
+    UIImage *bg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"LeatherBackground" ofType:@"png"]];
     [self.table setBackgroundView:[[UIImageView alloc] initWithImage:bg]];
     
     // finally request the lines from core data

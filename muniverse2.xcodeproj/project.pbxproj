@@ -169,6 +169,16 @@
 		43F3C5A116584A0E00428594 /* TexturedHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C59F16584A0E00428594 /* TexturedHeader@2x.png */; };
 		43F3C5A516584EEF00428594 /* PanelHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5A316584EEF00428594 /* PanelHeader.png */; };
 		43F3C5A616584EEF00428594 /* PanelHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5A416584EEF00428594 /* PanelHeader@2x.png */; };
+		43F3C5A816585E3B00428594 /* NavBarLeather@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5A716585E3B00428594 /* NavBarLeather@2x.png */; };
+		43F3C5AA1658682500428594 /* NavBarButtonLeather@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5A91658682500428594 /* NavBarButtonLeather@2x.png */; };
+		43F3C5AC16586C2200428594 /* NavBarButtonLeatherNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5AB16586C2200428594 /* NavBarButtonLeatherNormal@2x.png */; };
+		43F3C5AE16587CD800428594 /* LeatherBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5AD16587CD800428594 /* LeatherBackground.png */; };
+		43F3C5B016587D5300428594 /* LeatherBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5AF16587D5300428594 /* LeatherBackground@2x.png */; };
+		43F3C5B21658802F00428594 /* LeatherBackground-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5B11658802F00428594 /* LeatherBackground-568h@2x.png */; };
+		43F3C5B51658876A00428594 /* ArrivalBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5B31658876900428594 /* ArrivalBackground.png */; };
+		43F3C5B61658876A00428594 /* ArrivalBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5B41658876900428594 /* ArrivalBackground@2x.png */; };
+		43F3C5B9165889A900428594 /* PanelHeaderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5B7165889A800428594 /* PanelHeaderBackground.png */; };
+		43F3C5BA165889A900428594 /* PanelHeaderBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F3C5B8165889A800428594 /* PanelHeaderBackground@2x.png */; };
 		D00AFFA4162CE89C000BEB01 /* MuniPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */; };
 		D014A27F15AE1D1600FF5952 /* base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D014A27E15AE1D1600FF5952 /* base.storyboard */; };
 		D030A3B11655B07400FEA9FE /* SmallClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D030A3B01655B07400FEA9FE /* SmallClusterAnnotation.m */; };
@@ -415,6 +425,16 @@
 		43F3C59F16584A0E00428594 /* TexturedHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TexturedHeader@2x.png"; sourceTree = "<group>"; };
 		43F3C5A316584EEF00428594 /* PanelHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PanelHeader.png; sourceTree = "<group>"; };
 		43F3C5A416584EEF00428594 /* PanelHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PanelHeader@2x.png"; sourceTree = "<group>"; };
+		43F3C5A716585E3B00428594 /* NavBarLeather@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBarLeather@2x.png"; sourceTree = "<group>"; };
+		43F3C5A91658682500428594 /* NavBarButtonLeather@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBarButtonLeather@2x.png"; sourceTree = "<group>"; };
+		43F3C5AB16586C2200428594 /* NavBarButtonLeatherNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBarButtonLeatherNormal@2x.png"; sourceTree = "<group>"; };
+		43F3C5AD16587CD800428594 /* LeatherBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LeatherBackground.png; sourceTree = "<group>"; };
+		43F3C5AF16587D5300428594 /* LeatherBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LeatherBackground@2x.png"; sourceTree = "<group>"; };
+		43F3C5B11658802F00428594 /* LeatherBackground-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LeatherBackground-568h@2x.png"; sourceTree = "<group>"; };
+		43F3C5B31658876900428594 /* ArrivalBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrivalBackground.png; sourceTree = "<group>"; };
+		43F3C5B41658876900428594 /* ArrivalBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ArrivalBackground@2x.png"; sourceTree = "<group>"; };
+		43F3C5B7165889A800428594 /* PanelHeaderBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PanelHeaderBackground.png; sourceTree = "<group>"; };
+		43F3C5B8165889A800428594 /* PanelHeaderBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PanelHeaderBackground@2x.png"; sourceTree = "<group>"; };
 		D00AFFA2162CE89C000BEB01 /* MuniPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuniPinAnnotation.h; sourceTree = "<group>"; };
 		D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuniPinAnnotation.m; sourceTree = "<group>"; };
 		D014A27E15AE1D1600FF5952 /* base.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = base.storyboard; sourceTree = "<group>"; };
@@ -576,13 +596,23 @@
 		435BA1B515AC60BB00D26FA1 /* Image Files */ = {
 			isa = PBXGroup;
 			children = (
+				43F3C5AD16587CD800428594 /* LeatherBackground.png */,
+				43F3C5AF16587D5300428594 /* LeatherBackground@2x.png */,
+				43F3C5B11658802F00428594 /* LeatherBackground-568h@2x.png */,
+				43F3C5AB16586C2200428594 /* NavBarButtonLeatherNormal@2x.png */,
+				43F3C5A91658682500428594 /* NavBarButtonLeather@2x.png */,
+				43F3C5B7165889A800428594 /* PanelHeaderBackground.png */,
+				43F3C5B8165889A800428594 /* PanelHeaderBackground@2x.png */,
 				43F3C5A316584EEF00428594 /* PanelHeader.png */,
 				43F3C5A416584EEF00428594 /* PanelHeader@2x.png */,
+				43F3C5A716585E3B00428594 /* NavBarLeather@2x.png */,
 				43B156F5165811F0003E9B5F /* TexturedBackground-568@2x.png */,
 				43B156F6165811F0003E9B5F /* TexturedBackground.png */,
 				43B156F7165811F0003E9B5F /* TexturedBackground@2x.png */,
 				43F3C59E16584A0E00428594 /* TexturedHeader.png */,
 				43F3C59F16584A0E00428594 /* TexturedHeader@2x.png */,
+				43F3C5B31658876900428594 /* ArrivalBackground.png */,
+				43F3C5B41658876900428594 /* ArrivalBackground@2x.png */,
 				D06C80E9165453850065DC5C /* blueButton.png */,
 				D06C80EA165453850065DC5C /* blueButton@2x.png */,
 				D06C80EB165453850065DC5C /* blueButtonHighlight.png */,
@@ -1318,6 +1348,16 @@
 				43F3C5A116584A0E00428594 /* TexturedHeader@2x.png in Resources */,
 				43F3C5A516584EEF00428594 /* PanelHeader.png in Resources */,
 				43F3C5A616584EEF00428594 /* PanelHeader@2x.png in Resources */,
+				43F3C5A816585E3B00428594 /* NavBarLeather@2x.png in Resources */,
+				43F3C5AA1658682500428594 /* NavBarButtonLeather@2x.png in Resources */,
+				43F3C5AC16586C2200428594 /* NavBarButtonLeatherNormal@2x.png in Resources */,
+				43F3C5AE16587CD800428594 /* LeatherBackground.png in Resources */,
+				43F3C5B016587D5300428594 /* LeatherBackground@2x.png in Resources */,
+				43F3C5B21658802F00428594 /* LeatherBackground-568h@2x.png in Resources */,
+				43F3C5B51658876A00428594 /* ArrivalBackground.png in Resources */,
+				43F3C5B61658876A00428594 /* ArrivalBackground@2x.png in Resources */,
+				43F3C5B9165889A900428594 /* PanelHeaderBackground.png in Resources */,
+				43F3C5BA165889A900428594 /* PanelHeaderBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

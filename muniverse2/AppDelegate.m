@@ -22,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    [self customizeAppearance];
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self checkForData];
     });
@@ -118,6 +120,16 @@
         NSLog(@"there was an issue removing all %@: %@",entityDescription,[error localizedDescription]);
     }
 }
+
+- (void)customizeAppearance
+{
+    UIImage *navBarTexture = [UIImage imageNamed:@"navBarLeather.png"];
+    [[UINavigationBar appearance] setBackgroundImage:navBarTexture forBarMetrics:UIBarMetricsDefault];
+    
+    UIImage *navBarButton = [UIImage imageNamed:@"navBarButtonLeatherNormal.png"];
+    [[UIBarButtonItem appearance] setBackgroundImage:navBarButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+}
+
 
 - (void)addJsonData:(NSDictionary *)data
 {
