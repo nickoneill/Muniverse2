@@ -253,7 +253,6 @@
                 
                 [self.map addAnnotation:point];
             }
-
         }
         
         self.lastDisplayCluster = YES;
@@ -375,7 +374,7 @@
     Stop *stop = pin.stop;
 
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
-
+    
     if ([stop isFavorite]) {
         
         NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Favorite"];
@@ -400,16 +399,22 @@
             NSLog(@"error saving context after delete: %@",[error localizedDescription]);
         }
         
+        [self.selectedAnnotationView setImage:[UIImage imageNamed:@"StopPin.png"]];
         [(UIButton *)[self.detailView viewWithTag:12] setImage:[UIImage imageNamed:@"FavoriteButton-off.png"] forState:UIControlStateNormal];
     } else {
         // pick a line
 
         if ([self.linesCache count] > 1) {
-            UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Please select a line" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+            UIActionSheet *action = [[UIActionSheet alloc] init];
+            [action setDelegate:self];
+            [action setTitle:@"Please select a line"];
             
             for (Line *line in self.linesCache) {
                 [action addButtonWithTitle:line.name];
             }
+            
+            [action addButtonWithTitle:@"Cancel"];
+            [action setCancelButtonIndex:[self.linesCache count]];
             
             [action showFromTabBar:self.tabBarController.tabBar];
         } else {
@@ -444,9 +449,11 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex != 0) {
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
+        [self.selectedAnnotationView setImage:[UIImage imageNamed:@"StopPinFav.png"]];
         [(UIButton *)[self.detailView viewWithTag:12] setImage:[UIImage imageNamed:@"FavoriteButton-on.png"] forState:UIControlStateNormal];
-        [self performSelector:@selector(addFavoriteForCurrentStopAndLine:) withObject:self.linesCache[buttonIndex-1] afterDelay:0.6];
+        
+        [self performSelector:@selector(addFavoriteForCurrentStopAndLine:) withObject:self.linesCache[buttonIndex] afterDelay:0.6];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteAdded" object:nil];
     }
