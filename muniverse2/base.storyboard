@@ -102,7 +102,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.31252667309999999" green="0.4290035069" blue="0.51530939340000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="Nearby" id="yp5-8O-EEg"/>
+                                    <navigationItem title="Nearby" id="yp5-8O-EEg">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="pbH-iZ-Bji">
+                                            <connections>
+                                                <action selector="refreshPredictions" destination="qtl-2H-2vo" id="Qsb-cs-0y1"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="8Lo-Cw-7w5">
@@ -289,6 +295,8 @@
                         <outlet property="detailTable" destination="Sr9-Pd-UQb" id="ZVm-pI-v6s"/>
                         <outlet property="detailView" destination="7SD-S1-e5n" id="Ibn-DN-nzJ"/>
                         <outlet property="map" destination="8Lo-Cw-7w5" id="C8S-iN-2uR"/>
+                        <outlet property="navItem" destination="yp5-8O-EEg" id="Qcw-Yi-5HD"/>
+                        <outlet property="refresh" destination="pbH-iZ-Bji" id="i0U-6z-CKy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19G-EJ-0sP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -964,6 +972,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uQX-81-USq"/>
+        <segue reference="IAe-lz-LiQ"/>
     </inferredMetricsTieBreakers>
 </document>

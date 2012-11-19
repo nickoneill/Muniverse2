@@ -26,7 +26,11 @@
 @property BOOL lastDisplayCluster;
 
 @property (strong) IBOutlet UIImageView *closeButton;
+@property (strong) IBOutlet UINavigationItem *navItem;
+@property (strong) IBOutlet UIBarButtonItem *refresh;
+@property (strong) UIBarButtonItem *refreshing;
 
 - (IBAction)toggleFavorite;
+- (IBAction)refreshPredictions;
 
 @end

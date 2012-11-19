@@ -48,7 +48,6 @@
     
     // set up needed items for the refresh button states
     UIActivityIndicatorView *spin = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-    [spin setTag:1];
     self.refreshing = [[UIBarButtonItem alloc] initWithCustomView:spin];
 
     // kick off predictions
@@ -135,8 +134,6 @@
 
 - (IBAction)refreshPredictions
 {
-    NSLog(@"refreshing");
-    
     [[self navigationItem] setRightBarButtonItem:self.refreshing];
     [(UIActivityIndicatorView *)self.refreshing.customView startAnimating];
     
@@ -166,7 +163,7 @@
                 }
             } else {
                 cell.primaryPrediction.text = @"";
-                cell.secondaryPrediction.text = @"";
+                cell.secondaryPrediction.text = @"!";
             }
             
             [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];

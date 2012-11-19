@@ -42,12 +42,14 @@
 {
     [super viewDidLoad];
     
+    // hide the detail pane
     [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
     [[self.detailView viewWithTag:10] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Nearby_Detail_Bg.png"]]];
     
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
     [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
     
+    // load all those stops
     NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
     [fetch setFetchLimit:4000];
     
@@ -59,6 +61,13 @@
         NSLog(@"There was an issue fetching nearby stops");
     }
     
+    // set up needed items for the refresh button states
+    [self.navItem setRightBarButtonItem:nil];
+    
+    UIActivityIndicatorView *spin = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+    self.refreshing = [[UIBarButtonItem alloc] initWithCustomView:spin];
+    
+    // center on downtown SF for starters
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(37.766644, -122.414474);
     [self.map setCenterCoordinate:coord zoomLevel:11 animated:NO];
     [self.map setUserTrackingMode:MKUserTrackingModeNone];
@@ -461,6 +470,8 @@
 
 - (void)openDetail
 {
+    [self.navItem setRightBarButtonItem:self.refresh];
+    
     // load data for the stop
     [self loadLinesForSelectedStop];
     
@@ -486,6 +497,8 @@
 
 - (IBAction)closeDetail
 {
+    [self.navItem setRightBarButtonItem:nil];
+    
     for (UIGestureRecognizer *gest in self.map.gestureRecognizers) {
         [self.map removeGestureRecognizer:gest];
     }
@@ -590,8 +603,11 @@
     return cell;
 }
 
-- (void)refreshPredictions
+- (IBAction)refreshPredictions
 {
+    [self.navItem setRightBarButtonItem:self.refreshing];
+    [(UIActivityIndicatorView *)self.refreshing.customView startAnimating];
+
     NextBusClient *client = [[NextBusClient alloc] init];
     
     Stop *stop = [(MuniPinAnnotation *)self.selectedAnnotationView.annotation stop];
@@ -618,10 +634,16 @@
                 }
             } else {
                 cell.primaryPrediction.text = @"";
-                cell.secondaryPrediction.text = @"";
+                cell.secondaryPrediction.text = @"!";
             }
+
+            [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];
+            [self.navItem setRightBarButtonItem:self.refresh];
         } andFailure:^(NSError *err) {
             NSLog(@"failed getting predictions: %@",[err localizedDescription]);
+
+            [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];
+            [self.navItem setRightBarButtonItem:self.refresh];
         }];
     }
 }
