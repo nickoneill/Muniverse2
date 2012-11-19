@@ -22,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    [self customizeAppearance];
+ //   [self customizeAppearance];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self checkForData];

@@ -37,7 +37,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPredictions) name:@"becameActive" object:nil];
 
 
-    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"LeatherBackground" ofType:@"png"]];
+    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:bgimage]];
     
     self.stopName.text = self.stop.name;

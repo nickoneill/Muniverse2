@@ -43,9 +43,9 @@
     [super viewDidLoad];
     
     [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
-    [[self.detailView viewWithTag:10] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"PanelHeaderBackground.png"]]];
+    [[self.detailView viewWithTag:10] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Nearby_Detail_Bg.png"]]];
     
-    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"LeatherBackground" ofType:@"png"]];
+    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
     [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
     
     NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
