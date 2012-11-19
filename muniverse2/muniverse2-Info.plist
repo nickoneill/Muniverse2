@@ -20,7 +20,7 @@
 		<string>Icon-Small-50@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.fattrash.muniversebeta</string>
+	<string>com.fattrash.muniverse</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
