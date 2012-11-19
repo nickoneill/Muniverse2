@@ -509,6 +509,13 @@
     }];
 }
 
+- (IBAction)recenter
+{
+    CLLocation *loc = [[self.map userLocation] location];
+    
+    [self.map setCenterCoordinate:[loc coordinate] zoomLevel:16 animated:NO];
+}
+
 - (BOOL)isAtStopZoomLevel
 {
     float regionsize = self.map.region.span.latitudeDelta;

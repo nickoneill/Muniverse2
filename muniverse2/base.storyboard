@@ -118,6 +118,21 @@
                                     <outlet property="delegate" destination="qtl-2H-2vo" id="vSR-Eb-Stb"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ym9-Bl-3eg">
+                                <rect key="frame" x="10" y="358" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="Tab_LocationArrow.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="recenter" destination="qtl-2H-2vo" eventType="touchUpInside" id="Adt-vm-Ffs"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" id="7SD-S1-e5n">
                                 <rect key="frame" x="0.0" y="144" width="320" height="267"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -962,10 +977,98 @@
         <image name="StopDetailBG.png" width="600" height="260"/>
         <image name="Tab_Favorites.png" width="26" height="26"/>
         <image name="Tab_Lines.png" width="30" height="30"/>
+        <image name="Tab_LocationArrow.png" width="24" height="24"/>
         <image name="Tab_Radar.png" width="27" height="27"/>
         <image name="Tab_Subway.png" width="30" height="30"/>
         <image name="placeholder-stop-icon-fav@2x.png" width="92" height="92"/>
     </resources>
+    <classes>
+        <class className="AllLinesTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AllLinesTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="type" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="FavoriteCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="destination" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lineName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="primaryPrediction" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="secondaryPrediction" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stopName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FavoritesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editButton:"/>
+                <relationship kind="action" name="refreshAll:"/>
+                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="GroupedPredictionCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GroupedPredictionCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lineIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="primaryPrediction" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="primaryText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="secondaryPrediction" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="secondaryText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LineDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LineDetailViewController.h"/>
+        </class>
+        <class className="LineDisplayCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LineDisplayCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="description" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="icon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MuniTabController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MuniTabController.h"/>
+        </class>
+        <class className="NearbyMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NearbyMapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refreshPredictions"/>
+                <relationship kind="action" name="toggleFavorite"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="detailTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="detailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="navItem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="StationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="directionChange:"/>
+                <relationship kind="outlet" name="inoutcontrol" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="StopDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StopDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleFavorite:"/>
+                <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="primaryArrival" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="secondaryArrival" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stopID" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stopName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SubwayTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubwayTableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
