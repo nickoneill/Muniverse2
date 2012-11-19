@@ -43,11 +43,33 @@
     UIImage *bg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
     [self.table setBackgroundView:[[UIImageView alloc] initWithImage:bg]];
     
-    // finally request the lines from core data
+    // broken out because sometimes we need to reload lines for K/T
+    [self loadLines];
+    
+    // set up needed items for the refresh button states
+    UIActivityIndicatorView *spin = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+    [spin setTag:1];
+    self.refreshing = [[UIBarButtonItem alloc] initWithCustomView:spin];
+
+    // kick off predictions
+    [self refreshPredictions];
+}
+
+- (void)loadLines
+{
     NSManagedObjectContext *moc = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     
+    Stop *whichStop;
+    NSString *stopKey;
+    if (self.inoutcontrol.selectedSegmentIndex == 0) {
+        whichStop = self.subway.inboundStop;
+        stopKey = @"inboundStops";
+    } else {
+        whichStop = self.subway.outboundStop;
+        stopKey = @"outboundStops";
+    }
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Line"];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%@ IN %K",self.subway.inboundStop,@"inboundStops"];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%@ IN %K",whichStop,stopKey];
     [req setPredicate:pred];
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"allLinesSort" ascending:YES];
@@ -58,14 +80,6 @@
     if (err != nil) {
         NSLog(@"issue with subway stops: %@",[err localizedDescription]);
     }
-    
-    // set up needed items for the refresh button states
-    UIActivityIndicatorView *spin = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-    [spin setTag:1];
-    self.refreshing = [[UIBarButtonItem alloc] initWithCustomView:spin];
-
-    // kick off predictions
-    [self refreshPredictions];
 }
 
 #pragma mark - Table view data source
@@ -105,6 +119,7 @@
 
 - (IBAction)directionChange:(id)sender
 {
+    [self loadLines];
     [self.table reloadData];
     [self refreshPredictions];
 }
