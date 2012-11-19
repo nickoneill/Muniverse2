@@ -479,6 +479,7 @@
     Stop *stop = pin.stop;
     
     [(UILabel *)[self.detailView viewWithTag:11] setText:stop.name];
+    [(UILabel *)[self.detailView viewWithTag:13] setText:[NSString stringWithFormat:@"Stop #%@",stop.tag]];
     
     if ([stop isFavorite]) {
         [(UIButton *)[self.detailView viewWithTag:12] setImage:[UIImage imageNamed:@"FavoriteButton-on.png"] forState:UIControlStateNormal];
