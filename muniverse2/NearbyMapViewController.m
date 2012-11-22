@@ -135,7 +135,7 @@
             }
         }
         
-    } else if (self.map.region.span.latitudeDelta <= 0.03) {
+    } else if (self.map.region.span.latitudeDelta <= 0.02) {
         // display stops with some clusters if we're somewhat close
         
         [self.map removeAnnotations:self.map.annotations];
@@ -230,11 +230,16 @@
         // much faster than the more detailed model, but with significantly less accuracy
         [self.map removeAnnotations:self.map.annotations];
         
-        int divisions = 5;
+        int divisions = 4;
         
+        MKMapRect visRect = self.map.visibleMapRect;
+        float subWidth = visRect.size.width/divisions;
+        float subHeight = visRect.size.height/divisions;
         // divide the current region into smaller squares (tune more/less by changing the divisions)
         for (int i = 0; i < divisions; i++) {
             for (int j = 0; j < divisions; j++) {
+                
+                MKMapRect submap = MKMapRectMake(visRect.origin.x+(subWidth*i), visRect.origin.y+(subHeight*j), subWidth, subHeight);
                 
                 int stopCount = 0;
                 CLLocationCoordinate2D avg = CLLocationCoordinate2DMake(0, 0);
@@ -242,7 +247,7 @@
                 for (Stop *stop in self.loadedStops) {
                     MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]));
                     
-                    if (MKMapRectContainsPoint(self.map.visibleMapRect, point)) {
+                    if (MKMapRectContainsPoint(submap, point)) {
                         if (avg.latitude == 0) {
                             avg = CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]);
                         } else {
