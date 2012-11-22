@@ -350,8 +350,8 @@
                     <connections>
                         <segue destination="wbp-LQ-185" kind="relationship" relationship="viewControllers" id="AOT-xr-AXF"/>
                         <segue destination="qtl-2H-2vo" kind="relationship" relationship="viewControllers" id="Fpb-Gc-BQC"/>
-                        <segue destination="Gmf-kX-lMJ" kind="relationship" relationship="viewControllers" id="Tyx-uL-nYe"/>
                         <segue destination="MNS-he-PXW" kind="relationship" relationship="viewControllers" id="oX0-yg-FnN"/>
+                        <segue destination="Gmf-kX-lMJ" kind="relationship" relationship="viewControllers" id="Tyx-uL-nYe"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuH-VJ-h2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1048,6 +1048,7 @@
         <class className="StationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
             <relationships>
+                <relationship kind="action" name="directionChange:"/>
                 <relationship kind="outlet" name="inoutcontrol" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="table" candidateClass="UITableView"/>
@@ -1056,6 +1057,7 @@
         <class className="StopDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StopDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="toggleFavorite:"/>
                 <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="primaryArrival" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
