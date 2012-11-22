@@ -49,17 +49,21 @@
     UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
     [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
     
-    // load all those stops
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
-    [fetch setFetchLimit:4000];
-    
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    
-    NSError *err;
-    self.loadedStops = [app.managedObjectContext executeFetchRequest:fetch error:&err];
-    if (err != nil) {
-        NSLog(@"There was an issue fetching nearby stops");
-    }
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        // load all those stops
+        NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Stop"];
+        [fetch setFetchLimit:4000];
+        
+        AppDelegate *app = [[UIApplication sharedApplication] delegate];
+        
+        NSError *err;
+        self.loadedStops = [app.managedObjectContext executeFetchRequest:fetch error:&err];
+        if (err != nil) {
+            NSLog(@"There was an issue fetching nearby stops");
+        }
+        
+        [self displayStops];
+    });
     
     // set up needed items for the refresh button states
     [self.navItem setRightBarButtonItem:nil];
@@ -105,16 +109,9 @@
 
 - (void)displayStops
 {
-    // loading stops all the way to the edge of the screen feels weird, this adjusts that in slightly
-    float adjustment = -0.0005;
-    
-    MKCoordinateRegion region = [self.map region];
-    CLLocationCoordinate2D mincoord;
-    mincoord.latitude = region.center.latitude - (region.span.latitudeDelta/2) - adjustment;
-    mincoord.longitude = region.center.longitude - (region.span.longitudeDelta/2) - adjustment;
-    CLLocationCoordinate2D maxcoord;
-    maxcoord.latitude = region.center.latitude + (region.span.latitudeDelta/2) + adjustment;
-    maxcoord.longitude = region.center.longitude + (region.span.longitudeDelta/2) + adjustment;
+    if ([self.loadedStops count] == 0) {
+        return;
+    }
     
     if (self.map.region.span.latitudeDelta <= 0.005) {
         // display all stops if we're real close
@@ -231,7 +228,6 @@
     } else if (self.map.region.span.latitudeDelta <= 0.16) {
         // VERY crude implementation of clustering for zoomed out views
         // much faster than the more detailed model, but with significantly less accuracy
-        //
         [self.map removeAnnotations:self.map.annotations];
         
         int divisions = 5;
