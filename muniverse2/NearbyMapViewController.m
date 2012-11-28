@@ -113,6 +113,8 @@
         return;
     }
     
+    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+    
     if (self.map.region.span.latitudeDelta <= 0.005) {
         // display all stops if we're real close
         
@@ -135,6 +137,8 @@
             }
         }
         
+        NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate] - start;
+        NSLog(@"close stops: %f",end);
     } else if (self.map.region.span.latitudeDelta <= 0.02) {
         // display stops with some clusters if we're somewhat close
         
@@ -225,6 +229,8 @@
         }
         
         self.lastDisplayCluster = YES;
+        NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate] - start;
+        NSLog(@"some cluster stops: %f",end);
     } else if (self.map.region.span.latitudeDelta <= 0.16) {
         // VERY crude implementation of clustering for zoomed out views
         // much faster than the more detailed model, but with significantly less accuracy
@@ -266,6 +272,8 @@
         }
         
         self.lastDisplayCluster = YES;
+        NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate] - start;
+        NSLog(@"all clusters stops: %f",end);
     } else {
         [self.map removeAnnotations:self.map.annotations];
     }
