@@ -79,11 +79,6 @@
     self.shouldZoomToUser = YES;
 }
 
-- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
-{
-    //
-}
-
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     // automatic changes in regions (triggered by us) are a special case
@@ -96,8 +91,6 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-//    NSLog(@"updated user location %f %f",[userLocation.location coordinate].latitude,[userLocation.location coordinate].longitude);
-    
     if (self.shouldZoomToUser && userLocation.location.coordinate.latitude != 0) {
         CLLocationCoordinate2D loc = [userLocation.location coordinate];
         
@@ -174,12 +167,15 @@
                     }
                     int clusterCount = [cluster count];
                     
+                    // the center of the cluster matching region changes with an additional stop, but less impact with each additional stop added
                     CLLocation *avgLoc = [[CLLocation alloc] initWithLatitude:avgLat/clusterCount longitude:avgLon/clusterCount];
-                    // the center of the cluster matching region changes subtley with an additional stop, but less impact with each additional stop added
-                    if ([stopLoc distanceFromLocation:avgLoc] <= SMALL_CLUSTER_DISTANCE) {
-                        [ignoreStops addObject:stop];
-                        cluster = [cluster arrayByAddingObject:stop];
-                        addedToCluster = YES;
+                    
+                    if ([self checkRoughDistanceOf:stopLoc from:avgLoc]) {
+                        if ([stopLoc distanceFromLocation:avgLoc] <= SMALL_CLUSTER_DISTANCE) {
+                            [ignoreStops addObject:stop];
+                            cluster = [cluster arrayByAddingObject:stop];
+                            addedToCluster = YES;
+                        }
                     }
                 }
 
@@ -189,9 +185,11 @@
                         if (![ignoreStops containsObject:otherStop] && ![ignoreStops containsObject:stop]) {
                             CLLocation *otherStopLoc = [[CLLocation alloc] initWithLatitude:[otherStop.lat floatValue] longitude:[otherStop.lon floatValue]];
                             
-                            if ([stopLoc distanceFromLocation:otherStopLoc] <= SMALL_CLUSTER_DISTANCE && [stopLoc distanceFromLocation:otherStopLoc] != 0.0) {
-                                [ignoreStops addObjectsFromArray:@[stop,otherStop]];
-                                [stopClusters addObject:@[stop, otherStop]];
+                            if ([self checkRoughDistanceOf:stopLoc from:otherStopLoc]) {
+                                if ([stopLoc distanceFromLocation:otherStopLoc] <= SMALL_CLUSTER_DISTANCE && [stopLoc distanceFromLocation:otherStopLoc] != 0.0) {
+                                    [ignoreStops addObjectsFromArray:@[stop,otherStop]];
+                                    [stopClusters addObject:@[stop, otherStop]];
+                                }
                             }
                         }
                     }
@@ -275,8 +273,17 @@
         NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate] - start;
         NSLog(@"all clusters stops: %f",end);
     } else {
-        [self.map removeAnnotations:self.map.annotations];
+        [self clearCustomAnnoations];
     }
+}
+
+- (BOOL)checkRoughDistanceOf:(CLLocation *)locOne from:(CLLocation *)locTwo
+{
+    if (locOne.coordinate.latitude > locTwo.coordinate.latitude+SMALL_CLUSTER_DISTANCE || locOne.coordinate.latitude < locTwo.coordinate.latitude-SMALL_CLUSTER_DISTANCE || locOne.coordinate.longitude > locTwo.coordinate.longitude+SMALL_CLUSTER_DISTANCE || locOne.coordinate.longitude < locTwo.coordinate.longitude-SMALL_CLUSTER_DISTANCE) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)clearCustomAnnoations
@@ -335,7 +342,6 @@
         
         return cluster;
     } else if ([annotation isKindOfClass:[MKUserLocation class]]) {
-        NSLog(@"user");
         MKAnnotationView *user = [self.map viewForAnnotation:annotation];
         
         return user;
