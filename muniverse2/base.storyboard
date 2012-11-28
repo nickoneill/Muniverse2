@@ -1035,6 +1035,7 @@
         <class className="NearbyMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NearbyMapViewController.h"/>
             <relationships>
+                <relationship kind="action" name="recenter"/>
                 <relationship kind="action" name="refreshPredictions"/>
                 <relationship kind="action" name="toggleFavorite"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIImageView"/>

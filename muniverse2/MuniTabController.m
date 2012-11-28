@@ -8,6 +8,7 @@
 
 #import "MuniTabController.h"
 #import "AppDelegate.h"
+#import "NearbyMapViewController.h"
 
 @interface MuniTabController ()
 
@@ -22,8 +23,8 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:@"FavoriteAdded" object:nil queue:nil usingBlock:^(NSNotification *note) {
         UIView *stopDetail = self.selectedViewController.view;
         
-        if (self.selectedIndex != 1) {
-            UIView *favorites = [[self.viewControllers objectAtIndex:1] view];
+        if (self.selectedIndex != 0) {
+            UIView *favorites = [[self.viewControllers objectAtIndex:0] view];
             
             [UIView transitionFromView:stopDetail toView:favorites duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
                 [self setSelectedIndex:1];
@@ -40,6 +41,15 @@
 
     if (favorites > 0) {
         [self setSelectedIndex:1];
+    }
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    if ([tabBar selectedItem] == [[tabBar items] objectAtIndex:1]) {
+        NearbyMapViewController *nearby = (NearbyMapViewController *)[self.viewControllers objectAtIndex:1];
+        
+        [nearby recenter];
     }
 }
 

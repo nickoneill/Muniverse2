@@ -32,5 +32,6 @@
 
 - (IBAction)toggleFavorite;
 - (IBAction)refreshPredictions;
+- (IBAction)recenter;
 
 @end

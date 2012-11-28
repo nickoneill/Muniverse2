@@ -74,7 +74,7 @@
     // center on downtown SF for starters
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(37.766644, -122.414474);
     [self.map setCenterCoordinate:coord zoomLevel:11 animated:NO];
-    [self.map setUserTrackingMode:MKUserTrackingModeNone];
+//    [self.map setUserTrackingMode:MKUserTrackingModeNone];
     
     self.shouldZoomToUser = YES;
 }
@@ -121,7 +121,7 @@
         if (self.lastDisplayCluster) {
             // remove cluster annotations if that was the last thing we annotated
             // this is used to persist the stop annotations between drags, it could potentially slow down if someone dragged a lot but small use case, I think
-            [self.map removeAnnotations:self.map.annotations];
+            [self clearCustomAnnoations];
             self.lastDisplayCluster = NO;
         }
         
@@ -142,7 +142,7 @@
     } else if (self.map.region.span.latitudeDelta <= 0.02) {
         // display stops with some clusters if we're somewhat close
         
-        [self.map removeAnnotations:self.map.annotations];
+        [self clearCustomAnnoations];
 
         // pick stops from the cache for the current region
         NSMutableArray *visibleStops = [NSMutableArray array];
@@ -234,7 +234,7 @@
     } else if (self.map.region.span.latitudeDelta <= 0.16) {
         // VERY crude implementation of clustering for zoomed out views
         // much faster than the more detailed model, but with significantly less accuracy
-        [self.map removeAnnotations:self.map.annotations];
+        [self clearCustomAnnoations];
         
         int divisions = 4;
         
@@ -279,7 +279,15 @@
     }
 }
 
-
+- (void)clearCustomAnnoations
+{
+    // if we don't take care to not remove the user location it is either lost or constantly readded
+    for (id annot in self.map.annotations) {
+        if (![annot isKindOfClass:[MKUserLocation class]]) {
+            [self.map removeAnnotation:annot];
+        }
+    }
+}
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
@@ -326,6 +334,11 @@
         [cluster setImage:[UIImage imageNamed:@"StopCluster.png"]];
         
         return cluster;
+    } else if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        NSLog(@"user");
+        MKAnnotationView *user = [self.map viewForAnnotation:annotation];
+        
+        return user;
     }
         
     return nil;
