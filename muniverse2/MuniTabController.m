@@ -46,11 +46,13 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
-    if ([tabBar selectedItem] == [[tabBar items] objectAtIndex:1]) {
+    if ([tabBar selectedItem] == [[tabBar items] objectAtIndex:1] && self.previouslySelected == [[tabBar items] objectAtIndex:1]) {
         NearbyMapViewController *nearby = (NearbyMapViewController *)[self.viewControllers objectAtIndex:1];
         
         [nearby recenter];
     }
+    
+    self.previouslySelected = [tabBar selectedItem];
 }
 
 - (void)viewDidUnload

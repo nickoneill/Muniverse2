@@ -10,4 +10,6 @@
 
 @interface MuniTabController : UITabBarController
 
+@property (strong) UITabBarItem *previouslySelected;
+
 @end
