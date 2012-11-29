@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+#define SMALL_CLUSTER_DISTANCE 60
+
 @class MKMapView,CalloutAnnotation,CalloutAnnotationView;
 
 @interface NearbyMapViewController : UIViewController <MKMapViewDelegate,UIActionSheetDelegate>
@@ -17,7 +19,9 @@
 @property (strong) IBOutlet UIView *detailView;
 @property (strong) IBOutlet UITableView *detailTable;
 
+@property (strong) NSOperationQueue *queue;
 @property (strong) NSArray *loadedStops;
+@property (strong) NSMutableArray *loadedAnnotations;
 @property (strong) NSArray *linesCache;
 @property (strong) CalloutAnnotation *calloutAnnotation;
 @property (strong) MKAnnotationView *selectedAnnotationView;
@@ -33,5 +37,7 @@
 - (IBAction)toggleFavorite;
 - (IBAction)refreshPredictions;
 - (IBAction)recenter;
+- (void)clearCustomAnnoations;
+- (BOOL)checkRoughDistanceOf:(CLLocation *)locOne from:(CLLocation *)locTwo;
 
 @end

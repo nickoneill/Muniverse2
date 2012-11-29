@@ -19,21 +19,24 @@
 #import "SmallClusterAnnotation.h"
 #import "NextBusClient.h"
 #import "MuniUtilities.h"
+#import "StopLoadOperation.h"
 
 @interface NearbyMapViewController ()
 
 @end
 
-#define SMALL_CLUSTER_DISTANCE 60
-
 @implementation NearbyMapViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         self.autoRegionChange = NO;
         self.lastDisplayCluster = NO;
+        self.loadedAnnotations = [[NSMutableArray alloc] init];
+        self.queue = [[NSOperationQueue alloc] init];
+        [self.queue setMaxConcurrentOperationCount:1];
+        [self.queue setName:@"com.Muniverse.mapops"];
     }
     return self;
 }
@@ -41,7 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     // hide the detail pane
     [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
     [[self.detailView viewWithTag:10] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Nearby_Detail_Bg.png"]]];
@@ -61,8 +64,6 @@
         if (err != nil) {
             NSLog(@"There was an issue fetching nearby stops");
         }
-        
-        [self displayStops];
     });
     
     // set up needed items for the refresh button states
@@ -85,9 +86,16 @@
     if (self.autoRegionChange) {
         self.autoRegionChange = NO;
     } else {
-        [self displayStops];
+        // we don't care to load stops we've moved away from
+        [self.queue cancelAllOperations];
+        
+        // this will load all stops and process clusters async
+        StopLoadOperation *loadOp = [[StopLoadOperation alloc] initWithNearby:self];
+        
+        [self.queue addOperation:loadOp];
     }
 }
+
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
@@ -126,6 +134,7 @@
                 MuniPinAnnotation *point = [[MuniPinAnnotation alloc] init];
                 [point setStop:stop];
                 [point setCoordinate:CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue])];
+                
                 [self.map addAnnotation:point];
             }
         }
@@ -288,6 +297,7 @@
 
 - (void)clearCustomAnnoations
 {
+    NSLog(@"custom clear");
     // if we don't take care to not remove the user location it is either lost or constantly readded
     for (id annot in self.map.annotations) {
         if (![annot isKindOfClass:[MKUserLocation class]]) {
