@@ -39,7 +39,7 @@
     NSError *err;
     int favorites = [app.managedObjectContext countForFetchRequest:fetch error:&err];
 
-    if (favorites > 0) {
+    if (favorites == 0) {
         [self setSelectedIndex:1];
     }
 }
