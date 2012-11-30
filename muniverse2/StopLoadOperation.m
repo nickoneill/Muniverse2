@@ -43,7 +43,7 @@
         
         // pick stops from the cache for the current region
         for (Stop *stop in self.nearby.loadedStops) {
-            if (self.isCancelled) {
+            if (self.isCancelled) { // we can cancel this action if we're already moving the map again
                 return;
             }
             MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]));
@@ -76,6 +76,10 @@
         NSMutableArray *stopClusters = [NSMutableArray array];
         NSMutableArray *ignoreStops = [NSMutableArray array];
         for (Stop *stop in visibleStops) {
+            if (self.isCancelled) { // we can cancel this action if we're already moving the map again
+                return;
+            }
+            
             if (![ignoreStops containsObject:stop]) {
                 CLLocation *stopLoc = [[CLLocation alloc] initWithLatitude:[stop.lat floatValue] longitude:[stop.lon floatValue]];
                 
@@ -160,21 +164,41 @@
         
         int divisions = 4;
         
+        // our primary optimization here weeds out stops that we've already used
+        // we make a copy of all the stops for this purpose
+        NSMutableArray *stopBackup = [self.nearby.loadedStops mutableCopy];
         
+        // at smaller distances, it makes sense to weed out all stops that aren't in the map area first
+        if (self.nearby.map.region.span.latitudeDelta <= 0.06) {
+            NSMutableArray *earlierRemoval = [NSMutableArray array];
+            for (Stop *stop in stopBackup) {
+                MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]));
+                
+                if (!MKMapRectContainsPoint(self.nearby.map.visibleMapRect, point)) {
+                    [earlierRemoval addObject:stop];
+                }
+            }
+            [stopBackup removeObjectsInArray:earlierRemoval];
+        }
         
         MKMapRect visRect = self.nearby.map.visibleMapRect;
         float subWidth = visRect.size.width/divisions;
         float subHeight = visRect.size.height/divisions;
         // divide the current region into smaller squares (tune more/less by changing the divisions)
+        // this isn't great since we traverse many of the stops divisions^2 times, but the optimizations make it bearable
         for (int i = 0; i < divisions; i++) {
             for (int j = 0; j < divisions; j++) {
+                if (self.isCancelled) { // we can cancel this action if we're already moving the map again
+                    return;
+                }
+                NSMutableArray *forRemoval = [NSMutableArray array];
                 
                 MKMapRect submap = MKMapRectMake(visRect.origin.x+(subWidth*i), visRect.origin.y+(subHeight*j), subWidth, subHeight);
                 
                 int stopCount = 0;
                 CLLocationCoordinate2D avg = CLLocationCoordinate2DMake(0, 0);
                 // then sum up stops in that region, and weighted-average the stop coordinates (for simplicity)
-                for (Stop *stop in self.nearby.loadedStops) {
+                for (Stop *stop in stopBackup) {
                     MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]));
                     
                     if (MKMapRectContainsPoint(submap, point)) {
@@ -184,9 +208,13 @@
                             avg = CLLocationCoordinate2DMake((avg.latitude + [stop.lat floatValue])/2, (avg.longitude + [stop.lon floatValue])/2);
                         }
                         
+                        [forRemoval addObject:stop];
                         stopCount++;
                     }
                 }
+                
+                // we gather and remove stops that have already been used, reducing our overall iteration count
+                [stopBackup removeObjectsInArray:forRemoval];
                 
                 ClusterAnnotation *point = [[ClusterAnnotation alloc] init];
                 [point setCoordinate:avg];
@@ -200,12 +228,12 @@
         [self.nearby clearCustomAnnoations];
     }
 
-    
+    // our last check for a cancelled message before we clear the existing annotations and add the new ones
     if (self.isCancelled) {
         return;
     }
     
-    NSLog(@"donesies! %d",[self.nearby.loadedAnnotations count]);
+    // do the ui stuff on the ui thread
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self.nearby clearCustomAnnoations];
         [self.nearby.map addAnnotations:self.nearby.loadedAnnotations];
