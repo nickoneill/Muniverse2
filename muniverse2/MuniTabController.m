@@ -21,13 +21,13 @@
     [super viewDidLoad];
 	
     [[NSNotificationCenter defaultCenter] addObserverForName:@"FavoriteAdded" object:nil queue:nil usingBlock:^(NSNotification *note) {
-        UIView *stopDetail = self.selectedViewController.view;
+        UIView *currentView = self.selectedViewController.view;
         
         if (self.selectedIndex != 0) {
             UIView *favorites = [[self.viewControllers objectAtIndex:0] view];
             
-            [UIView transitionFromView:stopDetail toView:favorites duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
-                [self setSelectedIndex:1];
+            [UIView transitionFromView:currentView toView:favorites duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
+                [self setSelectedIndex:0];
             }];
         }
     }];
