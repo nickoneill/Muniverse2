@@ -160,6 +160,8 @@
         
         int divisions = 4;
         
+        
+        
         MKMapRect visRect = self.nearby.map.visibleMapRect;
         float subWidth = visRect.size.width/divisions;
         float subHeight = visRect.size.height/divisions;
