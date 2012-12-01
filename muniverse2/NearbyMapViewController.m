@@ -64,6 +64,9 @@
         if (err != nil) {
             NSLog(@"There was an issue fetching nearby stops");
         }
+        
+        StopLoadOperation *loadOp = [[StopLoadOperation alloc] initWithNearby:self];
+        [self.queue addOperation:loadOp];
     });
     
     // set up needed items for the refresh button states
@@ -91,7 +94,6 @@
         
         // this will load all stops and process clusters async
         StopLoadOperation *loadOp = [[StopLoadOperation alloc] initWithNearby:self];
-        
         [self.queue addOperation:loadOp];
     }
 }
@@ -119,7 +121,6 @@
 
 - (void)clearCustomAnnoations
 {
-    NSLog(@"custom clear");
     // if we don't take care to not remove the user location it is either lost or constantly readded
     for (id annot in self.map.annotations) {
         if (![annot isKindOfClass:[MKUserLocation class]]) {
@@ -209,7 +210,6 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    NSLog(@"logy");
     if ([view.annotation isKindOfClass:[MuniPinAnnotation class]]) {
         if ([self isAtStopZoomLevel]) {
             // actual callout annotation will be added at the end of this map transformation
