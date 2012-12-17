@@ -5,11 +5,17 @@ Muniverse
 
 [Nick O'Neill](http://nickoneill.name) (code as [Launch Apps](http://launchapps.net)) and [Jamison Wieser](http://jamisonwieser.com/) (UI/UX as [Fat Trash Design](http://fattrash.com)) made this. We're both contractors working in San Francisco and you can reach out to us if you need our services, collectively or independently.
 
-It's been through a number of code and design iterations, the current one is freshly written to take advantage of new improvements in Objective-C and UIKit. It's here so that others can examine and hopefully improve on their own projects.
+It's been through a number of code and design iterations, the current app is freshly written to take advantage of new improvements in Objective-C and UIKit.
+
+While our project is focussed on the San Francisco Muni system, over 100 transit systems provide real-time arrival information using the same NextBus API that SF Muni uses.
+
+We are making our code available so others can examine and hopefully improve on their own projects and ultimately make real-time arrival information more accessible.
 
 All code for Muniverse is licensed under the MIT license (see below). Please copy, paste, improve or otherwise use the code as you see fit. HOWEVER, any graphics in the repository are not included under the license. Please don't use our graphics for your project without asking, that wouldn't be nice.
 
-In addition, we've shipped a greatly reduced number of available lines with this repository. Our aim with this is to prevent unscrupulous types from submitting the same code to the App Store with little or no changes. If you think you'd benefit from having the whole list of stops and lines, feel free to email and ask.
+The JSON file we use to populate the data in the app includes a reduced number of available lines. Our aim with this is to prevent unscrupulous types from submitting the same code to the App Store with little or no changes. Otherwise, the code here is completely functional.
+
+If you are interested in adapting the code to your local transit system or have any other questions or comments, feel free to contact either of us.
 
 Muniverse uses these third party components:
 * [TouchXML](https://github.com/TouchCode/TouchXML) for NextBus API parsing
