@@ -3,6 +3,8 @@ Muniverse
 
 **Muniverse is the fastest way to find arrival times for San Francisco Muni busses, trains and historic street cars.**
 
+![Nearby Map](https://raw.github.com/nickoneill/Muniverse2/master/Screenshots/NearbyMap.png) ![Nearby Stop Detail](https://github.com/nickoneill/Muniverse2/raw/master/Screenshots/MapStopDetail.png) ![Subway Station Detail](https://github.com/nickoneill/Muniverse2/raw/master/Screenshots/StationDetail.png)
+
 [Nick O'Neill](http://nickoneill.name) (code as [Launch Apps](http://launchapps.net)) and [Jamison Wieser](http://jamisonwieser.com/) (UI/UX as [Fat Trash Design](http://fattrash.com)) made this. We're both contractors working in San Francisco and you can reach out to us if you need our services, collectively or independently.
 
 It's been through a number of code and design iterations, the current app is freshly written to take advantage of new improvements in Objective-C and UIKit.
