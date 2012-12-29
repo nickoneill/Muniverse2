@@ -9,6 +9,7 @@
 #import "MuniTabController.h"
 #import "AppDelegate.h"
 #import "NearbyMapViewController.h"
+#import "Flurry.h"
 
 @interface MuniTabController ()
 
@@ -46,6 +47,8 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
+    [Flurry logEvent:[NSString stringWithFormat:@"selected tab %@",[item title]]];
+    
     if ([tabBar selectedItem] == [[tabBar items] objectAtIndex:1] && self.previouslySelected == [[tabBar items] objectAtIndex:1]) {
         NearbyMapViewController *nearby = (NearbyMapViewController *)[self.viewControllers objectAtIndex:1];
         

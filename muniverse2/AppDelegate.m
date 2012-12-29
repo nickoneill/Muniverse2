@@ -11,6 +11,7 @@
 #import "Stop.h"
 #import "Subway.h"
 #import "LoadingViewController.h"
+#import "Flurry.h"
 
 @implementation AppDelegate
 
@@ -22,7 +23,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
- //   [self customizeAppearance];
+    // track crashes in flurry
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
+    NSString *flurryKeyPath = [[NSBundle mainBundle] pathForResource:@"flurryapikey" ofType:@"txt"];
+    NSString *flurryKey = [NSString stringWithContentsOfFile:flurryKeyPath encoding:NSASCIIStringEncoding error:nil];
+    
+    [Flurry startSession:flurryKey];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self checkForData];
@@ -37,6 +44,10 @@
     [self.window makeKeyAndVisible];
 
     return YES;
+}
+
+void uncaughtExceptionHandler(NSException *exception) {
+    [Flurry logError:@"Uncaught" message:@"Crash!" exception:exception];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

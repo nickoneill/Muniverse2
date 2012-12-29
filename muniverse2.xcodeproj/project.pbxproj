@@ -238,6 +238,9 @@
 		D0C602D815D5E942003200E9 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602CD15D5E942003200E9 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0C602D915D5E942003200E9 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602CF15D5E942003200E9 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0C602DE15D5E95E003200E9 /* LAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C602DD15D5E95E003200E9 /* LAUtil.m */; };
+		D0C742FE168F5DE000A0642C /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C742FD168F5DE000A0642C /* libFlurry.a */; };
+		D0C74301168F5F5800A0642C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C74300168F5F5800A0642C /* SystemConfiguration.framework */; };
+		D0C74303168F620300A0642C /* flurryapikey.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0C74302168F620300A0642C /* flurryapikey.txt */; };
 		D0C7F03F15EEED7700A06EA6 /* NearbyMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */; };
 		D0C7F04315EEEDB800A06EA6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C7F04215EEEDB800A06EA6 /* MapKit.framework */; };
 		D0E2DB2A164AFA03004FC5A8 /* ClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2DB29164AFA02004FC5A8 /* ClusterAnnotation.m */; };
@@ -535,6 +538,10 @@
 		D0C602CF15D5E942003200E9 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		D0C602DC15D5E95E003200E9 /* LAUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAUtil.h; sourceTree = "<group>"; };
 		D0C602DD15D5E95E003200E9 /* LAUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAUtil.m; sourceTree = "<group>"; };
+		D0C742FC168F5DE000A0642C /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		D0C742FD168F5DE000A0642C /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry.a; path = muniverse2/libFlurry.a; sourceTree = "<group>"; };
+		D0C74300168F5F5800A0642C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D0C74302168F620300A0642C /* flurryapikey.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = flurryapikey.txt; sourceTree = "<group>"; };
 		D0C7F03D15EEED7700A06EA6 /* NearbyMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyMapViewController.h; sourceTree = "<group>"; };
 		D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyMapViewController.m; sourceTree = "<group>"; };
 		D0C7F04215EEEDB800A06EA6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -550,12 +557,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C74301168F5F5800A0642C /* SystemConfiguration.framework in Frameworks */,
 				D074AD7F15EFE6C000D5BC84 /* CoreLocation.framework in Frameworks */,
 				D0C7F04315EEEDB800A06EA6 /* MapKit.framework in Frameworks */,
 				D0FA28CD15B4B6DE00ECE53D /* CoreData.framework in Frameworks */,
 				D03165B115AB76AE009DF347 /* UIKit.framework in Frameworks */,
 				D03165B315AB76AE009DF347 /* Foundation.framework in Frameworks */,
 				D03165B515AB76AE009DF347 /* CoreGraphics.framework in Frameworks */,
+				D0C742FE168F5DE000A0642C /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,6 +832,8 @@
 		D03165AF15AB76AE009DF347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0C742FD168F5DE000A0642C /* libFlurry.a */,
+				D0C74300168F5F5800A0642C /* SystemConfiguration.framework */,
 				D074AD7E15EFE6C000D5BC84 /* CoreLocation.framework */,
 				D0C7F04215EEEDB800A06EA6 /* MapKit.framework */,
 				D0FA28CC15B4B6DE00ECE53D /* CoreData.framework */,
@@ -837,6 +848,7 @@
 		D03165B615AB76AE009DF347 /* muniverse2 */ = {
 			isa = PBXGroup;
 			children = (
+				D0C74302168F620300A0642C /* flurryapikey.txt */,
 				D0C602DB15D5E946003200E9 /* External */,
 				D076180815BCDF6000783055 /* muniversedata.json */,
 				D092B8B815B4E83F0032236A /* View Controllers */,
@@ -1038,6 +1050,7 @@
 		D0C602DB15D5E946003200E9 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				D0C742FC168F5DE000A0642C /* Flurry.h */,
 				D08AC4E915D790D600A45338 /* TouchXML */,
 				D0C602DF15D5E962003200E9 /* Launch Apps */,
 				D0C602BA15D5E942003200E9 /* AFNetworking */,
@@ -1315,6 +1328,7 @@
 				43E21042165AA4AA00D8A0A2 /* Nearby_Detail_Bg.png in Resources */,
 				43E21048165D43F100D8A0A2 /* Button_Recenter@2x.png in Resources */,
 				43E210A3165D53DD00D8A0A2 /* Button_Recenter.png in Resources */,
+				D0C74303168F620300A0642C /* flurryapikey.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1509,6 +1523,10 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "muniverse2/muniverse2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/muniverse2\"",
+				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1527,6 +1545,10 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "muniverse2/muniverse2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/muniverse2\"",
+				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
