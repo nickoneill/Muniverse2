@@ -1,6 +1,8 @@
 Muniverse
 ==========
 
+[Muniverse is available for free on the App Store](https://itunes.apple.com/us/app/muniverse/id379321991?ls=1&mt=8)
+
 **Muniverse is the fastest way to find arrival times for San Francisco Muni busses, trains and historic street cars.**
 
 ![Nearby Map](https://raw.github.com/nickoneill/Muniverse2/master/Screenshots/NearbyMap.png)&nbsp;&nbsp;![Nearby Stop Detail](https://github.com/nickoneill/Muniverse2/raw/master/Screenshots/MapStopDetail.png)&nbsp;&nbsp;![Subway Station Detail](https://github.com/nickoneill/Muniverse2/raw/master/Screenshots/StationDetail.png)
