@@ -232,12 +232,40 @@
     if (self.isCancelled) {
         return;
     }
-    
+        
     // do the ui stuff on the ui thread
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self.nearby clearCustomAnnoations];
         [self.nearby.map addAnnotations:self.nearby.loadedAnnotations];
     });
+
+    if (self.isCancelled) {
+        return;
+    }
+
+    if ([self.nearby isAtStopZoomLevel]) {
+        CLLocationDistance minDist = 1000;
+        MuniPinAnnotation *closestPin = nil;
+        
+        CLLocationCoordinate2D coord = self.nearby.map.centerCoordinate;
+        CLLocation *center = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
+
+        for (MuniPinAnnotation *pin in self.nearby.loadedAnnotations) {
+            CLLocation *pinloc = [[CLLocation alloc] initWithLatitude:pin.coordinate.latitude longitude:pin.coordinate.longitude];
+            
+            CLLocationDistance meterdist = [center distanceFromLocation:pinloc];
+            if (meterdist < minDist) {
+                minDist = meterdist;
+                closestPin = pin;
+            }
+        }
+        
+        if (closestPin) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self.nearby loadDetailForPin:closestPin];
+            });
+        }
+    }
 }
 
 @end

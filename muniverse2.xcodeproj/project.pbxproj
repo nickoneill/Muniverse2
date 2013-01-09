@@ -185,6 +185,7 @@
 		D03165D315AB76AE009DF347 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03165D115AB76AE009DF347 /* InfoPlist.strings */; };
 		D03165D615AB76AE009DF347 /* muniverse2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D03165D515AB76AE009DF347 /* muniverse2Tests.m */; };
 		D039D98215E44A040089F3AF /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D039D98115E44A040089F3AF /* FavoriteCell.m */; };
+		D056B5BF169CEB0700EF1BCF /* CurrentStopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D056B5BE169CEB0700EF1BCF /* CurrentStopAnnotation.m */; };
 		D0661C2515E150D400AF3EC1 /* GroupedPredictionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */; };
 		D06C80D116541EF80065DC5C /* MuniUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D06C80D016541EF80065DC5C /* MuniUtilities.m */; };
 		D06C80DB16542C430065DC5C /* FavoriteButton-off.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C80D716542C430065DC5C /* FavoriteButton-off.png */; };
@@ -442,6 +443,8 @@
 		D03165D515AB76AE009DF347 /* muniverse2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muniverse2Tests.m; sourceTree = "<group>"; };
 		D039D98015E44A040089F3AF /* FavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteCell.h; sourceTree = "<group>"; };
 		D039D98115E44A040089F3AF /* FavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteCell.m; sourceTree = "<group>"; };
+		D056B5BD169CEB0700EF1BCF /* CurrentStopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentStopAnnotation.h; sourceTree = "<group>"; };
+		D056B5BE169CEB0700EF1BCF /* CurrentStopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentStopAnnotation.m; sourceTree = "<group>"; };
 		D0661C2315E150D400AF3EC1 /* GroupedPredictionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupedPredictionCell.h; sourceTree = "<group>"; };
 		D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupedPredictionCell.m; sourceTree = "<group>"; };
 		D06C80CF16541EF80065DC5C /* MuniUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuniUtilities.h; sourceTree = "<group>"; };
@@ -899,6 +902,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D056B5BB169CEADF00EF1BCF /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				D00AFFA2162CE89C000BEB01 /* MuniPinAnnotation.h */,
+				D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */,
+				D0E2DB28164AFA02004FC5A8 /* ClusterAnnotation.h */,
+				D0E2DB29164AFA02004FC5A8 /* ClusterAnnotation.m */,
+				D030A3AF1655B07400FEA9FE /* SmallClusterAnnotation.h */,
+				D030A3B01655B07400FEA9FE /* SmallClusterAnnotation.m */,
+				D056B5BD169CEB0700EF1BCF /* CurrentStopAnnotation.h */,
+				D056B5BE169CEB0700EF1BCF /* CurrentStopAnnotation.m */,
+			);
+			name = Annotations;
+			sourceTree = "<group>";
+		};
 		D07BE00D15CB221D0054E392 /* All Lines Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -921,12 +939,6 @@
 				D0661C2415E150D400AF3EC1 /* GroupedPredictionCell.m */,
 				D039D98015E44A040089F3AF /* FavoriteCell.h */,
 				D039D98115E44A040089F3AF /* FavoriteCell.m */,
-				D00AFFA2162CE89C000BEB01 /* MuniPinAnnotation.h */,
-				D00AFFA3162CE89C000BEB01 /* MuniPinAnnotation.m */,
-				D0E2DB28164AFA02004FC5A8 /* ClusterAnnotation.h */,
-				D0E2DB29164AFA02004FC5A8 /* ClusterAnnotation.m */,
-				D030A3AF1655B07400FEA9FE /* SmallClusterAnnotation.h */,
-				D030A3B01655B07400FEA9FE /* SmallClusterAnnotation.m */,
 			);
 			name = "Shared Classes";
 			sourceTree = "<group>";
@@ -1072,6 +1084,7 @@
 		D0C7F04115EEED8100A06EA6 /* Nearby */ = {
 			isa = PBXGroup;
 			children = (
+				D056B5BB169CEADF00EF1BCF /* Annotations */,
 				D0C7F03D15EEED7700A06EA6 /* NearbyMapViewController.h */,
 				D0C7F03E15EEED7700A06EA6 /* NearbyMapViewController.m */,
 				D006C738166804F20013EC0E /* StopLoadOperation.h */,
@@ -1426,6 +1439,7 @@
 				D06C80E8165434120065DC5C /* Stop+Favorite.m in Sources */,
 				D030A3B11655B07400FEA9FE /* SmallClusterAnnotation.m in Sources */,
 				D006C73A166804F20013EC0E /* StopLoadOperation.m in Sources */,
+				D056B5BF169CEB0700EF1BCF /* CurrentStopAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,7 @@
 #import "GroupedPredictionCell.h"
 #import "ClusterAnnotation.h"
 #import "SmallClusterAnnotation.h"
+#import "CurrentStopAnnotation.h"
 #import "NextBusClient.h"
 #import "MuniUtilities.h"
 #import "StopLoadOperation.h"
@@ -112,6 +113,7 @@
 
 - (BOOL)checkRoughDistanceOf:(CLLocation *)locOne from:(CLLocation *)locTwo
 {
+    // yes, making this rough check speeds up our stop calculations for not having to do nearly as many square roots
     if (locOne.coordinate.latitude > locTwo.coordinate.latitude+SMALL_CLUSTER_DISTANCE || locOne.coordinate.latitude < locTwo.coordinate.latitude-SMALL_CLUSTER_DISTANCE || locOne.coordinate.longitude > locTwo.coordinate.longitude+SMALL_CLUSTER_DISTANCE || locOne.coordinate.longitude < locTwo.coordinate.longitude-SMALL_CLUSTER_DISTANCE) {
         return NO;
     }
@@ -178,6 +180,13 @@
         MKAnnotationView *user = [self.map viewForAnnotation:annotation];
         
         return user;
+    } else if ([annotation isKindOfClass:[CurrentStopAnnotation class]]) {
+        MKAnnotationView *current = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"current"];
+        [current setCanShowCallout:NO];
+        [current setDraggable:NO];
+        [current setImage:[UIImage imageNamed:@"Button_Close.png"]];
+        
+        return current;
     }
         
     return nil;
@@ -334,9 +343,9 @@
     [self.navItem setRightBarButtonItem:self.refresh];
     
     // load data for the stop
-    [self loadLinesForSelectedStop];
+//    [self loadLinesForSelectedStop];
     
-    MuniPinAnnotation *pin = self.selectedAnnotationView.annotation;
+    MuniPinAnnotation *pin = self.selectedAnnotation;
     Stop *stop = pin.stop;
     
     [(UILabel *)[self.detailView viewWithTag:11] setText:stop.name];
@@ -353,7 +362,7 @@
     
     // animate open the drawer
     [UIView animateWithDuration:0.3 animations:^{
-        [self.detailView setFrame:CGRectMake(0, 184, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
+        [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height - 44, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
     }];
 }
 
@@ -387,6 +396,17 @@
     }
     
     return NO;
+}
+
+- (void)loadDetailForPin:(MuniPinAnnotation *)pin
+{
+    self.selectedAnnotation = pin;
+    
+    CurrentStopAnnotation *current = [[CurrentStopAnnotation alloc] init];
+    [current setCoordinate:self.selectedAnnotation.coordinate];
+    [self.map addAnnotation:current];
+    
+    [self openDetail];
 }
 
 // this stop could be used for inbound, outbound or a combination of the two

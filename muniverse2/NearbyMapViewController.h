@@ -11,7 +11,7 @@
 
 #define SMALL_CLUSTER_DISTANCE 60
 
-@class MKMapView,CalloutAnnotation,CalloutAnnotationView;
+@class MKMapView,CalloutAnnotation,CalloutAnnotationView,MuniPinAnnotation;
 
 @interface NearbyMapViewController : UIViewController <MKMapViewDelegate,UIActionSheetDelegate>
 
@@ -25,6 +25,7 @@
 @property (strong) NSArray *linesCache;
 @property (strong) CalloutAnnotation *calloutAnnotation;
 @property (strong) MKAnnotationView *selectedAnnotationView;
+@property (strong) MuniPinAnnotation *selectedAnnotation;
 @property BOOL autoRegionChange;
 @property BOOL shouldZoomToUser;
 @property BOOL lastDisplayCluster;
@@ -39,5 +40,7 @@
 - (IBAction)recenter;
 - (void)clearCustomAnnoations;
 - (BOOL)checkRoughDistanceOf:(CLLocation *)locOne from:(CLLocation *)locTwo;
+- (BOOL)isAtStopZoomLevel;
+- (void)loadDetailForPin:(MuniPinAnnotation *)pin;
 
 @end
