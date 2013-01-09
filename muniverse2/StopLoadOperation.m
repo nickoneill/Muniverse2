@@ -48,7 +48,8 @@
             }
             MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue]));
             
-            if (MKMapRectContainsPoint(self.nearby.map.visibleMapRect, point)) {
+            MKMapRect visMap = self.nearby.map.visibleMapRect;
+            if (MKMapRectContainsPoint(visMap, point)) {
                 MuniPinAnnotation *point = [[MuniPinAnnotation alloc] init];
                 [point setStop:stop];
                 [point setCoordinate:CLLocationCoordinate2DMake([stop.lat floatValue], [stop.lon floatValue])];
