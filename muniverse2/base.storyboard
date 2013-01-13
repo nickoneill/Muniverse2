@@ -191,16 +191,16 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="52" sectionHeaderHeight="10" sectionFooterHeight="10" id="Sr9-Pd-UQb">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Sr9-Pd-UQb">
                                         <rect key="frame" x="0.0" y="50" width="320" height="270"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GPCell" rowHeight="53" id="DrQ-kp-2jk" customClass="GroupedPredictionCell">
-                                                <rect key="frame" x="0.0" y="46" width="320" height="54"/>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GPCell" rowHeight="52" id="DrQ-kp-2jk" customClass="GroupedPredictionCell">
+                                                <rect key="frame" x="0.0" y="22" width="320" height="52"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="10" y="1" width="300" height="52"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="oOz-Wx-jES">
@@ -208,37 +208,44 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Ytz-Oc-hIT">
-                                                            <rect key="frame" x="50" y="6" width="185" height="21"/>
+                                                            <rect key="frame" x="50" y="6" width="210" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Ixz-av-xH9">
-                                                            <rect key="frame" x="50" y="23" width="185" height="21"/>
+                                                            <rect key="frame" x="50" y="25" width="160" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="T0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="7jV-EZ-r0V">
-                                                            <rect key="frame" x="228" y="15" width="29" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <rect key="frame" x="220" y="25.5" width="35" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="T1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="1OR-8h-LaZ">
-                                                            <rect key="frame" x="259" y="15" width="29" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="245" y="25.5" width="35" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pqq-Kg-oP2">
+                                                            <rect key="frame" x="280" y="25" width="30" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                 <connections>
                                                     <outlet property="lineIcon" destination="oOz-Wx-jES" id="3C0-2H-LNn"/>
                                                     <outlet property="primaryPrediction" destination="7jV-EZ-r0V" id="Bwb-8s-eNQ"/>
@@ -247,38 +254,45 @@
                                                     <outlet property="secondaryText" destination="Ixz-av-xH9" id="EPw-vM-vD5"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GPCellText" rowHeight="53" id="v1t-Tt-31l" customClass="GroupedPredictionCell">
-                                                <rect key="frame" x="0.0" y="100" width="320" height="54"/>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GPCellText" rowHeight="52" id="v1t-Tt-31l" customClass="GroupedPredictionCell">
+                                                <rect key="frame" x="0.0" y="74" width="320" height="52"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="52"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="PTo-xT-MRf">
-                                                            <rect key="frame" x="11" y="6" width="225" height="21"/>
+                                                            <rect key="frame" x="10" y="6" width="260" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="0O3-Kj-apc">
-                                                            <rect key="frame" x="11" y="23" width="225" height="21"/>
+                                                            <rect key="frame" x="10" y="26" width="210" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="T0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="u8k-DP-YY0">
-                                                            <rect key="frame" x="228" y="15" width="29" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <rect key="frame" x="220" y="26" width="35" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="T1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="41q-J5-Tas">
-                                                            <rect key="frame" x="259" y="15" width="29" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="250" y="26" width="30" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IBJ-U6-vjj">
+                                                            <rect key="frame" x="280" y="26" width="30" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
@@ -291,6 +305,87 @@
                                                     <outlet property="primaryText" destination="PTo-xT-MRf" id="zoA-cb-nrm"/>
                                                     <outlet property="secondaryPrediction" destination="41q-J5-Tas" id="Zsn-98-X0v"/>
                                                     <outlet property="secondaryText" destination="0O3-Kj-apc" id="Euv-oa-TkJ"/>
+                                                </connections>
+                                            </tableViewCell>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GPCellTextMulti" rowHeight="72" id="vPe-nc-AYG" customClass="GroupedPredictionCell">
+                                                <rect key="frame" x="0.0" y="126" width="320" height="72"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="CMo-hr-MbB">
+                                                            <rect key="frame" x="10" y="6" width="260" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="hvY-xx-X1a">
+                                                            <rect key="frame" x="10" y="26" width="210" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="T0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ha8-Bg-JKJ">
+                                                            <rect key="frame" x="220" y="26" width="35" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="T1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="gtk-my-ALS">
+                                                            <rect key="frame" x="250" y="26.5" width="30" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oDb-Fh-rym">
+                                                            <rect key="frame" x="280" y="26" width="30" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="pXa-Or-VMK">
+                                                            <rect key="frame" x="10" y="46" width="210" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="T0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2UA-AW-Tho">
+                                                            <rect key="frame" x="220" y="46" width="35" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="T1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="dNc-I1-VZU">
+                                                            <rect key="frame" x="250" y="46" width="30" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zcm-Sw-koK">
+                                                            <rect key="frame" x="280" y="46" width="30" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="primaryPrediction" destination="ha8-Bg-JKJ" id="TpH-Ma-cZh"/>
+                                                    <outlet property="primaryText" destination="CMo-hr-MbB" id="bxq-3W-kfg"/>
+                                                    <outlet property="secondaryPrediction" destination="gtk-my-ALS" id="GDe-LW-AmB"/>
+                                                    <outlet property="secondaryText" destination="hvY-xx-X1a" id="wWP-8c-U3y"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -818,7 +913,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RqS-QO-Bec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1718" y="271"/>
+            <point key="canvasLocation" x="2254" y="79"/>
         </scene>
         <!--Stop Detail View Controller - Arrival Times-->
         <scene sceneID="f7o-66-skx">
@@ -954,92 +1049,6 @@
         <image name="Tab_Subway.png" width="30" height="30"/>
         <image name="placeholder-stop-icon-fav@2x.png" width="92" height="92"/>
     </resources>
-    <classes>
-        <class className="AllLinesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AllLinesTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="type" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="FavoriteCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="destination" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lineName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="primaryPrediction" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="secondaryPrediction" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stopName" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FavoritesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editButton:"/>
-                <relationship kind="action" name="refreshAll:"/>
-                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="GroupedPredictionCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GroupedPredictionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lineIcon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="primaryPrediction" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="primaryText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="secondaryPrediction" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="secondaryText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="LineDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LineDetailViewController.h"/>
-        </class>
-        <class className="LineDisplayCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LineDisplayCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="description" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="icon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MuniTabController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MuniTabController.h"/>
-        </class>
-        <class className="NearbyMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NearbyMapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="recenter"/>
-                <relationship kind="action" name="refreshPredictions"/>
-                <relationship kind="action" name="toggleFavorite"/>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="detailTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="detailView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="navItem" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="StationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StationViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="inoutcontrol" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="StopDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StopDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="primaryArrival" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="refresh" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="secondaryArrival" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stopID" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stopName" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SubwayTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubwayTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
