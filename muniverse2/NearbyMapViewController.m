@@ -49,8 +49,8 @@
     [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
     [[self.detailView viewWithTag:10] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Nearby_Detail_Bg.png"]]];
     
-    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
-    [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
+//    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
+//    [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         // load all those stops
@@ -145,9 +145,9 @@
         
         // change the pin style if it's a favorite already
         if ([[(MuniPinAnnotation *)annotation stop] isFavorite]) {
-            [pin setImage:[UIImage imageNamed:@"StopPinFav.png"]];
+            [pin setImage:[UIImage imageNamed:@"Stop-16.png"]];
         } else {
-            [pin setImage:[UIImage imageNamed:@"StopPin.png"]];
+            [pin setImage:[UIImage imageNamed:@"stop-16.png"]];
         }
         
         return pin;
