@@ -10,7 +10,7 @@
 
 @class Line;
 
-@interface LineDetailViewController : UITableViewController
+@interface LineDetailViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (strong) UISegmentedControl *inoutcontrol;
 @property (strong) Line *line;

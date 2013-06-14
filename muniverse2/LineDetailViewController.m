@@ -147,6 +147,7 @@ typedef enum {
         [self configureCell:cell atIndexPath:indexPath];
     }
     
+    LALog(@"returning: %@",cell);
     return cell;
 }
 

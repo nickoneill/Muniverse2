@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "Line.h"
 #import "LineDisplayCell.h"
-#import "LineDetailViewController.h"
+#import "NewLineDetailViewController.h"
 
 @interface AllLinesTableViewController ()
 
@@ -306,7 +306,7 @@ typedef enum {
         selectedLine = [[self frc] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
     }
     
-    [(LineDetailViewController *)[segue destinationViewController] setLine:selectedLine];
+    [(NewLineDetailViewController *)[segue destinationViewController] setLine:selectedLine];
 }
 
 @end
