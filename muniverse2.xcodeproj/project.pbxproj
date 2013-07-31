@@ -158,6 +158,8 @@
 		4391433717A9CC7400011884 /* Icon-iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4391433617A9CC7400011884 /* Icon-iOS7.png */; };
 		4391433917A9CCDD00011884 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4391433817A9CCDD00011884 /* Images.xcassets */; };
 		4391433B17A9CEF200011884 /* Icon-iOS7-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 4391433A17A9CEF200011884 /* Icon-iOS7-alt.png */; };
+		4391433E17A9D2C000011884 /* Default-568h-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4391433C17A9D2C000011884 /* Default-568h-iOS7@2x.png */; };
+		4391433F17A9D2C000011884 /* Default-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4391433D17A9D2C000011884 /* Default-iOS7@2x.png */; };
 		43AD8A9A1601374800771A80 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AD8A991601374800771A80 /* Default-568h@2x.png */; };
 		43AD8AA11601B40A00771A80 /* MapBottomTrimLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AD8AA01601B40A00771A80 /* MapBottomTrimLine@2x.png */; };
 		43AD8AA31601B67E00771A80 /* MapBottomTrimLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AD8AA21601B67E00771A80 /* MapBottomTrimLine.png */; };
@@ -426,6 +428,8 @@
 		4391433617A9CC7400011884 /* Icon-iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iOS7.png"; sourceTree = "<group>"; };
 		4391433817A9CCDD00011884 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Muniverse/Images.xcassets; sourceTree = "<group>"; };
 		4391433A17A9CEF200011884 /* Icon-iOS7-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iOS7-alt.png"; sourceTree = "<group>"; };
+		4391433C17A9D2C000011884 /* Default-568h-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h-iOS7@2x.png"; sourceTree = "<group>"; };
+		4391433D17A9D2C000011884 /* Default-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS7@2x.png"; sourceTree = "<group>"; };
 		43AD8A991601374800771A80 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		43AD8AA01601B40A00771A80 /* MapBottomTrimLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapBottomTrimLine@2x.png"; sourceTree = "<group>"; };
 		43AD8AA21601B67E00771A80 /* MapBottomTrimLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapBottomTrimLine.png; sourceTree = "<group>"; };
@@ -652,6 +656,8 @@
 				435BA57515AC61A500D26FA1 /* Default.png */,
 				435BA57615AC61A500D26FA1 /* Default@2x.png */,
 				43AD8A991601374800771A80 /* Default-568h@2x.png */,
+				4391433C17A9D2C000011884 /* Default-568h-iOS7@2x.png */,
+				4391433D17A9D2C000011884 /* Default-iOS7@2x.png */,
 				4308300315B868A9007EA209 /* DirectionBar_Inbound.png */,
 				4308300415B868A9007EA209 /* DirectionBar_Inbound@2x.png */,
 				4308300515B868A9007EA209 /* DirectionBar_Outbound.png */,
@@ -1248,6 +1254,7 @@
 				435BA57A15AC621E00D26FA1 /* Icon@2x.png in Resources */,
 				435BA57B15AC622400D26FA1 /* Default.png in Resources */,
 				435BA57C15AC623700D26FA1 /* Default@2x.png in Resources */,
+				4391433F17A9D2C000011884 /* Default-iOS7@2x.png in Resources */,
 				D014A27F15AE1D1600FF5952 /* base.storyboard in Resources */,
 				43CD348315B4C188005D8CA2 /* Tab_Favorites.png in Resources */,
 				43CD348415B4C188005D8CA2 /* Tab_Favorites@2x.png in Resources */,
@@ -1256,6 +1263,7 @@
 				43B53F7015B5D652001F3DCE /* Connection_BART.png in Resources */,
 				43B53F7115B5D652001F3DCE /* Connection_BART@2x.png in Resources */,
 				43B53F7215B5D652001F3DCE /* Connection_Caltrain-h.png in Resources */,
+				4391433E17A9D2C000011884 /* Default-568h-iOS7@2x.png in Resources */,
 				43B53F7315B5D652001F3DCE /* Connection_Caltrain-h@2x.png in Resources */,
 				43B53F7415B5D652001F3DCE /* Connection_Caltrain.png in Resources */,
 				43B53F7515B5D652001F3DCE /* Connection_Caltrain@2x.png in Resources */,
