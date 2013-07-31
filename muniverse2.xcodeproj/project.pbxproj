@@ -155,6 +155,9 @@
 		438661FB15DE8DE8008725DC /* placeholder-stop-icon-fav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 438661FA15DE8DE8008725DC /* placeholder-stop-icon-fav@2x.png */; };
 		438661FF15DE8F09008725DC /* Tab_LocationArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 438661FD15DE8F09008725DC /* Tab_LocationArrow.png */; };
 		4386620015DE8F09008725DC /* Tab_LocationArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 438661FE15DE8F09008725DC /* Tab_LocationArrow@2x.png */; };
+		4391433717A9CC7400011884 /* Icon-iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4391433617A9CC7400011884 /* Icon-iOS7.png */; };
+		4391433917A9CCDD00011884 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4391433817A9CCDD00011884 /* Images.xcassets */; };
+		4391433B17A9CEF200011884 /* Icon-iOS7-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 4391433A17A9CEF200011884 /* Icon-iOS7-alt.png */; };
 		43AD8A9A1601374800771A80 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AD8A991601374800771A80 /* Default-568h@2x.png */; };
 		43AD8AA11601B40A00771A80 /* MapBottomTrimLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AD8AA01601B40A00771A80 /* MapBottomTrimLine@2x.png */; };
 		43AD8AA31601B67E00771A80 /* MapBottomTrimLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 43AD8AA21601B67E00771A80 /* MapBottomTrimLine.png */; };
@@ -420,6 +423,9 @@
 		438661FA15DE8DE8008725DC /* placeholder-stop-icon-fav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-stop-icon-fav@2x.png"; sourceTree = "<group>"; };
 		438661FD15DE8F09008725DC /* Tab_LocationArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tab_LocationArrow.png; sourceTree = "<group>"; };
 		438661FE15DE8F09008725DC /* Tab_LocationArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab_LocationArrow@2x.png"; sourceTree = "<group>"; };
+		4391433617A9CC7400011884 /* Icon-iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iOS7.png"; sourceTree = "<group>"; };
+		4391433817A9CCDD00011884 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Muniverse/Images.xcassets; sourceTree = "<group>"; };
+		4391433A17A9CEF200011884 /* Icon-iOS7-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iOS7-alt.png"; sourceTree = "<group>"; };
 		43AD8A991601374800771A80 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		43AD8AA01601B40A00771A80 /* MapBottomTrimLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MapBottomTrimLine@2x.png"; sourceTree = "<group>"; };
 		43AD8AA21601B67E00771A80 /* MapBottomTrimLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapBottomTrimLine.png; sourceTree = "<group>"; };
@@ -863,6 +869,7 @@
 		D03165A115AB76AE009DF347 = {
 			isa = PBXGroup;
 			children = (
+				4391433817A9CCDD00011884 /* Images.xcassets */,
 				435BA56715AC619200D26FA1 /* Icon.png */,
 				435BA56815AC619200D26FA1 /* Icon@2x.png */,
 				435BA56515AC619200D26FA1 /* Icon-Small.png */,
@@ -871,6 +878,8 @@
 				435BA56215AC619200D26FA1 /* Icon-72@2x.png */,
 				435BA56315AC619200D26FA1 /* Icon-Small-50.png */,
 				435BA56415AC619200D26FA1 /* Icon-Small-50@2x.png */,
+				4391433A17A9CEF200011884 /* Icon-iOS7-alt.png */,
+				4391433617A9CC7400011884 /* Icon-iOS7.png */,
 				D03165B615AB76AE009DF347 /* muniverse2 */,
 				D03165CE15AB76AE009DF347 /* muniverse2Tests */,
 				D03165AF15AB76AE009DF347 /* Frameworks */,
@@ -1227,6 +1236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4391433B17A9CEF200011884 /* Icon-iOS7-alt.png in Resources */,
 				D03165BB15AB76AE009DF347 /* InfoPlist.strings in Resources */,
 				435BA1C215AC60D600D26FA1 /* Tab_History.png in Resources */,
 				435BA1C315AC60D600D26FA1 /* Tab_History@2x.png in Resources */,
@@ -1255,6 +1265,7 @@
 				4367C40C15B654C800767C45 /* Toolbar_List@2x.png in Resources */,
 				4308300715B868A9007EA209 /* DirectionBar_Inbound.png in Resources */,
 				4308300815B868A9007EA209 /* DirectionBar_Inbound@2x.png in Resources */,
+				4391433917A9CCDD00011884 /* Images.xcassets in Resources */,
 				4308300915B868A9007EA209 /* DirectionBar_Outbound.png in Resources */,
 				4308300A15B868A9007EA209 /* DirectionBar_Outbound@2x.png in Resources */,
 				4308300D15B8714B007EA209 /* DirectionBar_Blank.png in Resources */,
@@ -1383,6 +1394,7 @@
 				43DEB5231656CEA5001B9B4E /* Tab_Location_Target@2x.png in Resources */,
 				43DEB5241656CEA5001B9B4E /* Tab_Location_Target.png in Resources */,
 				43F3C5A816585E3B00428594 /* NavBarLeather@2x.png in Resources */,
+				4391433717A9CC7400011884 /* Icon-iOS7.png in Resources */,
 				43E2103C1659FABA00D8A0A2 /* Nearby_Detail_Bg@2x.png in Resources */,
 				43E2103F1659FB3900D8A0A2 /* Textured_App_Bg.png in Resources */,
 				43E210401659FB3900D8A0A2 /* Textured_App_Bg@2x.png in Resources */,
@@ -1596,6 +1608,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "muniverse2/muniverse2-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -1617,6 +1631,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "muniverse2/muniverse2-Prefix.pch";
