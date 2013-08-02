@@ -393,7 +393,7 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Subway Stations" id="5o2-XS-Q92">
-                        <barButtonItem key="backBarButtonItem" title="Stations" id="mvE-Nu-lBf"/>
+                        <barButtonItem key="backBarButtonItem" title="Subway" id="mvE-Nu-lBf"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZA-nF-3t4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -409,7 +409,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="52" sectionHeaderHeight="10" sectionFooterHeight="10" id="G0w-yI-kFM">
-                                <rect key="frame" x="0.0" y="44" width="320" height="372"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="448"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -470,21 +470,20 @@
                                 </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" id="ObT-2Y-vD9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.67450980390000004" green="0.71764705880000002" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <color key="tintColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="aN2-Xx-tbP">
                                         <nil key="title"/>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dp0-5W-ncQ">
                                             <rect key="frame" x="50" y="7" width="220" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="tintColor" red="0.67450980390000004" green="0.71764705880000002" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <segments>
                                                 <segment title="Inbound"/>
                                                 <segment title="Outbound"/>
                                             </segments>
-                                            <color key="tintColor" red="0.67450980390000004" green="0.71764705880000002" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="directionChange:" destination="Rke-KB-bwA" eventType="valueChanged" id="nTH-F1-bBl"/>
                                             </connections>
@@ -511,13 +510,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EgZ-go-hZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2148" y="2899"/>
+            <point key="canvasLocation" x="2138" y="2899"/>
         </scene>
-        <!--Navigation Controller - Subway-->
+        <!--Navigation Controller - Metro Subway-->
         <scene sceneID="6KL-Q6-FVH">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Gmf-kX-lMJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Subway" image="Tab_Subway.png" id="rqD-j8-xYi"/>
+                    <tabBarItem key="tabBarItem" title="Metro Subway" image="Tab_Subway.png" id="rqD-j8-xYi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iFH-Gz-yee">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -577,8 +576,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="All Lines" id="QbF-8q-s7X">
                         <barButtonItem key="backBarButtonItem" title="Lines" id="5DG-Mb-7PP"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="vl2-oA-DI8">
-                            <rect key="frame" x="45" y="7" width="230" height="30"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" id="vl2-oA-DI8">
+                            <rect key="frame" x="45" y="8" width="230" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
@@ -1776,7 +1775,7 @@
                                 </connections>
                             </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="hB6-wc-LR4">
-                                <rect key="frame" x="0.0" y="280" width="320" height="136"/>
+                                <rect key="frame" x="0.0" y="280" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
                         </subviews>

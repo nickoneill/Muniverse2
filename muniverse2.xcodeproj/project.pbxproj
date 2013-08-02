@@ -75,6 +75,7 @@
 		4367C40815B64A1B00767C45 /* Toolbar_Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4367C40615B64A1B00767C45 /* Toolbar_Map@2x.png */; };
 		4367C40B15B654C800767C45 /* Toolbar_List.png in Resources */ = {isa = PBXBuildFile; fileRef = 4367C40915B654C800767C45 /* Toolbar_List.png */; };
 		4367C40C15B654C800767C45 /* Toolbar_List@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4367C40A15B654C800767C45 /* Toolbar_List@2x.png */; };
+		436F041E17AB73A40082EA21 /* LaunchImage-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 436F041D17AB73A40082EA21 /* LaunchImage-iOS7@2x.png */; };
 		43773F5215C74BC100E1B9AC /* Marker_End_Current-h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43773F4615C74BC100E1B9AC /* Marker_End_Current-h@2x.png */; };
 		43773F5315C74BC100E1B9AC /* Marker_End_Current@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43773F4715C74BC100E1B9AC /* Marker_End_Current@2x.png */; };
 		43773F5415C74BC100E1B9AC /* Marker_End-h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43773F4815C74BC100E1B9AC /* Marker_End-h@2x.png */; };
@@ -164,6 +165,7 @@
 		438E3C0517AB287D006475D4 /* TabNearMeSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 438E3BFB17AB287D006475D4 /* TabNearMeSelected@2x.png */; };
 		438E3C0817AB2A32006475D4 /* TabNearMe@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 438E3C0617AB2A32006475D4 /* TabNearMe@1x.png */; };
 		438E3C0917AB2A32006475D4 /* TabNearMeSelected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 438E3C0717AB2A32006475D4 /* TabNearMeSelected@1x.png */; };
+		438E3C0B17AB72F1006475D4 /* LaunchImage-iOS7-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 438E3C0A17AB72F1006475D4 /* LaunchImage-iOS7-568@2x.png */; };
 		4391433917A9CCDD00011884 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4391433817A9CCDD00011884 /* Images.xcassets */; };
 		4391433E17A9D2C000011884 /* Default-568h-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4391433C17A9D2C000011884 /* Default-568h-iOS7@2x.png */; };
 		4391433F17A9D2C000011884 /* Default-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4391433D17A9D2C000011884 /* Default-iOS7@2x.png */; };
@@ -352,6 +354,7 @@
 		4367C40615B64A1B00767C45 /* Toolbar_Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toolbar_Map@2x.png"; sourceTree = "<group>"; };
 		4367C40915B654C800767C45 /* Toolbar_List.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Toolbar_List.png; sourceTree = "<group>"; };
 		4367C40A15B654C800767C45 /* Toolbar_List@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toolbar_List@2x.png"; sourceTree = "<group>"; };
+		436F041D17AB73A40082EA21 /* LaunchImage-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-iOS7@2x.png"; sourceTree = "<group>"; };
 		43773F4615C74BC100E1B9AC /* Marker_End_Current-h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marker_End_Current-h@2x.png"; sourceTree = "<group>"; };
 		43773F4715C74BC100E1B9AC /* Marker_End_Current@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marker_End_Current@2x.png"; sourceTree = "<group>"; };
 		43773F4815C74BC100E1B9AC /* Marker_End-h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marker_End-h@2x.png"; sourceTree = "<group>"; };
@@ -441,6 +444,7 @@
 		438E3BFB17AB287D006475D4 /* TabNearMeSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabNearMeSelected@2x.png"; sourceTree = "<group>"; };
 		438E3C0617AB2A32006475D4 /* TabNearMe@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabNearMe@1x.png"; sourceTree = "<group>"; };
 		438E3C0717AB2A32006475D4 /* TabNearMeSelected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabNearMeSelected@1x.png"; sourceTree = "<group>"; };
+		438E3C0A17AB72F1006475D4 /* LaunchImage-iOS7-568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-iOS7-568@2x.png"; sourceTree = "<group>"; };
 		4391433817A9CCDD00011884 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Muniverse/Images.xcassets; sourceTree = "<group>"; };
 		4391433C17A9D2C000011884 /* Default-568h-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h-iOS7@2x.png"; sourceTree = "<group>"; };
 		4391433D17A9D2C000011884 /* Default-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS7@2x.png"; sourceTree = "<group>"; };
@@ -839,6 +843,8 @@
 		438E3BDF17AA22FC006475D4 /* Launch Images */ = {
 			isa = PBXGroup;
 			children = (
+				436F041D17AB73A40082EA21 /* LaunchImage-iOS7@2x.png */,
+				438E3C0A17AB72F1006475D4 /* LaunchImage-iOS7-568@2x.png */,
 				435BA57515AC61A500D26FA1 /* Default.png */,
 				435BA57615AC61A500D26FA1 /* Default@2x.png */,
 				43AD8A991601374800771A80 /* Default-568h@2x.png */,
@@ -1445,6 +1451,7 @@
 				D06C80DC16542C430065DC5C /* FavoriteButton-off@2x.png in Resources */,
 				D06C80DD16542C430065DC5C /* FavoriteButton-on.png in Resources */,
 				D06C80DE16542C430065DC5C /* FavoriteButton-on@2x.png in Resources */,
+				436F041E17AB73A40082EA21 /* LaunchImage-iOS7@2x.png in Resources */,
 				D06C80ED165453860065DC5C /* blueButton.png in Resources */,
 				D06C80EE165453860065DC5C /* blueButton@2x.png in Resources */,
 				D06C80EF165453860065DC5C /* blueButtonHighlight.png in Resources */,
@@ -1469,6 +1476,7 @@
 				4364EF1316A4B05900A979B8 /* PinPurple.png in Resources */,
 				4364EF1416A4B05900A979B8 /* PinPurple@2x.png in Resources */,
 				4364EF1516A4B05900A979B8 /* PinRed.png in Resources */,
+				438E3C0B17AB72F1006475D4 /* LaunchImage-iOS7-568@2x.png in Resources */,
 				4364EF1616A4B05900A979B8 /* PinRed@2x.png in Resources */,
 				4364EF2016A4B2DE00A979B8 /* stop-4.png in Resources */,
 				4364EF2116A4B2DE00A979B8 /* stop-4@2x.png in Resources */,
