@@ -31,7 +31,7 @@
     screenRect = CGRectMake(0, -20, screenRect.size.width, screenRect.size.height);
     
     if (screenRect.size.height < 568) {
-        [self.loadingImageView setImage:[UIImage imageNamed:@"Default.png"]];
+        [self.loadingImageView setImage:[UIImage imageNamed:@"LaunchImage@2x.png"]];
         [self.loadingImageView setFrame:screenRect];
         
         [self.loadingLabel setFrame:CGRectMake(self.loadingLabel.frame.origin.x, 300, self.loadingLabel.frame.size.width, self.loadingLabel.frame.size.height)];
