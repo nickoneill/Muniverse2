@@ -134,11 +134,11 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (void)customizeAppearance
 {
-    UIImage *navBarTexture = [UIImage imageNamed:@"navBarLeather.png"];
-    [[UINavigationBar appearance] setBackgroundImage:navBarTexture forBarMetrics:UIBarMetricsDefault];
     
-    UIImage *navBarButton = [UIImage imageNamed:@"navBarButtonLeatherNormal.png"];
-    [[UIBarButtonItem appearance] setBackgroundImage:navBarButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    UIColor* navigationBarTint = [UIColor colorWithRed:255/255.0f green:102/255.0f blue:0/255.0f alpha:1];
+    
+    [[UINavigationBar appearance] setTintColor:navigationBarTint];
+    
 }
 
 

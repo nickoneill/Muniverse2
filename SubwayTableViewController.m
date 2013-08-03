@@ -38,8 +38,6 @@
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     self.moc = app.managedObjectContext;
 
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:80/255.0f green:109/255.0f blue:131/255.0f alpha:1];
-
     NSError *error;
     if (![[self frc] performFetch:&error]) {
         NSLog(@"whoops with subway frc: %@",error);
@@ -125,7 +123,7 @@
     [[cell.contentView viewWithTag:1] removeFromSuperview];
     
     // would like to add another bit to the Subway model for this, but it seems like wasted effort since it can be implemented in this much code
-    if ([subway.name isEqualToString:@"Civic Center Station"] || [subway.name isEqualToString:@"Powell Station"] || [subway.name isEqualToString:@"Montgomery Station"] || [subway.name isEqualToString:@"Embarcadero Station"]) {
+    if ([subway.name isEqualToString:@"Civic Center"] || [subway.name isEqualToString:@"Powell"] || [subway.name isEqualToString:@"Montgomery"] || [subway.name isEqualToString:@"Embarcadero"]) {
         UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Connection_BART.png"] highlightedImage:[UIImage imageNamed:@"Connection_BART-h.png"]];
         [image setFrame:CGRectMake(250, image.frame.origin.y, image.frame.size.width, image.frame.size.height)];
         [image setTag:1];
