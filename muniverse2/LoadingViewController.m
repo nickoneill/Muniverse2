@@ -28,12 +28,14 @@
     [super viewDidLoad];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    screenRect = CGRectMake(0, -20, screenRect.size.width, screenRect.size.height);
+    screenRect = CGRectMake(0, 0, screenRect.size.width, screenRect.size.height);
+
+    [self.loadingImageView setImage:[UIImage imageNamed:@"LaunchImage-586h@2x.png"]];
     
     if (screenRect.size.height < 568) {
         [self.loadingImageView setImage:[UIImage imageNamed:@"LaunchImage@2x.png"]];
         [self.loadingImageView setFrame:screenRect];
-        
+
         [self.loadingLabel setFrame:CGRectMake(self.loadingLabel.frame.origin.x, 300, self.loadingLabel.frame.size.width, self.loadingLabel.frame.size.height)];
     }
 }
