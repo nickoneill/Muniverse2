@@ -85,5 +85,13 @@
     
     return [NSString stringWithFormat:@"%@",number];
 }
++ (NSString *)formattedSubtitleFromNumer:(NSNumber *)number
+{
+    if ([number isEqualToNumber:[NSNumber numberWithInt:0]]) {
+        return @"Arriving";
+    }
+    
+    return [NSString stringWithFormat:@"Minutes"];
+}
 
 @end

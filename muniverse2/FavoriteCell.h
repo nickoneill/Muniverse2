@@ -15,5 +15,6 @@
 @property (strong) IBOutlet UILabel *destination;
 @property (strong) IBOutlet UILabel *primaryPrediction;
 @property (strong) IBOutlet UILabel *secondaryPrediction;
+@property (strong) IBOutlet UILabel *tertiaryPrediction;
 
 @end

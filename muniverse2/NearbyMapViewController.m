@@ -49,6 +49,10 @@
     [self.detailView setFrame:CGRectMake(0, self.map.frame.size.height + 44, self.detailView.frame.size.width, self.map.frame.size.height - 184)];
     [[self.detailView viewWithTag:10] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Nearby_Detail_Bg.png"]]];
     
+    
+    
+    
+    
 //    UIImage *bgimage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
 //    [self.detailTable setBackgroundView:[[UIImageView alloc] initWithImage:bgimage]];
     
@@ -454,9 +458,12 @@
     Line *line = [self.linesCache objectAtIndex:[indexPath row]];
     
     if ([line.metro boolValue]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"GPCellText"];
+
         [cell.lineIcon setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Subway_Icon_%@.png",line.shortname]]];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"GPCellText"];
+        
     }
     
     [cell.primaryText setText:line.name];
@@ -467,7 +474,11 @@
     }
     
     cell.primaryPrediction.text = @"";
+    cell.primaryPredictionSubtitle.text = @"";
     cell.secondaryPrediction.text = @"";
+    cell.secondaryPredictionSubtitle.text = @"";
+    cell.tertiaryPrediction.text = @"";
+    cell.tertiaryPredictionSubtitle.text = @"";
     
     return cell;
 }
@@ -495,15 +506,31 @@
             
             if ([els count]) {
                 cell.primaryPrediction.text = [NextBusClient formattedTimeFromNumer:[els objectAtIndex:0]];
+                cell.primaryPredictionSubtitle.text = [NextBusClient formattedSubtitleFromNumer:[els objectAtIndex:0]];
                 
                 if ([els count] > 1) {
                     cell.secondaryPrediction.text = [NextBusClient formattedTimeFromNumer:[els objectAtIndex:1]];
+                    cell.secondaryPredictionSubtitle.text = @"Minutes";
+                }else {
+                    cell.secondaryPrediction.text = @"N/A";
+                    cell.secondaryPredictionSubtitle.text = @"";
+                }
+                
+                if ([els count] > 2) {
+                    cell.tertiaryPrediction.text = [NextBusClient formattedTimeFromNumer:[els objectAtIndex:2]];
+                    cell.tertiaryPredictionSubtitle.text = @"Minutes";
+                    
                 } else {
-                    cell.secondaryPrediction.text = @"--";
+                    cell.tertiaryPrediction.text = @"N/A";
+                    cell.tertiaryPredictionSubtitle.text = @"";
                 }
             } else {
                 cell.primaryPrediction.text = @"";
-                cell.secondaryPrediction.text = @"!";
+                cell.primaryPredictionSubtitle.text = @"";
+                cell.secondaryPrediction.text = @"";
+                cell.secondaryPredictionSubtitle.text = @"";
+                cell.tertiaryPrediction.text = @"";
+                cell.tertiaryPredictionSubtitle.text = @"";
             }
 
             [(UIActivityIndicatorView *)self.refreshing.customView stopAnimating];

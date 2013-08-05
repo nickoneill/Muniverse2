@@ -40,8 +40,8 @@
     self.navigationItem.title = [self.subway valueForKey:@"name"];
 
     // set background image for the table
-    UIImage *bg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
-    [self.table setBackgroundView:[[UIImageView alloc] initWithImage:bg]];
+    //    UIImage *bg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Textured_App_Bg" ofType:@"png"]];
+    // [self.table setBackgroundView:[[UIImageView alloc] initWithImage:bg]];
     
     // broken out because sometimes we need to reload lines for K/T
     [self loadLines];
@@ -112,6 +112,8 @@
     
     cell.primaryPrediction.text = @"";
     cell.secondaryPrediction.text = @"";
+    cell.tertiaryPrediction.text = @"";
+    
     
     return cell;
 }

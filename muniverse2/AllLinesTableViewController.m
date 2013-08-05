@@ -119,7 +119,7 @@ typedef enum {
 {
     if (self.type.selectedSegmentIndex == kHistoricType) {
         if (section == 0) {
-            return @"Historic Streetcar";
+            return @"";
         } else {
             return @"Cable Car";
         }
