@@ -19,6 +19,7 @@
 @property (strong) IBOutlet UILabel *stopID;
 @property (strong) IBOutlet UILabel *primaryArrival;
 @property (strong) IBOutlet UILabel *secondaryArrival;
+@property (strong) IBOutlet UILabel *tertiaryArrival;
 @property (strong) IBOutlet UIButton *favoriteButton;
 
 @property (strong) IBOutlet UIBarButtonItem *refresh;
