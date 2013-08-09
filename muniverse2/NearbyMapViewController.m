@@ -103,8 +103,10 @@
 }
 
 
+
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    
     if (self.shouldZoomToUser && userLocation.location.coordinate.latitude != 0) {
         CLLocationCoordinate2D loc = [userLocation.location coordinate];
         
